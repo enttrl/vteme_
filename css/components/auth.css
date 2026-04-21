@@ -195,7 +195,39 @@
   color: #ff7f30;
   cursor: pointer;
 }
+.auth-form__error {
+  display: block;
+  min-height: 18px;
+  margin-top: 6px;
+  font-family: "Inter", Arial, sans-serif;
+  font-size: 13px;
+  line-height: 1.2;
+  color: #dc2626;
+}
 
+.auth-form__input--error {
+  border-color: #dc2626;
+}
+
+.auth-form__link {
+  margin: 2px 0 16px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  font-family: "Inter", Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.2;
+  color: #ff7f30;
+  cursor: pointer;
+}
+
+.auth-form__hint {
+  margin: 0 0 18px;
+  font-family: "Inter", Arial, sans-serif;
+  font-size: 15px;
+  line-height: 1.35;
+  color: #666;
+}
 @media (max-width: 767px) {
   .auth-modal__dialog {
     max-width: calc(100% - 24px);
