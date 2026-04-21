@@ -1,0 +1,8 @@
+:root {
+  --container-width: 1600px;
+  --color-accent: #ff7a00;
+}
+
+.arrow-black {
+  filter: brightness(0) invert(0);
+}

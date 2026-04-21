@@ -1,0 +1,368 @@
+.memberships__inner {
+  max-width: 1630px;
+  margin: 0 auto;
+  padding: 0 30px;
+  box-sizing: border-box;
+}
+
+.memberships__title {
+  margin: 0 0 80px;
+  font-size: 32px;
+  font-family: Onder;
+  line-height: 1.2;
+  color: #000000;
+}
+
+.memberships__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(320px, 522px));
+  gap: 16px;
+}
+
+.membership {
+  min-height: 449px;
+  border-radius: 32px;
+  box-sizing: border-box;
+}
+
+.membership--dark,
+.membership--light {
+  position: relative;
+  padding: 32px 32px 32px 32px;
+  display: flex;
+  flex-direction: column;
+}
+
+.membership--dark {
+  background: #050505;
+  color: #ffffff;
+}
+
+.membership--light {
+  background: #ffffff;
+  color: #000000;
+}
+
+.membership--intro {
+  display: flex;
+  align-items: center;
+  background: transparent;
+  padding: 0;
+}
+
+.membership__intro-text {
+  margin: 0;
+  max-width: 480px;
+  font-family: "Inter", Arial, sans-serif;
+  font-size: 32px;
+  font-weight: 400;
+  line-height: 1.2;
+  color: #111111;
+}
+
+.membership__name {
+  margin: 0;
+  max-width: 350px;
+  font-family: "Inter", Arial, sans-serif;
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 1.05;
+}
+
+.membership__time {
+  margin: 24px 0 0;
+  font-family: "Inter", Arial, sans-serif;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 1.15;
+}
+
+.membership__bottom {
+  margin-top: auto;
+}
+
+.membership__price {
+  margin: 0 0 18px;
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+
+.membership__price-value {
+    font-family: "Inter", Arial, sans-serif;
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 1;
+  color: #ff7f30;
+}
+
+.membership__price-period {
+    font-family: "Inter", Arial, sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1;
+  color: #8c8c8c;
+}
+
+.membership__button {
+  width: 100%;
+  max-width: 458px;
+  height: 58px;
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.membership__button-text {
+  width: calc(100% - 58px);
+  height: 58px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 29px;
+  font-family: "Inter", Arial, sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.membership__button-icon {
+  width: 58px;
+  height: 58px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.membership__button-icon img {
+  display: block;
+  width: 24px;
+  height: 24px;
+}
+
+.membership__button--light .membership__button-text,
+.membership__button--light .membership__button-icon {
+  background: #ffffff;
+  color: #000000;
+}
+
+.membership__button--dark .membership__button-text,
+.membership__button--dark .membership__button-icon {
+  background: #000000;
+  color: #ffffff;
+}
+
+.membership__button--dark:hover .membership__button-text,
+.membership__button--dark:hover .membership__button-icon {
+  background-color: #ff7f30;
+  color: #ffffff;
+}
+
+.membership__button--light:hover .membership__button-text,
+.membership__button--light:hover .membership__button-icon {
+  background-color: #ff7f30;
+  color: #ffffff;
+}
+
+.membership__button:hover .membership__button-icon img {
+  filter: none;
+}
+
+.membership__button-text,
+.membership__button-icon,
+.membership__contact-button-text,
+.membership__contact-button-icon {
+  transition: 
+    background-color 0.25s ease,
+    color 0.25s ease,
+    transform 0.25s ease;
+}
+.membership__button--light .membership__button-icon img {
+  filter: invert(1);
+}
+
+.membership__button--dark .membership__button-icon img {
+  filter: none;
+}
+
+.membership--hit {
+  overflow: hidden;
+}
+
+.membership__badge {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 128px;
+  height: 173px;
+  border-bottom-left-radius: 92px;
+  background: #ff7f30;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Inter", Arial, sans-serif;
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 1;
+  color: #ffffff;
+}
+
+.membership--contact {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 10px 18px 38px;
+  background: transparent;
+}
+
+.membership__contact-text {
+  margin: 0;
+  max-width: 420px;
+  font-family: "Inter", Arial, sans-serif;
+  font-size: 32px;
+  font-weight: 400;
+  line-height: 1.15;
+  color: #111111;
+}
+
+.membership__contact-button {
+  width: 358px;
+  height: 58px;
+  margin-top: 24px;
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.membership__contact-button:hover .membership__contact-button-text,
+.membership__contact-button:hover .membership__contact-button-icon {
+  background-color: #C73700;
+  color: #ffffff;
+}
+
+.membership__contact-button-text {
+  width: 300px;
+  height: 58px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #ff5a14;
+  border-radius: 29px;
+  font-family: "Inter", Arial, sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1;
+  color: #ffffff;
+}
+
+.membership__contact-button-icon {
+  width: 58px;
+  height: 58px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #ff5a14;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.membership__contact-button-icon img {
+  display: block;
+  width: 24px;
+  height: 24px;
+  filter: brightness(0) invert(1);
+}
+
+.membership__button,
+.membership__contact-button,
+.membership {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.membership--dark:hover,
+.membership--light:hover {
+  transform: translateY(-4px);
+}
+
+@media (max-width: 1680px) {
+  .memberships__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .membership__button {
+    max-width: none;
+  }
+}
+
+@media (max-width: 1100px) {
+  .memberships__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .membership--intro,
+  .membership--contact {
+    min-height: 260px;
+  }
+}
+
+@media (max-width: 768px) {
+  .memberships {
+    padding-top: 96px;
+  }
+
+  .memberships__inner {
+    padding: 0 16px;
+  }
+
+  .memberships__title {
+    margin-bottom: 32px;
+    font-size: 42px;
+  }
+
+  .memberships__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .membership {
+    min-height: auto;
+  }
+
+  .membership--dark,
+  .membership--light {
+    min-height: 380px;
+    padding: 24px 18px 18px;
+  }
+
+  .membership__intro-text,
+  .membership__contact-text {
+    font-size: 24px;
+  }
+
+  .membership__name {
+    font-size: 30px;
+  }
+
+  .membership__time {
+    font-size: 20px;
+  }
+
+  .membership__price-value {
+    font-size: 32px;
+  }
+
+  .membership__price-period {
+    font-size: 20px;
+  }
+
+  .membership__contact-button {
+    width: 100%;
+    max-width: 358px;
+  }
+
+  .membership__contact-button-text {
+    width: calc(100% - 58px);
+  }
+}

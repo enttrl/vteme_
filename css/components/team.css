@@ -1,0 +1,217 @@
+.team {
+  margin-top: 160px;
+}
+
+.team__shell {
+  max-width: 1776px;
+  min-height: 1121px;
+  margin: 0 auto;
+  padding: 96px 88px 80px;
+  background: #ffffff;
+  border-radius: 48px;
+  box-sizing: border-box;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+}
+
+.team__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.team__title {
+  margin: 0;
+  font-family: "Onder", Arial, sans-serif;
+  font-size: 32px;
+  line-height: 1.2;
+  color: #000000;
+}
+
+.team__controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.team__control {
+  width: 64px;
+  height: 64px;
+  border: none;
+  border-radius: 50%;
+  background: #050505;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.25s ease, transform 0.25s ease;
+}
+
+.team__control img {
+  width: 24px;
+  height: 24px;
+  display: block;
+  filter: brightness(0) invert(1);
+   transform: rotate(45deg);
+}
+
+.team__control--prev img {
+  transform: rotate(225deg);
+}
+
+.team__control:hover {
+  background: #ff7f30;
+}
+
+.team__slider {
+  margin-top: 64px;
+  overflow: hidden;
+}
+
+.team__track {
+  display: flex;
+  transition: transform 0.4s ease;
+}
+
+.team__slide {
+  min-width: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.trainer-card {
+  min-width: 0;
+}
+
+.trainer-card__photo-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1.32;
+  border-radius: 24px;
+  overflow: hidden;
+  background: #d9c2a4;
+}
+
+.trainer-card__photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 24px;
+}
+
+.trainer-card__tag {
+  position: absolute;
+  left: 16px;
+  bottom: 20px;
+  min-width: 138px;
+  height: 48px;
+  padding: 0 24px;
+  border-radius: 32px;
+  background: #ffffff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Inter", Arial, sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1;
+  color: #111111;
+  box-sizing: border-box;
+}
+
+.trainer-card__name {
+  margin: 16px 0 0;
+  font-family: "Inter", Arial, sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: #000000;
+}
+
+.trainer-card__role {
+  margin: 8px 0 0;
+  max-width: 320px;
+  font-family: "Inter", Arial, sans-serif;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 1.2;
+  color: #2f2f2f;
+}
+
+.team__footer {
+  margin-top: 64px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.team__footer-text {
+  margin: 0;
+  font-family: "Inter", Arial, sans-serif;
+  font-size: 32px;
+  font-weight: 400;
+  line-height: 1.2;
+  color: #111111;
+}
+
+.team__button {
+  width: 358px;
+  height: 58px;
+  margin-top: 24px;
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.team__button-text {
+  width: 300px;
+  height: 58px;
+  border-radius: 29px;
+  background: #050505;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Inter", Arial, sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1;
+  color: #ffffff;
+  transition: background-color 0.25s ease;
+}
+
+.team__button-icon {
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: #050505;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background-color 0.25s ease;
+}
+
+.team__button-icon img {
+  width: 24px;
+  height: 24px;
+  display: block;
+  filter: none;
+}
+
+.team__button:hover .team__button-text,
+.team__button:hover .team__button-icon {
+  background: #ff7f30;
+}
+
+@media (max-width: 1800px) {
+  .team {
+    padding: 0 24px;
+    box-sizing: border-box;
+  }
+
+  .team__shell {
+    max-width: 100%;
+  }
+}

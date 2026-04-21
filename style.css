@@ -1,0 +1,15 @@
+@import 'css/components/header.css';
+@import 'css/components/hero.css';
+@import 'css/base/fonts.css';
+@import 'css/base/variables.css';
+@import 'css/layout/container.css';
+@import 'css/layout/reset.css';
+@import 'css/components/features.css';
+@import 'css/components/ticker.css';
+@import 'css/components/abonements.css';
+@import 'css/components/team.css';
+@import 'css/components/feedback.css';
+@import 'css/components/reviews.css';
+@import 'css/components/faq.css';
+@import 'css/components/footer.css';
+@import 'css/components/auth.css';

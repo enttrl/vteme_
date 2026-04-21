@@ -1,0 +1,140 @@
+.hero-section__decor {
+  position: absolute;
+  right: clamp(220px, -10vw, -60px);
+  width: clamp(500px, 62vw, 1100px);
+  z-index: 1;
+  pointer-events: none;
+  user-select: none;
+}
+@media (max-width: 1920px) {
+  .hero-section__decor {
+    right: clamp(-90px, -10vw, -60px);
+    width: clamp(500px, 62vw, 1100px);
+  }
+}
+
+.header {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  border-bottom: 3px solid rgb(255, 255, 255);
+}
+
+.header__inner {
+  width: 100%;
+  max-width: 1600px;
+  min-height: 78px;
+  margin: 0 auto;
+  padding: 0 0px 0 0px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 39px;
+}
+
+.header__logo-link {
+  display: inline-flex;
+  flex-shrink: 0;
+}
+
+.header__logo {
+  display: block;
+  width: 200px;
+  height: 40px;
+  object-fit: contain;
+}
+
+.header__nav {
+  flex: 1 1 auto;
+  display: flex;
+  justify-content: center;
+}
+
+.nav__list {
+  display: flex;
+  align-items: center;
+  gap: 58px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.nav__link {
+  display: inline-block;
+  font-family: "Inter", Arial, sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1;
+  color: #000000;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.nav__link:hover,
+.nav__link:focus-visible {
+  color: #f58220;
+}
+
+.header__login {
+  flex-shrink: 0;
+}
+
+.login-button {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.login-button__img {
+  display: block;
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+.login-button__text {
+  width: 136px;
+  height: 42px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #000000;
+  border-radius: 21px;
+  font-family: "Inter", Arial, sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1;
+  color: #ffffff;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.login-button__icon {
+  width: 42px;
+  height: 42px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #000000;
+  border-radius: 50%;
+  color: #ffffff;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.login-button:hover .login-button__text,
+.login-button:hover .login-button__icon,
+.login-button:focus-visible .login-button__text,
+.login-button:focus-visible .login-button__icon {
+  background-color: #f58220;
+  color: #ffffff;
+}
+
+.login-button:hover .login-button__img {
+  filter: brightness(0) invert(1); /* делает белой */
+}
