@@ -69,12 +69,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function openModal() {
     authModal.classList.add('auth-modal--open');
+
+    const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
     document.body.style.overflow = 'hidden';
+    document.body.style.paddingRight = `${scrollbarWidth}px`;
   }
 
   function closeModal() {
     authModal.classList.remove('auth-modal--open');
     document.body.style.overflow = '';
+    document.body.style.paddingRight = '';
+
     clearAllErrors();
     registerForm?.reset();
     loginForm?.reset();
@@ -97,6 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function clearAllErrors() {
     document.querySelectorAll('.auth-form__error').forEach((el) => {
       el.textContent = '';
+      el.classList.remove('auth-form__error--visible');
     });
 
     document.querySelectorAll('.auth-form__input').forEach((input) => {
@@ -112,6 +118,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const errorEl = document.querySelector(`[data-error-for="${errorKey}"]`);
     if (errorEl) {
       errorEl.textContent = message;
+      errorEl.classList.add('auth-form__error--visible');
     }
   }
 
@@ -179,8 +186,17 @@ document.addEventListener('DOMContentLoaded', () => {
     button.addEventListener('click', () => {
       const inputId = button.dataset.passwordToggle;
       const input = document.getElementById(inputId);
+      const img = button.querySelector('img');
+
       if (!input) return;
-      input.type = input.type === 'password' ? 'text' : 'password';
+
+      if (input.type === 'password') {
+        input.type = 'text';
+        img.src = 'assets/img/eye.svg'; // 👁 открытый глаз
+      } else {
+        input.type = 'password';
+        img.src = 'assets/img/eye-off.svg'; // 🙈 закрытый глаз
+      }
     });
   });
 

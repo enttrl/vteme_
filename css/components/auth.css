@@ -3,10 +3,14 @@
   inset: 0;
   z-index: 2000;
   display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  box-sizing: border-box;
 }
 
 .auth-modal--open {
-  display: block;
+  display: flex;
 }
 
 .auth-modal__overlay {
@@ -20,19 +24,20 @@
   z-index: 1;
   width: 100%;
   max-width: 640px;
-  margin: 36px auto;
+  max-height: calc(100vh - 48px);
+  overflow-y: auto;
   padding: 48px 32px 36px;
   border-radius: 32px;
-  background: #f5f5f5;
+  background: #ffffff;
   box-sizing: border-box;
 }
 
 .auth-modal__close {
   position: absolute;
-  top: 40px;
+  top: 42px;
   right: 32px;
-  width: 42px;
-  height: 42px;
+  width: 20px;
+  height: 20px;
   border: none;
   background: transparent;
   cursor: pointer;
@@ -60,7 +65,7 @@
 .auth-form__title {
   margin: 0 0 32px;
   font-family: "Inter", Arial, sans-serif;
-  font-size: 56px;
+  font-size: 32px;
   font-weight: 700;
   line-height: 1;
   color: #000;
@@ -75,21 +80,40 @@
   display: block;
   margin-bottom: 8px;
   font-family: "Inter", Arial, sans-serif;
-  font-size: 18px;
-  color: #111;
+  font-size: 16px;
+  font-weight: 500;
+  color: #000000;
 }
-
-.auth-form__group--password {
+.auth-form__input-wrap {
   position: relative;
+  display: block;
 }
 
+.auth-form__password-toggle {
+  position: absolute;
+  top: 50%;
+  right: 18px;
+  transform: translateY(-50%);
+  width: 24px;
+  height: 24px;
+  border: none;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+}
+
+.auth-form__password-toggle img {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
 .auth-form__input {
   width: 100%;
-  height: 58px;
-  padding: 0 18px;
-  border: 1px solid #cfcfcf;
+  height: 56px;
+  padding: 0 16px;
+  border: 1px solid #BEBEBE;
   border-radius: 29px;
-  background: #f5f5f5;
+  background: #ffffff;
   box-sizing: border-box;
   font-family: "Inter", Arial, sans-serif;
   font-size: 18px;
@@ -109,10 +133,8 @@
 
 .auth-form__password-toggle {
   position: absolute;
-  right: 18px;
-  bottom: 13px;
-  width: 32px;
-  height: 32px;
+  width: 24px;
+  height: 24px;
   border: none;
   background: transparent;
   padding: 0;
@@ -126,38 +148,52 @@
 }
 
 .auth-form__checkbox {
+  margin-top: 8px;
   display: flex;
   align-items: center;
   gap: 8px;
-  margin-top: 8px;
   cursor: pointer;
 }
 
+/* скрываем стандартный чекбокс */
 .auth-form__checkbox-input {
-  position: absolute;
-  opacity: 0;
-  pointer-events: none;
+  display: none;
 }
 
+/* сам квадрат */
 .auth-form__checkbox-box {
-  width: 22px;
-  height: 22px;
-  border: 1px solid #7c7c7c;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #ccc;
   border-radius: 4px;
-  flex-shrink: 0;
   position: relative;
+  transition: all 0.2s ease;
 }
 
-.auth-form__checkbox-input:checked + .auth-form__checkbox-box::after {
-  content: "";
+/* галочка (скрыта по умолчанию) */
+.auth-form__checkbox-box::after {
+  content: '';
   position: absolute;
-  left: 6px;
-  top: 2px;
-  width: 6px;
-  height: 12px;
-  border-right: 2px solid #ff5a14;
-  border-bottom: 2px solid #ff5a14;
+  left: 5px;
+  top: 1px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
   transform: rotate(45deg);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+/* АКТИВНОЕ СОСТОЯНИЕ */
+.auth-form__checkbox-input:checked + .auth-form__checkbox-box {
+  background: #FF7C33; /* твой оранжевый */
+  border-color: #FF7C33;
+}
+
+/* показываем галочку */
+.auth-form__checkbox-input:checked + .auth-form__checkbox-box::after {
+  opacity: 1;
 }
 
 .auth-form__checkbox-text {
@@ -168,14 +204,14 @@
 
 .auth-form__submit {
   width: 100%;
-  height: 64px;
-  margin-top: 24px;
+  height: 56px;
+  margin-top: 56px;
   border: none;
   border-radius: 32px;
-  background: #ff5a14;
+  background: #FA4D0B;
   font-family: "Inter", Arial, sans-serif;
   font-size: 24px;
-  font-weight: 700;
+  font-weight: 600;
   color: #fff;
   cursor: pointer;
   transition: background-color 0.25s ease;
@@ -187,17 +223,21 @@
 
 .auth-form__switch {
   display: block;
-  margin: 28px auto 0;
+  margin: 24px auto 0;
   border: none;
   background: transparent;
   font-family: "Inter", Arial, sans-serif;
-  font-size: 16px;
+  font-size: 15px;
+  font-weight: 500;
   color: #ff7f30;
   cursor: pointer;
 }
+.auth-form__switch:hover {
+  color: #FA4D0B;
+
+}
 .auth-form__error {
-  display: block;
-  min-height: 18px;
+  display: none;
   margin-top: 6px;
   font-family: "Inter", Arial, sans-serif;
   font-size: 13px;
@@ -205,12 +245,15 @@
   color: #dc2626;
 }
 
+.auth-form__error--visible {
+  display: block;
+}
+
 .auth-form__input--error {
   border-color: #dc2626;
 }
 
 .auth-form__link {
-  margin: 2px 0 16px;
   padding: 0;
   border: none;
   background: transparent;
@@ -220,13 +263,15 @@
   color: #ff7f30;
   cursor: pointer;
 }
-
+.auth-form__link:hover {
+   color: #FA4D0B;
+}
 .auth-form__hint {
   margin: 0 0 18px;
   font-family: "Inter", Arial, sans-serif;
-  font-size: 15px;
-  line-height: 1.35;
-  color: #666;
+  font-size: 16px;
+  line-height: 1.2;
+  color: #141414;
 }
 @media (max-width: 767px) {
   .auth-modal__dialog {

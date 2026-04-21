@@ -833,7 +833,7 @@
 
   <div class="auth-modal__dialog">
     <button class="auth-modal__close" id="closeAuthModal" type="button" aria-label="Закрыть">
-      <img src="assets/img/x.svg" alt="">
+      <img src="assets/img/close_modal.svg" alt="">
     </button>
 
     <div class="auth-modal__tabs">
@@ -864,12 +864,16 @@
         <input class="auth-form__input" type="tel" name="phone" id="registerPhoneInput" placeholder="+7 (999) 999 - 99 - 99" required>
       </label>
 
-      <label class="auth-form__group auth-form__group--password">
+      <label class="auth-form__group">
         <span class="auth-form__label">Пароль</span>
-        <input class="auth-form__input" type="password" name="password" id="registerPasswordInput" placeholder="******" required minlength="6">
-        <button class="auth-form__password-toggle" type="button" data-password-toggle="registerPasswordInput" aria-label="Показать пароль">
-          <img src="assets/img/eye-off.svg" alt="">
-        </button>
+
+        <span class="auth-form__input-wrap">
+          <input class="auth-form__input" type="password" name="password" id="registerPasswordInput" placeholder="******" required minlength="6">
+          <button class="auth-form__password-toggle" type="button" data-password-toggle="registerPasswordInput" aria-label="Показать пароль">
+            <img src="assets/img/eye-off.svg" alt="">
+          </button>
+        </span>
+
         <span class="auth-form__error" data-error-for="register-password"></span>
       </label>
 
@@ -901,30 +905,22 @@
         <span class="auth-form__error" data-error-for="login-email"></span>
       </label>
 
-      <label class="auth-form__group auth-form__group--password">
+      <label class="auth-form__group">
         <span class="auth-form__label">Пароль</span>
-        <input class="auth-form__input" type="password" name="password" id="loginPasswordInput" placeholder="******" required minlength="6">
-        <button class="auth-form__password-toggle" type="button" data-password-toggle="loginPasswordInput" aria-label="Показать пароль">
-          <img src="assets/img/eye-off.svg" alt="">
-        </button>
+
+        <span class="auth-form__input-wrap">
+          <input class="auth-form__input" type="password" name="password" id="loginPasswordInput" placeholder="******" required minlength="6">
+          <button class="auth-form__password-toggle" type="button" data-password-toggle="loginPasswordInput" aria-label="Показать пароль">
+            <img src="assets/img/eye-off.svg" alt="">
+          </button>
+        </span>
+
         <span class="auth-form__error" data-error-for="login-password"></span>
       </label>
 
       <button class="auth-form__link" type="button" id="openRecoveryRequest">
         Не помните пароль? Восстановить
       </button>
-
-      <label class="auth-form__checkbox">
-        <input class="auth-form__checkbox-input" type="checkbox" required>
-        <span class="auth-form__checkbox-box"></span>
-        <span class="auth-form__checkbox-text">Пользовательское соглашение</span>
-      </label>
-
-      <label class="auth-form__checkbox">
-        <input class="auth-form__checkbox-input" type="checkbox" required>
-        <span class="auth-form__checkbox-box"></span>
-        <span class="auth-form__checkbox-text">Обработка персональных данных</span>
-      </label>
 
       <button class="auth-form__submit" type="submit">Войти</button>
 
@@ -943,7 +939,7 @@
       </label>
 
       <p class="auth-form__hint">
-        Мы отправим письмо со ссылкой для смены пароля.
+        Мы отправим письмо со ссылкой для смены пароля
       </p>
 
       <button class="auth-form__submit" type="submit">Отправить письмо</button>
