@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Личный кабинет</title>
   <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <style>
     .account-placeholder {
       min-height: 100vh;
@@ -47,7 +48,19 @@
       <p class="account-placeholder__text">
         Здесь позже появится полноценный личный кабинет пользователя.
       </p>
+      <button id="logoutButton" type="button">Выйти</button>
     </div>
   </main>
 </body>
+<script>
+    const supabaseClient = window.supabase.createClient(
+      'https://tphqdjeordubhobwoouo.supabase.co',
+      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRwaHFkamVvcmR1YmhvYndvb3VvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY3NzI2OTcsImV4cCI6MjA5MjM0ODY5N30.yAGVQnL4g5Eqex0PEJm3fGtoqyYaf3eA070FaelF2Hw'
+    );
+
+    document.getElementById('logoutButton')?.addEventListener('click', async () => {
+      await supabaseClient.auth.signOut();
+      window.location.href = 'index.html';
+    });
+  </script>
 </html>

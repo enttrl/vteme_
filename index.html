@@ -856,6 +856,7 @@
       <label class="auth-form__group">
         <span class="auth-form__label">Email</span>
         <input class="auth-form__input" type="email" name="email" placeholder="example@mail.ru" required>
+        <span class="auth-form__error" data-error-for="register-email"></span>
       </label>
 
       <label class="auth-form__group">
@@ -869,6 +870,7 @@
         <button class="auth-form__password-toggle" type="button" data-password-toggle="registerPasswordInput" aria-label="Показать пароль">
           <img src="assets/img/eye-off.svg" alt="">
         </button>
+        <span class="auth-form__error" data-error-for="register-password"></span>
       </label>
 
       <label class="auth-form__checkbox">
@@ -896,6 +898,7 @@
       <label class="auth-form__group">
         <span class="auth-form__label">Email</span>
         <input class="auth-form__input" type="email" name="email" placeholder="example@mail.ru" required>
+        <span class="auth-form__error" data-error-for="login-email"></span>
       </label>
 
       <label class="auth-form__group auth-form__group--password">
@@ -904,7 +907,12 @@
         <button class="auth-form__password-toggle" type="button" data-password-toggle="loginPasswordInput" aria-label="Показать пароль">
           <img src="assets/img/eye-off.svg" alt="">
         </button>
+        <span class="auth-form__error" data-error-for="login-password"></span>
       </label>
+
+      <button class="auth-form__link" type="button" id="openRecoveryRequest">
+        Не помните пароль? Восстановить
+      </button>
 
       <label class="auth-form__checkbox">
         <input class="auth-form__checkbox-input" type="checkbox" required>
@@ -923,6 +931,41 @@
       <button class="auth-form__switch" type="button" data-switch-tab="register">
         Не зарегистрированы? Регистрация
       </button>
+    </form>
+
+    <form class="auth-form" id="recoveryRequestForm">
+      <h2 class="auth-form__title">Восстановить пароль</h2>
+
+      <label class="auth-form__group">
+        <span class="auth-form__label">Email</span>
+        <input class="auth-form__input" type="email" name="email" placeholder="example@mail.ru" required>
+        <span class="auth-form__error" data-error-for="recovery-email"></span>
+      </label>
+
+      <p class="auth-form__hint">
+        Мы отправим письмо со ссылкой для смены пароля.
+      </p>
+
+      <button class="auth-form__submit" type="submit">Отправить письмо</button>
+
+      <button class="auth-form__switch" type="button" data-switch-tab="login">
+        Назад ко входу
+      </button>
+    </form>
+
+    <form class="auth-form" id="recoveryUpdateForm">
+      <h2 class="auth-form__title">Восстановить пароль</h2>
+
+      <label class="auth-form__group">
+        <span class="auth-form__label">Новый пароль</span>
+        <input class="auth-form__input" type="password" name="password" id="recoveryPasswordInput" placeholder="******" required minlength="6">
+        <button class="auth-form__password-toggle" type="button" data-password-toggle="recoveryPasswordInput" aria-label="Показать пароль">
+          <img src="assets/img/eye-off.svg" alt="">
+        </button>
+        <span class="auth-form__error" data-error-for="recovery-password"></span>
+      </label>
+
+      <button class="auth-form__submit" type="submit">Сохранить пароль</button>
     </form>
   </div>
 </div>
