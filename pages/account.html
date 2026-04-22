@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Личный кабинет — В ТЕМЕ</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="../css/components/account.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script defer src="../js/burger-menu.js"></script>
+  <script defer src="../js/account.js"></script>
+</head>
+<body class="account-body">
+  <header class="header">
+    <div class="header__inner account-shell">
+      <a class="header__logo-link" href="../index.html" aria-label="На главную">
+        <img class="header__logo" src="../assets/img/logo-vteme.svg" alt="ВТЕМЕ">
+      </a>
+
+      <nav class="header__nav nav" aria-label="Основная навигация">
+        <ul class="nav__list">
+          <li class="nav__item"><a class="nav__link" href="../index.html#about">О нас</a></li>
+          <li class="nav__item"><a class="nav__link" href="../index.html#memberships">Абонементы</a></li>
+          <li class="nav__item"><a class="nav__link" href="../index.html#schedule">Расписание</a></li>
+          <li class="nav__item"><a class="nav__link" href="../index.html#services">Услуги</a></li>
+          <li class="nav__item"><a class="nav__link" href="../index.html#trainers">Тренеры</a></li>
+          <li class="nav__item"><a class="nav__link" href="../index.html#promotions">Акции</a></li>
+        </ul>
+      </nav>
+
+      <a class="header__login login-button" href="./account.html" aria-label="Перейти в личный кабинет">
+        <span class="login-button__text">Войти</span>
+        <span class="login-button__icon" aria-hidden="true">
+          <img class="login-button__img" src="../assets/img/arrow-up-right.svg" alt="">
+        </span>
+      </a>
+
+      <button
+        class="header__burger"
+        id="openBurgerMenu"
+        type="button"
+        aria-label="Открыть меню"
+        aria-expanded="false"
+        aria-controls="mobileMenu"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <div class="mobile-menu__inner">
+      <div class="mobile-menu__top">
+        <a class="mobile-menu__logo-link" href="../index.html" aria-label="На главную">
+          <img class="mobile-menu__logo" src="../assets/img/logo-vteme.svg" alt="ВТЕМЕ">
+        </a>
+
+        <button class="mobile-menu__close" id="closeBurgerMenu" type="button" aria-label="Закрыть меню">
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+
+      <nav class="mobile-menu__nav" aria-label="Мобильная навигация">
+        <a class="mobile-menu__link" href="../index.html#about">О нас</a>
+        <a class="mobile-menu__link" href="../index.html#memberships">Абонементы</a>
+        <a class="mobile-menu__link" href="../index.html#schedule">Расписание</a>
+        <a class="mobile-menu__link" href="../index.html#services">Услуги</a>
+        <a class="mobile-menu__link" href="../index.html#trainers">Тренеры</a>
+        <a class="mobile-menu__link" href="../index.html#promotions">Акции</a>
+      </nav>
+
+      <a class="mobile-menu__login login-button" href="./account.html">
+        <span class="login-button__text">Личный кабинет</span>
+        <span class="login-button__icon" aria-hidden="true">
+          <img class="login-button__img" src="../assets/img/arrow-up-right.svg" alt="">
+        </span>
+      </a>
+
+      <div class="mobile-menu__contacts">
+        <a class="mobile-menu__contact" href="tel:+79288220555">+7 (928) 822-05-55</a>
+        <a class="mobile-menu__contact" href="mailto:vteme@mail.ru">vteme@mail.ru</a>
+      </div>
+
+      <div class="mobile-menu__bottom">
+        <p class="mobile-menu__copyright">© 2026</p>
+        <a class="mobile-menu__policy" href="#">Политика обработки персональных данных</a>
+      </div>
+    </div>
+  </div>
+
+  <main class="account-page">
+    <section class="account-hero container">
+      <div class="account-hero__top">
+        <h1 class="account-title">ЛИЧНЫЙ КАБИНЕТ</h1>
+
+        <button class="ui-button-logout ui-button--accent" id="logoutButton" type="button">
+          Выйти
+        </button>
+      </div>
+
+      <nav class="account-tabs" aria-label="Разделы личного кабинета">
+        <button class="account-tab is-active" type="button" data-tab="overview">
+          Для меня
+        </button>
+        <button class="account-tab" type="button" data-tab="services">
+          Услуги
+        </button>
+        <button class="account-tab" type="button" data-tab="payments">
+          Мои оплаты
+        </button>
+        <button class="account-tab" type="button" data-tab="settings">
+          Настройки
+        </button>
+        <button class="account-tab" type="button" data-tab="loyalty">
+          Программа лояльности
+        </button>
+      </nav>
+    </section>
+
+    <section class="account-dashboard container" aria-label="Сводная информация">
+      <h2 class="account-greeting">Привет, <span id="accountUserName">Пользователь</span>!</h2>
+
+      <div class="account-dashboard__grid">
+        <article class="dashboard-card">
+          <div class="dashboard-card__head">
+            <div class="dashboard-avatar"></div>
+            <h3 class="dashboard-card__title" id="accountCardUserName">Пользователь</h3>
+          </div>
+
+          <a class="dashboard-card__link" href="#">изменить</a>
+        </article>
+
+        <article class="dashboard-card">
+          <h3 class="dashboard-card__title">Мой абонемент</h3>
+          <p class="dashboard-card__value">Не куплен</p>
+        </article>
+
+        <article class="dashboard-card">
+          <h3 class="dashboard-card__title">Посещения</h3>
+          <p class="dashboard-card__value-number dashboard-card__value--accent">0</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="account-content container">
+        <section class="account-panel is-active" data-panel="overview">
+          <div class="account-section__head">
+            <h2 class="account-section__title">Мое расписание</h2>
+          </div>
+
+          <div class="account-section__actions">
+            <button class="ui-button ui-button--dark account-action" type="button">
+              <span class="account-action__label">Запланировать тренировку</span>
+              <span class="account-action__icon" aria-hidden="true">
+                <img
+                  class="account-action__img"
+                  src="../assets/img/arrow-up-right.svg"
+                  alt=""
+                >
+              </span>
+            </button>
+          </div>
+
+          <div class="schedule">
+            <div class="schedule-week" id="scheduleWeek"></div>
+            <div class="schedule-divider"></div>
+            <div class="training-list" id="trainingList"></div>
+          </div>
+        </section>
+
+        
+      </section>
+
+      <section class="account-panel" data-panel="services" hidden>
+        <h2 class="account-section__title">Услуги</h2>
+
+        <div class="services-grid">
+          <article class="service-card">
+            <h3>Подарочный сертификат</h3>
+            <button class="ui-button ui-button--accent" type="button">Купить</button>
+          </article>
+        </div>
+      </section>
+
+      <section class="account-panel" data-panel="payments" hidden>
+        <h2 class="account-section__title">Мои оплаты</h2>
+
+        <div class="payments-table">
+          <div class="payments-row payments-row--head">
+            <span>Дата</span>
+            <span>Название</span>
+            <span>Стоимость</span>
+            <span>Статус</span>
+          </div>
+
+          <div class="payments-row">
+            <span>12.01.2026</span>
+            <span>Абонемент на месяц</span>
+            <span>1000 ₽</span>
+            <span>Успешно</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="account-panel" data-panel="settings" hidden>
+        <h2 class="account-section__title">Настройки</h2>
+
+        <form class="settings-form">
+          <div class="settings-grid">
+            <label class="field">
+              <span>Имя</span>
+              <input type="text" placeholder="Имя" />
+            </label>
+
+            <label class="field">
+              <span>Фамилия</span>
+              <input type="text" placeholder="Фамилия" />
+            </label>
+
+            <label class="field field--full">
+              <span>Email</span>
+              <input type="email" placeholder="Email" />
+            </label>
+
+            <label class="field">
+              <span>Дата рождения</span>
+              <input type="text" placeholder="дд.мм.гггг" />
+            </label>
+
+            <div class="field">
+              <span>Пол</span>
+              <div class="gender-group">
+                <label><input type="radio" name="gender" /> Мужской</label>
+                <label><input type="radio" name="gender" /> Женский</label>
+              </div>
+            </div>
+
+            <label class="field field--full">
+              <span>Пароль</span>
+              <input type="password" placeholder="********" />
+            </label>
+          </div>
+
+          <button class="ui-button ui-button--accent" type="submit">Сохранить</button>
+        </form>
+      </section>
+
+      <section class="account-panel" data-panel="loyalty" hidden>
+        <h2 class="account-section__title">Программа лояльности</h2>
+        <p class="account-muted">Программа лояльности в данный момент недоступна.</p>
+      </section>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer__container account-shell">
+      <div class="footer__top">
+        <a class="footer__logo" href="../index.html" aria-label="На главную">
+          <img src="../assets/img/logo-vteme.svg" alt="ВТЕМЕ">
+        </a>
+
+        <div>
+          <p class="footer__text">Есть вопросы или предложения? Свяжитесь с нами</p>
+          <a class="footer__mail" href="mailto:vteme@mail.ru">vteme@mail.ru</a>
+          <p class="footer__caption">Позвоните нам</p>
+          <a class="footer__phone" href="tel:+79288220555">+7 (928) 822-05-55</a>
+        </div>
+
+        <address class="footer__address-text">
+          КИСЛОВОДСК<br>
+          Первомайский проспект 27<br>
+          +7 (928) 822-05-55
+        </address>
+
+        <nav class="footer__nav" aria-label="Навигация в подвале">
+          <a class="footer__nav-link" href="../index.html#about">О нас</a>
+          <a class="footer__nav-link" href="../index.html#memberships">Абонементы</a>
+          <a class="footer__nav-link" href="../index.html#schedule">Расписание</a>
+          <a class="footer__nav-link" href="../index.html#services">Услуги</a>
+          <a class="footer__nav-link" href="../index.html#trainers">Тренеры</a>
+          <a class="footer__nav-link" href="../index.html#promotions">Акции</a>
+        </nav>
+      </div>
+
+      <div class="footer__bottom">
+        <p class="footer__bottom-text">© 2026</p>
+        <a class="footer__bottom-link" href="#">Политика обработки персональных данных</a>
+        <p class="footer__bottom-text footer__bottom-text--right">Разработка сайта Анисимова М.А.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+<script>
+  window.addEventListener("scroll", () => {
+    document.body.classList.toggle("scrolled", window.scrollY > 10);
+  });
+</script>
+</html>

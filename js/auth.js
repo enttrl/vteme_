@@ -147,7 +147,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const { data } = await supabaseClient.auth.getSession();
 
     if (data.session) {
-      window.location.href = 'account.html';
+      window.location.href = 'pages/account.html';
       return;
     }
 
@@ -288,7 +288,7 @@ document.addEventListener('DOMContentLoaded', () => {
     registerForm.reset();
     closeModal();
     showToast('Регистрация успешна');
-    window.location.href = 'account.html';
+    window.location.href = 'pages/account.html';
   });
 
   loginForm?.addEventListener('submit', async (event) => {
@@ -319,7 +319,7 @@ document.addEventListener('DOMContentLoaded', () => {
     loginForm.reset();
     closeModal();
     showToast('Вход выполнен');
-    window.location.href = 'account.html';
+    window.location.href = 'pages/account.html';
   });
 
   recoveryRequestForm?.addEventListener('submit', async (event) => {
@@ -375,6 +375,6 @@ document.addEventListener('DOMContentLoaded', () => {
     recoveryUpdateForm.reset();
     closeModal();
     showToast('Пароль успешно изменён');
-    window.location.href = 'account.html';
+    window.location.href = 'pages/account.html';
   });
 });
