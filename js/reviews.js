@@ -9,7 +9,10 @@ document.addEventListener('DOMContentLoaded', async () => {
   let allReviews = [];
   let currentFilter = 'all';
   let currentPage = 0;
-  const reviewsPerPage = 4;
+  let autoSlide = null;
+
+  let touchStartX = 0;
+  let touchEndX = 0;
 
   try {
     const response = await fetch('./data/reviews.json');
@@ -21,6 +24,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     allReviews = await response.json();
     shuffleReviews();
     renderReviews();
+    startAutoSlide();
   } catch (error) {
     console.error(error);
     reviewsList.innerHTML = '<p>Не удалось загрузить отзывы.</p>';
@@ -35,8 +39,29 @@ document.addEventListener('DOMContentLoaded', async () => {
       currentPage = 0;
 
       renderReviews();
+      restartAutoSlide();
     });
   });
+
+  window.addEventListener('resize', () => {
+    currentPage = 0;
+    renderReviews();
+    restartAutoSlide();
+  });
+
+  function getReviewsPerPage() {
+    const width = window.innerWidth;
+
+    if (width <= 767) {
+      return 1;
+    }
+
+    if (width <= 1024) {
+      return 2;
+    }
+
+    return 4;
+  }
 
   function shuffleReviews() {
     allReviews.sort(() => Math.random() - 0.5);
@@ -50,7 +75,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     return allReviews.filter((review) => review.source === currentFilter);
   }
 
-  function updateCount(filteredReviews) {
+  function updateCount() {
     if (currentFilter === 'all') {
       reviewsCount.textContent = `304 отзыва в двух источниках`;
       return;
@@ -91,31 +116,35 @@ document.addEventListener('DOMContentLoaded', async () => {
     `;
   }
 
-  function renderPagination(totalPages) {
+  function renderPagination() {
     reviewsPagination.innerHTML = '';
+  }
 
+  function getTotalPages() {
+    const filteredReviews = getFilteredReviews();
+    const reviewsPerPage = getReviewsPerPage();
+    return Math.ceil(filteredReviews.length / reviewsPerPage);
+  }
+
+  function goToNextPage() {
+    const totalPages = getTotalPages();
     if (totalPages <= 1) return;
 
-    for (let i = 0; i < totalPages; i++) {
-      const dot = document.createElement('button');
-      dot.type = 'button';
-      dot.className = 'reviews__dot';
+    currentPage = (currentPage + 1) % totalPages;
+    renderReviews();
+  }
 
-      if (i === currentPage) {
-        dot.classList.add('reviews__dot--active');
-      }
+  function goToPrevPage() {
+    const totalPages = getTotalPages();
+    if (totalPages <= 1) return;
 
-      dot.addEventListener('click', () => {
-        currentPage = i;
-        renderReviews();
-      });
-
-      reviewsPagination.appendChild(dot);
-    }
+    currentPage = (currentPage - 1 + totalPages) % totalPages;
+    renderReviews();
   }
 
   function renderReviews() {
     const filteredReviews = getFilteredReviews();
+    const reviewsPerPage = getReviewsPerPage();
     const totalPages = Math.ceil(filteredReviews.length / reviewsPerPage);
 
     if (currentPage >= totalPages) {
@@ -126,7 +155,51 @@ document.addEventListener('DOMContentLoaded', async () => {
     const currentReviews = filteredReviews.slice(startIndex, startIndex + reviewsPerPage);
 
     reviewsList.innerHTML = currentReviews.map(createReviewCard).join('');
-    updateCount(filteredReviews);
-    renderPagination(totalPages);
+    updateCount();
+    renderPagination();
   }
+
+  function startAutoSlide() {
+    stopAutoSlide();
+
+    autoSlide = setInterval(() => {
+      goToNextPage();
+    }, 5000);
+  }
+
+  function stopAutoSlide() {
+    if (autoSlide) {
+      clearInterval(autoSlide);
+      autoSlide = null;
+    }
+  }
+
+  function restartAutoSlide() {
+    stopAutoSlide();
+    startAutoSlide();
+  }
+
+  reviewsList.addEventListener('touchstart', (event) => {
+    touchStartX = event.changedTouches[0].clientX;
+    stopAutoSlide();
+  }, { passive: true });
+
+  reviewsList.addEventListener('touchend', (event) => {
+    touchEndX = event.changedTouches[0].clientX;
+
+    const diff = touchStartX - touchEndX;
+
+    if (Math.abs(diff) > 50) {
+      if (diff > 0) {
+        goToNextPage();
+      } else {
+        goToPrevPage();
+      }
+    }
+
+    startAutoSlide();
+  }, { passive: true });
+
+  reviewsList.addEventListener('mouseenter', stopAutoSlide);
+  reviewsList.addEventListener('mouseleave', startAutoSlide);
 });

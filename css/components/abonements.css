@@ -308,9 +308,7 @@
 }
 
 @media (max-width: 768px) {
-  .memberships {
-    padding-top: 96px;
-  }
+
 
   .memberships__inner {
     padding: 0 16px;
@@ -331,8 +329,8 @@
 
   .membership--dark,
   .membership--light {
-    min-height: 380px;
-    padding: 24px 18px 18px;
+    min-height: 280px;
+    padding: 24px 24px 24px;
   }
 
   .membership__intro-text,
@@ -349,11 +347,11 @@
   }
 
   .membership__price-value {
-    font-size: 32px;
+    font-size: 24px;
   }
 
   .membership__price-period {
-    font-size: 20px;
+    font-size: 16px;
   }
 
   .membership__contact-button {
@@ -363,5 +361,23 @@
 
   .membership__contact-button-text {
     width: calc(100% - 58px);
+    height: 48px;
+    font-size: 20px;
+  }
+  .membership__contact-button-icon {
+    width: 48px;
+    height: 48px;
+  }
+  .membership__button-text {
+    width: calc(100% - 48px);
+    height: 48px;
+    font-size: 20px;
+  }
+  .membership__button-icon {
+    width: 48px;
+    height: 48px;
+  }
+  .membership__button-text {
+    font-size: 20px;
   }
 }

@@ -266,3 +266,1100 @@ video {
   }
 }
 
+/* =========================
+   1024px – 1439px
+   ========================= */
+@media (min-width: 1024px) and (max-width: 1439px) {
+  .header__inner,
+  .hero__inner,
+  .features__inner,
+  .memberships__inner,
+  .feedback__inner,
+  .reviews__content,
+  .faq__container,
+  .footer__container {
+    width: 960px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .nav__list {
+    gap: 24px;
+  }
+  .nav__link {
+    font-size: 16px;
+  }
+  .login-button__text {
+    font-size: 16px;
+  }
+  .header__logo {
+    width: 180px;
+  }
+
+  .hero__inner {
+    padding-bottom: 0;
+  }
+
+  .hero__content {
+    padding-top: 64px;
+  }
+
+  .hero__title {
+    font-size: 24px;
+    line-height: 1.9;
+  }
+  .hero__description {
+    max-width: 700px;
+  }
+  .hero__stats {
+    margin-top: 180px;
+    gap: 24px;
+  }
+  .hero__stat-number {
+    font-size: 56px;
+  }
+  .trial-button__text {
+    font-size: 20px;
+  }
+  .hero-section__decor {
+    position: absolute;
+    top: 0px;
+    right: 20px;
+    width: 620px;
+    z-index: 1;
+  }
+
+  .hero-section__image {
+    position: absolute;
+    top: -80px;
+    right: -80px;
+    width: 820px;
+    z-index: 2;
+  }
+
+  /* FEATURES */
+  .features {
+    padding-top: 120px;
+  }
+
+  .features__title {
+    margin-bottom: 56px;
+    font-size: 24px;
+  }
+
+  .features__grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .feature-card--large {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+  }
+
+  .features__right {
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .feature-card--small {
+    min-height: auto;
+  }
+
+  .feature-card--wide {
+    min-height: auto;
+  }
+
+  .feature-card__content,
+  .feature-card__content--top,
+  .feature-card__content--bottom,
+  .feature-card__content--bottom-dark {
+    padding: 16px;
+  }
+
+  .feature-card__title {
+    font-size: 24px;
+  }
+
+  .feature-card__text {
+    margin-top: 8px;
+    font-size: 16px;
+  }
+
+  .feature-card__circle-link {
+    top: 16px;
+    right: 16px;
+    width: 68px;
+    height: 68px;
+  }
+
+  .feature-card__circle-link img {
+    width: 28px;
+    height: 28px;
+  }
+
+  .feature-card__decor {
+    width: 110px;
+  }
+
+  .feature-card__bg {
+    transform: scale(2.4) rotate(-30deg) translateY(-100px) translateX(20px);
+  }
+
+  .membership__name {
+    max-width: 280px;
+    font-size: 28px;
+  }
+  .memberships__title {
+    font-size: 24px;
+  }
+  .membership__time {
+    font-size: 18px;
+  }
+  .membership__price-value {
+    font-size: 28px;
+  }
+  .membership__price-period {
+    font-size: 24px;
+  }
+  .membership__badge {
+    width: 120px;
+    font-size: 24px;
+  }
+  .membership__button-text {
+    font-size: 20px;
+  }
+  .membership__intro-text,
+  .membership__contact-text {
+    max-width: 300px;
+    font-size: 24px;
+  }
+
+  /* TEAM */
+  .team {
+    margin-top: 120px;
+  }
+
+  .team__shell {
+    max-width: 100%;
+    padding: 72px 40px;
+    min-height: auto;
+    border-radius: 36px;
+  }
+
+  .team__title {
+    font-size: 28px;
+  }
+
+  .team__control {
+    width: 56px;
+    height: 56px;
+  }
+
+  .team__slider {
+    margin-top: 40px;
+  }
+  .team__slide {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .team__slide {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  .trainer-card__photo-wrap {
+    aspect-ratio: 1 / 1.15;
+  }
+
+  .trainer-card__tag {
+    left: 12px;
+    bottom: 12px;
+    min-width: 110px;
+    height: 40px;
+    padding: 0 16px;
+    font-size: 16px;
+  }
+
+  .trainer-card__name {
+    margin-top: 14px;
+    font-size: 22px;
+  }
+
+  .trainer-card__role {
+    margin-top: 6px;
+    font-size: 18px;
+  }
+
+  .team__footer {
+    margin-top: 40px;
+  }
+
+  .team__footer-text {
+    font-size: 24px;
+  }
+
+  .team__button {
+    width: 300px;
+    height: 52px;
+  }
+
+  .team__button-text {
+    width: 248px;
+    height: 52px;
+    font-size: 20px;
+  }
+
+  .team__button-icon {
+    width: 52px;
+    height: 52px;
+  }
+
+  .feedback {
+    margin-top: 120px;
+  }
+  .feedback__title {
+    font-size: 36px;
+  }
+  .feedback__content {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-card {
+    min-height: 110px;
+    padding-left: 20px;
+  }
+
+  .contact-card__title {
+    font-size: 20px;
+  }
+
+  .contact-card__text {
+    font-size: 15px;
+  }
+
+  .feedback__form-title {
+    font-size: 30px;
+  }
+  .feedback-form__input {
+    font-size: 20px;
+  }
+  .feedback__form-text {
+    font-size: 18px;
+  }
+
+  .feedback-form__label {
+    font-size: 18px;
+  }
+
+  .feedback__form-card,
+  .feedback-form__input,
+  .feedback-form__submit {
+    width: 100%;
+    min-height: auto;
+  }
+
+  .feedback-form__submit {
+    margin-top: 40px;
+    margin-bottom: 24px;
+  }
+  .reviews {
+    margin-top: 120px;
+  }
+  /* REVIEWS */
+  .reviews__card {
+    width: calc((100% - 32px) / 3);
+  }
+  .reviews__list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .reviews__subtitle {
+    font-size: 20px;
+  }
+  .reviews__title {
+    font-size: 28px;
+  }
+  .reviews__tabs {
+    margin-top: 48px;
+  }
+
+  .faq__title {
+    font-size: 28px;
+  }
+  .faq__subtitle {
+    font-size: 24px;
+  }
+  /* FOOTER */
+  .footer {
+    margin-top: 120px;
+  }
+}
+
+@media (max-width: 768px) {
+   .header__nav,
+  .header__login {
+    display: none;
+  }
+
+  .header__burger {
+    display: inline-flex;
+    
+  }
+  .header__logo {
+    width: 258px;
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+  .header__inner {
+    align-items: center;
+    border-bottom: 3px solid #ffffff;
+    border-radius: 0px;
+  }
+
+  html,
+  body {
+    overflow-x: clip;
+  }
+
+  .header,
+  .hero,
+  .features,
+  .memberships,
+  .team,
+  .feedback,
+  .reviews,
+  .faq,
+  .footer {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: clip;
+  }
+
+  .header__inner,
+  .hero__inner,
+  .features__inner,
+  .memberships__inner,
+  .feedback__inner,
+  .reviews__content,
+  .faq__container,
+  .footer__container {
+    width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* =========================
+     HERO
+     ========================= */
+  .hero {
+    min-height: auto;
+    padding-top: 56px;
+  }
+
+  .hero__inner {
+    position: relative;
+    padding-bottom: 0;
+  }
+
+  .hero__content {
+    max-width: 100%;
+    padding-top: 16px;
+    position: relative;
+    z-index: 3;
+  }
+
+  .hero__title {
+    max-width: 720px;
+    font-size: 22px;
+    line-height: 2.2;
+  }
+
+  .hero__description {
+    max-width: 500px;
+    font-size: 20px;
+    line-height: 1.2;
+  }
+
+  .hero__stats {
+    margin-top: 400px;
+    flex-wrap: wrap;
+    gap: 80px;
+  }
+
+  .hero__stat-value {
+    font-size: 22px;
+  }
+
+  .hero__stat-text {
+    font-size: 20px;
+  }
+
+  .hero-section__decor {
+    position: absolute;
+    top: 0px;
+    right: -40px;
+    width: 760px;
+    z-index: 1;
+  }
+
+  .hero-section__image {
+    display: none;
+  }
+  /* =========================
+     FEATURES
+     ========================= */
+  .features {
+    padding-top: 80px;
+  }
+
+  .features__inner {
+    max-width: 100%;
+  }
+
+  .features__title {
+    margin-bottom: 48px;
+    font-size: 24px;
+  }
+
+  .features__grid {
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
+.features__right {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.feature-card--large {
+  width: 100%;
+  height: 368px;
+  min-height: 368px;
+}
+
+.feature-card--small {
+  width: 100%;
+  height: 180px;
+  min-height: 180px;
+}
+
+.feature-card--wide {
+  width: 100%;
+  height: 220px;
+  min-height: 220px;
+  grid-column: 1 / -1;
+}
+
+.feature-card__content,
+.feature-card__content--top,
+.feature-card__content--bottom,
+.feature-card__content--bottom-dark {
+  padding: 20px;
+}
+.trial-button__text {
+    font-size: 20px;
+  }
+  .feature-card__title {
+    font-size: 22px;
+    line-height: 1.15;
+  }
+
+  .feature-card__text {
+    margin-top: 8px;
+    font-size: 16px;
+    line-height: 1.25;
+  }
+
+  .feature-card__circle-link {
+    top: 12px;
+    right: 12px;
+    width: 56px;
+    height: 56px;
+  }
+
+  .feature-card__circle-link img {
+    width: 22px;
+    height: 22px;
+  }
+
+  .feature-card__decor {
+    width: 150px;
+  }
+
+  .feature-card__bg {
+    transform: scale(3.4) rotate(-30deg) translateY(-70px) translateX(0px);
+  }
+
+  /* =========================
+     MEMBERSHIPS
+     ========================= */
+
+  .memberships__title {
+    font-size: 24px;
+  }
+
+  .memberships__list,
+  .memberships__grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .membership-card {
+    width: 100%;
+    min-height: auto;
+    padding: 20px;
+  }
+
+  .membership__name {
+    max-width: 100%;
+    font-size: 24px;
+  }
+
+  .membership__time {
+    font-size: 16px;
+  }
+
+  .membership__price {
+    font-size: 24px;
+  }
+
+  .membership__badge {
+    width: 120px;
+    font-size: 24px;
+  }
+  .membership--contact {
+    padding: 0 0px 0px 0px;
+    padding-top: 32px;
+  }
+  .membership__intro-text {
+    padding-bottom: 32px;
+    font-size: 20px;
+    line-height: 1.2;
+  }
+  .membership__contact-text {
+
+    font-size: 20px;
+    line-height: 1.2;
+  }
+  .membership__button,
+  .memberships__button {
+    width: 100%;
+  }
+
+  /* =========================
+     TEAM
+     ========================= */
+  .team {
+    margin-top: 80px;
+    padding: 0 0 0;
+  }
+
+  .team__shell {
+    max-width: 100%;
+    min-height: auto;
+    padding: 48px 24px;
+    border-radius: 0px;
+    
+  }
+
+  .team__header {
+    padding-top: 32px;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .team__title {
+    font-size: 24px;
+  }
+
+  .team__controls {
+    gap: 8px;
+  }
+
+  .team__control {
+    width: 44px;
+    height: 44px;
+  }
+
+  .team__control img {
+    width: 18px;
+    height: 18px;
+  }
+
+  .team__slider {
+    margin-top: 24px;
+  }
+
+  .team__slide {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .trainer-card__photo-wrap {
+    aspect-ratio: 1 / 1.3;
+    border-radius: 20px;
+  }
+
+  .trainer-card__photo {
+    border-radius: 20px;
+  }
+
+  .trainer-card__tag {
+    left: 12px;
+    bottom: 12px;
+    min-width: 96px;
+    height: 36px;
+    padding: 0 14px;
+    font-size: 14px;
+  }
+
+  .trainer-card__name {
+    margin-top: 12px;
+    font-size: 20px;
+  }
+
+  .trainer-card__role {
+    margin-top: 6px;
+    max-width: 100%;
+    font-size: 16px;
+  }
+
+  .team__footer-text {
+    font-size: 20px;
+    text-align: left;
+  }
+
+  .team__button {
+
+    height: 48px;
+    margin-top: 16px;
+  }
+
+  .team__button-text {
+    width: calc(100% - 48px);
+    height: 48px;
+    font-size: 20px;
+  }
+
+  .team__button-icon {
+    width: 48px;
+    height: 48px;
+  }
+
+  /* =========================
+     FEEDBACK
+     ========================= */
+  .feedback {
+    margin-top: 80px;
+  }
+
+  .feedback__content {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  .feedback__form-card {
+    width: 100%;
+    min-height: auto;
+    padding: 24px 24px;
+  }
+
+  .contact-card {
+    min-height: 100px;
+    padding: 24px 24px;
+  }
+
+  .contact-card__title {
+    font-size: 20px;
+  }
+  .feedback__title {
+    font-size: 36px;
+  }
+  .contact-card__text {
+    font-size: 16px;
+  }
+
+  .feedback__form-title {
+    font-size: 28px;
+    line-height: 1.15;
+  }
+
+  .feedback__form-text {
+    font-size: 20px;
+  }
+
+  .feedback-form__label {
+    font-size: 16px;
+  }
+
+  .feedback-form__input,
+  .feedback-form__submit {
+    font-size: 20px;
+    width: 100%;
+    min-height: 48px;
+  }
+  .feedback-form__input {
+    font-size: 20px;
+  }
+  .feedback-form__submit {
+    margin-top: 24px;
+    margin-bottom: 0;
+  }
+  .contact-card__icon {
+    width: 48px;
+    height: 48px;
+  }
+
+  /* =========================
+     REVIEWS
+     ========================= */
+  .reviews {
+    margin-top: 80px;
+  }
+
+  .reviews__content {
+    padding: 48px 0;
+  }
+
+  .reviews__title {
+    font-size: 24px;
+  }
+
+  .reviews__subtitle {
+    margin-top: 16px;
+    font-size: 16px;
+  }
+
+  .reviews__tabs {
+    margin-top: 32px;
+    width: 100%;
+    min-height: auto;
+    padding: 4px;
+    border-radius: 20px;
+    flex-wrap: wrap;
+  }
+
+  .reviews__tab {
+    flex: 1 1 100%;
+    min-height: 48px;
+    padding: 0 20px;
+    font-size: 16px;
+  }
+
+  .reviews__count {
+    margin-top: 16px;
+    font-size: 14px;
+  }
+
+  .reviews__list {
+    margin-top: 20px;
+  }
+
+  .review-card {
+    min-height: auto;
+    padding: 16px;
+    border-radius: 20px;
+  }
+
+  .review-card__top {
+    gap: 12px;
+  }
+
+  .review-card__avatar {
+    width: 56px;
+    height: 56px;
+  }
+
+  .review-card__stars {
+    margin-bottom: 6px;
+    font-size: 20px;
+  }
+
+  .review-card__name {
+    font-size: 15px;
+  }
+
+  .review-card__date {
+    font-size: 13px;
+  }
+
+  .review-card__text {
+    margin-top: 14px;
+    font-size: 14px;
+    line-height: 1.35;
+  }
+
+  .review-card__link {
+    padding-top: 14px;
+    font-size: 13px;
+  }
+
+  .reviews__pagination {
+    margin-top: 24px;
+  }
+
+  
+
+  /* =========================
+     FAQ
+     ========================= */
+  .faq {
+    margin-top: 80px;
+  }
+
+  .faq__container {
+    max-width: 100%;
+  }
+
+  .faq__title {
+    font-size: 24px;
+  }
+  .faq__subtitle {
+      font-size: 24px;
+    }
+  .faq__item {
+    padding: 16px 0;
+  }
+
+  .faq__question {
+    font-size: 24px;
+    line-height: 1.2;
+  }
+
+  .faq__answer {
+    font-size: 16px;
+    line-height: 1.4;
+  }
+
+  
+  /* =========================
+     MODAL / AUTH
+     ========================= */
+  .auth-modal__content,
+  .modal__content {
+    width: calc(100% - 24px);
+    max-width: 100%;
+    padding: 24px 16px;
+    border-radius: 24px;
+  }
+
+  .auth-modal__title,
+  .modal__title {
+    font-size: 24px;
+  }
+
+  .auth-modal__text,
+  .modal__text {
+    font-size: 14px;
+  }
+
+  .auth-modal__input,
+  .modal__input,
+  .auth-modal__submit,
+  .modal__submit {
+    width: 100%;
+  }
+  
+}
+/* =========================
+   480px (телефоны)
+   ========================= */
+@media (max-width: 480px) {
+
+  /* контейнер */
+  .header__inner,
+  .hero__inner,
+  .features__inner,
+  .memberships__inner,
+  .feedback__inner,
+  .reviews__content,
+  .footer__container {
+    width: calc(100% - 32px); /* 16px + 16px */
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* =========================
+     HEADER
+     ========================= */
+  .header__logo {
+    width: 180px;
+  }
+  .mobile-menu__logo {
+  width: 180px;
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+  .header__inner {
+    padding-top: 16px;
+    padding-bottom: 16px;
+  }
+  .trial-button {
+    height: 48px;
+  }
+  .trial-button__text {
+    height: 48px;
+  }
+  .trial-button__icon {
+    height: 48px;
+    width: 48px;
+  }
+  /* =========================
+     HERO
+     ========================= */
+  .hero {
+    padding-top: 40px;
+  }
+
+  .hero__title {
+    font-size: 16px;
+    line-height: 2.2;
+  }
+
+  .hero__description {
+    font-size: 20px;
+  }
+
+  .hero__stats {
+    margin-top: 220px;
+    gap: 48px;
+  }
+
+  .hero__stat-value {
+    font-size: 20px;
+  }
+  .hero__stat-number {
+    font-size: 48px;
+  }
+  .hero__stat-text {
+    font-size: 16px;
+  }
+
+  .hero-section__decor {
+    width: 500px;
+    right: -120px;
+  }
+
+  /* =========================
+     FEATURES
+     ========================= */
+  .features__title {
+    font-size: 16px;
+  }
+
+  .feature-card__title {
+    font-size: 20px;
+  }
+
+  .feature-card__text {
+    font-size: 15px;
+  }
+
+  .feature-card__decor {
+    width: 100px;
+  }
+  .feature-card__bg {
+    transform: scale(3.4) rotate(-30deg) translateY(-70px) translateX(30px);
+  }
+  /* =========================
+     MEMBERSHIPS
+     ========================= */
+  .memberships__title {
+    font-size: 16px;
+  }
+
+  .membership__name {
+    font-size: 20px;
+  }
+
+  .membership__price {
+    font-size: 20px;
+  }
+
+  .membership__badge {
+    height: 140px;
+    width: 90px;
+    font-size: 18px;
+  }
+
+  .membership__intro-text,
+  .membership__contact-text {
+    font-size: 16px;
+  }
+
+  /* =========================
+     TEAM
+     ========================= */
+  .trainer-card__tag {
+    font-size: 12px;
+  }
+  .team__header {
+    align-items: center;
+  }
+  .team__title {
+    font-size: 16px;
+    line-height: 1.9;
+  }
+  .trainer-card__name {
+    font-size: 18px;
+  }
+
+  .trainer-card__role {
+    font-size: 14px;
+  }
+
+  /* =========================
+     FEEDBACK
+     ========================= */
+  .feedback__title {
+    font-size: 28px;
+  }
+
+  .feedback__form-title {
+    font-size: 22px;
+  }
+
+  .feedback__form-text {
+    font-size: 16px;
+  }
+
+  .contact-card__title {
+    font-size: 18px;
+  }
+
+  .contact-card__text {
+    font-size: 14px;
+  }
+  .feedback__title-link-icon {
+    width: 32px;
+    height: 32px;
+  }
+  .feedback-form__input {
+    font-size: 16px;
+  }
+  /* =========================
+     REVIEWS
+     ========================= */
+  .reviews__title {
+    font-size: 20px;
+  }
+
+  .reviews__subtitle {
+    font-size: 14px;
+  }
+
+  .review-card__text {
+    font-size: 13px;
+  }
+  .reviews__pagination {
+  display: none;
+}
+  /* =========================
+     FAQ
+     ========================= */
+  .faq {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}

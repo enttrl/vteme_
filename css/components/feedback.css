@@ -266,26 +266,3 @@
   color: #ffffff;
 }
 
-
-@media (max-width: 900px) {
-  .feedback__inner {
-    padding: 0 16px;
-  }
-
-  .feedback__title {
-    font-size: 40px;
-  }
-
-  .feedback__form-title {
-    font-size: 36px;
-  }
-
-  .feedback__form-text {
-    font-size: 24px;
-  }
-
-  .feedback__form-card {
-    padding: 24px;
-    min-height: auto;
-  }
-}

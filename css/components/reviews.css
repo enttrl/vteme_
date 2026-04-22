@@ -1,14 +1,28 @@
 .reviews {
   margin-top: 160px;
 }
+.reviews__viewport {
+  overflow: hidden;
+}
 
-/* ВОТ ЭТО — фон на всю ширину */
+.reviews__list {
+  margin-top: 32px;
+  display: flex;
+  transition: transform 0.4s ease;
+  will-change: transform;
+}
+
+.reviews__page {
+  min-width: 100%;
+  display: grid;
+  gap: 16px;
+}
+
 .reviews__container {
   width: 100%;
   background: #ffffff;
 }
 
-/* ВОТ ЭТО — твой контент 1600px */
 .reviews__content {
   max-width: 1600px;
   margin: 0 auto;
@@ -206,16 +220,6 @@
   transform: scale(1.1);
 }
 
-@media (max-width: 1600px) {
-  .reviews {
-    width: 100%;
-    box-sizing: border-box;
-  }
-
-  .reviews__shell {
-    max-width: 100%;
-  }
-}
 
 @media (max-width: 1280px) {
   .reviews__list {

@@ -14,45 +14,117 @@
   <script src="js/faq.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="js/auth.js"></script>
+  <script src="js/burger-menu.js"></script>
 </head>
 <body>
   <header class="header">
-      <div class="header__inner">
-        <a class="header__logo-link" href="/" aria-label="На главную">
-          <img
-            class="header__logo"
-            src="assets/img/logo-vteme.svg"
-            alt="ВТЕМЕ"
-          >
-        </a>
+  <div class="header__inner">
+    <a class="header__logo-link" href="/" aria-label="На главную">
+      <img
+        class="header__logo"
+        src="assets/img/logo-vteme.svg"
+        alt="ВТЕМЕ"
+      >
+    </a>
 
-        <nav class="header__nav nav" aria-label="Основная навигация">
-          <ul class="nav__list">
-            <li class="nav__item"><a class="nav__link" href="#about">О нас</a></li>
-            <li class="nav__item"><a class="nav__link" href="#memberships">Абонементы</a></li>
-            <li class="nav__item"><a class="nav__link" href="#schedule">Расписание</a></li>
-            <li class="nav__item"><a class="nav__link" href="#services">Услуги</a></li>
-            <li class="nav__item"><a class="nav__link" href="#trainers">Тренеры</a></li>
-            <li class="nav__item"><a class="nav__link" href="#promotions">Акции</a></li>
-          </ul>
-        </nav>
+    <nav class="header__nav nav" aria-label="Основная навигация">
+      <ul class="nav__list">
+        <li class="nav__item"><a class="nav__link" href="#about">О нас</a></li>
+        <li class="nav__item"><a class="nav__link" href="#memberships">Абонементы</a></li>
+        <li class="nav__item"><a class="nav__link" href="#schedule">Расписание</a></li>
+        <li class="nav__item"><a class="nav__link" href="#services">Услуги</a></li>
+        <li class="nav__item"><a class="nav__link" href="#trainers">Тренеры</a></li>
+        <li class="nav__item"><a class="nav__link" href="#promotions">Акции</a></li>
+      </ul>
+    </nav>
 
-        <button
-          class="header__login login-button"
-          id="openAuthModal"
-          type="button"
+    <button
+      class="header__login login-button"
+      id="openAuthModal"
+      type="button"
+    >
+      <span class="login-button__text">Войти</span>
+      <span class="login-button__icon" aria-hidden="true">
+        <img
+          class="login-button__img"
+          src="assets/img/arrow-up-right.svg"
+          alt=""
         >
-          <span class="login-button__text">Войти</span>
-          <span class="login-button__icon" aria-hidden="true">
-            <img
-              class="login-button__img"
-              src="assets/img/arrow-up-right.svg"
-              alt=""
-            >
-          </span>
-        </button>
-      </div>
-    </header>
+      </span>
+    </button>
+
+    <button
+      class="header__burger"
+      id="openBurgerMenu"
+      type="button"
+      aria-label="Открыть меню"
+      aria-expanded="false"
+      aria-controls="mobileMenu"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+  <div class="mobile-menu__inner">
+    <div class="mobile-menu__top">
+      <a class="mobile-menu__logo-link" href="/" aria-label="На главную">
+        <img
+          class="mobile-menu__logo"
+          src="assets/img/logo-vteme.svg"
+          alt="ВТЕМЕ"
+        >
+      </a>
+
+      <button
+        class="mobile-menu__close"
+        id="closeBurgerMenu"
+        type="button"
+        aria-label="Закрыть меню"
+      >
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+
+    <nav class="mobile-menu__nav" aria-label="Мобильная навигация">
+      <a class="mobile-menu__link" href="#about">О нас</a>
+      <a class="mobile-menu__link" href="#memberships">Абонементы</a>
+      <a class="mobile-menu__link" href="#schedule">Расписание</a>
+      <a class="mobile-menu__link" href="#services">Услуги</a>
+      <a class="mobile-menu__link" href="#trainers">Тренеры</a>
+      <a class="mobile-menu__link" href="#promotions">Акции</a>
+    </nav>
+
+    <button
+      class="mobile-menu__login login-button"
+      id="openAuthModalMobile"
+      type="button"
+    >
+      <span class="login-button__text">Личный кабинет</span>
+      <span class="login-button__icon" aria-hidden="true">
+        <img
+          class="login-button__img"
+          src="assets/img/arrow-up-right.svg"
+          alt=""
+        >
+      </span>
+    </button>
+
+    <div class="mobile-menu__contacts">
+      <a class="mobile-menu__contact" href="tel:+79288220555">+7 (928) 822-05-55</a>
+      <a class="mobile-menu__contact" href="mailto:vteme@mail.ru">vteme@mail.ru</a>
+    </div>
+
+    <div class="mobile-menu__bottom">
+      <p class="mobile-menu__copyright">© 2026</p>
+      <a class="mobile-menu__policy" href="#">Политика обработки персональных данных</a>
+    </div>
+  </div>
+</div>
   <section class="hero-section">
     <div class="hero-section__decor" aria-hidden="true">
       <img src="assets/img/poloska.svg" alt="">
@@ -70,7 +142,7 @@
           </h1>
 
           <p class="hero__description">
-            Комфортные тренировки, понятные программы и поддержка на каждом этапе
+            Комфортные тренировки, понятные программы и&nbsp;поддержка на&nbsp;каждом этапе
           </p>
 
           <a href="#trial" class="hero__button trial-button">
@@ -222,7 +294,7 @@
     <div class="memberships__grid">
       <article class="membership membership--intro">
         <p class="membership__intro-text">
-          Мы сделали несколько форматов абонементов, <br>
+          Мы сделали несколько форматов абонементов,
           чтобы каждый мог выбрать комфортный режим
           тренировок
         </p>
@@ -310,9 +382,9 @@
       <article class="membership membership--contact">
         <p class="membership__contact-text">
           Чтобы узнать подробнее <br>
-          об абонементах перейдите
-          на страницу с тарифами,
-          либо свяжитесь с нами
+          об&nbsp;абонементах перейдите
+          на&nbsp;страницу с&nbsp;тарифами,
+          либо свяжитесь с&nbsp;нами
         </p>
 
         <a class="membership__contact-button" href="#contacts">
@@ -486,7 +558,7 @@
           </span>
         </a>
         <br>
-        или запишитесь на консультацию
+        или запишитесь на&nbsp;консультацию
       </h2>
     </div>
 
@@ -496,7 +568,7 @@
 
         <p class="feedback__form-text">
           Если у Вас есть вопросы или возникли какие-то проблемы
-          впишите свои данные и мы Вам перезвоним
+          впишите свои данные и&nbsp;мы Вам перезвоним
         </p>
 
         <form class="feedback-form" id="feedbackForm">
@@ -626,7 +698,9 @@
 
     <p class="reviews__count" id="reviewsCount">265 отзывов в двух источниках</p>
 
-    <div class="reviews__list" id="reviewsList"></div>
+    <div class="reviews__viewport">
+      <div class="reviews__list" id="reviewsList"></div>
+    </div>
 
     <div class="reviews__pagination" id="reviewsPagination"></div>
     </div>
@@ -973,25 +1047,73 @@
 </script>
 <script>
   const teamTrack = document.querySelector('.team__track');
-  const teamSlides = document.querySelectorAll('.team__slide');
-  const teamPrev = document.querySelector('.team__control--prev');
-  const teamNext = document.querySelector('.team__control--next');
+const teamPrev = document.querySelector('.team__control--prev');
+const teamNext = document.querySelector('.team__control--next');
 
-  let currentTeamSlide = 0;
-  const totalTeamSlides = teamSlides.length;
+let currentTeamSlide = 0;
+let totalTeamSlides = 0;
+let allTrainerCards = [];
 
-  function updateTeamSlider() {
-    teamTrack.style.transform = `translateX(-${currentTeamSlide * 100}%)`;
+function getTrainersPerSlide() {
+  const width = window.innerWidth;
+
+  if (width <= 768) return 2;
+  if (width <= 1024) return 3;
+
+  return 4;
+}
+
+function collectTrainerCards() {
+  const existingSlides = Array.from(document.querySelectorAll('.team__slide'));
+  const cards = [];
+
+  existingSlides.forEach((slide) => {
+    cards.push(...slide.querySelectorAll('.trainer-card'));
+  });
+
+  return cards;
+}
+
+function rebuildTeamSlider() {
+  const cardsPerSlide = getTrainersPerSlide();
+
+  if (!allTrainerCards.length) {
+    allTrainerCards = collectTrainerCards();
   }
 
-  teamNext.addEventListener('click', () => {
-    currentTeamSlide = (currentTeamSlide + 1) % totalTeamSlides;
-    updateTeamSlider();
-  });
+  teamTrack.innerHTML = '';
 
-  teamPrev.addEventListener('click', () => {
-    currentTeamSlide = (currentTeamSlide - 1 + totalTeamSlides) % totalTeamSlides;
-    updateTeamSlider();
-  });
+  for (let i = 0; i < allTrainerCards.length; i += cardsPerSlide) {
+    const slide = document.createElement('div');
+    slide.className = 'team__slide';
+
+    const chunk = allTrainerCards.slice(i, i + cardsPerSlide);
+    chunk.forEach((card) => slide.appendChild(card));
+
+    teamTrack.appendChild(slide);
+  }
+
+  totalTeamSlides = teamTrack.querySelectorAll('.team__slide').length;
+  currentTeamSlide = 0;
+  updateTeamSlider();
+}
+
+function updateTeamSlider() {
+  teamTrack.style.transform = `translateX(-${currentTeamSlide * 100}%)`;
+}
+
+teamNext.addEventListener('click', () => {
+  currentTeamSlide = (currentTeamSlide + 1) % totalTeamSlides;
+  updateTeamSlider();
+});
+
+teamPrev.addEventListener('click', () => {
+  currentTeamSlide = (currentTeamSlide - 1 + totalTeamSlides) % totalTeamSlides;
+  updateTeamSlider();
+});
+
+window.addEventListener('resize', rebuildTeamSlider);
+
+rebuildTeamSlider();
 </script>
 </html>
