@@ -1,0 +1,257 @@
+html {
+  overflow-x: clip;
+}
+
+body {
+  overflow-x: clip;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+img,
+svg,
+video {
+  max-width: 100%;
+  height: auto;
+}
+
+.header,
+.hero,
+.features,
+.memberships,
+.team,
+.feedback,
+
+.faq,
+.footer {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: clip;
+}
+
+/* общий контейнер без выезда */
+
+
+
+/* =========================
+   1440px (большие ноуты)
+   ========================= */
+@media (min-width: 1440px) and (max-width: 1536px) {
+  .header__inner,
+  .hero__inner,
+  .features__inner,
+  .memberships__inner,
+  .feedback__inner,
+  .reviews__content,
+  .faq__container,
+  .footer__container {
+    width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .hero__title {
+    font-size: 32px;
+  }
+  .hero__inner {
+    padding-bottom: 0px;
+  }
+  .hero-section__decor {
+    position: absolute;
+    top: 0px;
+    right: clamp(30px, -10vw, 0px);
+    width: clamp(150px, 50vw, 900px);
+    z-index: 1;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  /* гантели */
+  .hero-section__image {
+    position: absolute;
+    right: 0px;
+    top: 50px;
+    width: clamp(650px, 70vw, 900px);
+    z-index: 2;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  .hero-section__image img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+
+  .features__grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .feature-card--large {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+  }
+
+  .features__right {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .feature-card--small {
+    width: 100%;
+    min-height: auto;
+  }
+
+  .feature-card--wide {
+    width: 100%;
+    min-height: auto;
+  } 
+  .feature-card__decor {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 180px; /* подгони под макет */
+    z-index: 1;
+    pointer-events: none;
+  }
+  .feature-card__circle-link {
+    width: 80px;
+    height: 80px;
+  }
+  .feature-card__circle-link img {
+    width: 35px;
+    height: 35px;
+  }
+  .feature-card__bg {
+    transform: scale(2.4) rotate(-30deg) translateY(-130px) translateX(30px);
+  }
+  .feature-card__text {
+    margin: 8px 0 0;
+    font-size: 20px;
+  }
+  .feature-card__title {
+    font-size: 30px;
+  }
+  .membership__name {
+    max-width: 250px;
+    font-size: 30px;
+  }
+  .membership__time {
+    font-size: 20px;
+  }
+  .membership__badge {
+    font-size: 30px;
+    width: 100px;
+  }
+  .team__shell {
+    max-width: 1376px;
+    padding: 96px 48px 96px;
+    min-height: auto;
+
+  }
+   .team__slider {
+    margin-top: 48px;
+  }
+
+  .team__slide {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  .trainer-card__name {
+    font-size: 24px;
+  }
+
+  .trainer-card__role {
+    font-size: 20px;
+    max-width: 100%;
+  }
+
+  .trainer-card__tag {
+    min-width: 120px;
+    height: 42px;
+    padding: 0 18px;
+    font-size: 18px;
+  }
+
+  .team__footer {
+    margin-top: 48px;
+  }
+
+  .team__footer-text {
+    font-size: 28px;
+  }
+
+  .team__button {
+    width: 320px;
+    height: 54px;
+  }
+
+  .team__button-text {
+    width: 266px;
+    height: 54px;
+    font-size: 22px;
+  }
+
+  .team__button-icon {
+    width: 54px;
+    height: 54px;
+  }
+  .subscriptions {
+    transform: scale(0.95);
+  }
+  .membership__intro-text {
+    font-size: 30px;
+  }
+  .membership__contact-text {
+    font-size: 30px;
+  }
+  .trainers__card {
+    width: calc(100% / 3 - 20px);
+  }
+  .feedback__content {
+      grid-template-columns: 700px 1fr;
+  }
+  .contact-card {
+    padding-left: 24px;
+    min-height: 120px;
+  }
+  .contact-card__title {
+    font-size: 24px;
+  }
+  .contact-card__text {
+    font-size: 16px;
+  }
+  .feedback-form__title {
+    font-size: 30px;
+  }
+  .feedback__form-text {
+    font-size: 20px;
+  }
+  .feedback-form__label {
+    font-size: 20px;
+  }
+  .feedback__form-card,
+  .feedback-form__input,
+  .feedback-form__submit {
+    width: 100%;
+  }
+  .reviews__card {
+    width: calc(100% / 3 - 20px);
+  }
+  .reviews__subtitle {
+    font-size: 24px;
+  }
+  .form {
+    transform: scale(0.95);
+  }
+
+  .faq {
+    transform: scale(0.95);
+  }
+}
+
