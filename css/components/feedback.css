@@ -50,6 +50,7 @@
   height: 20px;
   display: block;
   filter: none;
+  rotate: 45deg;
 }
 
 .feedback__content {
@@ -265,17 +266,6 @@
   color: #ffffff;
 }
 
-@media (max-width: 1600px) {
-  .feedback__content {
-    grid-template-columns: 1fr;
-  }
-
-  .feedback__form-card,
-  .feedback-form__input,
-  .feedback-form__submit {
-    width: 100%;
-  }
-}
 
 @media (max-width: 900px) {
   .feedback__inner {

@@ -208,7 +208,7 @@
 
 @media (max-width: 1600px) {
   .reviews {
-    padding: 0 24px;
+    width: 100%;
     box-sizing: border-box;
   }
 

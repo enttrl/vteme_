@@ -56,9 +56,6 @@ body.scrolled .header {
   backdrop-filter: blur(10px);
   box-shadow: 0 4px 20px rgba(0,0,0,0.05);
 }
-.hero {
-  min-height: 100vh;
-}
 
 .hero__inner {
   max-width: 1600px;
