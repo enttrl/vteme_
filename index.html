@@ -139,8 +139,8 @@
             </h3>
 
             <p class="feature-card__text">
-              Вы легко подберёте<br>
-              тренировку под свой ритм<br>
+              Вы&nbsp;легко подберёте
+              тренировку под свой ритм
               жизни.
             </p>
           </div>
@@ -973,12 +973,57 @@
 </script>
 <script>
   const teamTrack = document.querySelector('.team__track');
-  const teamSlides = document.querySelectorAll('.team__slide');
   const teamPrev = document.querySelector('.team__control--prev');
   const teamNext = document.querySelector('.team__control--next');
 
   let currentTeamSlide = 0;
-  const totalTeamSlides = teamSlides.length;
+  let totalTeamSlides = 0;
+  let allTrainerCards = [];
+
+  function getCardsPerSlide() {
+    const width = window.innerWidth;
+
+    if (width >= 1440 && width <= 1536) {
+      return 3;
+    }
+
+    return 4;
+  }
+
+  function collectTrainerCards() {
+    const existingSlides = Array.from(document.querySelectorAll('.team__slide'));
+    const cards = [];
+
+    existingSlides.forEach(slide => {
+      cards.push(...slide.querySelectorAll('.trainer-card'));
+    });
+
+    return cards;
+  }
+
+  function rebuildTeamSlider() {
+    const cardsPerSlide = getCardsPerSlide();
+
+    if (!allTrainerCards.length) {
+      allTrainerCards = collectTrainerCards();
+    }
+
+    teamTrack.innerHTML = '';
+
+    for (let i = 0; i < allTrainerCards.length; i += cardsPerSlide) {
+      const slide = document.createElement('div');
+      slide.className = 'team__slide';
+
+      const chunk = allTrainerCards.slice(i, i + cardsPerSlide);
+      chunk.forEach(card => slide.appendChild(card));
+
+      teamTrack.appendChild(slide);
+    }
+
+    totalTeamSlides = teamTrack.querySelectorAll('.team__slide').length;
+    currentTeamSlide = 0;
+    updateTeamSlider();
+  }
 
   function updateTeamSlider() {
     teamTrack.style.transform = `translateX(-${currentTeamSlide * 100}%)`;
@@ -993,5 +1038,9 @@
     currentTeamSlide = (currentTeamSlide - 1 + totalTeamSlides) % totalTeamSlides;
     updateTeamSlider();
   });
+
+  window.addEventListener('resize', rebuildTeamSlider);
+
+  rebuildTeamSlider();
 </script>
 </html>
