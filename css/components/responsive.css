@@ -53,6 +53,12 @@ video {
     margin-left: auto;
     margin-right: auto;
   }
+  .hero__content {
+    padding-top: 80px;
+  }
+  .hero__stats {
+    margin-top: 224px;
+  }
   .hero__title {
     font-size: 32px;
   }
@@ -73,7 +79,7 @@ video {
   .hero-section__image {
     position: absolute;
     right: 0px;
-    top: 50px;
+    top: -70px;
     width: clamp(650px, 70vw, 900px);
     z-index: 2;
     pointer-events: none;
@@ -158,7 +164,7 @@ video {
   }
 
   .team__slide {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 16px;
   }
 
@@ -235,10 +241,15 @@ video {
   .feedback-form__label {
     font-size: 20px;
   }
+  .feedback-form__submit {
+    margin-top: 56px;
+    margin-bottom: 32px;
+  }
   .feedback__form-card,
   .feedback-form__input,
   .feedback-form__submit {
     width: 100%;
+    min-height: auto;
   }
   .reviews__card {
     width: calc(100% / 3 - 20px);
