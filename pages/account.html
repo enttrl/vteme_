@@ -191,29 +191,19 @@
           </div>
 
           <div class="schedule">
-            <div class="schedule-desktop" id="scheduleDesktop">
+            <div class="schedule-desktop">
               <div class="schedule-week" id="scheduleWeek"></div>
             </div>
 
-            <div class="schedule-mobile" id="scheduleMobile">
-              <div class="schedule-mobile__bar">
-                <span class="schedule-mobile__current" id="scheduleMobileCurrent">Сегодня</span>
-
-                <button
-                  class="schedule-mobile__picker-button"
-                  id="scheduleMobilePickerButton"
-                  type="button"
-                  aria-label="Открыть календарь"
-                >
-                  <span class="schedule-mobile__arrow" aria-hidden="true"></span>
-                </button>
-
+            <div class="schedule-mobile">
+              <label class="schedule-mobile__picker">
                 <input
-                  class="schedule-mobile__native-input"
                   id="scheduleNativeInput"
+                  class="schedule-mobile__native-date"
                   type="date"
                 />
-              </div>
+                <span class="schedule-mobile__arrow" aria-hidden="true"></span>
+              </label>
             </div>
 
             <div class="schedule-divider"></div>

@@ -163,15 +163,11 @@ function initLogout(supabaseClient) {
 function initSchedule(user) {
   const scheduleWeek = document.getElementById('scheduleWeek');
   const trainingList = document.getElementById('trainingList');
-
-  const mobileCurrent = document.getElementById('scheduleMobileCurrent');
-  const mobilePickerButton = document.getElementById('scheduleMobilePickerButton');
   const scheduleNativeInput = document.getElementById('scheduleNativeInput');
 
   if (!scheduleWeek || !trainingList) return;
 
   const weekDaysShort = ['ВС', 'ПН', 'ВТ', 'СР', 'ЧТ', 'ПТ', 'СБ'];
-  const weekDaysFull = ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота'];
 
   const trainingsByDate = {
     [formatDateKey(new Date())]: [
@@ -195,38 +191,40 @@ function initSchedule(user) {
 
   let activeDateKey = formatDateKey(dates[0]);
 
-  const minDate = formatDateKey(dates[0]);
-  const maxDate = formatDateKey(dates[dates.length - 1]);
-
   if (scheduleNativeInput) {
-    scheduleNativeInput.min = minDate;
-    scheduleNativeInput.max = maxDate;
     scheduleNativeInput.value = activeDateKey;
-  }
+    scheduleNativeInput.min = formatDateKey(dates[0]);
+    scheduleNativeInput.max = formatDateKey(dates[dates.length - 1]);
 
-  renderAll();
+    /* запрещаем ручной ввод с клавиатуры */
+    scheduleNativeInput.addEventListener('keydown', (event) => {
+      event.preventDefault();
+    });
 
-  if (mobilePickerButton && scheduleNativeInput) {
-    mobilePickerButton.addEventListener('click', () => {
-      if (typeof scheduleNativeInput.showPicker === 'function') {
-        scheduleNativeInput.showPicker();
-      } else {
-        scheduleNativeInput.focus();
-        scheduleNativeInput.click();
-      }
+    scheduleNativeInput.addEventListener('paste', (event) => {
+      event.preventDefault();
     });
 
     scheduleNativeInput.addEventListener('change', () => {
-      if (!scheduleNativeInput.value) return;
+      const selectedDate = scheduleNativeInput.value;
+      if (!selectedDate) return;
 
-      activeDateKey = scheduleNativeInput.value;
+      const allowedDates = dates.map((date) => formatDateKey(date));
+
+      if (!allowedDates.includes(selectedDate)) {
+        scheduleNativeInput.value = activeDateKey;
+        return;
+      }
+
+      activeDateKey = selectedDate;
       renderAll();
     });
   }
 
+  renderAll();
+
   function renderAll() {
     renderDesktopWeek();
-    renderMobileCurrent();
     renderTrainings(activeDateKey);
   }
 
@@ -259,17 +257,6 @@ function initSchedule(user) {
     });
   }
 
-  function renderMobileCurrent() {
-    if (!mobileCurrent) return;
-
-    const activeDate = dates.find((date) => formatDateKey(date) === activeDateKey) || dates[0];
-    mobileCurrent.textContent = formatFullDate(activeDate);
-
-    if (scheduleNativeInput) {
-      scheduleNativeInput.value = activeDateKey;
-    }
-  }
-
   function renderTrainings(dateKey) {
     const trainings = trainingsByDate[dateKey] || [];
 
@@ -282,28 +269,16 @@ function initSchedule(user) {
       return;
     }
 
-    trainingList.innerHTML = trainings
-      .map((training) => {
-        return `
-          <article class="training-card">
-            <div class="training-card__top">
-              <h3 class="training-card__title">${escapeHtml(training.title)}</h3>
-              <span class="training-card__slots">${escapeHtml(training.slots)}</span>
-            </div>
-            <p class="training-card__meta">${escapeHtml(training.time)}</p>
-            <p class="training-card__meta">Тренер: ${escapeHtml(training.trainer)}</p>
-          </article>
-        `;
-      })
-      .join('');
-  }
-
-  function formatFullDate(date) {
-    const dayName = weekDaysFull[date.getDay()];
-    const dayNumber = String(date.getDate()).padStart(2, '0');
-    const monthNumber = String(date.getMonth() + 1).padStart(2, '0');
-
-    return `${dayName} ${dayNumber}.${monthNumber}`;
+    trainingList.innerHTML = trainings.map((training) => `
+      <article class="training-card">
+        <div class="training-card__top">
+          <h3 class="training-card__title">${escapeHtml(training.title)}</h3>
+          <span class="training-card__slots">${escapeHtml(training.slots)}</span>
+        </div>
+        <p class="training-card__meta">${escapeHtml(training.time)}</p>
+        <p class="training-card__meta">Тренер: ${escapeHtml(training.trainer)}</p>
+      </article>
+    `).join('');
   }
 }
 
