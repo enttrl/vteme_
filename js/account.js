@@ -160,9 +160,14 @@ function initSchedule(user) {
   const scheduleWeek = document.getElementById('scheduleWeek');
   const trainingList = document.getElementById('trainingList');
 
+  const mobileCurrent = document.getElementById('scheduleMobileCurrent');
+  const mobilePickerButton = document.getElementById('scheduleMobilePickerButton');
+  const scheduleNativeInput = document.getElementById('scheduleNativeInput');
+
   if (!scheduleWeek || !trainingList) return;
 
-  const weekDays = ['ВС', 'ПН', 'ВТ', 'СР', 'ЧТ', 'ПТ', 'СБ'];
+  const weekDaysShort = ['ВС', 'ПН', 'ВТ', 'СР', 'ЧТ', 'ПТ', 'СБ'];
+  const weekDaysFull = ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота'];
 
   const trainingsByDate = {
     [formatDateKey(new Date())]: [
@@ -186,15 +191,47 @@ function initSchedule(user) {
 
   let activeDateKey = formatDateKey(dates[0]);
 
-  renderWeek();
-  renderTrainings(activeDateKey);
+  const minDate = formatDateKey(dates[0]);
+  const maxDate = formatDateKey(dates[dates.length - 1]);
 
-  function renderWeek() {
+  if (scheduleNativeInput) {
+    scheduleNativeInput.min = minDate;
+    scheduleNativeInput.max = maxDate;
+    scheduleNativeInput.value = activeDateKey;
+  }
+
+  renderAll();
+
+  if (mobilePickerButton && scheduleNativeInput) {
+    mobilePickerButton.addEventListener('click', () => {
+      if (typeof scheduleNativeInput.showPicker === 'function') {
+        scheduleNativeInput.showPicker();
+      } else {
+        scheduleNativeInput.focus();
+        scheduleNativeInput.click();
+      }
+    });
+
+    scheduleNativeInput.addEventListener('change', () => {
+      if (!scheduleNativeInput.value) return;
+
+      activeDateKey = scheduleNativeInput.value;
+      renderAll();
+    });
+  }
+
+  function renderAll() {
+    renderDesktopWeek();
+    renderMobileCurrent();
+    renderTrainings(activeDateKey);
+  }
+
+  function renderDesktopWeek() {
     scheduleWeek.innerHTML = '';
 
     dates.forEach((date) => {
       const dateKey = formatDateKey(date);
-      const dayName = weekDays[date.getDay()];
+      const dayName = weekDaysShort[date.getDay()];
       const dayNumber = String(date.getDate()).padStart(2, '0');
       const monthNumber = String(date.getMonth() + 1).padStart(2, '0');
 
@@ -206,12 +243,27 @@ function initSchedule(user) {
 
       button.addEventListener('click', () => {
         activeDateKey = dateKey;
-        renderWeek();
-        renderTrainings(activeDateKey);
+
+        if (scheduleNativeInput) {
+          scheduleNativeInput.value = activeDateKey;
+        }
+
+        renderAll();
       });
 
       scheduleWeek.appendChild(button);
     });
+  }
+
+  function renderMobileCurrent() {
+    if (!mobileCurrent) return;
+
+    const activeDate = dates.find((date) => formatDateKey(date) === activeDateKey) || dates[0];
+    mobileCurrent.textContent = formatFullDate(activeDate);
+
+    if (scheduleNativeInput) {
+      scheduleNativeInput.value = activeDateKey;
+    }
   }
 
   function renderTrainings(dateKey) {
@@ -240,6 +292,14 @@ function initSchedule(user) {
         `;
       })
       .join('');
+  }
+
+  function formatFullDate(date) {
+    const dayName = weekDaysFull[date.getDay()];
+    const dayNumber = String(date.getDate()).padStart(2, '0');
+    const monthNumber = String(date.getMonth() + 1).padStart(2, '0');
+
+    return `${dayName} ${dayNumber}.${monthNumber}`;
   }
 }
 

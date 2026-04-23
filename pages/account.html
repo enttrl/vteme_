@@ -191,7 +191,31 @@
           </div>
 
           <div class="schedule">
-            <div class="schedule-week" id="scheduleWeek"></div>
+            <div class="schedule-desktop" id="scheduleDesktop">
+              <div class="schedule-week" id="scheduleWeek"></div>
+            </div>
+
+            <div class="schedule-mobile" id="scheduleMobile">
+              <div class="schedule-mobile__bar">
+                <span class="schedule-mobile__current" id="scheduleMobileCurrent">Сегодня</span>
+
+                <button
+                  class="schedule-mobile__picker-button"
+                  id="scheduleMobilePickerButton"
+                  type="button"
+                  aria-label="Открыть календарь"
+                >
+                  <span class="schedule-mobile__arrow" aria-hidden="true"></span>
+                </button>
+
+                <input
+                  class="schedule-mobile__native-input"
+                  id="scheduleNativeInput"
+                  type="date"
+                />
+              </div>
+            </div>
+
             <div class="schedule-divider"></div>
             <div class="training-list" id="trainingList"></div>
           </div>
@@ -290,14 +314,19 @@
                 Сохранить
               </button>
             </form>
-          </div>
-
           <aside class="account-settings__payment" aria-label="Платежные данные">
             <h2 class="account-section__title">Платежные данные</h2>
             <p class="account-muted">
               Информация о платежных данных в данный момент недоступна.
             </p>
           </aside>
+          <div class="account-settings__logout">
+              <h3 class="account-settings__logout-title">Выйти из аккаунта</h3>
+              <button class="ui-button ui-button--accent" id="logoutButton" type="button">
+                Выйти
+              </button>
+            </div>
+          </div>
         </div>
       </section>
 

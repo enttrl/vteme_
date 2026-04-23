@@ -1,5 +1,6 @@
 :root {
   --container-width: 1600px;
+  --container-padding: 0px;
 
   --color-bg: #efefef;
   --color-white: #ffffff;
@@ -283,6 +284,57 @@ body.scrolled .header {
 .account-section__title {
   margin: 0 0 24px;
   font-size: 30px;
+}
+.schedule-desktop {
+  display: block;
+}
+
+.schedule-mobile {
+  display: none;
+}
+
+.schedule-mobile__bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 0 0 8px 0;
+  position: relative;
+}
+
+.schedule-mobile__current {
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--color-text);
+}
+
+.schedule-mobile__picker-button {
+  width: 40px;
+  height: 40px;
+  border: none;
+  background: transparent;
+  padding: 0;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.schedule-mobile__arrow {
+  width: 18px;
+  height: 18px;
+  border-right: 4px solid #000;
+  border-bottom: 4px solid #000;
+  transform: rotate(45deg) translateY(-2px);
+  display: inline-block;
+}
+
+.schedule-mobile__native-input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+  width: 1px;
+  height: 1px;
 }
 
 .schedule {
@@ -576,7 +628,23 @@ body.scrolled .header {
   width: 100%;
   max-width: 760px;
 }
+.account-settings__logout {
+  margin-top: 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+}
 
+.account-settings__logout-title {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.account-settings__logout .ui-button {
+  min-width: 220px;
+}
 .account-muted {
   font-size: 24px;
   line-height: 1.2;
@@ -588,10 +656,40 @@ body.scrolled .header {
   margin-top: 0px;
 }
 
-@media (max-width: 1200px) {
+@media (min-width: 1440px) and (max-width: 1536px) {
+  :root {
+    --container-width: 1280px;
+    --container-padding: 0px;
+  }
+}
+
+@media (max-width: 1024px) {
+  :root {
+    --container-width: 960px;
+    --container-padding: 0px;
+
+    --button-height: 52px;
+    --button-padding-x: 24px;
+    --button-font-size: 18px;
+  }
+  .account-title {
+    font-size: 24px;
+  }
+  .account-page {
+    padding-block: 56px 96px;
+  }
+
+  .account-hero__top {
+    margin-bottom: 40px;
+  }
+
   .account-tabs {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     border-radius: 24px;
+  }
+
+  .account-tab {
+    font-size: 18px;
   }
 
   .account-dashboard__grid {
@@ -599,13 +697,10 @@ body.scrolled .header {
   }
 
   .services-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .schedule-week {
-    grid-template-columns: repeat(3, 1fr);
-  }
-   .account-settings {
+  .account-settings {
     grid-template-columns: 1fr;
     gap: 32px;
   }
@@ -618,45 +713,52 @@ body.scrolled .header {
     order: 1;
   }
 
+  .schedule-week {
+    grid-template-columns: repeat(4, 1fr);
+    row-gap: 12px;
+  }
+  .settings-form__submit {
+    max-width: none;
+  }
 }
 
 @media (max-width: 768px) {
   :root {
-    --container-padding: 16px;
+    --container-width: 720px;
+    --container-padding: 0px;
+
     --button-height: 50px;
     --button-padding-x: 20px;
     --button-font-size: 16px;
   }
 
   .account-page {
-    padding-block: 24px 56px;
+    padding-block: 40px 72px;
   }
 
   .account-hero__top,
   .account-section__head {
     flex-direction: column;
     align-items: stretch;
+    gap: 16px;
   }
 
   .account-tabs {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
     border-radius: 20px;
   }
 
   .account-tab {
-    font-size: 17px;
+    min-height: 52px;
+    font-size: 16px;
+    padding: 10px 14px;
   }
 
-  .schedule-week,
+  .schedule-week {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
   .services-grid,
-  .settings-grid,
-  .payments-row {
-    grid-template-columns: 1fr;
-  }
-
-  .payments-row--head {
-    display: none;
-  }
   .settings-grid {
     grid-template-columns: 1fr;
   }
@@ -664,7 +766,13 @@ body.scrolled .header {
   .field--full {
     grid-column: auto;
   }
+  .schedule-desktop {
+    display: none;
+  }
 
+  .schedule-mobile {
+    display: block;
+  }
   .gender-group {
     flex-wrap: wrap;
     min-height: auto;
@@ -672,10 +780,30 @@ body.scrolled .header {
     gap: 18px 28px;
   }
 
-  .settings-form__submit {
-    max-width: 100%;
+  .payments-row--head {
+    display: none;
+  }
+  .account-settings__logout {
+    margin-top: 64px;
+    gap: 14px;
+  }
+
+  .account-settings__logout-title {
+    font-size: 24px;
+  }
+
+  .account-settings__logout .ui-button {
+    width: 100%;
+    min-width: 0;
+  }
+   .account-hero__top #logoutButton {
+    display: none;
+  }
+  .account-settings__payment {
+    padding-top: 64px;
   }
   .payments-row {
+    grid-template-columns: 1fr;
     background: var(--color-white);
     border-radius: 16px;
     padding: 16px;
@@ -690,14 +818,51 @@ body.scrolled .header {
     font-size: 24px;
   }
 
-  .dashboard-card {
+  .dashboard-card,
+  .training-card,
+  .service-card {
     min-height: auto;
   }
 }
 
 @media (max-width: 480px) {
+  :root {
+    --container-width: 100%;
+    --container-padding: 16px;
+
+    --button-height: 48px;
+    --button-padding-x: 18px;
+    --button-font-size: 15px;
+  }
+
+  .account-page {
+    padding-block: 24px 56px;
+  }
+
   .account-title {
-    font-size: 42px;
+    font-size: 20px;
+    line-height: 1.9;
+  }
+
+  .account-tabs {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    padding: 8px;
+  }
+
+  .account-tab {
+    width: 100%;
+    min-height: 48px;
+  }
+
+  .schedule-week {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .schedule-day__pill {
+    font-size: 16px;
+    min-height: 40px;
+    padding: 0 10px;
   }
 
   .dashboard-card,
@@ -705,9 +870,22 @@ body.scrolled .header {
   .service-card {
     padding: 18px;
   }
+  
+  .training-card, 
+  .service-card {
+    min-height: 160px;
+  }
+  .dashboard-card__title,
+  .service-card h3,
+  .account-section__title {
+    font-size: 22px;
+  }
 
-  .account-tab {
-    min-height: 50px;
-    padding: 10px 14px;
+  .training-card__title,
+  .training-card__slots,
+  .training-card__meta,
+  .training-empty,
+  .account-muted {
+    font-size: 16px;
   }
 }
