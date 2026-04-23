@@ -20,6 +20,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   await initAccountProfile(supabaseClient, user);
   await initSettingsForm(supabaseClient, user);
 
+  initEditProfileButton();
   initLogout(supabaseClient);
   initSchedule(user);
   initFormMasks();
@@ -556,4 +557,30 @@ function formatDateForInput(value) {
 
   if (!year || !month || !day) return '';
   return `${day}.${month}.${year}`;
+}
+
+function initEditProfileButton() {
+  const editButton = document.getElementById('editProfileButton');
+
+  if (!editButton) return;
+
+  editButton.addEventListener('click', () => {
+    // 1. переключаем таб на "Настройки"
+    const settingsTab = document.querySelector('[data-tab="settings"]');
+    if (settingsTab) {
+      settingsTab.click();
+    }
+
+    // 2. скроллим к форме
+    const formBlock = document.getElementById('settingsFormBlock') || document.getElementById('settingsForm');
+
+    if (formBlock) {
+      setTimeout(() => {
+        formBlock.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }, 100); // маленькая задержка чтобы таб успел переключиться
+    }
+  });
 }

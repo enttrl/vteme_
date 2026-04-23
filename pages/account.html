@@ -136,7 +136,9 @@
           </div>
 
           <div class="dashboard-card__bottom">
-            <a class="dashboard-card__link" href="#">изменить</a>
+            <button class="account-card__edit" id="editProfileButton" type="button">
+              изменить
+            </button>
 
             <div class="dashboard-card__icon">
               <img src="../assets/img/user.svg" alt="" />
@@ -256,7 +258,8 @@
 
       <section class="account-panel" data-panel="settings" hidden>
         <div class="account-settings">
-          <div class="account-settings__form">
+
+          <div class="account-settings__form" id="settingsFormBlock">
             <h2 class="account-section__title">Мои данные</h2>
 
             <form class="settings-form" id="settingsForm">
@@ -304,18 +307,22 @@
                 Сохранить
               </button>
             </form>
+          </div>
+
           <aside class="account-settings__payment" aria-label="Платежные данные">
             <h2 class="account-section__title">Платежные данные</h2>
             <p class="account-muted">
               Информация о платежных данных в данный момент недоступна.
             </p>
           </aside>
+
           <div class="account-settings__logout account-settings__logout--mobile">
             <h3 class="account-settings__logout-title">Выйти из аккаунта</h3>
             <button class="ui-button ui-button--accent js-logout-button" type="button">
               Выйти
             </button>
           </div>
+
         </div>
       </section>
 

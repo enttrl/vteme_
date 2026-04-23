@@ -156,7 +156,22 @@ body.scrolled .header {
   flex-direction: column;
   justify-content: space-between;
 }
+.account-card__edit {
+  background: none;
+  border: none;
+  padding: 0;
 
+  font-size: 20px;
+  font-weight: 400;
+  color: #9e9e9e; /* серый */
+
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.account-card__edit:hover {
+  text-decoration-color: var(--color-accent);
+}
 .dashboard-card__head {
   display: flex;
   align-items: flex-start;
@@ -515,6 +530,18 @@ body.scrolled .header {
   align-items: start;
 }
 
+.account-settings__form {
+  order: 1;
+}
+
+.account-settings__payment {
+  order: 2;
+}
+
+.account-settings__logout {
+  order: 3;
+}
+
 .account-settings__form,
 .account-settings__payment {
   min-width: 0;
@@ -665,7 +692,9 @@ body.scrolled .header {
   align-items: flex-start;
   gap: 16px;
 }
-
+.account-settings__logout {
+  display: none;
+}
 .account-settings__logout-title {
   margin: 0;
   font-size: 24px;
@@ -719,25 +748,16 @@ body.scrolled .header {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .account-settings {
-    grid-template-columns: 1fr;
-    gap: 32px;
-  }
-
-  .account-settings__payment {
-    order: 2;
-  }
-
-  .account-settings__form {
-    order: 1;
-  }
-
   .schedule-week {
     grid-template-columns: repeat(4, 1fr);
     row-gap: 12px;
   }
   .settings-form__submit {
     max-width: none;
+  }
+  .account-settings {
+    grid-template-columns: 1fr;
+    gap: 32px;
   }
 }
 
@@ -811,7 +831,7 @@ body.scrolled .header {
   }
 
   .account-settings__logout-title {
-    font-size: 20px;
+    font-size: 22px;
   }
 
   .account-settings__logout .ui-button {
@@ -841,6 +861,29 @@ body.scrolled .header {
   .training-card,
   .service-card {
     min-height: auto;
+  }
+   .account-settings {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .account-settings__form {
+    order: 1;
+  }
+
+  .account-settings__payment {
+    order: 2;
+  }
+
+  .account-settings__logout {
+    order: 3;
+  }
+
+  .account-settings__logout--mobile {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
   }
 }
 
