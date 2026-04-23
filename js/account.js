@@ -18,8 +18,11 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
 
   await initAccountProfile(supabaseClient, user);
+  await initSettingsForm(supabaseClient, user);
+
   initLogout(supabaseClient);
   initSchedule(user);
+  initFormMasks();
 });
 
 function createSupabaseClient() {
@@ -254,4 +257,264 @@ function escapeHtml(value) {
     .replaceAll('>', '&gt;')
     .replaceAll('"', '&quot;')
     .replaceAll("'", '&#039;');
+}
+
+document.addEventListener('DOMContentLoaded', async () => {
+  initTabs();
+
+  const supabaseClient = createSupabaseClient();
+  if (!supabaseClient) {
+    console.error('Supabase не подключен');
+    return;
+  }
+
+  const user = await getAuthorizedUser(supabaseClient);
+
+  if (!user) {
+    window.location.href = 'index.html';
+    return;
+  }
+
+  await initAccountProfile(supabaseClient, user);
+  initLogout(supabaseClient);
+  initSchedule(user);
+  initFormMasks();
+});
+
+function initFormMasks() {
+  const firstNameInput = document.getElementById('firstName');
+  const lastNameInput = document.getElementById('lastName');
+  const birthDateInput = document.getElementById('birthDate');
+
+  if (firstNameInput) {
+    firstNameInput.addEventListener('input', () => {
+      firstNameInput.value = sanitizeName(firstNameInput.value);
+    });
+  }
+
+  if (lastNameInput) {
+    lastNameInput.addEventListener('input', () => {
+      lastNameInput.value = sanitizeName(lastNameInput.value);
+    });
+  }
+
+  if (birthDateInput) {
+    birthDateInput.addEventListener('input', () => {
+      birthDateInput.value = formatDateMask(birthDateInput.value);
+    });
+
+    birthDateInput.addEventListener('blur', () => {
+      birthDateInput.value = normalizeDateValue(birthDateInput.value);
+    });
+  }
+}
+
+function sanitizeName(value) {
+  return value
+    .replace(/[^a-zA-Zа-яА-ЯёЁ\s-]/g, '')
+    .replace(/\s{2,}/g, ' ')
+    .replace(/-{2,}/g, '-')
+    .replace(/^\s+/, '');
+}
+
+function formatDateMask(value) {
+  const digits = value.replace(/\D/g, '').slice(0, 8);
+
+  let result = '';
+
+  if (digits.length > 0) {
+    result += digits.slice(0, 2);
+  }
+
+  if (digits.length >= 3) {
+    result += '.' + digits.slice(2, 4);
+  }
+
+  if (digits.length >= 5) {
+    result += '.' + digits.slice(4, 8);
+  }
+
+  return result;
+}
+
+function normalizeDateValue(value) {
+  const digits = value.replace(/\D/g, '');
+
+  if (digits.length !== 8) {
+    return value;
+  }
+
+  const day = Number(digits.slice(0, 2));
+  const month = Number(digits.slice(2, 4));
+  const year = Number(digits.slice(4, 8));
+
+  if (month < 1 || month > 12) return '';
+  if (year < 1900 || year > new Date().getFullYear()) return '';
+
+  const maxDay = new Date(year, month, 0).getDate();
+  if (day < 1 || day > maxDay) return '';
+
+  return `${String(day).padStart(2, '0')}.${String(month).padStart(2, '0')}.${year}`;
+}
+
+async function initSettingsForm(supabaseClient, user) {
+  const form = document.getElementById('settingsForm');
+  if (!form) return;
+
+  const firstNameInput = document.getElementById('firstName');
+  const lastNameInput = document.getElementById('lastName');
+  const emailInput = document.getElementById('email');
+  const birthDateInput = document.getElementById('birthDate');
+
+  try {
+    const { data: profile, error } = await supabaseClient
+      .from('profiles')
+      .select('full_name, last_name, birth_date, gender')
+      .eq('id', user.id)
+      .maybeSingle();
+
+    if (error) {
+      console.error('Ошибка загрузки настроек:', error.message);
+      return;
+    }
+
+    if (firstNameInput) {
+      firstNameInput.value = profile?.full_name ?? '';
+    }
+
+    if (lastNameInput) {
+      lastNameInput.value = profile?.last_name ?? '';
+    }
+
+    if (emailInput) {
+      emailInput.value = user.email ?? '';
+    }
+
+    if (birthDateInput && profile?.birth_date) {
+      birthDateInput.value = formatDateForInput(profile.birth_date);
+    }
+
+    if (profile?.gender) {
+      const genderRadio = form.querySelector(
+        `input[name="gender"][value="${profile.gender}"]`
+      );
+
+      if (genderRadio) {
+        genderRadio.checked = true;
+      }
+    }
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      await saveSettingsForm(supabaseClient, user.id);
+    });
+  } catch (error) {
+    console.error('Ошибка initSettingsForm:', error);
+  }
+}
+
+async function saveSettingsForm(supabaseClient, userId) {
+  const firstNameInput = document.getElementById('firstName');
+  const lastNameInput = document.getElementById('lastName');
+  const birthDateInput = document.getElementById('birthDate');
+  const emailInput = document.getElementById('email');
+  const genderInput = document.querySelector('input[name="gender"]:checked');
+
+  const fullName = firstNameInput?.value.trim() || null;
+  const lastName = lastNameInput?.value.trim() || null;
+  const birthDate = birthDateInput?.value.trim() || null;
+  const email = emailInput?.value.trim() || '';
+  const gender = genderInput?.value || null;
+
+  const normalizedBirthDate = birthDate ? formatDateForDatabase(birthDate) : null;
+
+  if (birthDate && !normalizedBirthDate) {
+    alert('Проверь дату рождения. Используй формат дд.мм.гггг');
+    return;
+  }
+
+  try {
+    const { error: profileError } = await supabaseClient
+      .from('profiles')
+      .update({
+        full_name: fullName,
+        last_name: lastName,
+        birth_date: normalizedBirthDate,
+        gender: gender
+      })
+      .eq('id', userId);
+
+    if (profileError) {
+      console.error('Ошибка сохранения профиля:', profileError.message);
+      alert('Не удалось сохранить данные профиля');
+      return;
+    }
+
+    const { data: authData } = await supabaseClient.auth.getUser();
+    const currentEmail = authData?.user?.email || '';
+
+    if (email && email !== currentEmail) {
+      const { error: emailError } = await supabaseClient.auth.updateUser({
+        email: email
+      });
+
+      if (emailError) {
+        console.error('Ошибка обновления email:', emailError.message);
+        alert('Профиль сохранён, но email обновить не удалось');
+      }
+    }
+
+    const greetingNameEl = document.getElementById('accountUserName');
+    const cardNameEl = document.getElementById('accountCardUserName');
+    const firstName = fullName?.split(' ')[0] || 'Пользователь';
+
+    if (greetingNameEl) {
+      greetingNameEl.textContent = firstName;
+    }
+
+    if (cardNameEl) {
+      cardNameEl.textContent = firstName;
+    }
+
+    alert('Данные успешно сохранены');
+  } catch (error) {
+    console.error('Ошибка saveSettingsForm:', error);
+    alert('Произошла ошибка при сохранении');
+  }
+}
+
+function formatDateForDatabase(value) {
+  const parts = value.split('.');
+  if (parts.length !== 3) return null;
+
+  const [day, month, year] = parts;
+
+  if (!day || !month || !year) return null;
+  if (year.length !== 4) return null;
+
+  const dayNumber = Number(day);
+  const monthNumber = Number(month);
+  const yearNumber = Number(year);
+
+  if (!Number.isInteger(dayNumber) || !Number.isInteger(monthNumber) || !Number.isInteger(yearNumber)) {
+    return null;
+  }
+
+  if (monthNumber < 1 || monthNumber > 12) return null;
+  if (yearNumber < 1900 || yearNumber > new Date().getFullYear()) return null;
+
+  const maxDay = new Date(yearNumber, monthNumber, 0).getDate();
+  if (dayNumber < 1 || dayNumber > maxDay) return null;
+
+  return `${String(yearNumber)}-${String(monthNumber).padStart(2, '0')}-${String(dayNumber).padStart(2, '0')}`;
+}
+
+function formatDateForInput(value) {
+  const parts = value.split('-');
+  if (parts.length !== 3) return '';
+
+  const [year, month, day] = parts;
+
+  if (!year || !month || !day) return '';
+  return `${day}.${month}.${year}`;
 }

@@ -102,7 +102,7 @@
         <h1 class="account-title">ЛИЧНЫЙ КАБИНЕТ</h1>
 
         <button class="ui-button-logout ui-button--accent" id="logoutButton" type="button">
-          Выйти
+          Выйти из аккаунта
         </button>
       </div>
 
@@ -135,17 +135,38 @@
             <h3 class="dashboard-card__title" id="accountCardUserName">Пользователь</h3>
           </div>
 
-          <a class="dashboard-card__link" href="#">изменить</a>
+          <div class="dashboard-card__bottom">
+            <a class="dashboard-card__link" href="#">изменить</a>
+
+            <div class="dashboard-card__icon">
+              <img src="../assets/img/user.svg" alt="" />
+            </div>
+          </div>
+          
         </article>
 
         <article class="dashboard-card">
           <h3 class="dashboard-card__title">Мой абонемент</h3>
-          <p class="dashboard-card__value">Не куплен</p>
+
+          <div class="dashboard-card__bottom">
+            <p class="dashboard-card__value">Не куплен</p>
+
+            <div class="dashboard-card__icon">
+              <img src="../assets/img/abonement.svg" alt="" />
+            </div>
+          </div>
         </article>
 
         <article class="dashboard-card">
           <h3 class="dashboard-card__title">Посещения</h3>
-          <p class="dashboard-card__value-number dashboard-card__value--accent">0</p>
+
+          <div class="dashboard-card__bottom">
+            <p class="dashboard-card__value-number dashboard-card__value--accent">0</p>
+
+            <div class="dashboard-card__icon">
+              <img src="../assets/img/chart.svg" alt="" />
+            </div>
+          </div>
         </article>
       </div>
     </section>
@@ -177,7 +198,7 @@
         </section>
 
         
-      </section>
+      
 
       <section class="account-panel" data-panel="services" hidden>
         <h2 class="account-section__title">Услуги</h2>
@@ -185,7 +206,16 @@
         <div class="services-grid">
           <article class="service-card">
             <h3>Подарочный сертификат</h3>
-            <button class="ui-button ui-button--accent" type="button">Купить</button>
+
+            <div class="service-card__bottom">
+              <button class="ui-button ui-button--accent">Купить</button>
+
+              <div class="service-card__icon">
+                <!-- вставляешь свою svg -->
+                <img src="../assets/img/gift.svg" alt="" />
+                <!-- или inline svg -->
+              </div>
+            </div>
           </article>
         </div>
       </section>
@@ -211,46 +241,64 @@
       </section>
 
       <section class="account-panel" data-panel="settings" hidden>
-        <h2 class="account-section__title">Настройки</h2>
+        <div class="account-settings">
+          <div class="account-settings__form">
+            <h2 class="account-section__title">Мои данные</h2>
 
-        <form class="settings-form">
-          <div class="settings-grid">
-            <label class="field">
-              <span>Имя</span>
-              <input type="text" placeholder="Имя" />
-            </label>
+            <form class="settings-form" id="settingsForm">
+              <div class="settings-grid">
+                <label class="field">
+                  <span class="field__label">Имя</span>
+                  <input class="field__input" id="firstName" type="text" placeholder="Имя" />
+                </label>
 
-            <label class="field">
-              <span>Фамилия</span>
-              <input type="text" placeholder="Фамилия" />
-            </label>
+                <label class="field">
+                  <span class="field__label">Фамилия</span>
+                  <input class="field__input" id="lastName" type="text" placeholder="Фамилия" />
+                </label>
 
-            <label class="field field--full">
-              <span>Email</span>
-              <input type="email" placeholder="Email" />
-            </label>
+                <label class="field field--full">
+                  <span class="field__label">Email</span>
+                  <input class="field__input" id="email" type="email" placeholder="Email" />
+                </label>
 
-            <label class="field">
-              <span>Дата рождения</span>
-              <input type="text" placeholder="дд.мм.гггг" />
-            </label>
+                <label class="field">
+                  <span class="field__label">Дата рождения</span>
+                  <input class="field__input" id="birthDate" type="text" placeholder="дд.мм.гггг" inputmode="numeric" />
+                </label>
 
-            <div class="field">
-              <span>Пол</span>
-              <div class="gender-group">
-                <label><input type="radio" name="gender" /> Мужской</label>
-                <label><input type="radio" name="gender" /> Женский</label>
+                <div class="field field--gender">
+                  <span class="field__label">Пол</span>
+
+                  <div class="gender-group">
+                    <label class="gender-option">
+                      <input type="radio" name="gender" value="male" />
+                      <span class="gender-option__control"></span>
+                      <span class="gender-option__text">Мужской</span>
+                    </label>
+
+                    <label class="gender-option">
+                      <input type="radio" name="gender" value="female" />
+                      <span class="gender-option__control"></span>
+                      <span class="gender-option__text">Женский</span>
+                    </label>
+                  </div>
+                </div>
               </div>
-            </div>
 
-            <label class="field field--full">
-              <span>Пароль</span>
-              <input type="password" placeholder="********" />
-            </label>
+              <button class="ui-button ui-button--accent settings-form__submit" type="submit">
+                Сохранить
+              </button>
+            </form>
           </div>
 
-          <button class="ui-button ui-button--accent" type="submit">Сохранить</button>
-        </form>
+          <aside class="account-settings__payment" aria-label="Платежные данные">
+            <h2 class="account-section__title">Платежные данные</h2>
+            <p class="account-muted">
+              Информация о платежных данных в данный момент недоступна.
+            </p>
+          </aside>
+        </div>
       </section>
 
       <section class="account-panel" data-panel="loyalty" hidden>

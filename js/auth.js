@@ -137,7 +137,10 @@ document.addEventListener('DOMContentLoaded', () => {
       .insert({
         id: user.id,
         full_name: fullName,
-        phone: phone
+        phone: phone,
+        last_name: null,
+        birth_date: null,
+        gender: null
       });
 
     return { error: insertError };
