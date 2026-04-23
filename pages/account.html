@@ -101,7 +101,7 @@
       <div class="account-hero__top">
         <h1 class="account-title">ЛИЧНЫЙ КАБИНЕТ</h1>
 
-        <button class="ui-button-logout ui-button--accent" id="logoutButton" type="button">
+        <button class="ui-button-logout ui-button--accent js-logout-button account-logout-desktop" type="button">
           Выйти из аккаунта
         </button>
       </div>
@@ -320,12 +320,11 @@
               Информация о платежных данных в данный момент недоступна.
             </p>
           </aside>
-          <div class="account-settings__logout">
-              <h3 class="account-settings__logout-title">Выйти из аккаунта</h3>
-              <button class="ui-button ui-button--accent" id="logoutButton" type="button">
-                Выйти
-              </button>
-            </div>
+          <div class="account-settings__logout account-settings__logout--mobile">
+            <h3 class="account-settings__logout-title">Выйти из аккаунта</h3>
+            <button class="ui-button ui-button--accent js-logout-button" type="button">
+              Выйти
+            </button>
           </div>
         </div>
       </section>

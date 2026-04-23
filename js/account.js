@@ -137,21 +137,25 @@ async function initAccountProfile(supabaseClient, user) {
 }
 
 function initLogout(supabaseClient) {
-  const logoutButton = document.getElementById('logoutButton');
-  if (!logoutButton) return;
+  document.addEventListener('click', async (event) => {
+    const logoutButton = event.target.closest('.js-logout-button');
+    if (!logoutButton) return;
 
-  logoutButton.addEventListener('click', async () => {
+    event.preventDefault();
+
     try {
       const { error } = await supabaseClient.auth.signOut();
 
       if (error) {
         console.error('Ошибка выхода:', error.message);
+        alert('Не удалось выйти из аккаунта');
         return;
       }
 
-      window.location.href = '/';
+      window.location.href = '../index.html';
     } catch (error) {
       console.error('Ошибка logout:', error);
+      alert('Произошла ошибка при выходе');
     }
   });
 }

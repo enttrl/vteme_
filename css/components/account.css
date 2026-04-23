@@ -628,6 +628,25 @@ body.scrolled .header {
   width: 100%;
   max-width: 760px;
 }
+
+.account-muted {
+  font-size: 24px;
+  line-height: 1.2;
+  color: #6f6f6f;
+  margin: 0;
+  max-width: auto;
+}
+.footer {
+  margin-top: 0px;
+}
+.account-logout-desktop {
+  display: inline-flex;
+}
+
+.account-settings__logout--mobile {
+  display: none;
+}
+
 .account-settings__logout {
   margin-top: 32px;
   display: flex;
@@ -645,17 +664,6 @@ body.scrolled .header {
 .account-settings__logout .ui-button {
   min-width: 220px;
 }
-.account-muted {
-  font-size: 24px;
-  line-height: 1.2;
-  color: #6f6f6f;
-  margin: 0;
-  max-width: auto;
-}
-.footer {
-  margin-top: 0px;
-}
-
 @media (min-width: 1440px) and (max-width: 1536px) {
   :root {
     --container-width: 1280px;
@@ -783,21 +791,21 @@ body.scrolled .header {
   .payments-row--head {
     display: none;
   }
-  .account-settings__logout {
-    margin-top: 64px;
-    gap: 14px;
+   .account-logout-desktop {
+    display: none;
+  }
+
+  .account-settings__logout--mobile {
+    display: flex;
   }
 
   .account-settings__logout-title {
-    font-size: 24px;
+    font-size: 20px;
   }
 
   .account-settings__logout .ui-button {
     width: 100%;
     min-width: 0;
-  }
-   .account-hero__top #logoutButton {
-    display: none;
   }
   .account-settings__payment {
     padding-top: 64px;
