@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>О нас — ВТЕМЕ</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="../css/components/about.css">
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script src="https://api-maps.yandex.ru/2.1/?apikey=0e4bfc59-00eb-43a3-b1ef-e607240854cf&lang=ru_RU"></script>
+</head>
+
+<body>
+  <header class="header">
+    <div class="header__inner account-shell">
+      <a class="header__logo-link" href="../index.html" aria-label="На главную">
+        <img class="header__logo" src="../assets/img/logo-vteme.svg" alt="ВТЕМЕ">
+      </a>
+
+      <nav class="header__nav nav" aria-label="Основная навигация">
+        <ul class="nav__list">
+          <li class="nav__item"><a class="nav__link" href="../index.html#about">О нас</a></li>
+          <li class="nav__item"><a class="nav__link" href="../index.html#memberships">Абонементы</a></li>
+          <li class="nav__item"><a class="nav__link" href="../index.html#schedule">Расписание</a></li>
+          <li class="nav__item"><a class="nav__link" href="../index.html#services">Услуги</a></li>
+          <li class="nav__item"><a class="nav__link" href="../index.html#trainers">Тренеры</a></li>
+          <li class="nav__item"><a class="nav__link" href="../index.html#promotions">Акции</a></li>
+        </ul>
+      </nav>
+
+      <a class="header__login login-button" href="./account.html" aria-label="Перейти в личный кабинет">
+        <span class="login-button__text">Войти</span>
+        <span class="login-button__icon" aria-hidden="true">
+          <img class="login-button__img" src="../assets/img/arrow-up-right.svg" alt="">
+        </span>
+      </a>
+
+      <button class="header__burger" id="openBurgerMenu" type="button" aria-label="Открыть меню" aria-expanded="false"
+        aria-controls="mobileMenu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <div class="mobile-menu__inner">
+      <div class="mobile-menu__top">
+        <a class="mobile-menu__logo-link" href="../index.html" aria-label="На главную">
+          <img class="mobile-menu__logo" src="../assets/img/logo-vteme.svg" alt="ВТЕМЕ">
+        </a>
+
+        <button class="mobile-menu__close" id="closeBurgerMenu" type="button" aria-label="Закрыть меню">
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+
+      <nav class="mobile-menu__nav" aria-label="Мобильная навигация">
+        <a class="mobile-menu__link" href="../index.html#about">О нас</a>
+        <a class="mobile-menu__link" href="../index.html#memberships">Абонементы</a>
+        <a class="mobile-menu__link" href="../index.html#schedule">Расписание</a>
+        <a class="mobile-menu__link" href="../index.html#services">Услуги</a>
+        <a class="mobile-menu__link" href="../index.html#trainers">Тренеры</a>
+        <a class="mobile-menu__link" href="../index.html#promotions">Акции</a>
+      </nav <a class="mobile-menu__login login-button" href="./account.html">
+      <span class="login-button__text">Личный кабинет</span>
+      <span class="login-button__icon" aria-hidden="true">
+        <img class="login-button__img" src="../assets/img/arrow-up-right.svg" alt="">
+      </span>
+      </a>
+
+      <div class="mobile-menu__contacts">
+        <a class="mobile-menu__contact" href="tel:+79288220555">+7 (928) 822-05-55</a>
+        <a class="mobile-menu__contact" href="mailto:vteme@mail.ru">vteme@mail.ru</a>
+      </div>
+
+      <div class="mobile-menu__bottom">
+        <p class="mobile-menu__copyright">© 2026</p>
+        <a class="mobile-menu__policy" href="#">Политика обработки персональных данных</a>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <section class="hero" aria-labelledby="about-title">
+      <div class="hero-section__decor" aria-hidden="true">
+        <img src="../assets/img/poloska.svg" alt="">
+      </div>
+      <div class="container">
+        <div class="hero__intro">
+          <h1 class="section-title" id="about-title">О нас</h1>
+          <p class="section-lead">Мы создаём пространство, где тренировки становятся частью комфортной и осознанной
+            жизни.</p>
+        </div>
+
+        <div class="hero__grid">
+          <div class="hero__media">
+            <img src="../assets/img/about_hero.png" alt="Тренировка в фитнес-клубе ВТЕМЕ">
+          </div>
+
+          <blockquote class="hero__quote">
+            <div class="hero__quote-mark">
+              <img src="../assets/img/quote.svg" alt="">
+            </div>
+            <p class="hero__quote-text">Мы&nbsp;создали место, куда хочется возвращаться&nbsp;&mdash; не&nbsp;из-за
+              обязательства, а&nbsp;из-за ощущения, что ты&nbsp;становишься лучше. Для нас фитнес&nbsp;&mdash; это
+              не&nbsp;про давление и&nbsp;идеалы, а&nbsp;про поддержку, движение и&nbsp;уверенность в&nbsp;себе. Здесь
+              каждый может идти в&nbsp;своём темпе, <br>но&nbsp;всегда чувствовать результат.</p>
+            <footer>
+              <p class="hero__quote-author"><span style="color: var(--accent);">Яковенко Олег</span> | основатель</p>
+            </footer>
+          </blockquote>
+        </div>
+      </div>
+    </section>
+
+    <section class="mission" aria-labelledby="mission-title">
+      <div class="container">
+        <h2 class="section-title-2" id="mission-title">Миссия и ценности</h2>
+        <p class="section-lead">Мы создаём пространство, в котором забота о здоровье становится естественной частью
+          жизни. Объединяя профессионализм тренеров, современные технологии и комфортную атмосферу, <br> мы помогаем
+          каждому клиенту раскрыть свой потенциал и двигаться к устойчивому результату.</p>
+
+        <div class="mission__grid">
+          <article class="card card--small-top value-card">
+            <div class="value-card__icon">
+              <img src="../assets/img/prof.svg" alt="">
+            </div>
+            <div>
+              <h3 class="value-card__title">Профессионализм</h3>
+              <p class="value-card__text">Мы строим тренировочный процесс на основе современных методик и экспертного
+                опыта. Качество и безопасность — основа каждой программы и каждого занятия.</p>
+            </div>
+          </article>
+
+          <article class="card card--wide-top">
+            <img class="value-card__media" src="../assets/img/zal.png" alt="Современное оборудование фитнес-клуба">
+          </article>
+
+          <article class="card card--small-bottom">
+            <img class="value-card__media" src="../assets/img/air.png" alt="Фрагмент тренировки в клубе">
+          </article>
+
+          <article class="card card--small-bottom value-card value-card--dark">
+            <div class="value-card__icon">
+              <img src="../assets/img/rezult.svg" alt="">
+            </div>
+            <div>
+              <h3 class="value-card__title">Результат</h3>
+              <p class="value-card__text">Мы ориентированы на устойчивые и измеримые изменения. Наша задача — помогать
+                достигать целей системно, осознанно и без перегрузки.</p>
+            </div>
+          </article>
+
+          <article class="card card--small-bottom value-card">
+            <div class="value-card__icon">
+              <img src="../assets/img/help.svg" alt="">
+            </div>
+            <div>
+              <h3 class="value-card__title">Забота о клиенте</h3>
+              <p class="value-card__text">Мы учитываем уровень подготовки, самочувствие и личные цели каждого человека.
+                Поддержка и внимание к деталям остаются частью каждого контакта.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="trust" aria-labelledby="trust-title">
+      <div class="container">
+        <h2 class="section-title-2" id="trust-title">Почему нам доверяют?</h2>
+
+        <div class="trust__wrap">
+          <div class="trust-list">
+
+            <div class="trust-item" data-image="../assets/img/trust.jpg" data-rotate="-8deg">
+              <div class="trust-item__number">01</div>
+              <div class="trust-item__content">
+                <h3 class="trust-item__title">5+ лет работы</h3>
+                <p class="trust-item__text">Опыт работы в сфере фитнеса</p>
+              </div>
+            </div>
+
+            <div class="trust-item" data-image="../assets/img/trust.jpg" data-rotate="10deg">
+              <div class="trust-item__number">02</div>
+              <div class="trust-item__content">
+                <h3 class="trust-item__title">95% положительных отзывов</h3>
+                <p class="trust-item__text">Высокий уровень удовлетворённости</p>
+              </div>
+            </div>
+
+            <div class="trust-item" data-image="../assets/img/trust.jpg" data-rotate="-6deg">
+              <div class="trust-item__number">03</div>
+              <div class="trust-item__content">
+                <h3 class="trust-item__title">1000+ клиентов</h3>
+                <p class="trust-item__text">Людей, доверивших нам своё здоровье</p>
+              </div>
+            </div>
+
+            <div class="trust-item" data-image="../assets/img/trust.jpg" data-rotate="8deg">
+              <div class="trust-item__number">04</div>
+              <div class="trust-item__content">
+                <h3 class="trust-item__title">Профессиональная команда</h3>
+                <p class="trust-item__text">Сертифицированные тренеры с практическим опытом работы</p>
+              </div>
+            </div>
+
+            <div class="trust-item" data-image="../assets/img/trust.jpg" data-rotate="-10deg">
+              <div class="trust-item__number">05</div>
+              <div class="trust-item__content">
+                <h3 class="trust-item__title">Безопасность и системность</h3>
+                <p class="trust-item__text">Контроль техники, адаптация нагрузки и продуманная структура тренировок</p>
+              </div>
+            </div>
+
+            <div class="trust-item" data-image="../assets/img/trust.jpg" data-rotate="7deg">
+              <div class="trust-item__number">06</div>
+              <div class="trust-item__content">
+                <h3 class="trust-item__title">Современная инфраструктура</h3>
+                <p class="trust-item__text">Комфортные зоны, качественное оборудование и удобный формат занятий</p>
+              </div>
+            </div>
+
+            <div class="trust-item" data-image="../assets/img/trust.jpg" data-rotate="-7deg">
+              <div class="trust-item__number">07</div>
+              <div class="trust-item__content">
+                <h3 class="trust-item__title">Открытость и прозрачность</h3>
+                <p class="trust-item__text">Понятные условия абонементов и честная коммуникация</p>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="trust-preview" aria-hidden="true">
+            <img id="trustPreviewImage" src="" alt="">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta" id="trial" aria-labelledby="trial-title">
+      <div class="container">
+        <div class="cta__header">
+          <h2 class="cta__title" id="trial-title">
+            Мы создаём условия, в которых легко начать и приятно <br> продолжать тренировки<br>
+            Сделайте первый шаг уже <span class="cta__accent-inline">сегодня</span>
+            <span class="cta__arrow-circle" aria-hidden="true">
+              <img src="../assets/img/arrow-up-right.svg" alt="">
+            </span>
+          </h2>
+        </div>
+
+        <div class="cta__form-wrap">
+          <div class="form-card">
+            <h3 class="form-card__title">
+              Запишитесь на <span>пробное занятие</span> бесплатно
+            </h3>
+
+            <form class="trial-form" action="#" method="post" id="trial-form">
+              <div class="trial-form__row">
+                <label class="field">
+                  <span class="field__label">Имя</span>
+                  <input class="field__control" type="text" name="name" placeholder="Ваше имя" required>
+                </label>
+
+                <label class="field">
+                  <span class="field__label">Телефон</span>
+                  <input class="field__control" type="tel" name="phone" placeholder="+7 (999) 999 - 99 - 99" required>
+                </label>
+
+                <button class="button button--primary trial-form__submit" type="submit">
+                  Записаться
+                </button>
+              </div>
+
+              <label class="trial-form__consent">
+                <input class="trial-form__checkbox-input" type="checkbox" name="consent" required>
+                <span class="trial-form__checkbox-box"></span>
+                <span class="trial-form__consent-text">Согласие на обработку персональных данных</span>
+              </label>
+              <input type="hidden" name="form_name" value="Пробное занятие — О нас">
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contacts" aria-labelledby="contacts-title">
+      <div class="container">
+        <h2 class="section-title-2" id="contacts-title">Контакты</h2>
+
+        <div class="contacts__layout">
+          <div class="contacts__info">
+            <p class="contacts__lead">
+              Есть вопросы или предложения?<br>
+              Свяжитесь с нами
+            </p>
+
+            <a class="contacts__mail" href="mailto:vteme@mail.ru">vteme@mail.ru</a>
+
+            <div class="contacts__group">
+              <p class="contacts__label">Позвоните нам</p>
+              <a class="contacts__phone" href="tel:+79288220555">+7 (928) 822-05-55</a>
+            </div>
+
+            <div class="contacts__group">
+              <p class="contacts__city">КИСЛОВОДСК</p>
+              <p class="contacts__address">Первомайский проспект 27</p>
+              <a class="contacts__phone-small" href="tel:+79288220555">+7 (928) 822-05-55</a>
+            </div>
+          </div>
+
+          <div class="contacts__map">
+            <div id="map"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <a href="index.html" aria-label="ВТЕМЕ">
+            <img class="footer__logo" src="assets/img/logo-vteme.svg" alt="ВТЕМЕ">
+          </a>
+        </div>
+
+        <div>
+          <p class="footer__text">Есть вопросы или предложения? Свяжитесь с нами.</p>
+          <a class="footer__accent" href="mailto:vteme@mail.ru">vteme@mail.ru</a><br>
+          <a class="footer__accent" href="tel:+79288220555">+7 (928) 822-05-55</a>
+        </div>
+
+        <div>
+          <p class="footer__text">Кисловодск<br>Первомайский проспект, 27</p>
+        </div>
+
+        <nav class="footer__nav" aria-label="Навигация в подвале">
+          <a href="about.html">О нас</a>
+          <a href="index.html#memberships">Абонементы</a>
+          <a href="index.html#schedule">Расписание</a>
+          <a href="index.html#services">Услуги</a>
+          <a href="index.html#trainers">Тренеры</a>
+          <a href="index.html#promotions">Акции</a>
+        </nav>
+      </div>
+
+      <div class="footer__bottom">
+        <span class="footer__meta">© 2026</span>
+        <a class="footer__meta" href="#">Политика обработки персональных данных</a>
+        <span class="footer__meta">Разработка сайта Анисимова М.А.</span>
+      </div>
+    </div>
+  </footer>
+  </div>
+
+  <script>
+    window.addEventListener("scroll", () => {
+      document.body.classList.toggle("scrolled", window.scrollY > 10);
+    });
+  </script>
+
+</body>
+<script>
+  const trustWrap = document.querySelector('.trust__wrap');
+  const trustItems = document.querySelectorAll('.trust-item');
+  const preview = document.querySelector('.trust-preview');
+  const previewImage = document.getElementById('trustPreviewImage');
+
+  trustItems.forEach((item) => {
+    item.addEventListener('mouseenter', () => {
+      const image = item.dataset.image;
+      const rotate = item.dataset.rotate || '0deg';
+
+      const itemTop = item.offsetTop;
+      const itemHeight = item.offsetHeight;
+      const previewHeight = preview.offsetHeight;
+
+      const top = itemTop + itemHeight / 2 - previewHeight / 2;
+
+      preview.style.top = `${top}px`;
+      previewImage.src = image;
+      previewImage.style.transform = `scale(1) rotate(${rotate})`;
+      preview.classList.add('is-visible');
+    });
+
+    item.addEventListener('mouseleave', () => {
+      preview.classList.remove('is-visible');
+      previewImage.style.transform = 'scale(0.92) rotate(0deg)';
+    });
+  });
+
+  trustWrap.addEventListener('mouseleave', () => {
+    preview.classList.remove('is-visible');
+    previewImage.src = '';
+    previewImage.style.transform = 'scale(0.92) rotate(0deg)';
+  });
+</script>
+<script>
+  emailjs.init({
+    publicKey: '4EOkO_p3ey7Am8t1d',
+  });
+
+  const form = document.getElementById('trial-form');
+  const submitButton = form.querySelector('.trial-form__submit');
+
+  form.addEventListener('submit', async function (event) {
+    event.preventDefault();
+
+    const originalText = submitButton.textContent;
+    submitButton.disabled = true;
+    submitButton.textContent = 'Отправка...';
+
+    try {
+      const response = await emailjs.sendForm(
+        'service_15j1wj6',
+        'template_d2j8srf',
+        form
+      );
+
+      console.log('SUCCESS!', response.status, response.text);
+      alert('Заявка успешно отправлена!');
+      form.reset();
+    } catch (error) {
+      console.error('FAILED...', error);
+      alert('Не удалось отправить заявку. Попробуйте ещё раз.');
+    } finally {
+      submitButton.disabled = false;
+      submitButton.textContent = originalText;
+    }
+  });
+</script>
+<script>
+  ymaps.ready(init);
+
+  function init() {
+    const map = new ymaps.Map('map', {
+      center: [43.905284, 42.714523], // пример, замени на свои координаты
+      zoom: 17,
+      controls: []
+    });
+
+    const placemark = new ymaps.Placemark(
+      [43.905199, 42.715062],
+      {
+        balloonContent: 'ВТеме<br>Кисловодск, Первомайский проспект, 27',
+        hintContent: 'ВТеме'
+      },
+      {
+        preset: 'islands#redIcon'
+      }
+    );
+
+    map.geoObjects.add(placemark);
+  }
+</script>
+</html>
