@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,7 +8,9 @@
   <link rel="stylesheet" href="style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+    rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
   <script src="js/feedback.js"></script>
   <script src="js/reviews.js"></script>
@@ -16,115 +19,81 @@
   <script src="js/auth.js"></script>
   <script src="js/burger-menu.js"></script>
 </head>
+
 <body>
   <header class="header">
-  <div class="header__inner">
-    <a class="header__logo-link" href="/" aria-label="На главную">
-      <img
-        class="header__logo"
-        src="assets/img/logo-vteme.svg"
-        alt="ВТЕМЕ"
-      >
-    </a>
-
-    <nav class="header__nav nav" aria-label="Основная навигация">
-      <ul class="nav__list">
-        <li class="nav__item"><a class="nav__link" href="pages/about.html">О нас</a></li>
-        <li class="nav__item"><a class="nav__link" href="#memberships">Абонементы</a></li>
-        <li class="nav__item"><a class="nav__link" href="#schedule">Расписание</a></li>
-        <li class="nav__item"><a class="nav__link" href="#services">Услуги</a></li>
-        <li class="nav__item"><a class="nav__link" href="#trainers">Тренеры</a></li>
-        <li class="nav__item"><a class="nav__link" href="#promotions">Акции</a></li>
-      </ul>
-    </nav>
-
-    <button
-      class="header__login login-button"
-      id="openAuthModal"
-      type="button"
-    >
-      <span class="login-button__text">Войти</span>
-      <span class="login-button__icon" aria-hidden="true">
-        <img
-          class="login-button__img"
-          src="assets/img/arrow-up-right.svg"
-          alt=""
-        >
-      </span>
-    </button>
-
-    <button
-      class="header__burger"
-      id="openBurgerMenu"
-      type="button"
-      aria-label="Открыть меню"
-      aria-expanded="false"
-      aria-controls="mobileMenu"
-    >
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
-  </div>
-</header>
-
-<div class="mobile-menu" id="mobileMenu" aria-hidden="true">
-  <div class="mobile-menu__inner">
-    <div class="mobile-menu__top">
-      <a class="mobile-menu__logo-link" href="/" aria-label="На главную">
-        <img
-          class="mobile-menu__logo"
-          src="assets/img/logo-vteme.svg"
-          alt="ВТЕМЕ"
-        >
+    <div class="header__inner">
+      <a class="header__logo-link" href="/" aria-label="На главную">
+        <img class="header__logo" src="assets/img/logo-vteme.svg" alt="ВТЕМЕ">
       </a>
 
-      <button
-        class="mobile-menu__close"
-        id="closeBurgerMenu"
-        type="button"
-        aria-label="Закрыть меню"
-      >
+      <nav class="header__nav nav" aria-label="Основная навигация">
+        <ul class="nav__list">
+          <li class="nav__item"><a class="nav__link" href="pages/about.html">О нас</a></li>
+          <li class="nav__item"><a class="nav__link" href="pages/abonements.html">Абонементы</a></li>
+          <li class="nav__item"><a class="nav__link" href="#schedule">Расписание</a></li>
+          <li class="nav__item"><a class="nav__link" href="#services">Услуги</a></li>
+          <li class="nav__item"><a class="nav__link" href="#trainers">Тренеры</a></li>
+          <li class="nav__item"><a class="nav__link" href="#promotions">Акции</a></li>
+        </ul>
+      </nav>
+
+      <button class="header__login login-button" id="openAuthModal" type="button">
+        <span class="login-button__text">Войти</span>
+        <span class="login-button__icon" aria-hidden="true">
+          <img class="login-button__img" src="assets/img/arrow-up-right.svg" alt="">
+        </span>
+      </button>
+
+      <button class="header__burger" id="openBurgerMenu" type="button" aria-label="Открыть меню" aria-expanded="false"
+        aria-controls="mobileMenu">
+        <span></span>
         <span></span>
         <span></span>
       </button>
     </div>
+  </header>
 
-    <nav class="mobile-menu__nav" aria-label="Мобильная навигация">
-      <a class="mobile-menu__link" href="pages/about.html">О нас</a>
-      <a class="mobile-menu__link" href="#memberships">Абонементы</a>
-      <a class="mobile-menu__link" href="#schedule">Расписание</a>
-      <a class="mobile-menu__link" href="#services">Услуги</a>
-      <a class="mobile-menu__link" href="#trainers">Тренеры</a>
-      <a class="mobile-menu__link" href="#promotions">Акции</a>
-    </nav>
+  <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <div class="mobile-menu__inner">
+      <div class="mobile-menu__top">
+        <a class="mobile-menu__logo-link" href="/" aria-label="На главную">
+          <img class="mobile-menu__logo" src="assets/img/logo-vteme.svg" alt="ВТЕМЕ">
+        </a>
 
-    <button
-      class="mobile-menu__login login-button"
-      id="openAuthModalMobile"
-      type="button"
-    >
-      <span class="login-button__text">Личный кабинет</span>
-      <span class="login-button__icon" aria-hidden="true">
-        <img
-          class="login-button__img"
-          src="assets/img/arrow-up-right.svg"
-          alt=""
-        >
-      </span>
-    </button>
+        <button class="mobile-menu__close" id="closeBurgerMenu" type="button" aria-label="Закрыть меню">
+          <span></span>
+          <span></span>
+        </button>
+      </div>
 
-    <div class="mobile-menu__contacts">
-      <a class="mobile-menu__contact" href="tel:+79288220555">+7 (928) 822-05-55</a>
-      <a class="mobile-menu__contact" href="mailto:vteme@mail.ru">vteme@mail.ru</a>
-    </div>
+      <nav class="mobile-menu__nav" aria-label="Мобильная навигация">
+        <a class="mobile-menu__link" href="pages/about.html">О нас</a>
+        <a class="mobile-menu__link" href="#memberships">Абонементы</a>
+        <a class="mobile-menu__link" href="#schedule">Расписание</a>
+        <a class="mobile-menu__link" href="#services">Услуги</a>
+        <a class="mobile-menu__link" href="#trainers">Тренеры</a>
+        <a class="mobile-menu__link" href="#promotions">Акции</a>
+      </nav>
 
-    <div class="mobile-menu__bottom">
-      <p class="mobile-menu__copyright">© 2026</p>
-      <a class="mobile-menu__policy" href="#">Политика обработки персональных данных</a>
+      <button class="mobile-menu__login login-button" id="openAuthModalMobile" type="button">
+        <span class="login-button__text">Личный кабинет</span>
+        <span class="login-button__icon" aria-hidden="true">
+          <img class="login-button__img" src="assets/img/arrow-up-right.svg" alt="">
+        </span>
+      </button>
+
+      <div class="mobile-menu__contacts">
+        <a class="mobile-menu__contact" href="tel:+79288220555">+7 (928) 822-05-55</a>
+        <a class="mobile-menu__contact" href="mailto:vteme@mail.ru">vteme@mail.ru</a>
+      </div>
+
+      <div class="mobile-menu__bottom">
+        <p class="mobile-menu__copyright">© 2026</p>
+        <a class="mobile-menu__policy" href="#">Политика обработки персональных данных</a>
+      </div>
     </div>
   </div>
-</div>
   <section class="hero-section">
     <div class="hero-section__decor" aria-hidden="true">
       <img src="assets/img/poloska.svg" alt="">
@@ -173,872 +142,849 @@
     </section>
   </section>
   <section class="features">
-  <div class="features__inner">
-    <h2 class="features__title">ПОЧЕМУ МЫ?</h2>
+    <div class="features__inner">
+      <h2 class="features__title">ПОЧЕМУ МЫ?</h2>
 
-    <div class="features__grid">
-      <article class="feature-card feature-card--large">
-        <img
-          class="feature-card__bg"
-          src="assets/img/Gs5SY.jpg"
-          alt="Гантели на зеленом коврике"
-        >
-        <div class="feature-card__overlay"></div>
+      <div class="features__grid">
+        <article class="feature-card feature-card--large">
+          <img class="feature-card__bg" src="assets/img/Gs5SY.jpg" alt="Гантели на зеленом коврике">
+          <div class="feature-card__overlay"></div>
 
-        <div class="feature-card__content feature-card__content--bottom">
-          <h3 class="feature-card__title feature-card__title--light">
-            Тренеры<br>с сертификатами
-          </h3>
-
-          <p class="feature-card__text feature-card__text--light">
-            С вами работают только опытные тренеры<br>
-            с профильным образованием.
-          </p>
-        </div>
-      </article>
-
-      <div class="features__right">
-        <article class="feature-card feature-card--small feature-card--schedule">
-          <img
-            class="feature-card__bg1"
-            src="assets/img/гантеля.png"
-            alt=""
-          >
-
-          <div class="feature-card__content feature-card__content--top">
-            <h3 class="feature-card__title">
-              Удобное<br>расписание
+          <div class="feature-card__content feature-card__content--bottom">
+            <h3 class="feature-card__title feature-card__title--light">
+              Тренеры<br>с сертификатами
             </h3>
 
-            <p class="feature-card__text">
-              Вы&nbsp;легко подберёте
-              тренировку под свой ритм
-              жизни.
+            <p class="feature-card__text feature-card__text--light">
+              С вами работают только опытные тренеры<br>
+              с профильным образованием.
             </p>
           </div>
         </article>
 
-        <article class="feature-card feature-card--bar">
-          <div class="feature-card__decor" aria-hidden="true">
-            <img src="assets/img/element.svg" alt="">
-          </div>
+        <div class="features__right">
+          <article class="feature-card feature-card--small feature-card--schedule">
+            <img class="feature-card__bg1" src="assets/img/гантеля.png" alt="">
 
-          <div class="feature-card__content">
-            <h3 class="feature-card__title">ПП Бар</h3>
+            <div class="feature-card__content feature-card__content--top">
+              <h3 class="feature-card__title">
+                Удобное<br>расписание
+              </h3>
 
-            <p class="feature-card__text">
-              Полезные напитки<br>
-              и перекусы помогут<br>
-              восстановить силы<br>
-              и поддержать результат.
+              <p class="feature-card__text">
+                Вы&nbsp;легко подберёте
+                тренировку под свой ритм
+                жизни.
+              </p>
+            </div>
+          </article>
+
+          <article class="feature-card feature-card--bar">
+            <div class="feature-card__decor" aria-hidden="true">
+              <img src="assets/img/element.svg" alt="">
+            </div>
+
+            <div class="feature-card__content">
+              <h3 class="feature-card__title">ПП Бар</h3>
+
+              <p class="feature-card__text">
+                Полезные напитки<br>
+                и перекусы помогут<br>
+                восстановить силы<br>
+                и поддержать результат.
+              </p>
+            </div>
+          </article>
+
+          <article class="feature-card feature-card--wide">
+            <a href="#account" class="feature-card__circle-link" aria-label="Перейти в личный кабинет">
+              <img src="assets/img/arrow-up-right.svg" alt="">
+            </a>
+
+            <div class="feature-card__content feature-card__content--bottom-dark">
+              <h3 class="feature-card__title">Личный кабинет</h3>
+
+              <p class="feature-card__text">
+                В личном кабинете удобно записываться на тренировки,
+                следить за абонементом и управлять своими
+                занятиями онлайн.
+              </p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="directions-ticker" aria-label="Направления тренировок">
+    <div class="directions-ticker__track">
+      <div class="directions-ticker__group">
+        <span class="directions-ticker__item directions-ticker__item--accent">Пилатес</span>
+        <span class="directions-ticker__item">Силовые тренировки</span>
+        <span class="directions-ticker__item directions-ticker__item--accent">TRX</span>
+        <span class="directions-ticker__item">Растяжка</span>
+        <span class="directions-ticker__item directions-ticker__item--accent">Функциональные тренировки</span>
+        <span class="directions-ticker__item">HIIT</span>
+        <span class="directions-ticker__item directions-ticker__item--accent">Full Body</span>
+        <span class="directions-ticker__item">Йога</span>
+        <span class="directions-ticker__item directions-ticker__item--accent">Пилатес</span>
+        <span class="directions-ticker__item">Силовые тренировки</span>
+        <span class="directions-ticker__item directions-ticker__item--accent">TRX</span>
+        <span class="directions-ticker__item">HIIT</span>
+      </div>
+
+      <div class="directions-ticker__group" aria-hidden="true">
+        <span class="directions-ticker__item directions-ticker__item--accent">Пилатес</span>
+        <span class="directions-ticker__item">Силовые тренировки</span>
+        <span class="directions-ticker__item directions-ticker__item--accent">TRX</span>
+        <span class="directions-ticker__item">Растяжка</span>
+        <span class="directions-ticker__item directions-ticker__item--accent">Функциональные тренировки</span>
+        <span class="directions-ticker__item">HIIT</span>
+        <span class="directions-ticker__item directions-ticker__item--accent">Full Body</span>
+        <span class="directions-ticker__item">Йога</span>
+        <span class="directions-ticker__item directions-ticker__item--accent">Пилатес</span>
+        <span class="directions-ticker__item">Силовые тренировки</span>
+        <span class="directions-ticker__item directions-ticker__item--accent">TRX</span>
+        <span class="directions-ticker__item">HIIT</span>
+      </div>
+    </div>
+  </section>
+  <section class="memberships">
+    <div class="memberships__inner">
+      <h2 class="memberships__title">АБОНЕМЕНТЫ</h2>
+
+      <div class="memberships__grid">
+        <article class="membership membership--intro">
+          <p class="membership__intro-text">
+            Мы сделали несколько форматов абонементов,
+            чтобы каждый мог выбрать комфортный режим
+            тренировок
+          </p>
+        </article>
+
+        <article class="membership membership--dark">
+          <h3 class="membership__name">Тариф «День»</h3>
+          <p class="membership__time">Время входа 11:00 - 15:00</p>
+
+          <div class="membership__bottom">
+            <p class="membership__price">
+              <span class="membership__price-value">2500₽</span>
+              <span class="membership__price-period">/1 месяц</span>
             </p>
+
+            <a class="membership__button membership__button--light" href="#">
+              <span class="membership__button-text">Подробнее</span>
+              <span class="membership__button-icon" aria-hidden="true">
+                <img src="assets/img/arrow-up-right.svg" alt="">
+              </span>
+            </a>
           </div>
         </article>
 
-        <article class="feature-card feature-card--wide">
-          <a href="#account" class="feature-card__circle-link" aria-label="Перейти в личный кабинет">
-            <img src="assets/img/arrow-up-right.svg" alt="">
-          </a>
+        <article class="membership membership--light membership--hit">
+          <div class="membership__badge">ХИТ</div>
 
-          <div class="feature-card__content feature-card__content--bottom-dark">
-            <h3 class="feature-card__title">Личный кабинет</h3>
+          <h3 class="membership__name">Тариф «Полный день»</h3>
+          <p class="membership__time">Время входа 08:00 - 16:00</p>
 
-            <p class="feature-card__text">
-              В личном кабинете удобно записываться на тренировки,
-              следить за абонементом и управлять своими
-              занятиями онлайн.
+          <div class="membership__bottom">
+            <p class="membership__price">
+              <span class="membership__price-value">3100₽</span>
+              <span class="membership__price-period">/1 месяц</span>
             </p>
+
+            <a class="membership__button membership__button--dark" href="#">
+              <span class="membership__button-text">Подробнее</span>
+              <span class="membership__button-icon " aria-hidden="true">
+                <img src="assets/img/arrow-up-right.svg" alt="" class="arrow-black">
+              </span>
+            </a>
           </div>
+        </article>
+
+        <article class="membership membership--dark">
+          <h3 class="membership__name">Тариф «Безлимит»</h3>
+          <p class="membership__time">Без ограничений по времени</p>
+
+          <div class="membership__bottom">
+            <p class="membership__price">
+              <span class="membership__price-value">4000₽</span>
+              <span class="membership__price-period">/1 месяц</span>
+            </p>
+
+            <a class="membership__button membership__button--light" href="#">
+              <span class="membership__button-text">Подробнее</span>
+              <span class="membership__button-icon " aria-hidden="true">
+                <img src="assets/img/arrow-up-right.svg" alt="">
+              </span>
+            </a>
+          </div>
+        </article>
+
+        <article class="membership membership--dark">
+          <h3 class="membership__name">Тариф «VIP»</h3>
+          <p class="membership__time">Посещения без ограничений</p>
+          <p class="membership__time">30 минут солярий</p>
+
+          <div class="membership__bottom">
+            <p class="membership__price">
+              <span class="membership__price-value">5100₽</span>
+              <span class="membership__price-period">/1 месяц</span>
+            </p>
+
+            <a class="membership__button membership__button--light" href="#">
+              <span class="membership__button-text">Подробнее</span>
+              <span class="membership__button-icon" aria-hidden="true">
+                <img src="assets/img/arrow-up-right.svg" alt="">
+              </span>
+            </a>
+          </div>
+        </article>
+
+        <article class="membership membership--contact">
+          <p class="membership__contact-text">
+            Чтобы узнать подробнее <br>
+            об&nbsp;абонементах перейдите
+            на&nbsp;страницу с&nbsp;тарифами,
+            либо свяжитесь с&nbsp;нами
+          </p>
+
+          <a class="membership__contact-button" href="#contacts">
+            <span class="membership__contact-button-text">Связаться с нами</span>
+            <span class="membership__contact-button-icon" aria-hidden="true">
+              <img src="assets/img/arrow-up-right.svg" alt="">
+            </span>
+          </a>
         </article>
       </div>
     </div>
-  </div>
-</section>
-<section class="directions-ticker" aria-label="Направления тренировок">
-  <div class="directions-ticker__track">
-    <div class="directions-ticker__group">
-      <span class="directions-ticker__item directions-ticker__item--accent">Пилатес</span>
-      <span class="directions-ticker__item">Силовые тренировки</span>
-      <span class="directions-ticker__item directions-ticker__item--accent">TRX</span>
-      <span class="directions-ticker__item">Растяжка</span>
-      <span class="directions-ticker__item directions-ticker__item--accent">Функциональные тренировки</span>
-      <span class="directions-ticker__item">HIIT</span>
-      <span class="directions-ticker__item directions-ticker__item--accent">Full Body</span>
-      <span class="directions-ticker__item">Йога</span>
-      <span class="directions-ticker__item directions-ticker__item--accent">Пилатес</span>
-      <span class="directions-ticker__item">Силовые тренировки</span>
-      <span class="directions-ticker__item directions-ticker__item--accent">TRX</span>
-      <span class="directions-ticker__item">HIIT</span>
-    </div>
+  </section>
+  <section class="team" id="trainers">
+    <div class="team__shell">
+      <div class="team__header">
+        <h2 class="team__title">НАША КОМАНДА</h2>
 
-    <div class="directions-ticker__group" aria-hidden="true">
-      <span class="directions-ticker__item directions-ticker__item--accent">Пилатес</span>
-      <span class="directions-ticker__item">Силовые тренировки</span>
-      <span class="directions-ticker__item directions-ticker__item--accent">TRX</span>
-      <span class="directions-ticker__item">Растяжка</span>
-      <span class="directions-ticker__item directions-ticker__item--accent">Функциональные тренировки</span>
-      <span class="directions-ticker__item">HIIT</span>
-      <span class="directions-ticker__item directions-ticker__item--accent">Full Body</span>
-      <span class="directions-ticker__item">Йога</span>
-      <span class="directions-ticker__item directions-ticker__item--accent">Пилатес</span>
-      <span class="directions-ticker__item">Силовые тренировки</span>
-      <span class="directions-ticker__item directions-ticker__item--accent">TRX</span>
-      <span class="directions-ticker__item">HIIT</span>
-    </div>
-  </div>
-</section>
-<section class="memberships">
-  <div class="memberships__inner">
-    <h2 class="memberships__title">АБОНЕМЕНТЫ</h2>
-
-    <div class="memberships__grid">
-      <article class="membership membership--intro">
-        <p class="membership__intro-text">
-          Мы сделали несколько форматов абонементов,
-          чтобы каждый мог выбрать комфортный режим
-          тренировок
-        </p>
-      </article>
-
-      <article class="membership membership--dark">
-        <h3 class="membership__name">Тариф «День»</h3>
-        <p class="membership__time">Время входа 11:00 - 15:00</p>
-
-        <div class="membership__bottom">
-          <p class="membership__price">
-            <span class="membership__price-value">2500₽</span>
-            <span class="membership__price-period">/1 месяц</span>
-          </p>
-
-          <a class="membership__button membership__button--light" href="#">
-            <span class="membership__button-text">Подробнее</span>
-            <span class="membership__button-icon" aria-hidden="true">
-              <img src="assets/img/arrow-up-right.svg" alt="">
-            </span>
-          </a>
-        </div>
-      </article>
-
-      <article class="membership membership--light membership--hit">
-        <div class="membership__badge">ХИТ</div>
-
-        <h3 class="membership__name">Тариф «Полный день»</h3>
-        <p class="membership__time">Время входа 08:00 - 16:00</p>
-
-        <div class="membership__bottom">
-          <p class="membership__price">
-            <span class="membership__price-value">3100₽</span>
-            <span class="membership__price-period">/1 месяц</span>
-          </p>
-
-          <a class="membership__button membership__button--dark" href="#">
-            <span class="membership__button-text">Подробнее</span>
-            <span class="membership__button-icon " aria-hidden="true">
-              <img src="assets/img/arrow-up-right.svg" alt="" class="arrow-black">
-            </span>
-          </a>
-        </div>
-      </article>
-
-      <article class="membership membership--dark">
-        <h3 class="membership__name">Тариф «Безлимит»</h3>
-        <p class="membership__time">Без ограничений по времени</p>
-
-        <div class="membership__bottom">
-          <p class="membership__price">
-            <span class="membership__price-value">4000₽</span>
-            <span class="membership__price-period">/1 месяц</span>
-          </p>
-
-          <a class="membership__button membership__button--light" href="#">
-            <span class="membership__button-text">Подробнее</span>
-            <span class="membership__button-icon " aria-hidden="true" >
-              <img src="assets/img/arrow-up-right.svg" alt="">
-            </span>
-          </a>
-        </div>
-      </article>
-
-      <article class="membership membership--dark">
-        <h3 class="membership__name">Тариф «VIP»</h3>
-        <p class="membership__time">Посещения без ограничений</p>
-        <p class="membership__time">30 минут солярий</p>
-
-        <div class="membership__bottom">
-          <p class="membership__price">
-            <span class="membership__price-value">5100₽</span>
-            <span class="membership__price-period">/1 месяц</span>
-          </p>
-
-          <a class="membership__button membership__button--light" href="#">
-            <span class="membership__button-text">Подробнее</span>
-            <span class="membership__button-icon" aria-hidden="true">
-              <img src="assets/img/arrow-up-right.svg" alt="">
-            </span>
-          </a>
-        </div>
-      </article>
-
-      <article class="membership membership--contact">
-        <p class="membership__contact-text">
-          Чтобы узнать подробнее <br>
-          об&nbsp;абонементах перейдите
-          на&nbsp;страницу с&nbsp;тарифами,
-          либо свяжитесь с&nbsp;нами
-        </p>
-
-        <a class="membership__contact-button" href="#contacts">
-          <span class="membership__contact-button-text">Связаться с нами</span>
-          <span class="membership__contact-button-icon" aria-hidden="true">
-            <img src="assets/img/arrow-up-right.svg" alt="">
-          </span>
-        </a>
-      </article>
-    </div>
-  </div>
-</section>
-<section class="team" id="trainers">
-  <div class="team__shell">
-    <div class="team__header">
-      <h2 class="team__title">НАША КОМАНДА</h2>
-
-      <div class="team__controls">
-        <button class="team__control team__control--prev" type="button" aria-label="Предыдущие тренеры">
-          <img src="assets/img/arrow.svg" alt="">
-        </button>
-
-        <button class="team__control team__control--next" type="button" aria-label="Следующие тренеры">
-          <img src="assets/img/arrow.svg" alt="">
-        </button>
-      </div>
-    </div>
-
-    <div class="team__slider">
-      <div class="team__track">
-        <!-- экран 1 -->
-        <div class="team__slide">
-          <article class="trainer-card">
-            <div class="trainer-card__photo-wrap">
-              <img class="trainer-card__photo" src="assets/img/index/trainer-1.jpg" alt="Екатерина Логинова">
-              <div class="trainer-card__tag">Йога</div>
-            </div>
-            <h3 class="trainer-card__name">Екатерина Логинова</h3>
-            <p class="trainer-card__role">Инструктор групповых программ</p>
-          </article>
-
-          <article class="trainer-card">
-            <div class="trainer-card__photo-wrap">
-              <img class="trainer-card__photo" src="assets/img/index/trainer-2.jpg" alt="Самарин Артем">
-              <div class="trainer-card__tag">Силовые тренировки</div>
-            </div>
-            <h3 class="trainer-card__name">Самарин Артем</h3>
-            <p class="trainer-card__role">Инструктор тренажерного зала</p>
-          </article>
-
-          <article class="trainer-card">
-            <div class="trainer-card__photo-wrap">
-              <img class="trainer-card__photo" src="assets/img/index/trainer-3.jpg" alt="Лучина Елена">
-              <div class="trainer-card__tag">Пилатес</div>
-            </div>
-            <h3 class="trainer-card__name">Лучина Елена</h3>
-            <p class="trainer-card__role">Инструктор групповых программ</p>
-          </article>
-
-          <article class="trainer-card">
-            <div class="trainer-card__photo-wrap">
-              <img class="trainer-card__photo" src="assets/img/index/trainer-4.jpg" alt="Карягин Михаил">
-              <div class="trainer-card__tag">TRX</div>
-            </div>
-            <h3 class="trainer-card__name">Карягин Михаил</h3>
-            <p class="trainer-card__role">Инструктор тренажерного зала</p>
-          </article>
-        </div>
-
-
-        <div class="team__slide">
-          <article class="trainer-card">
-            <div class="trainer-card__photo-wrap">
-              <img class="trainer-card__photo" src="assets/img/index/trainer-5.jpg" alt="Анна Миронова">
-              <div class="trainer-card__tag">Стретчинг</div>
-            </div>
-            <h3 class="trainer-card__name">Анна Миронова</h3>
-            <p class="trainer-card__role">Инструктор групповых программ</p>
-          </article>
-
-          <article class="trainer-card">
-            <div class="trainer-card__photo-wrap">
-              <img class="trainer-card__photo" src="assets/img/index/trainer-6.jpg" alt="Илья Власов">
-              <div class="trainer-card__tag">CrossFit</div>
-            </div>
-            <h3 class="trainer-card__name">Илья Власов</h3>
-            <p class="trainer-card__role">Инструктор тренажерного зала</p>
-          </article>
-
-          <article class="trainer-card">
-            <div class="trainer-card__photo-wrap">
-              <img class="trainer-card__photo" src="assets/img/index/trainer-7.jpg" alt="Мария Соколова">
-              <div class="trainer-card__tag">Dance Fit</div>
-            </div>
-            <h3 class="trainer-card__name">Мария Соколова</h3>
-            <p class="trainer-card__role">Инструктор групповых программ</p>
-          </article>
-
-          <article class="trainer-card">
-            <div class="trainer-card__photo-wrap">
-              <img class="trainer-card__photo" src="assets/img/index/trainer-8.jpg" alt="Алексей Громов">
-              <div class="trainer-card__tag">Функциональные</div>
-            </div>
-            <h3 class="trainer-card__name">Алексей Громов</h3>
-            <p class="trainer-card__role">Инструктор тренажерного зала</p>
-          </article>
-        </div>
-
-
-        <div class="team__slide">
-          <article class="trainer-card">
-            <div class="trainer-card__photo-wrap">
-              <img class="trainer-card__photo" src="assets/img/index/trainer-9.jpg" alt="Полина Жданова">
-              <div class="trainer-card__tag">Йога</div>
-            </div>
-            <h3 class="trainer-card__name">Полина Жданова</h3>
-            <p class="trainer-card__role">Инструктор групповых программ</p>
-          </article>
-
-          <article class="trainer-card">
-            <div class="trainer-card__photo-wrap">
-              <img class="trainer-card__photo" src="assets/img/index/trainer-10.jpg" alt="Денис Орлов">
-              <div class="trainer-card__tag">HIIT</div>
-            </div>
-            <h3 class="trainer-card__name">Денис Орлов</h3>
-            <p class="trainer-card__role">Инструктор тренажерного зала</p>
-          </article>
-
-          <article class="trainer-card">
-            <div class="trainer-card__photo-wrap">
-              <img class="trainer-card__photo" src="assets/img/index/trainer-11.jpg" alt="Виктория Белова">
-              <div class="trainer-card__tag">Пилатес</div>
-            </div>
-            <h3 class="trainer-card__name">Виктория Белова</h3>
-            <p class="trainer-card__role">Инструктор групповых программ</p>
-          </article>
-
-          <article class="trainer-card">
-            <div class="trainer-card__photo-wrap">
-              <img class="trainer-card__photo" src="assets/img/index/trainer-12.jpg" alt="Кирилл Лебедев">
-              <div class="trainer-card__tag">TRX</div>
-            </div>
-            <h3 class="trainer-card__name">Кирилл Лебедев</h3>
-            <p class="trainer-card__role">Инструктор тренажерного зала</p>
-          </article>
-        </div>
-      </div>
-    </div>
-
-    <div class="team__footer">
-      <p class="team__footer-text">Узнайте подробнее о наших тренерах</p>
-
-      <a class="team__button" href="#">
-        <span class="team__button-text">Подробнее</span>
-        <span class="team__button-icon" aria-hidden="true">
-          <img src="assets/img/arrow-up-right.svg" alt="">
-        </span>
-      </a>
-    </div>
-  </div>
-</section>
-<section class="feedback" id="contact">
-  <div class="feedback__inner">
-    <div class="feedback__head">
-      <h2 class="feedback__title">
-        Купите абонемент в
-        <a href="pages/account.html" class="feedback__title-link">
-          <span>личном кабинете</span>
-          <span class="feedback__title-link-icon" aria-hidden="true">
-            <img src="assets/img/arrow-up-right.svg" alt="">
-          </span>
-        </a>
-        <br>
-        или запишитесь на&nbsp;консультацию
-      </h2>
-    </div>
-
-    <div class="feedback__content">
-      <div class="feedback__form-card">
-        <h3 class="feedback__form-title">Свяжитесь с нами</h3>
-
-        <p class="feedback__form-text">
-          Если у Вас есть вопросы или возникли какие-то проблемы
-          впишите свои данные и&nbsp;мы Вам перезвоним
-        </p>
-
-        <form class="feedback-form" id="feedbackForm">
-          <label class="feedback-form__group">
-            <span class="feedback-form__label">Имя</span>
-            <input
-              class="feedback-form__input"
-              type="text"
-              name="name"
-              placeholder="Ваше имя"
-              required
-            >
-          </label>
-
-          <label class="feedback-form__group">
-            <span class="feedback-form__label">Телефон</span>
-            <input
-              class="feedback-form__input"
-              type="tel"
-              name="phone"
-              placeholder="+7 (999) 999 - 99 - 99"
-              id="phoneInput"
-              required
-            >
-          </label>
-
-          <label class="feedback-form__group">
-            <span class="feedback-form__label">Email</span>
-            <input
-              class="feedback-form__input"
-              type="email"
-              name="email"
-              placeholder="example@mail.ru"
-              required
-            >
-          </label>
-
-          <label class="feedback-form__checkbox">
-            <input
-              class="feedback-form__checkbox-input"
-              type="checkbox"
-              name="agreement"
-              required
-            >
-            <span class="feedback-form__checkbox-box"></span>
-            <span class="feedback-form__checkbox-text">
-              Согласие на обработку персональных данных
-            </span>
-          </label>
-
-          <button class="feedback-form__submit" type="submit">
-            Перезвоните мне
+        <div class="team__controls">
+          <button class="team__control team__control--prev" type="button" aria-label="Предыдущие тренеры">
+            <img src="assets/img/arrow.svg" alt="">
           </button>
-        </form>
+
+          <button class="team__control team__control--next" type="button" aria-label="Следующие тренеры">
+            <img src="assets/img/arrow.svg" alt="">
+          </button>
+        </div>
       </div>
 
-      <div class="feedback__info">
-        <article class="contact-card contact-card--accent">
-          <div class="contact-card__icon">
-            <img src="assets/img/index/map.svg" alt="">
-          </div>
-          <div class="contact-card__body">
-            <h3 class="contact-card__title">Адрес</h3>
-            <p class="contact-card__text">Кисловодск, Первомайский просп., 27, этаж 3</p>
-          </div>
-        </article>
+      <div class="team__slider">
+        <div class="team__track">
+          <!-- экран 1 -->
+          <div class="team__slide">
+            <article class="trainer-card">
+              <div class="trainer-card__photo-wrap">
+                <img class="trainer-card__photo" src="assets/img/index/trainer-1.jpg" alt="Екатерина Логинова">
+                <div class="trainer-card__tag">Йога</div>
+              </div>
+              <h3 class="trainer-card__name">Екатерина Логинова</h3>
+              <p class="trainer-card__role">Инструктор групповых программ</p>
+            </article>
 
-        <article class="contact-card">
-          <div class="contact-card__icon">
-            <img src="assets/img/index/phone.svg" alt="">
-          </div>
-          <div class="contact-card__body">
-            <h3 class="contact-card__title">Телефон</h3>
-            <p class="contact-card__text">Вы можете связаться с нами <br> по телефону +7 (928) 822-05-55</p>
-          </div>
-        </article>
+            <article class="trainer-card">
+              <div class="trainer-card__photo-wrap">
+                <img class="trainer-card__photo" src="assets/img/index/trainer-2.jpg" alt="Самарин Артем">
+                <div class="trainer-card__tag">Силовые тренировки</div>
+              </div>
+              <h3 class="trainer-card__name">Самарин Артем</h3>
+              <p class="trainer-card__role">Инструктор тренажерного зала</p>
+            </article>
 
-        <article class="contact-card">
-          <div class="contact-card__icon">
-            <img src="assets/img/index/mail.svg" alt="">
-          </div>
-          <div class="contact-card__body">
-            <h3 class="contact-card__title">Email</h3>
-            <p class="contact-card__text">В течение рабочего времени Вы можете <br> писать нам на почту vteme@mail.ru</p>
-          </div>
-        </article>
+            <article class="trainer-card">
+              <div class="trainer-card__photo-wrap">
+                <img class="trainer-card__photo" src="assets/img/index/trainer-3.jpg" alt="Лучина Елена">
+                <div class="trainer-card__tag">Пилатес</div>
+              </div>
+              <h3 class="trainer-card__name">Лучина Елена</h3>
+              <p class="trainer-card__role">Инструктор групповых программ</p>
+            </article>
 
-        <article class="contact-card">
-          <div class="contact-card__icon">
-            <img src="assets/img/index/clock.svg" alt="">
+            <article class="trainer-card">
+              <div class="trainer-card__photo-wrap">
+                <img class="trainer-card__photo" src="assets/img/index/trainer-4.jpg" alt="Карягин Михаил">
+                <div class="trainer-card__tag">TRX</div>
+              </div>
+              <h3 class="trainer-card__name">Карягин Михаил</h3>
+              <p class="trainer-card__role">Инструктор тренажерного зала</p>
+            </article>
           </div>
-          <div class="contact-card__body">
-            <h3 class="contact-card__title">Рабочие часы</h3>
-            <p class="contact-card__text">Пн — Пт: 08:00-22:00<br>Сб — Вс: 09:00-21:00</p>
+
+
+          <div class="team__slide">
+            <article class="trainer-card">
+              <div class="trainer-card__photo-wrap">
+                <img class="trainer-card__photo" src="assets/img/index/trainer-5.jpg" alt="Анна Миронова">
+                <div class="trainer-card__tag">Стретчинг</div>
+              </div>
+              <h3 class="trainer-card__name">Анна Миронова</h3>
+              <p class="trainer-card__role">Инструктор групповых программ</p>
+            </article>
+
+            <article class="trainer-card">
+              <div class="trainer-card__photo-wrap">
+                <img class="trainer-card__photo" src="assets/img/index/trainer-6.jpg" alt="Илья Власов">
+                <div class="trainer-card__tag">CrossFit</div>
+              </div>
+              <h3 class="trainer-card__name">Илья Власов</h3>
+              <p class="trainer-card__role">Инструктор тренажерного зала</p>
+            </article>
+
+            <article class="trainer-card">
+              <div class="trainer-card__photo-wrap">
+                <img class="trainer-card__photo" src="assets/img/index/trainer-7.jpg" alt="Мария Соколова">
+                <div class="trainer-card__tag">Dance Fit</div>
+              </div>
+              <h3 class="trainer-card__name">Мария Соколова</h3>
+              <p class="trainer-card__role">Инструктор групповых программ</p>
+            </article>
+
+            <article class="trainer-card">
+              <div class="trainer-card__photo-wrap">
+                <img class="trainer-card__photo" src="assets/img/index/trainer-8.jpg" alt="Алексей Громов">
+                <div class="trainer-card__tag">Функциональные</div>
+              </div>
+              <h3 class="trainer-card__name">Алексей Громов</h3>
+              <p class="trainer-card__role">Инструктор тренажерного зала</p>
+            </article>
           </div>
-        </article>
+
+
+          <div class="team__slide">
+            <article class="trainer-card">
+              <div class="trainer-card__photo-wrap">
+                <img class="trainer-card__photo" src="assets/img/index/trainer-9.jpg" alt="Полина Жданова">
+                <div class="trainer-card__tag">Йога</div>
+              </div>
+              <h3 class="trainer-card__name">Полина Жданова</h3>
+              <p class="trainer-card__role">Инструктор групповых программ</p>
+            </article>
+
+            <article class="trainer-card">
+              <div class="trainer-card__photo-wrap">
+                <img class="trainer-card__photo" src="assets/img/index/trainer-10.jpg" alt="Денис Орлов">
+                <div class="trainer-card__tag">HIIT</div>
+              </div>
+              <h3 class="trainer-card__name">Денис Орлов</h3>
+              <p class="trainer-card__role">Инструктор тренажерного зала</p>
+            </article>
+
+            <article class="trainer-card">
+              <div class="trainer-card__photo-wrap">
+                <img class="trainer-card__photo" src="assets/img/index/trainer-11.jpg" alt="Виктория Белова">
+                <div class="trainer-card__tag">Пилатес</div>
+              </div>
+              <h3 class="trainer-card__name">Виктория Белова</h3>
+              <p class="trainer-card__role">Инструктор групповых программ</p>
+            </article>
+
+            <article class="trainer-card">
+              <div class="trainer-card__photo-wrap">
+                <img class="trainer-card__photo" src="assets/img/index/trainer-12.jpg" alt="Кирилл Лебедев">
+                <div class="trainer-card__tag">TRX</div>
+              </div>
+              <h3 class="trainer-card__name">Кирилл Лебедев</h3>
+              <p class="trainer-card__role">Инструктор тренажерного зала</p>
+            </article>
+          </div>
+        </div>
+      </div>
+
+      <div class="team__footer">
+        <p class="team__footer-text">Узнайте подробнее о наших тренерах</p>
+
+        <a class="team__button" href="#">
+          <span class="team__button-text">Подробнее</span>
+          <span class="team__button-icon" aria-hidden="true">
+            <img src="assets/img/arrow-up-right.svg" alt="">
+          </span>
+        </a>
       </div>
     </div>
-  </div>
-</section>
-<section class="reviews" id="reviews">
-   <div class="reviews__container">
+  </section>
+  <section class="feedback" id="contact">
+    <div class="feedback__inner">
+      <div class="feedback__head">
+        <h2 class="feedback__title">
+          Купите абонемент в
+          <a href="pages/account.html" class="feedback__title-link">
+            <span>личном кабинете</span>
+            <span class="feedback__title-link-icon" aria-hidden="true">
+              <img src="assets/img/arrow-up-right.svg" alt="">
+            </span>
+          </a>
+          <br>
+          или запишитесь на&nbsp;консультацию
+        </h2>
+      </div>
+
+      <div class="feedback__content">
+        <div class="feedback__form-card">
+          <h3 class="feedback__form-title">Свяжитесь с нами</h3>
+
+          <p class="feedback__form-text">
+            Если у Вас есть вопросы или возникли какие-то проблемы
+            впишите свои данные и&nbsp;мы Вам перезвоним
+          </p>
+
+          <form class="feedback-form" id="feedbackForm">
+            <label class="feedback-form__group">
+              <span class="feedback-form__label">Имя</span>
+              <input class="feedback-form__input" type="text" name="name" placeholder="Ваше имя" required>
+            </label>
+
+            <label class="feedback-form__group">
+              <span class="feedback-form__label">Телефон</span>
+              <input class="feedback-form__input" type="tel" name="phone" placeholder="+7 (999) 999 - 99 - 99"
+                id="phoneInput" required>
+            </label>
+
+            <label class="feedback-form__group">
+              <span class="feedback-form__label">Email</span>
+              <input class="feedback-form__input" type="email" name="email" placeholder="example@mail.ru" required>
+            </label>
+
+            <label class="feedback-form__checkbox">
+              <input class="feedback-form__checkbox-input" type="checkbox" name="agreement" required>
+              <span class="feedback-form__checkbox-box"></span>
+              <span class="feedback-form__checkbox-text">
+                Согласие на обработку персональных данных
+              </span>
+            </label>
+
+            <button class="feedback-form__submit" type="submit">
+              Перезвоните мне
+            </button>
+          </form>
+        </div>
+
+        <div class="feedback__info">
+          <article class="contact-card contact-card--accent">
+            <div class="contact-card__icon">
+              <img src="assets/img/index/map.svg" alt="">
+            </div>
+            <div class="contact-card__body">
+              <h3 class="contact-card__title">Адрес</h3>
+              <p class="contact-card__text">Кисловодск, Первомайский просп., 27, этаж 3</p>
+            </div>
+          </article>
+
+          <article class="contact-card">
+            <div class="contact-card__icon">
+              <img src="assets/img/index/phone.svg" alt="">
+            </div>
+            <div class="contact-card__body">
+              <h3 class="contact-card__title">Телефон</h3>
+              <p class="contact-card__text">Вы можете связаться с нами <br> по телефону +7 (928) 822-05-55</p>
+            </div>
+          </article>
+
+          <article class="contact-card">
+            <div class="contact-card__icon">
+              <img src="assets/img/index/mail.svg" alt="">
+            </div>
+            <div class="contact-card__body">
+              <h3 class="contact-card__title">Email</h3>
+              <p class="contact-card__text">В течение рабочего времени Вы можете <br> писать нам на почту vteme@mail.ru
+              </p>
+            </div>
+          </article>
+
+          <article class="contact-card">
+            <div class="contact-card__icon">
+              <img src="assets/img/index/clock.svg" alt="">
+            </div>
+            <div class="contact-card__body">
+              <h3 class="contact-card__title">Рабочие часы</h3>
+              <p class="contact-card__text">Пн — Пт: 08:00-22:00<br>Сб — Вс: 09:00-21:00</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="reviews" id="reviews">
+    <div class="reviews__container">
       <div class="reviews__content">
-    <h2 class="reviews__title">ОТЗЫВЫ</h2>
+        <h2 class="reviews__title">ОТЗЫВЫ</h2>
 
-    <p class="reviews__subtitle">Посмотрите, что говорят о нас наши клиенты</p>
+        <p class="reviews__subtitle">Посмотрите, что говорят о нас наши клиенты</p>
 
-    <div class="reviews__tabs">
-      <button class="reviews__tab reviews__tab--active" type="button" data-filter="all">
-        Все отзывы
-      </button>
+        <div class="reviews__tabs">
+          <button class="reviews__tab reviews__tab--active" type="button" data-filter="all">
+            Все отзывы
+          </button>
 
-      <button class="reviews__tab" type="button" data-filter="yandex" aria-label="Отзывы Яндекс">
-        <span class="reviews__tab-icon">
-          <img src="assets/img/yandex-icon.svg" alt="">
-        </span>
-        <span class="reviews__tab-rating">5.0</span>
-      </button>
+          <button class="reviews__tab" type="button" data-filter="yandex" aria-label="Отзывы Яндекс">
+            <span class="reviews__tab-icon">
+              <img src="assets/img/yandex-icon.svg" alt="">
+            </span>
+            <span class="reviews__tab-rating">5.0</span>
+          </button>
 
-      <button class="reviews__tab" type="button" data-filter="2gis" aria-label="Отзывы 2ГИС">
-        <span class="reviews__tab-icon">
-          <img src="assets/img/2gis-icon.svg" alt="">
-        </span>
-        <span class="reviews__tab-rating">4.9</span>
-      </button>
+          <button class="reviews__tab" type="button" data-filter="2gis" aria-label="Отзывы 2ГИС">
+            <span class="reviews__tab-icon">
+              <img src="assets/img/2gis-icon.svg" alt="">
+            </span>
+            <span class="reviews__tab-rating">4.9</span>
+          </button>
+        </div>
+
+        <p class="reviews__count" id="reviewsCount">265 отзывов в двух источниках</p>
+
+        <div class="reviews__viewport">
+          <div class="reviews__list" id="reviewsList"></div>
+        </div>
+
+        <div class="reviews__pagination" id="reviewsPagination"></div>
+      </div>
     </div>
+  </section>
+  <section class="faq" id="faq">
+    <div class="faq__container">
+      <h2 class="faq__title">FAQ</h2>
+      <p class="faq__subtitle">Ответы на часто задаваемые вопросы</p>
 
-    <p class="reviews__count" id="reviewsCount">265 отзывов в двух источниках</p>
+      <div class="faq__list">
+        <article class="faq__item faq__item--active">
+          <div class="faq__question-wrap">
+            <h3 class="faq__question">Нужно ли иметь абонемент для посещения клуба?</h3>
+            <button class="faq__toggle" type="button" aria-label="Открыть ответ">
+              <img src="assets/img/x.svg" alt="" class="faq__toggle-icon">
+            </button>
+          </div>
+          <div class="faq__answer">
+            <p>
+              Это не обязательно. Вы можете прийти на разовое занятие, однако для регулярных
+              тренировок выгоднее оформить абонемент.
+            </p>
+          </div>
+        </article>
 
-    <div class="reviews__viewport">
-      <div class="reviews__list" id="reviewsList"></div>
+        <article class="faq__item">
+          <div class="faq__question-wrap">
+            <h3 class="faq__question">Какие есть типы абонементов?</h3>
+            <button class="faq__toggle" type="button" aria-label="Открыть ответ">
+              <img src="assets/img/x.svg" alt="" class="faq__toggle-icon">
+            </button>
+          </div>
+          <div class="faq__answer">
+            <p>
+              В клубе доступны дневные, безлимитные, VIP и расширенные форматы абонементов.
+              Вы можете выбрать вариант по времени посещения и набору услуг.
+            </p>
+          </div>
+        </article>
+
+        <article class="faq__item">
+          <div class="faq__question-wrap">
+            <h3 class="faq__question">Что включено в стоимость абонемента?</h3>
+            <button class="faq__toggle" type="button" aria-label="Открыть ответ">
+              <img src="assets/img/x.svg" alt="" class="faq__toggle-icon">
+            </button>
+          </div>
+          <div class="faq__answer">
+            <p>
+              В зависимости от тарифа в стоимость могут входить посещение тренажерного зала,
+              групповые занятия, консультации тренера и дополнительные опции клуба.
+            </p>
+          </div>
+        </article>
+
+        <article class="faq__item">
+          <div class="faq__question-wrap">
+            <h3 class="faq__question">Нужно ли проходить медицинский осмотр перед началом занятий?</h3>
+            <button class="faq__toggle" type="button" aria-label="Открыть ответ">
+              <img src="assets/img/x.svg" alt="" class="faq__toggle-icon">
+            </button>
+          </div>
+          <div class="faq__answer">
+            <p>
+              Если у вас есть ограничения по здоровью, лучше заранее проконсультироваться с врачом.
+              Для обычных тренировок специальная справка не требуется.
+            </p>
+          </div>
+        </article>
+
+        <article class="faq__item">
+          <div class="faq__question-wrap">
+            <h3 class="faq__question">Есть ли персональные тренировки и как их заказать?</h3>
+            <button class="faq__toggle" type="button" aria-label="Открыть ответ">
+              <img src="assets/img/x.svg" alt="" class="faq__toggle-icon">
+            </button>
+          </div>
+          <div class="faq__answer">
+            <p>
+              Да, персональные тренировки доступны. Их можно оформить через администратора клуба
+              или при личном посещении.
+            </p>
+          </div>
+        </article>
+
+        <article class="faq__item">
+          <div class="faq__question-wrap">
+            <h3 class="faq__question">Можно ли заморозить абонемент, если не получится ходить?</h3>
+            <button class="faq__toggle" type="button" aria-label="Открыть ответ">
+              <img src="assets/img/x.svg" alt="" class="faq__toggle-icon">
+            </button>
+          </div>
+          <div class="faq__answer">
+            <p>
+              Да, для некоторых тарифов предусмотрена заморозка абонемента. Условия зависят от
+              выбранного формата и срока действия.
+            </p>
+          </div>
+        </article>
+
+        <article class="faq__item">
+          <div class="faq__question-wrap">
+            <h3 class="faq__question">Что нужно взять с собой на тренировку?</h3>
+            <button class="faq__toggle" type="button" aria-label="Открыть ответ">
+              <img src="assets/img/x.svg" alt="" class="faq__toggle-icon">
+            </button>
+          </div>
+          <div class="faq__answer">
+            <p>
+              Возьмите удобную спортивную форму, сменную обувь, полотенце и бутылку воды.
+              Остальные детали можно уточнить у администратора.
+            </p>
+          </div>
+        </article>
+
+        <article class="faq__item">
+          <div class="faq__question-wrap">
+            <h3 class="faq__question">Можно ли привести ребенка в клуб?</h3>
+            <button class="faq__toggle" type="button" aria-label="Открыть ответ">
+              <img src="assets/img/x.svg" alt="" class="faq__toggle-icon">
+            </button>
+          </div>
+          <div class="faq__answer">
+            <p>
+              Это зависит от возраста ребенка и правил клуба. Лучше уточнить этот момент заранее,
+              чтобы администратор подсказал доступные варианты.
+            </p>
+          </div>
+        </article>
+
+        <article class="faq__item">
+          <div class="faq__question-wrap">
+            <h3 class="faq__question">Есть ли кафе или бар на территории клуба?</h3>
+            <button class="faq__toggle" type="button" aria-label="Открыть ответ">
+              <img src="assets/img/x.svg" alt="" class="faq__toggle-icon">
+            </button>
+          </div>
+          <div class="faq__answer">
+            <p>
+              В клубе можно приобрести напитки и перекус. Точный набор зависит от внутренней зоны
+              отдыха и формата сервиса клуба.
+            </p>
+          </div>
+        </article>
+      </div>
     </div>
-
-    <div class="reviews__pagination" id="reviewsPagination"></div>
-    </div>
-  </div>
-</section>
-<section class="faq" id="faq">
-  <div class="faq__container">
-    <h2 class="faq__title">FAQ</h2>
-    <p class="faq__subtitle">Ответы на часто задаваемые вопросы</p>
-
-    <div class="faq__list">
-      <article class="faq__item faq__item--active">
-        <div class="faq__question-wrap">
-          <h3 class="faq__question">Нужно ли иметь абонемент для посещения клуба?</h3>
-          <button class="faq__toggle" type="button" aria-label="Открыть ответ">
-            <img src="assets/img/x.svg" alt="" class="faq__toggle-icon">
-          </button>
+  </section>
+  <footer class="footer" id="footer">
+    <div class="footer__container">
+      <div class="footer__top">
+        <div class="footer__logo-block">
+          <a href="index.html" class="footer__logo" aria-label="ВТЕМЕ">
+            <img src="assets/img/logo-vteme.svg" alt="ВТЕМЕ">
+          </a>
         </div>
-        <div class="faq__answer">
-          <p>
-            Это не обязательно. Вы можете прийти на разовое занятие, однако для регулярных
-            тренировок выгоднее оформить абонемент.
+
+        <div class="footer__contacts">
+          <p class="footer__text">
+            Есть вопросы или<br>
+            предложения? Свяжитесь<br>
+            с нами
+          </p>
+
+          <a href="mailto:vteme@mail.ru" class="footer__mail">
+            vteme@mail.ru
+          </a>
+
+          <p class="footer__caption">Позвоните нам</p>
+
+          <a href="tel:+79288220555" class="footer__phone">
+            +7 (928) 822-05-55
+          </a>
+        </div>
+
+        <div class="footer__address">
+          <p class="footer__address-text">
+            КИСЛОВОДСК<br>
+            Первомайский<br>
+            проспект 27<br>
+            +7 (928) 822-05-55
           </p>
         </div>
-      </article>
 
-      <article class="faq__item">
-        <div class="faq__question-wrap">
-          <h3 class="faq__question">Какие есть типы абонементов?</h3>
-          <button class="faq__toggle" type="button" aria-label="Открыть ответ">
-            <img src="assets/img/x.svg" alt="" class="faq__toggle-icon">
-          </button>
-        </div>
-        <div class="faq__answer">
-          <p>
-            В клубе доступны дневные, безлимитные, VIP и расширенные форматы абонементов.
-            Вы можете выбрать вариант по времени посещения и набору услуг.
-          </p>
-        </div>
-      </article>
-
-      <article class="faq__item">
-        <div class="faq__question-wrap">
-          <h3 class="faq__question">Что включено в стоимость абонемента?</h3>
-          <button class="faq__toggle" type="button" aria-label="Открыть ответ">
-            <img src="assets/img/x.svg" alt="" class="faq__toggle-icon">
-          </button>
-        </div>
-        <div class="faq__answer">
-          <p>
-            В зависимости от тарифа в стоимость могут входить посещение тренажерного зала,
-            групповые занятия, консультации тренера и дополнительные опции клуба.
-          </p>
-        </div>
-      </article>
-
-      <article class="faq__item">
-        <div class="faq__question-wrap">
-          <h3 class="faq__question">Нужно ли проходить медицинский осмотр перед началом занятий?</h3>
-          <button class="faq__toggle" type="button" aria-label="Открыть ответ">
-            <img src="assets/img/x.svg" alt="" class="faq__toggle-icon">
-          </button>
-        </div>
-        <div class="faq__answer">
-          <p>
-            Если у вас есть ограничения по здоровью, лучше заранее проконсультироваться с врачом.
-            Для обычных тренировок специальная справка не требуется.
-          </p>
-        </div>
-      </article>
-
-      <article class="faq__item">
-        <div class="faq__question-wrap">
-          <h3 class="faq__question">Есть ли персональные тренировки и как их заказать?</h3>
-          <button class="faq__toggle" type="button" aria-label="Открыть ответ">
-            <img src="assets/img/x.svg" alt="" class="faq__toggle-icon">
-          </button>
-        </div>
-        <div class="faq__answer">
-          <p>
-            Да, персональные тренировки доступны. Их можно оформить через администратора клуба
-            или при личном посещении.
-          </p>
-        </div>
-      </article>
-
-      <article class="faq__item">
-        <div class="faq__question-wrap">
-          <h3 class="faq__question">Можно ли заморозить абонемент, если не получится ходить?</h3>
-          <button class="faq__toggle" type="button" aria-label="Открыть ответ">
-            <img src="assets/img/x.svg" alt="" class="faq__toggle-icon">
-          </button>
-        </div>
-        <div class="faq__answer">
-          <p>
-            Да, для некоторых тарифов предусмотрена заморозка абонемента. Условия зависят от
-            выбранного формата и срока действия.
-          </p>
-        </div>
-      </article>
-
-      <article class="faq__item">
-        <div class="faq__question-wrap">
-          <h3 class="faq__question">Что нужно взять с собой на тренировку?</h3>
-          <button class="faq__toggle" type="button" aria-label="Открыть ответ">
-            <img src="assets/img/x.svg" alt="" class="faq__toggle-icon">
-          </button>
-        </div>
-        <div class="faq__answer">
-          <p>
-            Возьмите удобную спортивную форму, сменную обувь, полотенце и бутылку воды.
-            Остальные детали можно уточнить у администратора.
-          </p>
-        </div>
-      </article>
-
-      <article class="faq__item">
-        <div class="faq__question-wrap">
-          <h3 class="faq__question">Можно ли привести ребенка в клуб?</h3>
-          <button class="faq__toggle" type="button" aria-label="Открыть ответ">
-            <img src="assets/img/x.svg" alt="" class="faq__toggle-icon">
-          </button>
-        </div>
-        <div class="faq__answer">
-          <p>
-            Это зависит от возраста ребенка и правил клуба. Лучше уточнить этот момент заранее,
-            чтобы администратор подсказал доступные варианты.
-          </p>
-        </div>
-      </article>
-
-      <article class="faq__item">
-        <div class="faq__question-wrap">
-          <h3 class="faq__question">Есть ли кафе или бар на территории клуба?</h3>
-          <button class="faq__toggle" type="button" aria-label="Открыть ответ">
-            <img src="assets/img/x.svg" alt="" class="faq__toggle-icon">
-          </button>
-        </div>
-        <div class="faq__answer">
-          <p>
-            В клубе можно приобрести напитки и перекус. Точный набор зависит от внутренней зоны
-            отдыха и формата сервиса клуба.
-          </p>
-        </div>
-      </article>
-    </div>
-  </div>
-</section>
-<footer class="footer" id="footer">
-  <div class="footer__container">
-    <div class="footer__top">
-      <div class="footer__logo-block">
-        <a href="index.html" class="footer__logo" aria-label="ВТЕМЕ">
-          <img src="assets/img/logo-vteme.svg" alt="ВТЕМЕ">
-        </a>
+        <nav class="footer__nav" aria-label="Навигация по сайту">
+          <a href="#about" class="footer__nav-link">О нас</a>
+          <a href="#memberships" class="footer__nav-link">Абонементы</a>
+          <a href="#schedule" class="footer__nav-link">Расписание</a>
+          <a href="#services" class="footer__nav-link">Услуги</a>
+          <a href="#trainers" class="footer__nav-link">Тренеры</a>
+          <a href="#promotions" class="footer__nav-link">Акции</a>
+        </nav>
       </div>
 
-      <div class="footer__contacts">
-        <p class="footer__text">
-          Есть вопросы или<br>
-          предложения? Свяжитесь<br>
-          с нами
-        </p>
-
-        <a href="mailto:vteme@mail.ru" class="footer__mail">
-          vteme@mail.ru
-        </a>
-
-        <p class="footer__caption">Позвоните нам</p>
-
-        <a href="tel:+79288220555" class="footer__phone">
-          +7 (928) 822-05-55
-        </a>
+      <div class="footer__bottom">
+        <p class="footer__bottom-text">© 2026</p>
+        <a href="#" class="footer__bottom-link">Политика обработки персональных данных</a>
+        <p class="footer__bottom-text footer__bottom-text--right">Разработка сайта Анисимова М.А.</p>
       </div>
-
-      <div class="footer__address">
-        <p class="footer__address-text">
-          КИСЛОВОДСК<br>
-          Первомайский<br>
-          проспект 27<br>
-          +7 (928) 822-05-55
-        </p>
-      </div>
-
-      <nav class="footer__nav" aria-label="Навигация по сайту">
-        <a href="#about" class="footer__nav-link">О нас</a>
-        <a href="#memberships" class="footer__nav-link">Абонементы</a>
-        <a href="#schedule" class="footer__nav-link">Расписание</a>
-        <a href="#services" class="footer__nav-link">Услуги</a>
-        <a href="#trainers" class="footer__nav-link">Тренеры</a>
-        <a href="#promotions" class="footer__nav-link">Акции</a>
-      </nav>
     </div>
+  </footer>
+  <div class="auth-modal" id="authModal" aria-hidden="true">
+    <div class="auth-modal__overlay" id="authModalOverlay"></div>
 
-    <div class="footer__bottom">
-      <p class="footer__bottom-text">© 2026</p>
-      <a href="#" class="footer__bottom-link">Политика обработки персональных данных</a>
-      <p class="footer__bottom-text footer__bottom-text--right">Разработка сайта Анисимова М.А.</p>
-    </div>
-  </div>
-</footer>
-<div class="auth-modal" id="authModal" aria-hidden="true">
-  <div class="auth-modal__overlay" id="authModalOverlay"></div>
-
-  <div class="auth-modal__dialog">
-    <button class="auth-modal__close" id="closeAuthModal" type="button" aria-label="Закрыть">
-      <img src="assets/img/close_modal.svg" alt="">
-    </button>
-
-    <div class="auth-modal__tabs">
-      <button class="auth-modal__tab auth-modal__tab--active" type="button" data-auth-tab="register">
-        Регистрация
-      </button>
-      <button class="auth-modal__tab" type="button" data-auth-tab="login">
-        Вход
-      </button>
-    </div>
-
-    <form class="auth-form auth-form--active" id="registerForm">
-      <h2 class="auth-form__title">Регистрация</h2>
-
-      <label class="auth-form__group">
-        <span class="auth-form__label">Имя</span>
-        <input class="auth-form__input" type="text" name="name" placeholder="Ваше имя" required>
-      </label>
-
-      <label class="auth-form__group">
-        <span class="auth-form__label">Email</span>
-        <input class="auth-form__input" type="email" name="email" placeholder="example@mail.ru" required>
-        <span class="auth-form__error" data-error-for="register-email"></span>
-      </label>
-
-      <label class="auth-form__group">
-        <span class="auth-form__label">Телефон</span>
-        <input class="auth-form__input" type="tel" name="phone" id="registerPhoneInput" placeholder="+7 (999) 999 - 99 - 99" required>
-      </label>
-
-      <label class="auth-form__group">
-        <span class="auth-form__label">Пароль</span>
-
-        <span class="auth-form__input-wrap">
-          <input class="auth-form__input" type="password" name="password" id="registerPasswordInput" placeholder="******" required minlength="6">
-          <button class="auth-form__password-toggle" type="button" data-password-toggle="registerPasswordInput" aria-label="Показать пароль">
-            <img src="assets/img/eye-off.svg" alt="">
-          </button>
-        </span>
-
-        <span class="auth-form__error" data-error-for="register-password"></span>
-      </label>
-
-      <label class="auth-form__checkbox">
-        <input class="auth-form__checkbox-input" type="checkbox" required>
-        <span class="auth-form__checkbox-box"></span>
-        <span class="auth-form__checkbox-text">Пользовательское соглашение</span>
-      </label>
-
-      <label class="auth-form__checkbox">
-        <input class="auth-form__checkbox-input" type="checkbox" required>
-        <span class="auth-form__checkbox-box"></span>
-        <span class="auth-form__checkbox-text">Обработка персональных данных</span>
-      </label>
-
-      <button class="auth-form__submit" type="submit">Зарегистрироваться</button>
-
-      <button class="auth-form__switch" type="button" data-switch-tab="login">
-        Уже есть аккаунт? Войти
-      </button>
-    </form>
-
-    <form class="auth-form" id="loginForm">
-      <h2 class="auth-form__title">Вход</h2>
-
-      <label class="auth-form__group">
-        <span class="auth-form__label">Email</span>
-        <input class="auth-form__input" type="email" name="email" placeholder="example@mail.ru" required>
-        <span class="auth-form__error" data-error-for="login-email"></span>
-      </label>
-
-      <label class="auth-form__group">
-        <span class="auth-form__label">Пароль</span>
-
-        <span class="auth-form__input-wrap">
-          <input class="auth-form__input" type="password" name="password" id="loginPasswordInput" placeholder="******" required minlength="6">
-          <button class="auth-form__password-toggle" type="button" data-password-toggle="loginPasswordInput" aria-label="Показать пароль">
-            <img src="assets/img/eye-off.svg" alt="">
-          </button>
-        </span>
-
-        <span class="auth-form__error" data-error-for="login-password"></span>
-      </label>
-
-      <button class="auth-form__link" type="button" id="openRecoveryRequest">
-        Не помните пароль? Восстановить
+    <div class="auth-modal__dialog">
+      <button class="auth-modal__close" id="closeAuthModal" type="button" aria-label="Закрыть">
+        <img src="assets/img/close_modal.svg" alt="">
       </button>
 
-      <button class="auth-form__submit" type="submit">Войти</button>
-
-      <button class="auth-form__switch" type="button" data-switch-tab="register">
-        Не зарегистрированы? Регистрация
-      </button>
-    </form>
-
-    <form class="auth-form" id="recoveryRequestForm">
-      <h2 class="auth-form__title">Восстановить пароль</h2>
-
-      <label class="auth-form__group">
-        <span class="auth-form__label">Email</span>
-        <input class="auth-form__input" type="email" name="email" placeholder="example@mail.ru" required>
-        <span class="auth-form__error" data-error-for="recovery-email"></span>
-      </label>
-
-      <p class="auth-form__hint">
-        Мы отправим письмо со ссылкой для смены пароля
-      </p>
-
-      <button class="auth-form__submit" type="submit">Отправить письмо</button>
-
-      <button class="auth-form__switch" type="button" data-switch-tab="login">
-        Назад ко входу
-      </button>
-    </form>
-
-    <form class="auth-form" id="recoveryUpdateForm">
-      <h2 class="auth-form__title">Восстановить пароль</h2>
-
-      <label class="auth-form__group">
-        <span class="auth-form__label">Новый пароль</span>
-        <input class="auth-form__input" type="password" name="password" id="recoveryPasswordInput" placeholder="******" required minlength="6">
-        <button class="auth-form__password-toggle" type="button" data-password-toggle="recoveryPasswordInput" aria-label="Показать пароль">
-          <img src="assets/img/eye-off.svg" alt="">
+      <div class="auth-modal__tabs">
+        <button class="auth-modal__tab auth-modal__tab--active" type="button" data-auth-tab="register">
+          Регистрация
         </button>
-        <span class="auth-form__error" data-error-for="recovery-password"></span>
-      </label>
+        <button class="auth-modal__tab" type="button" data-auth-tab="login">
+          Вход
+        </button>
+      </div>
 
-      <button class="auth-form__submit" type="submit">Сохранить пароль</button>
-    </form>
+      <form class="auth-form auth-form--active" id="registerForm">
+        <h2 class="auth-form__title">Регистрация</h2>
+
+        <label class="auth-form__group">
+          <span class="auth-form__label">Имя</span>
+          <input class="auth-form__input" type="text" name="name" placeholder="Ваше имя" required>
+        </label>
+
+        <label class="auth-form__group">
+          <span class="auth-form__label">Email</span>
+          <input class="auth-form__input" type="email" name="email" placeholder="example@mail.ru" required>
+          <span class="auth-form__error" data-error-for="register-email"></span>
+        </label>
+
+        <label class="auth-form__group">
+          <span class="auth-form__label">Телефон</span>
+          <input class="auth-form__input" type="tel" name="phone" id="registerPhoneInput"
+            placeholder="+7 (999) 999 - 99 - 99" required>
+        </label>
+
+        <label class="auth-form__group">
+          <span class="auth-form__label">Пароль</span>
+
+          <span class="auth-form__input-wrap">
+            <input class="auth-form__input" type="password" name="password" id="registerPasswordInput"
+              placeholder="******" required minlength="6">
+            <button class="auth-form__password-toggle" type="button" data-password-toggle="registerPasswordInput"
+              aria-label="Показать пароль">
+              <img src="assets/img/eye-off.svg" alt="">
+            </button>
+          </span>
+
+          <span class="auth-form__error" data-error-for="register-password"></span>
+        </label>
+
+        <label class="auth-form__checkbox">
+          <input class="auth-form__checkbox-input" type="checkbox" required>
+          <span class="auth-form__checkbox-box"></span>
+          <span class="auth-form__checkbox-text">Пользовательское соглашение</span>
+        </label>
+
+        <label class="auth-form__checkbox">
+          <input class="auth-form__checkbox-input" type="checkbox" required>
+          <span class="auth-form__checkbox-box"></span>
+          <span class="auth-form__checkbox-text">Обработка персональных данных</span>
+        </label>
+
+        <button class="auth-form__submit" type="submit">Зарегистрироваться</button>
+
+        <button class="auth-form__switch" type="button" data-switch-tab="login">
+          Уже есть аккаунт? Войти
+        </button>
+      </form>
+
+      <form class="auth-form" id="loginForm">
+        <h2 class="auth-form__title">Вход</h2>
+
+        <label class="auth-form__group">
+          <span class="auth-form__label">Email</span>
+          <input class="auth-form__input" type="email" name="email" placeholder="example@mail.ru" required>
+          <span class="auth-form__error" data-error-for="login-email"></span>
+        </label>
+
+        <label class="auth-form__group">
+          <span class="auth-form__label">Пароль</span>
+
+          <span class="auth-form__input-wrap">
+            <input class="auth-form__input" type="password" name="password" id="loginPasswordInput" placeholder="******"
+              required minlength="6">
+            <button class="auth-form__password-toggle" type="button" data-password-toggle="loginPasswordInput"
+              aria-label="Показать пароль">
+              <img src="assets/img/eye-off.svg" alt="">
+            </button>
+          </span>
+
+          <span class="auth-form__error" data-error-for="login-password"></span>
+        </label>
+
+        <button class="auth-form__link" type="button" id="openRecoveryRequest">
+          Не помните пароль? Восстановить
+        </button>
+
+        <button class="auth-form__submit" type="submit">Войти</button>
+
+        <button class="auth-form__switch" type="button" data-switch-tab="register">
+          Не зарегистрированы? Регистрация
+        </button>
+      </form>
+
+      <form class="auth-form" id="recoveryRequestForm">
+        <h2 class="auth-form__title">Восстановить пароль</h2>
+
+        <label class="auth-form__group">
+          <span class="auth-form__label">Email</span>
+          <input class="auth-form__input" type="email" name="email" placeholder="example@mail.ru" required>
+          <span class="auth-form__error" data-error-for="recovery-email"></span>
+        </label>
+
+        <p class="auth-form__hint">
+          Мы отправим письмо со ссылкой для смены пароля
+        </p>
+
+        <button class="auth-form__submit" type="submit">Отправить письмо</button>
+
+        <button class="auth-form__switch" type="button" data-switch-tab="login">
+          Назад ко входу
+        </button>
+      </form>
+
+      <form class="auth-form" id="recoveryUpdateForm">
+        <h2 class="auth-form__title">Восстановить пароль</h2>
+
+        <label class="auth-form__group">
+          <span class="auth-form__label">Новый пароль</span>
+          <input class="auth-form__input" type="password" name="password" id="recoveryPasswordInput"
+            placeholder="******" required minlength="6">
+          <button class="auth-form__password-toggle" type="button" data-password-toggle="recoveryPasswordInput"
+            aria-label="Показать пароль">
+            <img src="assets/img/eye-off.svg" alt="">
+          </button>
+          <span class="auth-form__error" data-error-for="recovery-password"></span>
+        </label>
+
+        <button class="auth-form__submit" type="submit">Сохранить пароль</button>
+      </form>
+    </div>
   </div>
-</div>
 </body>
 <script>
   window.addEventListener("scroll", () => {
@@ -1047,73 +993,74 @@
 </script>
 <script>
   const teamTrack = document.querySelector('.team__track');
-const teamPrev = document.querySelector('.team__control--prev');
-const teamNext = document.querySelector('.team__control--next');
+  const teamPrev = document.querySelector('.team__control--prev');
+  const teamNext = document.querySelector('.team__control--next');
 
-let currentTeamSlide = 0;
-let totalTeamSlides = 0;
-let allTrainerCards = [];
+  let currentTeamSlide = 0;
+  let totalTeamSlides = 0;
+  let allTrainerCards = [];
 
-function getTrainersPerSlide() {
-  const width = window.innerWidth;
+  function getTrainersPerSlide() {
+    const width = window.innerWidth;
 
-  if (width <= 768) return 2;
-  if (width <= 1024) return 3;
+    if (width <= 768) return 2;
+    if (width <= 1024) return 3;
 
-  return 4;
-}
+    return 4;
+  }
 
-function collectTrainerCards() {
-  const existingSlides = Array.from(document.querySelectorAll('.team__slide'));
-  const cards = [];
+  function collectTrainerCards() {
+    const existingSlides = Array.from(document.querySelectorAll('.team__slide'));
+    const cards = [];
 
-  existingSlides.forEach((slide) => {
-    cards.push(...slide.querySelectorAll('.trainer-card'));
+    existingSlides.forEach((slide) => {
+      cards.push(...slide.querySelectorAll('.trainer-card'));
+    });
+
+    return cards;
+  }
+
+  function rebuildTeamSlider() {
+    const cardsPerSlide = getTrainersPerSlide();
+
+    if (!allTrainerCards.length) {
+      allTrainerCards = collectTrainerCards();
+    }
+
+    teamTrack.innerHTML = '';
+
+    for (let i = 0; i < allTrainerCards.length; i += cardsPerSlide) {
+      const slide = document.createElement('div');
+      slide.className = 'team__slide';
+
+      const chunk = allTrainerCards.slice(i, i + cardsPerSlide);
+      chunk.forEach((card) => slide.appendChild(card));
+
+      teamTrack.appendChild(slide);
+    }
+
+    totalTeamSlides = teamTrack.querySelectorAll('.team__slide').length;
+    currentTeamSlide = 0;
+    updateTeamSlider();
+  }
+
+  function updateTeamSlider() {
+    teamTrack.style.transform = `translateX(-${currentTeamSlide * 100}%)`;
+  }
+
+  teamNext.addEventListener('click', () => {
+    currentTeamSlide = (currentTeamSlide + 1) % totalTeamSlides;
+    updateTeamSlider();
   });
 
-  return cards;
-}
+  teamPrev.addEventListener('click', () => {
+    currentTeamSlide = (currentTeamSlide - 1 + totalTeamSlides) % totalTeamSlides;
+    updateTeamSlider();
+  });
 
-function rebuildTeamSlider() {
-  const cardsPerSlide = getTrainersPerSlide();
+  window.addEventListener('resize', rebuildTeamSlider);
 
-  if (!allTrainerCards.length) {
-    allTrainerCards = collectTrainerCards();
-  }
-
-  teamTrack.innerHTML = '';
-
-  for (let i = 0; i < allTrainerCards.length; i += cardsPerSlide) {
-    const slide = document.createElement('div');
-    slide.className = 'team__slide';
-
-    const chunk = allTrainerCards.slice(i, i + cardsPerSlide);
-    chunk.forEach((card) => slide.appendChild(card));
-
-    teamTrack.appendChild(slide);
-  }
-
-  totalTeamSlides = teamTrack.querySelectorAll('.team__slide').length;
-  currentTeamSlide = 0;
-  updateTeamSlider();
-}
-
-function updateTeamSlider() {
-  teamTrack.style.transform = `translateX(-${currentTeamSlide * 100}%)`;
-}
-
-teamNext.addEventListener('click', () => {
-  currentTeamSlide = (currentTeamSlide + 1) % totalTeamSlides;
-  updateTeamSlider();
-});
-
-teamPrev.addEventListener('click', () => {
-  currentTeamSlide = (currentTeamSlide - 1 + totalTeamSlides) % totalTeamSlides;
-  updateTeamSlider();
-});
-
-window.addEventListener('resize', rebuildTeamSlider);
-
-rebuildTeamSlider();
+  rebuildTeamSlider();
 </script>
+
 </html>

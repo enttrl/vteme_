@@ -590,19 +590,6 @@ textarea {
     min-height: 48px;
 }
 
-/* .trial-form__checkbox {
-    width: 24px;
-    height: 24px;
-    margin: 0;
-    accent-color: #f58220;
-    flex-shrink: 0;
-}
-
-.trial-form__consent span {
-    font-size: 16px;
-    line-height: 1.2;
-    color: #111111;
-} */
 .trial-form__consent {
     margin-top: 32px;
     display: inline-flex;
