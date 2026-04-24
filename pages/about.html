@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="../css/components/about.css">
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
   <script src="https://api-maps.yandex.ru/2.1/?apikey=0e4bfc59-00eb-43a3-b1ef-e607240854cf&lang=ru_RU"></script>
+  <script src="../js/burger-menu.js"></script>
 </head>
 
 <body>
@@ -96,7 +97,7 @@
       <div class="container">
         <div class="hero__intro">
           <h1 class="section-title" id="about-title">О нас</h1>
-          <p class="section-lead">Мы создаём пространство, где тренировки становятся частью комфортной и осознанной
+          <p class="section-lead">Мы создаём пространство, где тренировки становятся частью комфортной&nbsp;и&nbsp;осознанной
             жизни.</p>
         </div>
 
@@ -110,9 +111,9 @@
               <img src="../assets/img/quote.svg" alt="">
             </div>
             <p class="hero__quote-text">Мы&nbsp;создали место, куда хочется возвращаться&nbsp;&mdash; не&nbsp;из-за
-              обязательства, а&nbsp;из-за ощущения, что ты&nbsp;становишься лучше. Для нас фитнес&nbsp;&mdash; это
+              обязательства, а&nbsp;из-за ощущения, что&nbsp;ты&nbsp;становишься лучше. Для нас фитнес&nbsp;&mdash; это
               не&nbsp;про давление и&nbsp;идеалы, а&nbsp;про поддержку, движение и&nbsp;уверенность в&nbsp;себе. Здесь
-              каждый может идти в&nbsp;своём темпе, <br>но&nbsp;всегда чувствовать результат.</p>
+              каждый может идти в&nbsp;своём темпе,&nbsp;но&nbsp;всегда чувствовать результат.</p>
             <footer>
               <p class="hero__quote-author"><span style="color: var(--accent);">Яковенко Олег</span> | основатель</p>
             </footer>
@@ -123,10 +124,10 @@
 
     <section class="mission" aria-labelledby="mission-title">
       <div class="container">
-        <h2 class="section-title-2" id="mission-title">Миссия и ценности</h2>
+        <h2 class="section-title-2" id="mission-title">Миссия <br> и ценности</h2>
         <p class="section-lead">Мы создаём пространство, в котором забота о здоровье становится естественной частью
-          жизни. Объединяя профессионализм тренеров, современные технологии и комфортную атмосферу, <br> мы помогаем
-          каждому клиенту раскрыть свой потенциал и двигаться к устойчивому результату.</p>
+          жизни. Объединяя профессионализм тренеров, современные технологии и&nbsp;комфортную атмосферу,&nbsp;мы помогаем
+          каждому клиенту раскрыть свой потенциал и&nbsp;двигаться к устойчивому результату.</p>
 
         <div class="mission__grid">
           <article class="card card--small-top value-card">
@@ -249,7 +250,7 @@
       <div class="container">
         <div class="cta__header">
           <h2 class="cta__title" id="trial-title">
-            Мы создаём условия, в которых легко начать и приятно <br> продолжать тренировки<br>
+            Мы создаём условия, в которых легко начать и&nbsp;приятно <br class="cta-br-remove"> продолжать тренировки<br> 
             Сделайте первый шаг уже <span class="cta__accent-inline">сегодня</span>
             <span class="cta__arrow-circle" aria-hidden="true">
               <img src="../assets/img/arrow-up-right.svg" alt="">
@@ -313,7 +314,6 @@
             <div class="contacts__group">
               <p class="contacts__city">КИСЛОВОДСК</p>
               <p class="contacts__address">Первомайский проспект 27</p>
-              <a class="contacts__phone-small" href="tel:+79288220555">+7 (928) 822-05-55</a>
             </div>
           </div>
 
@@ -325,39 +325,56 @@
     </section>
   </main>
 
-  <footer class="site-footer">
-    <div class="container">
-      <div class="footer__grid">
-        <div>
-          <a href="index.html" aria-label="ВТЕМЕ">
-            <img class="footer__logo" src="assets/img/logo-vteme.svg" alt="ВТЕМЕ">
+  <footer class="footer" id="footer">
+    <div class="footer__container">
+      <div class="footer__top">
+        <div class="footer__logo-block">
+          <a href="index.html" class="footer__logo" aria-label="ВТЕМЕ">
+            <img src="../assets/img/logo-vteme.svg" alt="ВТЕМЕ">
           </a>
         </div>
 
-        <div>
-          <p class="footer__text">Есть вопросы или предложения? Свяжитесь с нами.</p>
-          <a class="footer__accent" href="mailto:vteme@mail.ru">vteme@mail.ru</a><br>
-          <a class="footer__accent" href="tel:+79288220555">+7 (928) 822-05-55</a>
+        <div class="footer__contacts">
+          <p class="footer__text">
+            Есть вопросы или<br>
+            предложения? Свяжитесь<br>
+            с нами
+          </p>
+
+          <a href="mailto:vteme@mail.ru" class="footer__mail">
+            vteme@mail.ru
+          </a>
+
+          <p class="footer__caption">Позвоните нам</p>
+
+          <a href="tel:+79288220555" class="footer__phone">
+            +7 (928) 822-05-55
+          </a>
         </div>
 
-        <div>
-          <p class="footer__text">Кисловодск<br>Первомайский проспект, 27</p>
+        <div class="footer__address">
+          <p class="footer__address-text">
+            КИСЛОВОДСК<br>
+            Первомайский<br>
+            проспект 27<br>
+            +7 (928) 822-05-55
+          </p>
         </div>
 
-        <nav class="footer__nav" aria-label="Навигация в подвале">
-          <a href="about.html">О нас</a>
-          <a href="index.html#memberships">Абонементы</a>
-          <a href="index.html#schedule">Расписание</a>
-          <a href="index.html#services">Услуги</a>
-          <a href="index.html#trainers">Тренеры</a>
-          <a href="index.html#promotions">Акции</a>
+        <nav class="footer__nav" aria-label="Навигация по сайту">
+          <a href="#about" class="footer__nav-link">О нас</a>
+          <a href="#memberships" class="footer__nav-link">Абонементы</a>
+          <a href="#schedule" class="footer__nav-link">Расписание</a>
+          <a href="#services" class="footer__nav-link">Услуги</a>
+          <a href="#trainers" class="footer__nav-link">Тренеры</a>
+          <a href="#promotions" class="footer__nav-link">Акции</a>
         </nav>
       </div>
 
       <div class="footer__bottom">
-        <span class="footer__meta">© 2026</span>
-        <a class="footer__meta" href="#">Политика обработки персональных данных</a>
-        <span class="footer__meta">Разработка сайта Анисимова М.А.</span>
+        <p class="footer__bottom-text">© 2026</p>
+        <a href="#" class="footer__bottom-link">Политика обработки персональных данных</a>
+        <p class="footer__bottom-text footer__bottom-text--right">Разработка сайта Анисимова М.А.</p>
       </div>
     </div>
   </footer>
@@ -444,7 +461,7 @@
 
   function init() {
     const map = new ymaps.Map('map', {
-      center: [43.905284, 42.714523], // пример, замени на свои координаты
+      center: [43.905284, 42.714523],
       zoom: 17,
       controls: []
     });
@@ -452,8 +469,8 @@
     const placemark = new ymaps.Placemark(
       [43.905199, 42.715062],
       {
-        balloonContent: 'ВТеме<br>Кисловодск, Первомайский проспект, 27',
-        hintContent: 'ВТеме'
+        balloonContent: 'В Теме<br>Кисловодск, Первомайский проспект, 27',
+        hintContent: 'В Теме'
       },
       {
         preset: 'islands#redIcon'
@@ -463,4 +480,5 @@
     map.geoObjects.add(placemark);
   }
 </script>
+
 </html>

@@ -454,29 +454,6 @@ textarea {
     visibility: visible;
 }
 
-@media (max-width: 1024px) {
-    .trust-item {
-        grid-template-columns: 72px 1fr;
-        gap: 20px;
-        min-height: 110px;
-        padding: 22px 20px;
-    }
-
-    .trust-item__number {
-        font-size: 38px;
-    }
-
-    .trust-item__title {
-        font-size: 20px;
-    }
-
-    .trust-preview {
-        right: 20px;
-        width: 240px;
-        height: 320px;
-    }
-}
-
 @media (max-width: 768px) {
     .trust-preview {
         display: none;
@@ -676,7 +653,6 @@ textarea {
 
 .contacts {
     padding-top: 120px;
-    padding-bottom: 120px;
 }
 
 .contacts__layout {
@@ -692,18 +668,18 @@ textarea {
 }
 
 .contacts__lead {
-    margin: 0 0 32px;
-    font-size: 22px;
-    line-height: 1.25;
-    font-weight: 400;
+    margin: 0 0 16px;
+    font-size: 24px;
+    line-height: 1.2;
+    font-weight: 500;
     color: #111111;
 }
 
 .contacts__mail {
     display: inline-block;
-    margin-bottom: 32px;
-    font-size: 32px;
-    line-height: 1.1;
+    margin-bottom: 24px;
+    font-size: 36px;
+    line-height: 1.2;
     font-weight: 700;
     color: #f58220;
     text-decoration: none;
@@ -714,17 +690,17 @@ textarea {
 }
 
 .contacts__label {
-    margin: 0 0 12px;
-    font-size: 22px;
+    margin: 0 0 16px;
+    font-size: 24px;
     line-height: 1.2;
-    font-weight: 400;
+    font-weight: 500;
     color: #111111;
 }
 
 .contacts__phone {
     display: inline-block;
-    font-size: 32px;
-    line-height: 1.1;
+    font-size: 36px;
+    line-height: 1.2;
     font-weight: 700;
     color: #f58220;
     text-decoration: none;
@@ -733,7 +709,7 @@ textarea {
 .contacts__city {
     margin: 0 0 8px;
     font-size: 24px;
-    line-height: 1.1;
+    line-height: 1.2;
     font-weight: 500;
     color: #111111;
     text-transform: uppercase;
@@ -741,16 +717,10 @@ textarea {
 
 .contacts__address {
     margin: 0 0 8px;
-    font-size: 22px;
+    font-size: 24px;
+    font-weight: 500;
     line-height: 1.2;
     color: #111111;
-}
-
-.contacts__phone-small {
-    font-size: 22px;
-    line-height: 1.2;
-    color: #111111;
-    text-decoration: none;
 }
 
 .contacts__map {
@@ -881,14 +851,38 @@ textarea {
     flex-wrap: wrap;
 }
 
-@media (max-width: 1439px) {
+@media (min-width: 1440px) and (max-width: 1536px) {
     :root {
         --container: 1280px;
         --section-space: 96px;
     }
 
     .hero__grid {
-        grid-template-columns: minmax(0, 1fr) 500px;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    }
+
+    .hero__quote-text {
+        font-size: 30px;
+    }
+
+    .section-lead {
+        font-size: 30px;
+    }
+
+    .value-card__title {
+        font-size: 32px;
+    }
+
+    .cta-br-remove {
+        display: none;
+    }
+
+    .value-card__text {
+        font-size: 20px;
+    }
+
+    .trial-form__row {
+        gap: 32px;
     }
 
     .trust__layout {
@@ -896,31 +890,73 @@ textarea {
     }
 
     .contacts__layout {
-        grid-template-columns: 360px minmax(0, 1fr);
+        grid-template-columns: 400px minmax(0, 1fr);
     }
 }
 
-@media (max-width: 1023px) {
+@media (max-width: 1024px) {
     :root {
         --container: 960px;
         --section-space: 80px;
         --button-width: 220px;
     }
 
-    .hero__grid,
     .trust__layout,
     .contacts__layout,
     .footer__grid {
         grid-template-columns: 1fr;
     }
 
+    .section-title-2 {
+        font-size: 24px;
+        margin: 0 0 64px;
+    }
+
+    .section-title {
+        font-size: 32px;
+    }
+
+    .section-lead {
+        font-size: 24px;
+    }
+
+    .hero__grid {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    }
+
+    .value-card__title {
+        font-size: 24px;
+    }
+
+    .value-card__text {
+        font-size: 16px;
+    }
+
+    .value-card__icon {
+        width: 56px;
+        height: 56px;
+    }
+
     .hero__media,
     .hero__quote {
-        min-height: auto;
+        height: 500px;
+    }
+
+    .mission {
+        padding-top: 120px;
+    }
+
+    .hero__quote-text {
+        font-size: 24px;
     }
 
     .mission__grid {
         grid-template-columns: repeat(2, 1fr);
+
+    }
+
+    .card {
+        height: 300px;
     }
 
     .card--small-top,
@@ -929,24 +965,60 @@ textarea {
         grid-column: auto;
     }
 
+    .trust {
+        padding: 120px 0;
+    }
+
     .trust__visual {
         position: static;
         min-height: 420px;
     }
 
+    .trust-item {
+        grid-template-columns: 72px 1fr;
+        gap: 20px;
+        min-height: 110px;
+        padding: 22px 20px;
+    }
+
+    .trust-item__number {
+        font-size: 38px;
+    }
+
+    .trust-item__title {
+        font-size: 24px;
+    }
+
+    .trust-item__text {
+        font-size: 20PX;
+    }
+
+    .trust-preview {
+        right: 20px;
+        width: 240px;
+        height: 320px;
+    }
+
     .trial-form {
         grid-template-columns: 1fr 1fr;
     }
-
+    .trial-form__row {
+        gap: 32px;
+    }
     .trial-form__submit {
         justify-self: start;
     }
 
     .cta__title {
-        font-size: 48px;
+        font-size: 36px;
         line-height: 1.02;
     }
-
+    .cta-br-remove {
+        display: none;
+    }
+    .form-card__title {
+        font-size: 30px;
+    }
     .trial-form__row {
         grid-template-columns: 1fr;
     }
@@ -956,17 +1028,19 @@ textarea {
     }
 
     .trial-form {
-        margin-top: 56px;
+        margin-top: 48px;
     }
 }
 
-@media (max-width: 767px) {
+@media (max-width: 768px) {
     :root {
         --container: 720px;
         --section-space: 64px;
         --button-width: 100%;
     }
-
+    .hero__quote-author {
+        font-size: 20px;
+    }
     .container {
         width: min(100% - 32px, var(--container));
     }
@@ -978,12 +1052,19 @@ textarea {
     .hero__quote {
         padding: 24px;
     }
-
+    .hero__quote-text {
+        font-size: 20px;
+    }
+    .hero__media, .hero__quote {
+        height: 500px;
+    }
     .mission__grid,
     .trial-form {
         grid-template-columns: 1fr;
     }
-
+    .section-lead {
+        font-size: 20px;
+    }
     .form-card,
     .contacts__info {
         padding: 24px;
@@ -994,7 +1075,7 @@ textarea {
     }
 
     .trust-item__number {
-        font-size: 24px;
+        font-size: 36px;
     }
 
     .contacts__map {
@@ -1051,13 +1132,21 @@ textarea {
     }
 }
 
-@media (max-width: 479px) {
+@media (max-width: 480px) {
     :root {
         --section-space: 56px;
         --button-height: 52px;
         --button-font-size: 16px;
     }
-
+    .hero__grid {
+        grid-template-columns: 1fr;
+    }
+    .hero__quote, .hero__media {
+        height: 400px;
+    }
+    .section-title-2 {
+        font-size: 16px;
+    }
     .container {
         width: calc(100% - 32px);
     }
@@ -1096,7 +1185,12 @@ textarea {
     .contacts__value a {
         font-size: 22px;
     }
-
+    .cta__title {
+        font-size: 24px;
+    }
+    .contacts__info {
+        padding: 0px;
+    }
     .footer__bottom {
         flex-direction: column;
     }
