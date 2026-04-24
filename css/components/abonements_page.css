@@ -646,6 +646,7 @@ button {
     .cards-slider__arrow--next {
         left: calc(50% + 430px);
     }
+
 }
 
 @media (max-width: 768px) {

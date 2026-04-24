@@ -1,0 +1,14 @@
+[
+  {"id":1,"name":"Екатерина Логинова","role":"Инструктор групповых программ","specialization":"Йога","image":"../assets/img/index/trainer-1.jpg","url":"#"},
+  {"id":2,"name":"Филиппова Александра","role":"Инструктор групповых программ","specialization":"Пилатес","image":"../assets/img/index/trainer-2.jpg","url":"#"},
+  {"id":3,"name":"Самарин Артем","role":"Инструктор тренажерного зала","specialization":"Силовые тренировки","image":"../assets/img/index/trainer-3.jpg","url":"#"},
+  {"id":4,"name":"Тарасова Екатерина","role":"Инструктор групповых программ","specialization":"TRX","image":"../assets/img/index/trainer-4.jpg","url":"#"},
+  {"id":5,"name":"Михайлов Егор","role":"Инструктор групповых программ","specialization":"Йога","image":"../assets/img/index/trainer-5.jpg","url":"#"},
+  {"id":6,"name":"Лучина Елена","role":"Инструктор групповых программ","specialization":"Пилатес","image":"../assets/img/index/trainer-6.jpg","url":"#"},
+  {"id":7,"name":"Карягин Михаил","role":"Инструктор групповых программ","specialization":"Силовые тренировки","image":"../assets/img/index/trainer-7.jpg","url":"#"},
+  {"id":8,"name":"Видякин Антон","role":"Инструктор тренажерного зала","specialization":"TRX","image":"../assets/img/index/trainer-8.jpg","url":"#"},
+  {"id":9,"name":"Связяева Марина","role":"Инструктор групповых программ","specialization":"Йога","image":"../assets/img/index/trainer-9.jpg","url":"#"},
+  {"id":10,"name":"Петрова Алиса","role":"Инструктор групповых программ","specialization":"Пилатес","image":"../assets/img/index/trainer-10.jpg","url":"#"},
+  {"id":11,"name":"Малышева Лаура","role":"Инструктор тренажерного зала","specialization":"Силовые тренировки","image":"../assets/img/index/trainer-11.jpg","url":"#"},
+  {"id":12,"name":"Иванова Дарья","role":"Инструктор тренажерного зала","specialization":"TRX","image":"../assets/img/index/trainer-12.jpg","url":"#"}
+]
