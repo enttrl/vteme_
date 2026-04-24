@@ -1,0 +1,417 @@
+:root {
+  --trainer-detail-container: 1600px;
+  --accent: #ff7332;
+  --page-bg: #f3f3f3;
+  --dark: #111111;
+}
+
+body { background: var(--page-bg); }
+
+.trainer-detail-page {
+  font-family: "Inter", Arial, sans-serif;
+  color: #000;
+}
+
+.trainer-detail {
+  position: relative;
+  overflow: hidden;
+  padding: 80px 0 0;
+}
+
+.trainer-detail::before {
+  content: "";
+  position: absolute;
+  left: -90px;
+  top: -160px;
+  width: 560px;
+  height: 980px;
+  background: rgba(255, 255, 255, 0.86);
+  transform: rotate(-30deg);
+  border-radius: 48%;
+  pointer-events: none;
+}
+
+.trainer-detail__container {
+  position: relative;
+  z-index: 1;
+  width: min(100% - 40px, var(--trainer-detail-container));
+  margin: 0 auto;
+}
+
+.trainer-hero {
+  display: grid;
+  grid-template-columns: minmax(420px, 760px) minmax(360px, 560px);
+  gap: 104px;
+  min-height: 740px;
+  padding-bottom: 88px;
+}
+
+.trainer-hero__photo-wrap {
+  align-self: start;
+  aspect-ratio: 1 / 1.01;
+  overflow: hidden;
+  border-radius: 22px;
+  background: #d2a371;
+}
+
+.trainer-hero__photo-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 20%;
+}
+
+.trainer-hero__content {
+  display: flex;
+  flex-direction: column;
+  min-height: 640px;
+  padding-top: 8px;
+}
+
+.trainer-hero__name {
+  margin: 0;
+  max-width: 520px;
+  font-size: 64px;
+  line-height: 1.2;
+  font-weight: 700;
+}
+
+.trainer-hero__role {
+  margin: 72px 0 36px;
+  font-size: 24px;
+  line-height: 1.2;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.trainer-info {
+  display: grid;
+  gap: 28px;
+  max-width: 560px;
+}
+
+.trainer-info__item {
+  margin: 0;
+  font-size: 24px;
+  line-height: 1.1;
+}
+
+.trainer-info__item dt { font-weight: 800; }
+.trainer-info__item dd { margin: 4px 0 0; }
+
+.trainer-hero__action {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+
+.trainer-detail-button {
+  width: min(100%, 470px);
+  min-height: 58px;
+  padding: 0 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 30px;
+  background: var(--dark);
+  color: #fff;
+  text-decoration: none;
+  font-size: 22px;
+  line-height: 1;
+  font-weight: 800;
+  transition: transform .2s ease, background-color .2s ease;
+}
+
+.trainer-detail-button:hover {
+  transform: translateY(-1px);
+  background: #000;
+}
+
+.trainer-detail-button__icon {
+  width: 58px;
+  height: 58px;
+  flex: 0 0 58px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--dark);
+}
+
+.trainer-detail-button__icon img {
+  width: 22px;
+  height: 22px;
+  filter: invert(0);
+}
+
+.trainer-detail__sections {
+  background: var(--dark);
+  color: #fff;
+}
+
+.trainer-detail-row {
+  display: grid;
+  grid-template-columns: 420px 1fr;
+  gap: 64px;
+  padding: 34px 0 58px;
+  border-bottom: 1px solid rgba(255,255,255,.35);
+}
+
+.trainer-detail-row:last-child { border-bottom: 0; }
+
+.trainer-detail-row__title {
+  margin: 0;
+  font-size: 48px;
+  line-height: 1.2;
+  font-weight: 600;
+}
+
+.trainer-detail-row__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 30px;
+  line-height: 1.2;
+}
+
+.trainer-not-found {
+  width: min(100% - 40px, var(--trainer-detail-container));
+  margin: 80px auto;
+  padding: 48px;
+  border-radius: 24px;
+  background: #fff;
+  text-align: center;
+  font-size: 24px;
+}
+.cta__title {
+    margin: 0;
+    font-size: 48px;
+    line-height: 1.2;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    color: #111111;
+}
+
+.cta__accent-inline {
+    color: #f58220;
+}
+
+.cta__form-wrap {
+    margin-top: 80px;
+}
+
+.form-card {
+    padding: 32px 32px 32px;
+    background: #ffffff;
+    border-radius: 24px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+}
+
+.form-card__title {
+    margin: 0;
+    font-size: 36px;
+    line-height: 1.12;
+    font-weight: 500;
+    color: #111111;
+}
+
+.form-card__title span {
+    color: #f58220;
+}
+
+.trial-form {
+    margin-top: 96px;
+}
+
+.trial-form__row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 454px;
+    gap: 72px;
+    align-items: end;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.field__label {
+    font-size: 24px;
+    line-height: 1;
+    font-weight: 500;
+    color: #111111;
+}
+
+.field__control {
+    width: 100%;
+    height: 58px;
+    padding: 0 24px;
+    border: 1px solid #cfcfcf;
+    border-radius: 999px;
+    background: #ffffff;
+    font-size: 24px;
+    color: #111111;
+}
+
+.field__control::placeholder {
+    color: #bdbdbd;
+}
+
+.field__control:focus {
+    outline: none;
+    border-color: #f58220;
+}
+
+.trial-form__submit {
+    width: 100%;
+    height: 58px;
+    min-height: 58px;
+    background: #FA4D0B;
+    color: #fff;
+    border: none;
+    border-radius: 999px;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.trial-form__consent {
+    margin-top: 32px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    position: relative;
+    user-select: none;
+}
+
+.trial-form__checkbox-input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.trial-form__checkbox-box {
+    width: 29px;
+    height: 29px;
+    border-radius: 8px;
+    background: #d9d9d9;
+    flex-shrink: 0;
+    position: relative;
+    transition: background-color 0.25s ease, border-color 0.25s ease;
+}
+
+.trial-form__checkbox-input:checked+.trial-form__checkbox-box {
+    background: #ff7f30;
+}
+
+.trial-form__checkbox-input:checked+.trial-form__checkbox-box::after {
+    content: "";
+    position: absolute;
+    left: 10px;
+    top: 5px;
+    width: 6px;
+    height: 12px;
+    border-right: 2px solid #ffffff;
+    border-bottom: 2px solid #ffffff;
+    transform: rotate(45deg);
+}
+
+.trial-form__consent-text {
+    font-size: 20px;
+    line-height: 1.2;
+    color: #111111;
+}
+@media (min-width: 1440px) and (max-width: 1536px) {
+  :root { --trainer-detail-container: 1280px; }
+  .trainer-hero {
+    grid-template-columns: minmax(420px, 600px) minmax(360px, 520px);
+    min-height: 640px;
+  }
+  .trainer-hero__content { min-height: 560px; }
+  .trainer-hero__name { font-size: 64px; }
+  .trainer-hero__role { margin-top: 52px; font-size: 22px; }
+  .trainer-info__item { font-size: 21px; }
+  .trainer-detail-row__title { font-size: 36px; }
+  .trainer-detail-row__list { font-size: 25px; }
+  .trial-form__row {
+        gap: 32px;
+    }
+}
+
+@media (max-width: 1024px) {
+  :root { --trainer-detail-container: 960px; }
+  .trainer-hero {
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    min-height: auto;
+  }
+  .trainer-hero__content { min-height: auto; }
+  .trainer-hero__name { font-size: 52px; }
+  .trainer-hero__role { margin: 38px 0 28px; }
+  .trainer-hero__action { margin-top: 60px; }
+  .trainer-detail-row {
+    grid-template-columns: 300px 1fr;
+    gap: 40px;
+  }
+
+  .trial-form__row {
+        grid-template-columns: 1fr;
+    }
+
+    .trial-form__submit {
+        width: 100%;
+    }
+
+    .trial-form {
+        margin-top: 48px;
+    }
+}
+
+@media (max-width: 768px) {
+  :root { --trainer-detail-container: 720px; }
+  .trainer-detail { padding-top: 64px; }
+  .trainer-hero {
+    grid-template-columns: 1fr;
+    padding-bottom: 64px;
+  }
+  .trainer-hero__photo-wrap {
+    max-width: 560px;
+    width: 100%;
+  }
+  .trainer-hero__name { font-size: clamp(44px, 12vw, 64px); }
+  .trainer-hero__role { margin-top: 34px; font-size: 20px; }
+  .trainer-info__item { font-size: 19px; }
+  .trainer-hero__action { margin-top: 44px; }
+  .trainer-detail-row {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 30px 0 44px;
+  }
+  .trainer-detail-row__title { font-size: 32px; }
+  .trainer-detail-row__list { font-size: 22px; }
+}
+
+@media (max-width: 480px) {
+  .trainer-detail__container,
+  .trainer-not-found {
+    width: min(100% - 24px, 100%);
+  }
+  .trainer-detail { padding-top: 48px; }
+  .trainer-hero { gap: 32px; padding-bottom: 48px; }
+  .trainer-hero__photo-wrap { border-radius: 18px; }
+  .trainer-hero__name { font-size: 42px; }
+  .trainer-hero__role { font-size: 17px; }
+  .trainer-detail-button {
+    min-height: 50px;
+    padding: 0 20px;
+    font-size: 16px;
+  }
+  .trainer-detail-button__icon {
+    width: 50px;
+    height: 50px;
+    flex-basis: 50px;
+  }
+  .trainer-detail-row__title { font-size: 28px; }
+  .trainer-detail-row__list { font-size: 19px; }
+}

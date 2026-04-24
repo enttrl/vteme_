@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тренер</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../css/components/trainer_detail_page.css">
+    <script src="../js/burger-menu.js" defer></script>
+    <script src="../js/trainer-detail.js" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <header class="header">
+        <div class="header__inner">
+            <a class="header__logo-link" href="/" aria-label="На главную">
+                <img class="header__logo" src="../assets/img/logo-vteme.svg" alt="ВТЕМЕ">
+            </a>
+
+            <nav class="header__nav nav" aria-label="Основная навигация">
+                <ul class="nav__list">
+                    <li class="nav__item"><a class="nav__link" href="about.html">О нас</a></li>
+                    <li class="nav__item"><a class="nav__link" href="abonements.html">Абонементы</a></li>
+                    <li class="nav__item"><a class="nav__link" href="#schedule">Расписание</a></li>
+                    <li class="nav__item"><a class="nav__link" href="#services">Услуги</a></li>
+                    <li class="nav__item"><a class="nav__link" href="#trainers">Тренеры</a></li>
+                    <li class="nav__item"><a class="nav__link" href="#promotions">Акции</a></li>
+                </ul>
+            </nav>
+
+            <a class="header__login login-button" href="./account.html" aria-label="Перейти в личный кабинет">
+                <span class="login-button__text">Войти</span>
+                <span class="login-button__icon" aria-hidden="true">
+                    <img class="login-button__img" src="../assets/img/arrow-up-right.svg" alt="">
+                </span>
+            </a>
+
+            <button class="header__burger" id="openBurgerMenu" type="button" aria-label="Открыть меню"
+                aria-expanded="false" aria-controls="mobileMenu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+        <div class="mobile-menu__inner">
+            <div class="mobile-menu__top">
+                <a class="mobile-menu__logo-link" href="/" aria-label="На главную">
+                    <img class="mobile-menu__logo" src="../assets/img/logo-vteme.svg" alt="ВТЕМЕ">
+                </a>
+
+                <button class="mobile-menu__close" id="closeBurgerMenu" type="button" aria-label="Закрыть меню">
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+
+            <nav class="mobile-menu__nav" aria-label="Мобильная навигация">
+                <a class="mobile-menu__link" href="about.html">О нас</a>
+                <a class="mobile-menu__link" href="abonements.html">Абонементы</a>
+                <a class="mobile-menu__link" href="#schedule">Расписание</a>
+                <a class="mobile-menu__link" href="#services">Услуги</a>
+                <a class="mobile-menu__link" href="#trainers">Тренеры</a>
+                <a class="mobile-menu__link" href="#promotions">Акции</a>
+            </nav>
+
+            <a class="mobile-menu__login login-button" href="./account.html">
+                <span class="login-button__text">Личный кабинет</span>
+                <span class="login-button__icon" aria-hidden="true">
+                    <img class="login-button__img" src="../assets/img/arrow-up-right.svg" alt="">
+                </span>
+            </a>
+
+            <div class="mobile-menu__contacts">
+                <a class="mobile-menu__contact" href="tel:+79288220555">+7 (928) 822-05-55</a>
+                <a class="mobile-menu__contact" href="mailto:vteme@mail.ru">vteme@mail.ru</a>
+            </div>
+
+            <div class="mobile-menu__bottom">
+                <p class="mobile-menu__copyright">© 2026</p>
+                <a class="mobile-menu__policy" href="#">Политика обработки персональных данных</a>
+            </div>
+        </div>
+    </div>
+
+
+
+    <main class="trainer-detail-page">
+        <article class="trainer-detail" data-trainer-page hidden>
+            <div class="trainer-detail__container">
+                <section class="trainer-hero" aria-label="Информация о тренере">
+                    <div class="trainer-hero__photo-wrap">
+                        <img class="trainer-hero__photo" src="" alt="" data-trainer-photo>
+                    </div>
+
+                    <div class="trainer-hero__content">
+                        <h1 class="trainer-hero__name" data-trainer-name></h1>
+                        <p class="trainer-hero__role" data-trainer-role></p>
+
+                        <dl class="trainer-info">
+                            <div class="trainer-info__item">
+                                <dt>Образование:</dt>
+                                <dd data-trainer-education></dd>
+                            </div>
+                            <div class="trainer-info__item">
+                                <dt>Стаж работы:</dt>
+                                <dd data-trainer-experience></dd>
+                            </div>
+                        </dl>
+
+                        <div class="trainer-hero__action">
+                            <a class="trainer-detail-button" href="#signup" data-trainer-signup>Записаться на
+                                тренировку</a>
+                            <span class="trainer-detail-button__icon" aria-hidden="true">
+                                <img src="../assets/img/arrow-up-right.svg" alt="">
+                            </span>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <section class="trainer-detail__sections" aria-label="Специализация и достижения">
+                <div class="trainer-detail__container">
+                    <div class="trainer-detail-row">
+                        <h2 class="trainer-detail-row__title">Специализация:</h2>
+                        <ul class="trainer-detail-row__list" data-trainer-specializations></ul>
+                    </div>
+
+                    <div class="trainer-detail-row">
+                        <h2 class="trainer-detail-row__title">Достижения:</h2>
+                        <ul class="trainer-detail-row__list" data-trainer-achievements></ul>
+                    </div>
+                </div>
+            </section>
+        </article>
+
+        <section class="trainer-not-found" data-trainer-not-found hidden>
+            Тренер не найден. Вернитесь на страницу тренеров и выберите карточку ещё раз.
+        </section>
+
+        <section class="cta" id="trial" aria-labelledby="trial-title">
+            <div class="trainer-detail__container">
+                <div class="cta__form-wrap">
+                    <div class="form-card">
+                        <h3 class="form-card__title">
+                            Закажите обратный звонок, чтобы связаться с тренером
+                        </h3>
+
+                        <form class="trial-form" action="#" method="post" id="trial-form">
+                            <div class="trial-form__row">
+                                <label class="field">
+                                    <span class="field__label">Имя</span>
+                                    <input class="field__control" type="text" name="name" placeholder="Ваше имя"
+                                        required>
+                                </label>
+
+                                <label class="field">
+                                    <span class="field__label">Телефон</span>
+                                    <input class="field__control" type="tel" name="phone"
+                                        placeholder="+7 (999) 999 - 99 - 99" required>
+                                </label>
+
+                                <button class="button button--primary trial-form__submit" type="submit">
+                                    Отправить заявку
+                                </button>
+                            </div>
+
+                            <label class="trial-form__consent">
+                                <input class="trial-form__checkbox-input" type="checkbox" name="consent" required>
+                                <span class="trial-form__checkbox-box"></span>
+                                <span class="trial-form__consent-text">Согласие на обработку персональных данных</span>
+                            </label>
+                            <input type="hidden" name="form_name" value="Страница тренера">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="footer" id="footer">
+        <div class="footer__container">
+            <div class="footer__top">
+                <div class="footer__logo-block">
+                    <a href="index.html" class="footer__logo" aria-label="ВТЕМЕ">
+                        <img src="../assets/img/logo-vteme.svg" alt="ВТЕМЕ">
+                    </a>
+                </div>
+
+                <div class="footer__contacts">
+                    <p class="footer__text">
+                        Есть вопросы или<br>
+                        предложения? Свяжитесь<br>
+                        с нами
+                    </p>
+
+                    <a href="mailto:vteme@mail.ru" class="footer__mail">
+                        vteme@mail.ru
+                    </a>
+
+                    <p class="footer__caption">Позвоните нам</p>
+
+                    <a href="tel:+79288220555" class="footer__phone">
+                        +7 (928) 822-05-55
+                    </a>
+                </div>
+
+                <div class="footer__address">
+                    <p class="footer__address-text">
+                        КИСЛОВОДСК<br>
+                        Первомайский<br>
+                        проспект 27<br>
+                        +7 (928) 822-05-55
+                    </p>
+                </div>
+
+                <nav class="footer__nav" aria-label="Навигация по сайту">
+                    <a href="#about" class="footer__nav-link">О нас</a>
+                    <a href="#memberships" class="footer__nav-link">Абонементы</a>
+                    <a href="#schedule" class="footer__nav-link">Расписание</a>
+                    <a href="#services" class="footer__nav-link">Услуги</a>
+                    <a href="#trainers" class="footer__nav-link">Тренеры</a>
+                    <a href="#promotions" class="footer__nav-link">Акции</a>
+                </nav>
+            </div>
+
+            <div class="footer__bottom">
+                <p class="footer__bottom-text">© 2026</p>
+                <a href="#" class="footer__bottom-link">Политика обработки персональных данных</a>
+                <p class="footer__bottom-text footer__bottom-text--right">Разработка сайта Анисимова М.А.</p>
+            </div>
+        </div>
+    </footer>
+    <script>
+        window.addEventListener("scroll", () => {
+            document.body.classList.toggle("scrolled", window.scrollY > 10);
+        });
+    </script>
+    <script>
+        emailjs.init({
+            publicKey: "4EOkO_p3ey7Am8t1d"
+        });
+    </script>
+    <script>
+        const form = document.getElementById('trial-form');
+        const submitBtn = form.querySelector('.trial-form__submit');
+        const formNameInput = form.querySelector('input[name="form_name"]');
+
+        function updateTrainerFormName() {
+            const trainerName = document.querySelector('[data-trainer-name]')?.textContent.trim();
+
+            if (trainerName) {
+                formNameInput.value = `Страница тренера — ${trainerName}`;
+                return true;
+            }
+
+            return false;
+        }
+
+        updateTrainerFormName();
+
+        const observer = new MutationObserver(() => {
+            updateTrainerFormName();
+        });
+
+        const trainerNameEl = document.querySelector('[data-trainer-name]');
+
+        if (trainerNameEl) {
+            observer.observe(trainerNameEl, {
+                childList: true,
+                characterData: true,
+                subtree: true
+            });
+        }
+
+        form.addEventListener('submit', async function (e) {
+            e.preventDefault();
+
+            updateTrainerFormName();
+
+            const originalText = submitBtn.textContent;
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Отправка...';
+
+            try {
+                await emailjs.sendForm(
+                    'service_15j1wj6',
+                    'template_d2j8srf',
+                    form
+                );
+
+                alert('Спасибо! Мы скоро с вами свяжемся');
+                form.reset();
+
+                updateTrainerFormName();
+
+            } catch (error) {
+                console.error(error);
+                alert('Ошибка отправки. Попробуйте позже');
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = originalText;
+            }
+        });
+    </script>
+</body>
+
+</html>

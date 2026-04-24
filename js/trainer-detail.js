@@ -1,4 +1,4 @@
-[
+const FALLBACK_TRAINERS = [
   {
     "id": 1,
     "slug": "trainer-1",
@@ -8,7 +8,7 @@
     "image": "../assets/img/index/trainer-1.jpg",
     "url": "trainer-detail.html?id=1",
     "education": "Высшее образование, НГУ им. П.Ф. Лесгафта",
-    "experienceStart": 2018,
+    "experience": "с 2018 (7 лет)",
     "wideSpecializations": [
       "йога",
       "стретчинг",
@@ -29,7 +29,7 @@
     "image": "../assets/img/index/trainer-2.jpg",
     "url": "trainer-detail.html?id=2",
     "education": "Высшее образование, направление «Физическая культура»",
-    "experienceStart": 2017,
+    "experience": "с 2017 (8 лет)",
     "wideSpecializations": [
       "пилатес",
       "мобилити",
@@ -50,7 +50,7 @@
     "image": "../assets/img/index/trainer-3.jpg",
     "url": "trainer-detail.html?id=3",
     "education": "Высшее образование, НГУ им. П.Ф. Лесгафта",
-    "experienceStart": 2009,
+    "experience": "с 2009 (16 лет)",
     "wideSpecializations": [
       "персональные тренировки",
       "силовые тренировки",
@@ -71,7 +71,7 @@
     "image": "../assets/img/index/trainer-4.jpg",
     "url": "trainer-detail.html?id=4",
     "education": "Высшее образование, направление «Физическая культура»",
-    "experienceStart": 2016,
+    "experience": "с 2016 (9 лет)",
     "wideSpecializations": [
       "TRX",
       "функциональный тренинг",
@@ -92,7 +92,7 @@
     "image": "../assets/img/index/trainer-5.jpg",
     "url": "trainer-detail.html?id=5",
     "education": "Высшее образование, спортивная подготовка",
-    "experienceStart": 2015,
+    "experience": "с 2015 (10 лет)",
     "wideSpecializations": [
       "йога",
       "функциональная подготовка",
@@ -113,7 +113,7 @@
     "image": "../assets/img/index/trainer-6.jpg",
     "url": "trainer-detail.html?id=6",
     "education": "Высшее образование, педагогика физической культуры",
-    "experienceStart": 2019,
+    "experience": "с 2019 (6 лет)",
     "wideSpecializations": [
       "пилатес",
       "растяжка",
@@ -134,7 +134,7 @@
     "image": "../assets/img/index/trainer-7.jpg",
     "url": "trainer-detail.html?id=7",
     "education": "Высшее образование, физическая культура и спорт",
-    "experienceStart": 2012,
+    "experience": "с 2012 (13 лет)",
     "wideSpecializations": [
       "силовые тренировки",
       "функциональные тренировки",
@@ -155,7 +155,7 @@
     "image": "../assets/img/index/trainer-8.jpg",
     "url": "trainer-detail.html?id=8",
     "education": "Высшее образование, спортивный менеджмент",
-    "experienceStart": 2014,
+    "experience": "с 2014 (11 лет)",
     "wideSpecializations": [
       "TRX",
       "персональные тренировки",
@@ -176,7 +176,7 @@
     "image": "../assets/img/index/trainer-9.jpg",
     "url": "trainer-detail.html?id=9",
     "education": "Высшее образование, адаптивная физическая культура",
-    "experienceStart": 2020,
+    "experience": "с 2020 (5 лет)",
     "wideSpecializations": [
       "йога",
       "стретчинг",
@@ -197,7 +197,7 @@
     "image": "../assets/img/index/trainer-10.jpg",
     "url": "trainer-detail.html?id=10",
     "education": "Высшее образование, физическая реабилитация",
-    "experienceStart": 2018,
+    "experience": "с 2018 (7 лет)",
     "wideSpecializations": [
       "пилатес",
       "реабилитационный фитнес",
@@ -218,7 +218,7 @@
     "image": "../assets/img/index/trainer-11.jpg",
     "url": "trainer-detail.html?id=11",
     "education": "Высшее образование, направление «Физическая культура»",
-    "experienceStart": 2013,
+    "experience": "с 2013 (12 лет)",
     "wideSpecializations": [
       "силовые тренировки",
       "персональные тренировки",
@@ -239,7 +239,7 @@
     "image": "../assets/img/index/trainer-12.jpg",
     "url": "trainer-detail.html?id=12",
     "education": "Высшее образование, спортивная подготовка",
-    "experienceStart": 2016,
+    "experience": "с 2016 (9 лет)",
     "wideSpecializations": [
       "TRX",
       "персональные тренировки",
@@ -251,4 +251,66 @@
       "участник фитнес-конвенций"
     ]
   }
-]
+];
+
+const page = document.querySelector('[data-trainer-page]');
+const photo = document.querySelector('[data-trainer-photo]');
+const nameEl = document.querySelector('[data-trainer-name]');
+const roleEl = document.querySelector('[data-trainer-role]');
+const educationEl = document.querySelector('[data-trainer-education]');
+const experienceEl = document.querySelector('[data-trainer-experience]');
+const specsEl = document.querySelector('[data-trainer-specializations]');
+const achievementsEl = document.querySelector('[data-trainer-achievements]');
+const signupButton = document.querySelector('[data-trainer-signup]');
+const notFound = document.querySelector('[data-trainer-not-found]');
+
+function getTrainerId() {
+  const params = new URLSearchParams(window.location.search);
+  return Number(params.get('id')) || 1;
+}
+
+function renderList(element, items) {
+  element.innerHTML = items.map((item) => `<li>${item}</li>`).join('');
+}
+
+function renderTrainer(trainer) {
+  document.title = `${trainer.name} — тренер ВТЕМЕ`;
+  photo.src = trainer.image;
+  photo.alt = trainer.name;
+  nameEl.textContent = trainer.name;
+  roleEl.textContent = trainer.role;
+  educationEl.textContent = trainer.education;
+  const currentYear = new Date().getFullYear();
+  const experienceStart = trainer.experienceStart;
+  const experienceYears = currentYear - experienceStart;
+
+  experienceEl.textContent = `с ${experienceStart} (${experienceYears})`;
+  renderList(specsEl, trainer.wideSpecializations || [trainer.specialization]);
+  renderList(achievementsEl, trainer.achievements || []);
+
+  signupButton.href = `#signup?trainer=${encodeURIComponent(trainer.name)}`;
+  page.hidden = false;
+  
+}
+
+async function loadTrainer() {
+  let trainers = FALLBACK_TRAINERS;
+
+  try {
+    const response = await fetch('../data/trainers.json');
+    if (response.ok) trainers = await response.json();
+  } catch (error) {
+    trainers = FALLBACK_TRAINERS;
+  }
+
+  const trainer = trainers.find((item) => item.id === getTrainerId());
+
+  if (!trainer) {
+    notFound.hidden = false;
+    return;
+  }
+
+  renderTrainer(trainer);
+}
+
+loadTrainer();
