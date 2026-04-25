@@ -416,6 +416,7 @@ body.scrolled .header {
   display: flex;
   flex-wrap: wrap;
   gap: 24px;
+  flex-direction: column;
 }
 
 .training-card {
@@ -703,6 +704,39 @@ body.scrolled .header {
 
 .account-settings__logout .ui-button {
   min-width: 220px;
+}
+
+.training-card__cancel {
+  margin-top: 12px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 44px;
+  padding: 0 18px;
+
+  border-radius: 999px;
+  border: 1px solid #e5e5e5;
+
+  background: transparent;
+  color: #111;
+
+  font-size: 14px;
+  font-weight: 500;
+  font-family: inherit;
+
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.training-card__cancel {
+  border: 1px solid #f47b20;
+  color: #f47b20;
+}
+
+.training-card__cancel:hover {
+  background: #ff2600;
+  color: #fff;
 }
 @media (min-width: 1440px) and (max-width: 1536px) {
   :root {
