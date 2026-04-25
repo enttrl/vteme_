@@ -31,14 +31,14 @@
         <ul class="nav__list">
           <li class="nav__item"><a class="nav__link" href="pages/about.html">О нас</a></li>
           <li class="nav__item"><a class="nav__link" href="pages/abonements.html">Абонементы</a></li>
-          <li class="nav__item"><a class="nav__link" href="#schedule">Расписание</a></li>
+          <li class="nav__item"><a class="nav__link" href="pages/schedule.html">Расписание</a></li>
           <li class="nav__item"><a class="nav__link" href="pages/services.html">Услуги</a></li>
           <li class="nav__item"><a class="nav__link" href="pages/trainer.html">Тренеры</a></li>
-          <li class="nav__item"><a class="nav__link" href="#promotions">Акции</a></li>
+          <li class="nav__item"><a class="nav__link" href="pages/stock.html">Акции</a></li>
         </ul>
       </nav>
 
-      <button class="header__login login-button" id="openAuthModal" type="button">
+      <button class="header__login login-button" type="button" data-auth-open>
         <span class="login-button__text">Войти</span>
         <span class="login-button__icon" aria-hidden="true">
           <img class="login-button__img" src="assets/img/arrow-up-right.svg" alt="">
@@ -70,13 +70,13 @@
       <nav class="mobile-menu__nav" aria-label="Мобильная навигация">
         <a class="mobile-menu__link" href="pages/about.html">О нас</a>
         <a class="mobile-menu__link" href="pages/abonements.html">Абонементы</a>
-        <a class="mobile-menu__link" href="#schedule">Расписание</a>
+        <a class="mobile-menu__link" href="pages/schedule.html">Расписание</a>
         <a class="mobile-menu__link" href="pages/services.html">Услуги</a>
         <a class="mobile-menu__link" href="pages/trainer.html">Тренеры</a>
-        <a class="mobile-menu__link" href="#promotions">Акции</a>
+        <a class="mobile-menu__link" href="pages/stock.html">Акции</a>
       </nav>
 
-      <button class="mobile-menu__login login-button" id="openAuthModalMobile" type="button">
+      <button class="mobile-menu__login login-button" type="button" data-auth-open>
         <span class="login-button__text">Личный кабинет</span>
         <span class="login-button__icon" aria-hidden="true">
           <img class="login-button__img" src="assets/img/arrow-up-right.svg" alt="">
@@ -172,9 +172,7 @@
               </h3>
 
               <p class="feature-card__text">
-                Вы&nbsp;легко подберёте
-                тренировку под свой ритм
-                жизни.
+                Вы&nbsp;легко подберёте тренировку под свой ритм жизни.
               </p>
             </div>
           </article>
@@ -825,12 +823,12 @@
         </div>
 
         <nav class="footer__nav" aria-label="Навигация по сайту">
-          <a href="#about" class="footer__nav-link">О нас</a>
-          <a href="#memberships" class="footer__nav-link">Абонементы</a>
-          <a href="#schedule" class="footer__nav-link">Расписание</a>
-          <a href="#services" class="footer__nav-link">Услуги</a>
-          <a href="#trainers" class="footer__nav-link">Тренеры</a>
-          <a href="#promotions" class="footer__nav-link">Акции</a>
+          <a href="pages/about.html" class="footer__nav-link">О нас</a>
+          <a href="pages/abonements.html" class="footer__nav-link">Абонементы</a>
+          <a href="pages/schedule.html" class="footer__nav-link">Расписание</a>
+          <a href="pages/services.html" class="footer__nav-link">Услуги</a>
+          <a href="pages/trainer.html" class="footer__nav-link">Тренеры</a>
+          <a href="pages/stock.html" class="footer__nav-link">Акции</a>
         </nav>
       </div>
 
@@ -841,150 +839,6 @@
       </div>
     </div>
   </footer>
-  <div class="auth-modal" id="authModal" aria-hidden="true">
-    <div class="auth-modal__overlay" id="authModalOverlay"></div>
-
-    <div class="auth-modal__dialog">
-      <button class="auth-modal__close" id="closeAuthModal" type="button" aria-label="Закрыть">
-        <img src="assets/img/close_modal.svg" alt="">
-      </button>
-
-      <div class="auth-modal__tabs">
-        <button class="auth-modal__tab auth-modal__tab--active" type="button" data-auth-tab="register">
-          Регистрация
-        </button>
-        <button class="auth-modal__tab" type="button" data-auth-tab="login">
-          Вход
-        </button>
-      </div>
-
-      <form class="auth-form auth-form--active" id="registerForm">
-        <h2 class="auth-form__title">Регистрация</h2>
-
-        <label class="auth-form__group">
-          <span class="auth-form__label">Имя</span>
-          <input class="auth-form__input" type="text" name="name" placeholder="Ваше имя" required>
-        </label>
-
-        <label class="auth-form__group">
-          <span class="auth-form__label">Email</span>
-          <input class="auth-form__input" type="email" name="email" placeholder="example@mail.ru" required>
-          <span class="auth-form__error" data-error-for="register-email"></span>
-        </label>
-
-        <label class="auth-form__group">
-          <span class="auth-form__label">Телефон</span>
-          <input class="auth-form__input" type="tel" name="phone" id="registerPhoneInput"
-            placeholder="+7 (999) 999 - 99 - 99" required>
-        </label>
-
-        <label class="auth-form__group">
-          <span class="auth-form__label">Пароль</span>
-
-          <span class="auth-form__input-wrap">
-            <input class="auth-form__input" type="password" name="password" id="registerPasswordInput"
-              placeholder="******" required minlength="6">
-            <button class="auth-form__password-toggle" type="button" data-password-toggle="registerPasswordInput"
-              aria-label="Показать пароль">
-              <img src="assets/img/eye-off.svg" alt="">
-            </button>
-          </span>
-
-          <span class="auth-form__error" data-error-for="register-password"></span>
-        </label>
-
-        <label class="auth-form__checkbox">
-          <input class="auth-form__checkbox-input" type="checkbox" required>
-          <span class="auth-form__checkbox-box"></span>
-          <span class="auth-form__checkbox-text">Пользовательское соглашение</span>
-        </label>
-
-        <label class="auth-form__checkbox">
-          <input class="auth-form__checkbox-input" type="checkbox" required>
-          <span class="auth-form__checkbox-box"></span>
-          <span class="auth-form__checkbox-text">Обработка персональных данных</span>
-        </label>
-
-        <button class="auth-form__submit" type="submit">Зарегистрироваться</button>
-
-        <button class="auth-form__switch" type="button" data-switch-tab="login">
-          Уже есть аккаунт? Войти
-        </button>
-      </form>
-
-      <form class="auth-form" id="loginForm">
-        <h2 class="auth-form__title">Вход</h2>
-
-        <label class="auth-form__group">
-          <span class="auth-form__label">Email</span>
-          <input class="auth-form__input" type="email" name="email" placeholder="example@mail.ru" required>
-          <span class="auth-form__error" data-error-for="login-email"></span>
-        </label>
-
-        <label class="auth-form__group">
-          <span class="auth-form__label">Пароль</span>
-
-          <span class="auth-form__input-wrap">
-            <input class="auth-form__input" type="password" name="password" id="loginPasswordInput" placeholder="******"
-              required minlength="6">
-            <button class="auth-form__password-toggle" type="button" data-password-toggle="loginPasswordInput"
-              aria-label="Показать пароль">
-              <img src="assets/img/eye-off.svg" alt="">
-            </button>
-          </span>
-
-          <span class="auth-form__error" data-error-for="login-password"></span>
-        </label>
-
-        <button class="auth-form__link" type="button" id="openRecoveryRequest">
-          Не помните пароль? Восстановить
-        </button>
-
-        <button class="auth-form__submit" type="submit">Войти</button>
-
-        <button class="auth-form__switch" type="button" data-switch-tab="register">
-          Не зарегистрированы? Регистрация
-        </button>
-      </form>
-
-      <form class="auth-form" id="recoveryRequestForm">
-        <h2 class="auth-form__title">Восстановить пароль</h2>
-
-        <label class="auth-form__group">
-          <span class="auth-form__label">Email</span>
-          <input class="auth-form__input" type="email" name="email" placeholder="example@mail.ru" required>
-          <span class="auth-form__error" data-error-for="recovery-email"></span>
-        </label>
-
-        <p class="auth-form__hint">
-          Мы отправим письмо со ссылкой для смены пароля
-        </p>
-
-        <button class="auth-form__submit" type="submit">Отправить письмо</button>
-
-        <button class="auth-form__switch" type="button" data-switch-tab="login">
-          Назад ко входу
-        </button>
-      </form>
-
-      <form class="auth-form" id="recoveryUpdateForm">
-        <h2 class="auth-form__title">Восстановить пароль</h2>
-
-        <label class="auth-form__group">
-          <span class="auth-form__label">Новый пароль</span>
-          <input class="auth-form__input" type="password" name="password" id="recoveryPasswordInput"
-            placeholder="******" required minlength="6">
-          <button class="auth-form__password-toggle" type="button" data-password-toggle="recoveryPasswordInput"
-            aria-label="Показать пароль">
-            <img src="assets/img/eye-off.svg" alt="">
-          </button>
-          <span class="auth-form__error" data-error-for="recovery-password"></span>
-        </label>
-
-        <button class="auth-form__submit" type="submit">Сохранить пароль</button>
-      </form>
-    </div>
-  </div>
 </body>
 <script>
   window.addEventListener("scroll", () => {
