@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Админ — расписание ВТЕМЕ</title>
+
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="../css/components/admin_schedule.css">
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="../js/auth.js" defer></script>
+  <script src="../js/burger-menu.js" defer></script>
+  <script src="../js/admin-schedule.js" defer></script>
+  <script src="../js/supabase-client.js"></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <header class="header">
+    <div class="header__inner account-shell">
+      <a class="header__logo-link" href="../index.html" aria-label="На главную">
+        <img class="header__logo" src="../assets/img/logo-vteme.svg" alt="ВТЕМЕ">
+      </a>
+
+      <nav class="header__nav nav" aria-label="Основная навигация">
+        <ul class="nav__list">
+          <li class="nav__item"><a class="nav__link" href="about.html">О нас</a></li>
+          <li class="nav__item"><a class="nav__link" href="abonements.html">Абонементы</a></li>
+          <li class="nav__item"><a class="nav__link" href="schedule.html">Расписание</a></li>
+          <li class="nav__item"><a class="nav__link" href="services.html">Услуги</a></li>
+          <li class="nav__item"><a class="nav__link" href="trainer.html">Тренеры</a></li>
+          <li class="nav__item"><a class="nav__link" href="stock.html">Акции</a></li>
+        </ul>
+      </nav>
+
+      <button class="header__login login-button" type="button" data-auth-open>
+        <span class="login-button__text">Войти</span>
+        <span class="login-button__icon" aria-hidden="true">
+          <img class="login-button__img" src="../assets/img/arrow-up-right.svg" alt="">
+        </span>
+      </button>
+
+      <button class="header__burger" id="openBurgerMenu" type="button" aria-label="Открыть меню" aria-expanded="false"
+        aria-controls="mobileMenu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <div class="mobile-menu__inner">
+      <div class="mobile-menu__top">
+        <a class="mobile-menu__logo-link" href="../index.html" aria-label="На главную">
+          <img class="mobile-menu__logo" src="../assets/img/logo-vteme.svg" alt="ВТЕМЕ">
+        </a>
+
+        <button class="mobile-menu__close" id="closeBurgerMenu" type="button" aria-label="Закрыть меню">
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+
+      <nav class="mobile-menu__nav" aria-label="Мобильная навигация">
+        <a class="mobile-menu__link" href="about.html">О нас</a>
+        <a class="mobile-menu__link" href="abonements.html">Абонементы</a>
+        <a class="mobile-menu__link" href="schedule.html">Расписание</a>
+        <a class="mobile-menu__link" href="services.html">Услуги</a>
+        <a class="mobile-menu__link" href="trainer.html">Тренеры</a>
+        <a class="mobile-menu__link" href="stock.html">Акции</a>
+      </nav>
+
+      <button class="mobile-menu__login login-button" type="button" data-auth-open>
+        <span class="login-button__text">Личный кабинет</span>
+        <span class="login-button__icon" aria-hidden="true">
+          <img class="login-button__img" src="../assets/img/arrow-up-right.svg" alt="">
+        </span>
+      </button>
+
+      <div class="mobile-menu__contacts">
+        <a class="mobile-menu__contact" href="tel:+79288220555">+7 (928) 822-05-55</a>
+        <a class="mobile-menu__contact" href="mailto:vteme@mail.ru">vteme@mail.ru</a>
+      </div>
+
+      <div class="mobile-menu__bottom">
+        <p class="mobile-menu__copyright">© 2026</p>
+        <a class="mobile-menu__policy" href="#">Политика обработки персональных данных</a>
+      </div>
+    </div>
+  </div>
+
+  <main class="admin-schedule-page">
+    <section class="admin-schedule" aria-labelledby="admin-schedule-title">
+      <div class="admin-schedule__container">
+        <div class="admin-schedule__top">
+          <div>
+            <p class="admin-schedule__eyebrow">Админ-панель</p>
+            <h1 class="admin-schedule__title" id="admin-schedule-title">Расписание</h1>
+            <p class="admin-schedule__lead">Добавляйте, редактируйте и удаляйте групповые занятия. Изменения сразу подтягиваются на страницу расписания.</p>
+          </div>
+
+          <a class="admin-schedule__link" href="schedule.html">Открыть расписание</a>
+        </div>
+
+        <div class="admin-lock" data-admin-lock hidden>
+          <h2 class="admin-lock__title">Нужен вход администратора</h2>
+          <p class="admin-lock__text">Войдите в личный кабинет под email администратора, затем вернитесь на эту страницу.</p>
+          <a class="admin-lock__button" href="account.html">Войти</a>
+        </div>
+
+        <div class="admin-schedule__content" data-admin-content hidden>
+          <form class="admin-form" data-class-form>
+            <div class="admin-form__head">
+              <h2 class="admin-form__title" data-form-title>Добавить занятие</h2>
+              <button class="admin-form__reset" type="button" data-reset-form hidden>Отменить редактирование</button>
+            </div>
+
+            <input type="hidden" name="id">
+
+            <div class="admin-form__grid">
+              <label class="admin-field">
+                <span class="admin-field__label">Название занятия</span>
+                <input class="admin-field__control" type="text" name="title" placeholder="Например, Pilates" required>
+              </label>
+
+              <label class="admin-field">
+                <span class="admin-field__label">Тренер</span>
+                <input class="admin-field__control" type="text" name="trainer_name" placeholder="Имя Фамилия" required>
+              </label>
+
+              <label class="admin-field">
+                <span class="admin-field__label">Дата</span>
+                <input class="admin-field__control" type="date" name="date" required>
+              </label>
+
+              <label class="admin-field">
+                <span class="admin-field__label">Начало</span>
+                <input class="admin-field__control" type="time" name="start_time" required>
+              </label>
+
+              <label class="admin-field">
+                <span class="admin-field__label">Конец</span>
+                <input class="admin-field__control" type="time" name="end_time" required>
+              </label>
+
+              <label class="admin-field">
+                <span class="admin-field__label">Мест</span>
+                <input class="admin-field__control" type="number" name="capacity" min="1" max="100" value="12" required>
+              </label>
+
+              <label class="admin-field">
+                <span class="admin-field__label">Тип</span>
+                <select class="admin-field__control" name="type">
+                  <option value="">Не выбрано</option>
+                  <option value="Йога">Йога</option>
+                  <option value="Пилатес">Пилатес</option>
+                  <option value="Силовые тренировки">Силовые тренировки</option>
+                  <option value="Функциональные тренировки">Функциональные тренировки</option>
+                  <option value="Кардио">Кардио</option>
+                  <option value="Стретчинг">Стретчинг</option>
+                </select>
+              </label>
+
+              <label class="admin-field">
+                <span class="admin-field__label">Цель</span>
+                <select class="admin-field__control" name="goal">
+                  <option value="">Не выбрано</option>
+                  <option value="Похудение">Похудение</option>
+                  <option value="Сила">Сила</option>
+                  <option value="Гибкость">Гибкость</option>
+                  <option value="Выносливость">Выносливость</option>
+                  <option value="Восстановление">Восстановление</option>
+                </select>
+              </label>
+
+              <label class="admin-field">
+                <span class="admin-field__label">Группа мышц</span>
+                <select class="admin-field__control" name="muscle_group">
+                  <option value="">Не выбрано</option>
+                  <option value="Всё тело">Всё тело</option>
+                  <option value="Ноги и ягодицы">Ноги и ягодицы</option>
+                  <option value="Спина">Спина</option>
+                  <option value="Кор">Кор</option>
+                  <option value="Руки и плечи">Руки и плечи</option>
+                </select>
+              </label>
+
+              <label class="admin-field">
+                <span class="admin-field__label">Уровень</span>
+                <select class="admin-field__control" name="level">
+                  <option value="">Не выбрано</option>
+                  <option value="Начальный">Начальный</option>
+                  <option value="Средний">Средний</option>
+                  <option value="Продвинутый">Продвинутый</option>
+                  <option value="Любой уровень">Любой уровень</option>
+                </select>
+              </label>
+
+              <label class="admin-field">
+                <span class="admin-field__label">Время дня</span>
+                <select class="admin-field__control" name="time_of_day">
+                  <option value="">Не выбрано</option>
+                  <option value="Утро">Утро</option>
+                  <option value="День">День</option>
+                  <option value="Вечер">Вечер</option>
+                </select>
+              </label>
+
+              <label class="admin-field admin-field--wide">
+                <span class="admin-field__label">Описание</span>
+                <textarea class="admin-field__control admin-field__control--textarea" name="description" placeholder="Кратко опишите занятие"></textarea>
+              </label>
+            </div>
+
+            <button class="admin-form__submit" type="submit" data-submit-button>Добавить занятие</button>
+          </form>
+
+          <section class="admin-list" aria-labelledby="admin-list-title">
+            <div class="admin-list__top">
+              <h2 class="admin-list__title" id="admin-list-title">Занятия</h2>
+              <div class="admin-list__filters">
+                <input class="admin-list__date" type="date" data-filter-date>
+                <button class="admin-list__clear" type="button" data-clear-date>Все даты</button>
+              </div>
+            </div>
+
+            <div class="admin-list__items" data-classes-list>
+              <p class="admin-list__empty">Загрузка занятий...</p>
+            </div>
+          </section>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    window.addEventListener('scroll', () => {
+      document.body.classList.toggle('scrolled', window.scrollY > 10);
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Акции — ВТЕМЕ</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../css/components/stock_page.css">
+    <script src="../js/burger-menu.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="../js/auth.js" defer></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet">
+
+</head>
+
+<body>
+    <header class="header">
+        <div class="header__inner account-shell">
+            <a class="header__logo-link" href="../index.html" aria-label="На главную">
+                <img class="header__logo" src="../assets/img/logo-vteme.svg" alt="ВТЕМЕ">
+            </a>
+
+            <nav class="header__nav nav" aria-label="Основная навигация">
+                <ul class="nav__list">
+                    <li class="nav__item"><a class="nav__link" href="about.html">О нас</a></li>
+                    <li class="nav__item"><a class="nav__link" href="abonements.html">Абонементы</a></li>
+                    <li class="nav__item"><a class="nav__link" href="schedule.html">Расписание</a></li>
+                    <li class="nav__item"><a class="nav__link" href="services.html">Услуги</a></li>
+                    <li class="nav__item"><a class="nav__link" href="trainer.html">Тренеры</a></li>
+                    <li class="nav__item"><a class="nav__link" href="stock.html">Акции</a></li>
+                </ul>
+            </nav>
+
+            <button class="header__login login-button" type="button" data-auth-open>
+                <span class="login-button__text">Войти</span>
+                <span class="login-button__icon" aria-hidden="true">
+                    <img class="login-button__img" src="../assets/img/arrow-up-right.svg" alt="">
+                </span>
+            </button>
+
+            <button class="header__burger" id="openBurgerMenu" type="button" aria-label="Открыть меню"
+                aria-expanded="false" aria-controls="mobileMenu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+        <div class="mobile-menu__inner">
+            <div class="mobile-menu__top">
+                <a class="mobile-menu__logo-link" href="../index.html" aria-label="На главную">
+                    <img class="mobile-menu__logo" src="../assets/img/logo-vteme.svg" alt="ВТЕМЕ">
+                </a>
+
+                <button class="mobile-menu__close" id="closeBurgerMenu" type="button" aria-label="Закрыть меню">
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+
+            <nav class="mobile-menu__nav" aria-label="Мобильная навигация">
+                <a class="mobile-menu__link" href="about.html">О нас</a>
+                <a class="mobile-menu__link" href="abonements.html">Абонементы</a>
+                <a class="mobile-menu__link" href="schedule.html">Расписание</a>
+                <a class="mobile-menu__link" href="services.html">Услуги</a>
+                <a class="mobile-menu__link" href="trainer.html">Тренеры</a>
+                <a class="mobile-menu__link" href="stock.html">Акции</a>
+            </nav>
+
+            <button class="mobile-menu__login login-button" type="button" data-auth-open>
+                <span class="login-button__text">Личный кабинет</span>
+                <span class="login-button__icon" aria-hidden="true">
+                    <img class="login-button__img" src="../assets/img/arrow-up-right.svg" alt="">
+                </span>
+            </button>
+
+            <div class="mobile-menu__contacts">
+                <a class="mobile-menu__contact" href="tel:+79288220555">+7 (928) 822-05-55</a>
+                <a class="mobile-menu__contact" href="mailto:vteme@mail.ru">vteme@mail.ru</a>
+            </div>
+
+            <div class="mobile-menu__bottom">
+                <p class="mobile-menu__copyright">© 2026</p>
+                <a class="mobile-menu__policy" href="#">Политика обработки персональных данных</a>
+            </div>
+        </div>
+    </div>
+    <main class="stock-page">
+        <section class="stock" aria-labelledby="stock-title">
+            <div class="stock__container">
+                <h1 class="stock__title" id="stock-title">Специальные предложения</h1>
+                <p class="stock__lead">Выгодные условия для новых и постоянных клиентов фитнес-центра.</p>
+
+                <div class="stock-slider" aria-label="Список акций">
+                    <button class="stock-slider__arrow stock-slider__arrow--prev" type="button" data-stock-prev>
+                        <img src="../assets/img/chevron-right.svg" alt="">
+                    </button>
+
+                    <div class="stock-slider__track" data-stock-slider>
+                        <article class="stock-card stock-card--element" id="stock-card-1">
+                            <img class="stock-card__decor" src="../assets/img/element2.svg" alt="" aria-hidden="true">
+                            <div class="stock-card__content">
+                                <h2 class="stock-card__title">«Тест-драйв»</h2>
+                                <div class="stock-card__bottom">
+                                    <p class="stock-card__text">Первая тренировка бесплатно для новых клиентов.
+                                        Познакомьтесь с&nbsp;клубом, тренерами и&nbsp;атмосферой без обязательств.</p>
+                                    <p class="stock-card__date">Успей до 25.03.2026г.</p>
+                                    <a class="stock-button" href="#trial">
+                                        <span>Записаться</span>
+                                        <span class="stock-button__icon" aria-hidden="true"><img
+                                                src="../assets/img/arrow-up-right.svg" alt=""></span>
+                                    </a>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="stock-card stock-card--photo" id="stock-card-2">
+                            <img class="stock-card__image" src="../assets/img/stock.png"
+                                alt="Тренировка в фитнес-центре">
+                            <div class="stock-card__content stock-card__content--light">
+                                <h2 class="stock-card__title">«Приведи друга»</h2>
+                                <div class="stock-card__bottom">
+                                    <p class="stock-card__text">Тренируйтесь вместе и получайте бонус — 7 дополнительных
+                                        дней к абонементу.</p>
+                                    <a class="stock-button stock-button--light" href="#">
+                                        <span>Узнать подробнее</span>
+                                        <span class="stock-button__icon" aria-hidden="true"><img
+                                                src="../assets/img/arrow-up-right.svg" alt=""></span>
+                                    </a>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="stock-card stock-card--image-card" id="stock-card-3">
+                            <img class="stock-card__bg-card" src="../assets/img/cards.png" alt="" aria-hidden="true">
+                            <div class="stock-card__content">
+                                <h2 class="stock-card__title">«Год выгоднее»</h2>
+                                <div class="stock-card__bottom">
+                                    <p class="stock-card__text">Скидка 20% на годовой абонемент. Долгосрочный результат
+                                        по более выгодной цене.</p>
+                                    <p class="stock-card__date">Успей до 25.03.2026г.</p>
+                                    <a class="stock-button" href="abonements.html">
+                                        <span>Выбрать абонемент</span>
+                                        <span class="stock-button__icon" aria-hidden="true"><img
+                                                src="../assets/img/arrow-up-right.svg" alt=""></span>
+                                    </a>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="stock-card stock-card--simple" id="stock-card-4">
+                            <div class="stock-card__content">
+                                <h2 class="stock-card__title">«Семейный старт»</h2>
+                                <div class="stock-card__bottom">
+                                    <p class="stock-card__text">Специальные условия при покупке абонементов для двух и
+                                        более членов семьи.</p>
+                                    <p class="stock-card__date">Количество мест ограничено.</p>
+                                    <a class="stock-button" href="#trial">
+                                        <span>Оставить заявку</span>
+                                        <span class="stock-button__icon" aria-hidden="true"><img
+                                                src="../assets/img/arrow-up-right.svg" alt=""></span>
+                                    </a>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+
+                    <button class="stock-slider__arrow stock-slider__arrow--next" type="button" data-stock-next>
+                        <img src="../assets/img/chevron-right.svg" alt="">
+                    </button>
+                </div>
+
+                <p class="stock__note">Акции <span>не суммируются</span> между собой и с другими специальными
+                    предложениями фитнес-центра. Сроки действия акций ограничены и могут быть изменены без
+                    предварительного уведомления. Подробную информацию об условиях участия вы можете получить у
+                    администратора клуба или по <a href="tel:+79288220555">телефону</a></p>
+            </div>
+        </section>
+        <section class="feedback" id="contact">
+            <div class="feedback__inner">
+                <div class="feedback__content">
+                    <div class="feedback__form-card">
+                        <h3 class="feedback__form-title">Свяжитесь с нами</h3>
+
+                        <p class="feedback__form-text">
+                            Если у Вас есть вопросы или возникли какие-то проблемы
+                            впишите свои данные и&nbsp;мы Вам перезвоним
+                        </p>
+
+                        <form class="feedback-form" id="feedbackForm">
+                            <label class="feedback-form__group">
+                                <span class="feedback-form__label">Имя</span>
+                                <input class="feedback-form__input" type="text" name="name" placeholder="Ваше имя"
+                                    required>
+                            </label>
+
+                            <label class="feedback-form__group">
+                                <span class="feedback-form__label">Телефон</span>
+                                <input class="feedback-form__input" type="tel" name="phone"
+                                    placeholder="+7 (999) 999 - 99 - 99" id="phoneInput" required>
+                            </label>
+
+                            <label class="feedback-form__group">
+                                <span class="feedback-form__label">Email</span>
+                                <input class="feedback-form__input" type="email" name="email"
+                                    placeholder="example@mail.ru" required>
+                            </label>
+
+                            <label class="feedback-form__checkbox">
+                                <input class="feedback-form__checkbox-input" type="checkbox" name="agreement" required>
+                                <span class="feedback-form__checkbox-box"></span>
+                                <span class="feedback-form__checkbox-text">
+                                    Согласие на обработку персональных данных
+                                </span>
+                            </label>
+
+                            <button class="feedback-form__submit" type="submit">
+                                Перезвоните мне
+                            </button>
+                        </form>
+                    </div>
+
+                    <div class="feedback__info">
+                        <article class="contact-card contact-card--accent">
+                            <div class="contact-card__icon">
+                                <img src="../assets/img/index/map.svg" alt="">
+                            </div>
+                            <div class="contact-card__body">
+                                <h3 class="contact-card__title">Адрес</h3>
+                                <p class="contact-card__text">Кисловодск, Первомайский просп., 27, этаж 3</p>
+                            </div>
+                        </article>
+
+                        <article class="contact-card">
+                            <div class="contact-card__icon">
+                                <img src="../assets/img/index/phone.svg" alt="">
+                            </div>
+                            <div class="contact-card__body">
+                                <h3 class="contact-card__title">Телефон</h3>
+                                <p class="contact-card__text">Вы можете связаться с нами <br> по телефону +7 (928)
+                                    822-05-55</p>
+                            </div>
+                        </article>
+
+                        <article class="contact-card">
+                            <div class="contact-card__icon">
+                                <img src="../assets/img/index/mail.svg" alt="">
+                            </div>
+                            <div class="contact-card__body">
+                                <h3 class="contact-card__title">Email</h3>
+                                <p class="contact-card__text">В течение рабочего времени Вы можете <br> писать нам на
+                                    почту vteme@mail.ru
+                                </p>
+                            </div>
+                        </article>
+
+                        <article class="contact-card">
+                            <div class="contact-card__icon">
+                                <img src="../assets/img/index/clock.svg" alt="">
+                            </div>
+                            <div class="contact-card__body">
+                                <h3 class="contact-card__title">Рабочие часы</h3>
+                                <p class="contact-card__text">Пн — Пт: 08:00-22:00<br>Сб — Вс: 09:00-21:00</p>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="footer" id="footer">
+        <div class="footer__container">
+            <div class="footer__top">
+                <div class="footer__logo-block">
+                    <a href="index.html" class="footer__logo" aria-label="ВТЕМЕ">
+                        <img src="../assets/img/logo-vteme.svg" alt="ВТЕМЕ">
+                    </a>
+                </div>
+
+                <div class="footer__contacts">
+                    <p class="footer__text">
+                        Есть вопросы или<br>
+                        предложения? Свяжитесь<br>
+                        с нами
+                    </p>
+
+                    <a href="mailto:vteme@mail.ru" class="footer__mail">
+                        vteme@mail.ru
+                    </a>
+
+                    <p class="footer__caption">Позвоните нам</p>
+
+                    <a href="tel:+79288220555" class="footer__phone">
+                        +7 (928) 822-05-55
+                    </a>
+                </div>
+
+                <div class="footer__address">
+                    <p class="footer__address-text">
+                        КИСЛОВОДСК<br>
+                        Первомайский<br>
+                        проспект 27<br>
+                        +7 (928) 822-05-55
+                    </p>
+                </div>
+
+                <nav class="footer__nav" aria-label="Навигация по сайту">
+                    <a href="about.html" class="footer__nav-link">О нас</a>
+                    <a href="abonements.html" class="footer__nav-link">Абонементы</a>
+                    <a href="schedule.html" class="footer__nav-link">Расписание</a>
+                    <a href="services.html" class="footer__nav-link">Услуги</a>
+                    <a href="trainer.html" class="footer__nav-link">Тренеры</a>
+                    <a href="stock.html" class="footer__nav-link">Акции</a>
+                </nav>
+            </div>
+
+            <div class="footer__bottom">
+                <p class="footer__bottom-text">© 2026</p>
+                <a href="#" class="footer__bottom-link">Политика обработки персональных данных</a>
+                <p class="footer__bottom-text footer__bottom-text--right">Разработка сайта Анисимова М.А.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+<script>
+    window.addEventListener("scroll", () => {
+        document.body.classList.toggle("scrolled", window.scrollY > 10);
+    });
+</script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const stockSlider = document.querySelector('[data-stock-slider]');
+        const prevBtn = document.querySelector('[data-stock-prev]');
+        const nextBtn = document.querySelector('[data-stock-next]');
+
+        if (!stockSlider || !prevBtn || !nextBtn) return;
+
+        prevBtn.addEventListener('click', () => {
+            stockSlider.scrollBy({
+                left: -stockSlider.clientWidth,
+                behavior: 'smooth'
+            });
+        });
+
+        nextBtn.addEventListener('click', () => {
+            stockSlider.scrollBy({
+                left: stockSlider.clientWidth,
+                behavior: 'smooth'
+            });
+        });
+    });
+</script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        emailjs.init('4EOkO_p3ey7Am8t1d');
+
+        const form = document.getElementById('feedbackForm');
+        if (!form) return;
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const btn = form.querySelector('.feedback-form__submit');
+            btn.disabled = true;
+            btn.textContent = 'Отправка...';
+
+            const data = {
+                name: form.name.value,
+                phone: form.phone.value,
+                email: form.email.value
+            };
+
+            try {
+                await emailjs.send(
+                    'service_15j1wj6',
+                    'template_6gm6k24',
+                    data
+                );
+
+                alert('Спасибо! Мы скоро с вами свяжемся');
+                form.reset();
+
+            } catch (error) {
+                console.error('EmailJS error:', error);
+                alert('Ошибка отправки');
+            } finally {
+                btn.disabled = false;
+                btn.textContent = 'Перезвоните мне';
+            }
+        });
+    });
+</script>
+
+</html>

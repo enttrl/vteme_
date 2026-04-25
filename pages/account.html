@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,14 +8,17 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
 
   <link rel="stylesheet" href="../style.css">
   <link rel="stylesheet" href="../css/components/account.css">
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="../js/auth.js" defer></script>
   <script defer src="../js/burger-menu.js"></script>
   <script defer src="../js/account.js"></script>
 </head>
+
 <body class="account-body">
   <header class="header">
     <div class="header__inner account-shell">
@@ -24,30 +28,24 @@
 
       <nav class="header__nav nav" aria-label="Основная навигация">
         <ul class="nav__list">
-          <li class="nav__item"><a class="nav__link" href="../index.html#about">О нас</a></li>
-          <li class="nav__item"><a class="nav__link" href="../index.html#memberships">Абонементы</a></li>
-          <li class="nav__item"><a class="nav__link" href="../index.html#schedule">Расписание</a></li>
-          <li class="nav__item"><a class="nav__link" href="../index.html#services">Услуги</a></li>
-          <li class="nav__item"><a class="nav__link" href="../index.html#trainers">Тренеры</a></li>
-          <li class="nav__item"><a class="nav__link" href="../index.html#promotions">Акции</a></li>
+          <li class="nav__item"><a class="nav__link" href="about.html">О нас</a></li>
+          <li class="nav__item"><a class="nav__link" href="abonements.html">Абонементы</a></li>
+          <li class="nav__item"><a class="nav__link" href="schedule.html">Расписание</a></li>
+          <li class="nav__item"><a class="nav__link" href="services.html">Услуги</a></li>
+          <li class="nav__item"><a class="nav__link" href="trainer.html">Тренеры</a></li>
+          <li class="nav__item"><a class="nav__link" href="stock.html">Акции</a></li>
         </ul>
       </nav>
 
-      <a class="header__login login-button" href="./account.html" aria-label="Перейти в личный кабинет">
+      <button class="header__login login-button" type="button" data-auth-open>
         <span class="login-button__text">Войти</span>
         <span class="login-button__icon" aria-hidden="true">
           <img class="login-button__img" src="../assets/img/arrow-up-right.svg" alt="">
         </span>
-      </a>
+      </button>
 
-      <button
-        class="header__burger"
-        id="openBurgerMenu"
-        type="button"
-        aria-label="Открыть меню"
-        aria-expanded="false"
-        aria-controls="mobileMenu"
-      >
+      <button class="header__burger" id="openBurgerMenu" type="button" aria-label="Открыть меню" aria-expanded="false"
+        aria-controls="mobileMenu">
         <span></span>
         <span></span>
         <span></span>
@@ -69,20 +67,20 @@
       </div>
 
       <nav class="mobile-menu__nav" aria-label="Мобильная навигация">
-        <a class="mobile-menu__link" href="../index.html#about">О нас</a>
-        <a class="mobile-menu__link" href="../index.html#memberships">Абонементы</a>
-        <a class="mobile-menu__link" href="../index.html#schedule">Расписание</a>
-        <a class="mobile-menu__link" href="../index.html#services">Услуги</a>
-        <a class="mobile-menu__link" href="../index.html#trainers">Тренеры</a>
-        <a class="mobile-menu__link" href="../index.html#promotions">Акции</a>
+        <a class="mobile-menu__link" href="about.html">О нас</a>
+        <a class="mobile-menu__link" href="abonements.html">Абонементы</a>
+        <a class="mobile-menu__link" href="schedule.html">Расписание</a>
+        <a class="mobile-menu__link" href="services.html">Услуги</a>
+        <a class="mobile-menu__link" href="trainer.html">Тренеры</a>
+        <a class="mobile-menu__link" href="stock.html">Акции</a>
       </nav>
 
-      <a class="mobile-menu__login login-button" href="./account.html">
+      <button class="mobile-menu__login login-button" type="button" data-auth-open>
         <span class="login-button__text">Личный кабинет</span>
         <span class="login-button__icon" aria-hidden="true">
           <img class="login-button__img" src="../assets/img/arrow-up-right.svg" alt="">
         </span>
-      </a>
+      </button>
 
       <div class="mobile-menu__contacts">
         <a class="mobile-menu__contact" href="tel:+79288220555">+7 (928) 822-05-55</a>
@@ -144,7 +142,7 @@
               <img src="../assets/img/user.svg" alt="" />
             </div>
           </div>
-          
+
         </article>
 
         <article class="dashboard-card">
@@ -174,47 +172,41 @@
     </section>
 
     <section class="account-content container">
-        <section class="account-panel is-active" data-panel="overview">
-          <div class="account-section__head">
-            <h2 class="account-section__title">Мое расписание</h2>
-          </div>
+      <section class="account-panel is-active" data-panel="overview">
+        <div class="account-section__head">
+          <h2 class="account-section__title">Мое расписание</h2>
+        </div>
 
-          <div class="account-section__actions">
-            <button class="ui-button ui-button--dark account-action" type="button">
+        <div class="account-section__actions">
+          <button class="ui-button ui-button--dark account-action" type="button">
+            <a href="schedule.html" class="account-action">
               <span class="account-action__label">Запланировать тренировку</span>
-              <span class="account-action__icon" aria-hidden="true">
-                <img
-                  class="account-action__img"
-                  src="../assets/img/arrow-up-right.svg"
-                  alt=""
-                >
-              </span>
-            </button>
+            </a>
+            <span class="account-action__icon" aria-hidden="true">
+              <img class="account-action__img" src="../assets/img/arrow-up-right.svg" alt="">
+            </span>
+          </button>
+        </div>
+
+        <div class="schedule">
+          <div class="schedule-desktop">
+            <div class="schedule-week" id="scheduleWeek"></div>
           </div>
 
-          <div class="schedule">
-            <div class="schedule-desktop">
-              <div class="schedule-week" id="scheduleWeek"></div>
-            </div>
-
-            <div class="schedule-mobile">
-              <label class="schedule-mobile__picker">
-                <input
-                  id="scheduleNativeInput"
-                  class="schedule-mobile__native-date"
-                  type="date"
-                />
-                <span class="schedule-mobile__arrow" aria-hidden="true"></span>
-              </label>
-            </div>
-
-            <div class="schedule-divider"></div>
-            <div class="training-list" id="trainingList"></div>
+          <div class="schedule-mobile">
+            <label class="schedule-mobile__picker">
+              <input id="scheduleNativeInput" class="schedule-mobile__native-date" type="date" />
+              <span class="schedule-mobile__arrow" aria-hidden="true"></span>
+            </label>
           </div>
-        </section>
 
-        
-      
+          <div class="schedule-divider"></div>
+          <div class="training-list" id="trainingList"></div>
+        </div>
+      </section>
+
+
+
 
       <section class="account-panel" data-panel="services" hidden>
         <h2 class="account-section__title">Услуги</h2>
@@ -354,12 +346,12 @@
         </address>
 
         <nav class="footer__nav" aria-label="Навигация в подвале">
-          <a class="footer__nav-link" href="../index.html#about">О нас</a>
-          <a class="footer__nav-link" href="../index.html#memberships">Абонементы</a>
-          <a class="footer__nav-link" href="../index.html#schedule">Расписание</a>
-          <a class="footer__nav-link" href="../index.html#services">Услуги</a>
-          <a class="footer__nav-link" href="../index.html#trainers">Тренеры</a>
-          <a class="footer__nav-link" href="../index.html#promotions">Акции</a>
+          <a class="footer__nav-link" href="about.html">О нас</a>
+          <a class="footer__nav-link" href="abonements.html">Абонементы</a>
+          <a class="footer__nav-link" href="schedule.html">Расписание</a>
+          <a class="footer__nav-link" href="services.html">Услуги</a>
+          <a class="footer__nav-link" href="trainer.html">Тренеры</a>
+          <a class="footer__nav-link" href="stock.html">Акции</a>
         </nav>
       </div>
 
@@ -376,4 +368,5 @@
     document.body.classList.toggle("scrolled", window.scrollY > 10);
   });
 </script>
+
 </html>

@@ -12,6 +12,8 @@
   <link rel="stylesheet" href="../style.css">
   <link rel="stylesheet" href="../css/components/about.css">
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="../js/auth.js" defer></script>
   <script src="https://api-maps.yandex.ru/2.1/?apikey=0e4bfc59-00eb-43a3-b1ef-e607240854cf&lang=ru_RU"></script>
   <script src="../js/burger-menu.js"></script>
 </head>
@@ -27,19 +29,19 @@
         <ul class="nav__list">
           <li class="nav__item"><a class="nav__link" href="about.html">О нас</a></li>
           <li class="nav__item"><a class="nav__link" href="abonements.html">Абонементы</a></li>
-          <li class="nav__item"><a class="nav__link" href="../index.html#schedule">Расписание</a></li>
+          <li class="nav__item"><a class="nav__link" href="schedule.html">Расписание</a></li>
           <li class="nav__item"><a class="nav__link" href="services.html">Услуги</a></li>
           <li class="nav__item"><a class="nav__link" href="trainer.html">Тренеры</a></li>
-          <li class="nav__item"><a class="nav__link" href="../index.html#promotions">Акции</a></li>
+          <li class="nav__item"><a class="nav__link" href="stock.html">Акции</a></li>
         </ul>
       </nav>
 
-      <a class="header__login login-button" href="./account.html" aria-label="Перейти в личный кабинет">
+      <button class="header__login login-button" type="button" data-auth-open>
         <span class="login-button__text">Войти</span>
         <span class="login-button__icon" aria-hidden="true">
           <img class="login-button__img" src="../assets/img/arrow-up-right.svg" alt="">
         </span>
-      </a>
+      </button>
 
       <button class="header__burger" id="openBurgerMenu" type="button" aria-label="Открыть меню" aria-expanded="false"
         aria-controls="mobileMenu">
@@ -66,17 +68,17 @@
       <nav class="mobile-menu__nav" aria-label="Мобильная навигация">
         <a class="mobile-menu__link" href="about.html">О нас</a>
         <a class="mobile-menu__link" href="abonements.html">Абонементы</a>
-        <a class="mobile-menu__link" href="../index.html#schedule">Расписание</a>
+        <a class="mobile-menu__link" href="schedule.html">Расписание</a>
         <a class="mobile-menu__link" href="services.html">Услуги</a>
         <a class="mobile-menu__link" href="trainer.html">Тренеры</a>
-        <a class="mobile-menu__link" href="../index.html#promotions">Акции</a>
+        <a class="mobile-menu__link" href="stock.html">Акции</a>
       </nav>
-      <a class="mobile-menu__login login-button" href="./account.html">
+      <button class="mobile-menu__login login-button" type="button" data-auth-open>
         <span class="login-button__text">Личный кабинет</span>
         <span class="login-button__icon" aria-hidden="true">
           <img class="login-button__img" src="../assets/img/arrow-up-right.svg" alt="">
         </span>
-      </a>
+      </button>
 
       <div class="mobile-menu__contacts">
         <a class="mobile-menu__contact" href="tel:+79288220555">+7 (928) 822-05-55</a>
@@ -366,12 +368,12 @@
         </div>
 
         <nav class="footer__nav" aria-label="Навигация по сайту">
-          <a href="#about" class="footer__nav-link">О нас</a>
-          <a href="#memberships" class="footer__nav-link">Абонементы</a>
-          <a href="#schedule" class="footer__nav-link">Расписание</a>
-          <a href="#services" class="footer__nav-link">Услуги</a>
-          <a href="#trainers" class="footer__nav-link">Тренеры</a>
-          <a href="#promotions" class="footer__nav-link">Акции</a>
+          <a href="about.html" class="footer__nav-link">О нас</a>
+          <a href="abonements.html" class="footer__nav-link">Абонементы</a>
+          <a href="schedule.html" class="footer__nav-link">Расписание</a>
+          <a href="services.html" class="footer__nav-link">Услуги</a>
+          <a href="trainer.html" class="footer__nav-link">Тренеры</a>
+          <a href="stock.html" class="footer__nav-link">Акции</a>
         </nav>
       </div>
 
