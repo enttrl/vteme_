@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   initEditProfileButton();
   initLogout(supabaseClient);
-  initSchedule(user);
+  await initSchedule(supabaseClient, user);
   initFormMasks();
 });
 
@@ -161,7 +161,7 @@ function initLogout(supabaseClient) {
   });
 }
 
-function initSchedule(user) {
+async function initSchedule(supabaseClient, user) {
   const scheduleWeek = document.getElementById('scheduleWeek');
   const trainingList = document.getElementById('trainingList');
   const scheduleNativeInput = document.getElementById('scheduleNativeInput');
@@ -170,19 +170,9 @@ function initSchedule(user) {
 
   const weekDaysShort = ['ВС', 'ПН', 'ВТ', 'СР', 'ЧТ', 'ПТ', 'СБ'];
 
-  const trainingsByDate = {
-    [formatDateKey(new Date())]: [
-      {
-        title: 'Functional Training',
-        slots: '8/12',
-        time: '18:00–19:00',
-        trainer: 'Анна Ковалёва'
-      }
-    ]
-  };
-
   const dates = [];
   const today = new Date();
+  today.setHours(0, 0, 0, 0);
 
   for (let i = 0; i < 7; i += 1) {
     const date = new Date(today);
@@ -190,14 +180,19 @@ function initSchedule(user) {
     dates.push(date);
   }
 
-  let activeDateKey = formatDateKey(dates[0]);
+  const startDate = formatDateKey(dates[0]);
+  const endDate = formatDateKey(dates[dates.length - 1]);
+
+  let activeDateKey = startDate;
+  let trainingsByDate = {};
+
+  await loadUserTrainings();
 
   if (scheduleNativeInput) {
     scheduleNativeInput.value = activeDateKey;
-    scheduleNativeInput.min = formatDateKey(dates[0]);
-    scheduleNativeInput.max = formatDateKey(dates[dates.length - 1]);
+    scheduleNativeInput.min = startDate;
+    scheduleNativeInput.max = endDate;
 
-    /* запрещаем ручной ввод с клавиатуры */
     scheduleNativeInput.addEventListener('keydown', (event) => {
       event.preventDefault();
     });
@@ -223,6 +218,54 @@ function initSchedule(user) {
   }
 
   renderAll();
+
+  async function loadUserTrainings() {
+    const { data, error } = await supabaseClient
+      .from('class_bookings')
+      .select(`
+        id,
+        class_id,
+        classes (
+          id,
+          title,
+          trainer_name,
+          date,
+          start_time,
+          end_time,
+          capacity
+        )
+      `)
+      .eq('user_id', user.id)
+      .gte('classes.date', startDate)
+      .lte('classes.date', endDate);
+
+    if (error) {
+      console.error('Ошибка загрузки расписания пользователя:', error);
+      trainingsByDate = {};
+      return;
+    }
+
+    trainingsByDate = {};
+
+    (data || []).forEach((booking) => {
+      const classItem = booking.classes;
+      if (!classItem) return;
+
+      const dateKey = classItem.date;
+
+      if (!trainingsByDate[dateKey]) {
+        trainingsByDate[dateKey] = [];
+      }
+
+      trainingsByDate[dateKey].push({
+        bookingId: booking.id,
+        title: classItem.title,
+        slots: `${classItem.capacity} мест`,
+        time: `${formatTime(classItem.start_time)}–${formatTime(classItem.end_time)}`,
+        trainer: classItem.trainer_name
+      });
+    });
+  }
 
   function renderAll() {
     renderDesktopWeek();
@@ -271,16 +314,50 @@ function initSchedule(user) {
     }
 
     trainingList.innerHTML = trainings.map((training) => `
-      <article class="training-card">
-        <div class="training-card__top">
-          <h3 class="training-card__title">${escapeHtml(training.title)}</h3>
-          <span class="training-card__slots">${escapeHtml(training.slots)}</span>
-        </div>
-        <p class="training-card__meta">${escapeHtml(training.time)}</p>
-        <p class="training-card__meta">Тренер: ${escapeHtml(training.trainer)}</p>
-      </article>
-    `).join('');
+  <article class="training-card">
+    <div class="training-card__top">
+      <h3 class="training-card__title">${escapeHtml(training.title)}</h3>
+      <span class="training-card__slots">${escapeHtml(training.slots)}</span>
+    </div>
+
+    <p class="training-card__meta">${escapeHtml(training.time)}</p>
+    <p class="training-card__meta">Тренер: ${escapeHtml(training.trainer)}</p>
+
+    <button class="training-card__cancel"
+            data-booking-id="${training.bookingId}">
+      Отменить запись
+    </button>
+  </article>
+`).join('');
   }
+  trainingList.addEventListener('click', async (e) => {
+  const btn = e.target.closest('[data-booking-id]');
+  if (!btn) return;
+
+  const bookingId = btn.dataset.bookingId;
+
+  const ok = confirm('Отменить запись на тренировку?');
+  if (!ok) return;
+
+  const { error } = await supabaseClient
+    .from('class_bookings')
+    .delete()
+    .eq('id', bookingId);
+
+  if (error) {
+    console.error(error);
+    alert('Ошибка при отмене записи');
+    return;
+  }
+
+  alert('Запись отменена');
+
+  await loadUserTrainings(); // обновляем данные
+  renderAll();
+});
+}
+function formatTime(time) {
+  return String(time || '').slice(0, 5);
 }
 
 function formatDateKey(date) {
@@ -299,27 +376,7 @@ function escapeHtml(value) {
     .replaceAll("'", '&#039;');
 }
 
-document.addEventListener('DOMContentLoaded', async () => {
-  initTabs();
 
-  const supabaseClient = createSupabaseClient();
-  if (!supabaseClient) {
-    console.error('Supabase не подключен');
-    return;
-  }
-
-  const user = await getAuthorizedUser(supabaseClient);
-
-  if (!user) {
-    window.location.href = 'index.html';
-    return;
-  }
-
-  await initAccountProfile(supabaseClient, user);
-  initLogout(supabaseClient);
-  initSchedule(user);
-  initFormMasks();
-});
 
 function initFormMasks() {
   const firstNameInput = document.getElementById('firstName');
