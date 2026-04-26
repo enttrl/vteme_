@@ -105,7 +105,7 @@
   align-items: center;
   justify-content: center;
   background-color: #000000;
-  border-radius: 21px;
+  border-radius: 60px;
   font-family: "Inter", Arial, sans-serif;
   font-size: 20px;
   font-weight: 600;
@@ -344,3 +344,4 @@ body.menu-open {
   font-size: 20px;
 }
 }
+

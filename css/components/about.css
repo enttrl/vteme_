@@ -7,9 +7,9 @@
     --line: #dddddd;
     --accent: #f58220;
     --accent-dark: #dd6d10;
-    --radius-xl: 32px;
+    --radius-xl: 24px;
     --radius-lg: 24px;
-    --radius-md: 18px;
+    --radius-md: 24px;
     --shadow: 0 18px 40px rgba(0, 0, 0, 0.08);
     --transition: 0.28s ease;
 
@@ -19,7 +19,7 @@
     /* Единая система кнопок */
     --button-width: 240px;
     --button-height: 56px;
-    --button-font-size: 18px;
+    --button-font-size: 24px;
     --button-radius: 999px;
     --button-padding-x: 28px;
 }
@@ -63,7 +63,7 @@ textarea {
 
 .section-title {
     margin: 0 0 48px;
-    font-size: 48px;
+    font-size: 36px;
     font-family: 'Onder';
     line-height: 1.9;
     text-transform: uppercase;
@@ -75,6 +75,10 @@ textarea {
     font-family: 'Onder';
     line-height: 1.9;
     text-transform: uppercase;
+}
+
+.section-title-2 br {
+    display: none;
 }
 
 .button,
@@ -151,7 +155,7 @@ textarea {
 }
 
 .section-lead {
-    font-size: 32px;
+    font-size: 24px;
 }
 
 .hero__grid {
@@ -437,7 +441,7 @@ textarea {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 28px;
+    border-radius: 24px;
     opacity: 0;
     visibility: hidden;
     transform: scale(0.92) rotate(0deg);
@@ -566,12 +570,12 @@ textarea {
 
 .field__control {
     width: 100%;
-    height: 48px;
+    height: 58px;
     padding: 0 24px;
     border: 1px solid #cfcfcf;
     border-radius: 999px;
     background: #ffffff;
-    font-size: 16px;
+    font-size: 20px;
     color: #111111;
 }
 
@@ -586,8 +590,8 @@ textarea {
 
 .trial-form__submit {
     width: 100%;
-    height: 48px;
-    min-height: 48px;
+    height: 58px;
+    min-height: 58px;
 }
 
 .trial-form__consent {
@@ -623,8 +627,8 @@ textarea {
 .trial-form__checkbox-input:checked+.trial-form__checkbox-box::after {
     content: "";
     position: absolute;
-    left: 10px;
-    top: 5px;
+    left: 12px;
+    top: 6px;
     width: 6px;
     height: 12px;
     border-right: 2px solid #ffffff;
@@ -987,25 +991,50 @@ textarea {
     }
 
     .trial-form {
-        grid-template-columns: 1fr 1fr;
+        display: flex;
+        flex-direction: column;
     }
+
     .trial-form__row {
-        gap: 32px;
+        display: contents;
+        /* чтобы поля и кнопка стали "на одном уровне" */
     }
+
+    .field:nth-child(1) {
+        order: 1;
+        /* Имя */
+    }
+
+    .field:nth-child(2) {
+        margin-top: 16px;
+        order: 2;
+        /* Телефон */
+    }
+
+    .trial-form__consent {
+        order: 3;
+        margin-bottom: 24px;
+        /* Согласие */
+    }
+
     .trial-form__submit {
-        justify-self: start;
+        order: 4;
+        /* Кнопка */
     }
 
     .cta__title {
         font-size: 36px;
         line-height: 1.02;
     }
+
     .cta-br-remove {
         display: none;
     }
+
     .form-card__title {
         font-size: 30px;
     }
+
     .trial-form__row {
         grid-template-columns: 1fr;
     }
@@ -1025,9 +1054,11 @@ textarea {
         --section-space: 64px;
         --button-width: 100%;
     }
+
     .hero__quote-author {
         font-size: 20px;
     }
+
     .container {
         width: min(100% - 32px, var(--container));
     }
@@ -1039,19 +1070,25 @@ textarea {
     .hero__quote {
         padding: 24px;
     }
+
     .hero__quote-text {
         font-size: 20px;
     }
-    .hero__media, .hero__quote {
+
+    .hero__media,
+    .hero__quote {
         height: 500px;
     }
+
     .mission__grid,
     .trial-form {
         grid-template-columns: 1fr;
     }
+
     .section-lead {
         font-size: 20px;
     }
+
     .form-card,
     .contacts__info {
         padding: 24px;
@@ -1125,17 +1162,43 @@ textarea {
         --button-height: 52px;
         --button-font-size: 16px;
     }
+
     .hero__grid {
         grid-template-columns: 1fr;
     }
-    .hero__quote, .hero__media {
+
+    .hero__quote,
+    .hero__media {
         height: 400px;
     }
-    .section-title-2 {
+
+    .section-title {
+        font-size: 20px;
+    }
+
+    .section-lead {
         font-size: 16px;
     }
+
+    .hero__quote-text {
+        font-size: 20px;
+    }
+
+    .section-title-2 {
+        font-size: 16px;
+        margin: 0 0 32px;
+    }
+
+    .mission {
+        padding-top: 80px;
+    }
+
     .container {
         width: calc(100% - 32px);
+    }
+
+    .value-card__title {
+        font-size: 20px;
     }
 
     .hero__intro {
@@ -1150,9 +1213,22 @@ textarea {
         padding: 22px;
     }
 
+    .trust {
+        padding: 0px 0;
+        padding-top: 80px;
+    }
+
     .trust-item {
         gap: 14px;
         padding: 18px 0;
+    }
+
+    .trust-item__title {
+        font-size: 20px;
+    }
+
+    .trust-item__text {
+        font-size: 16px;
     }
 
     .trust__visual {
@@ -1165,20 +1241,43 @@ textarea {
     }
 
     .form-card__title {
+        font-size: 20px;
         line-height: 1.1;
     }
+
+    .field__label {
+        font-size: 16px;
+    }
+
+    .field__control {
+        height: 58px;
+        font-size: 16px;
+    }
+    .contacts__lead {
+        font-size: 16px;
+        margin: 0 0 8px;
+    }
+    .contacts__label {
+        margin: 0 0 8px;
+    }
+    .contacts__mail, .contacts__phone {
+        font-size: 20px;
+    }
+    .contacts__city, .contacts__address {
+        font-size: 16px;
+    }
+
 
     .contacts__value,
     .contacts__value a {
         font-size: 22px;
     }
+
     .cta__title {
-        font-size: 24px;
+        font-size: 28px;
     }
+
     .contacts__info {
         padding: 0px;
-    }
-    .footer__bottom {
-        flex-direction: column;
     }
 }
