@@ -12,9 +12,9 @@
 
 .features__title {
   margin: 0 0 80px;
-  font-family: Onder;
+  font-family: 'Onder';
   font-size: 32px;
-  line-height: 1.2;
+  line-height: 1.9;
   color: #000000;
 }
 
@@ -39,7 +39,7 @@
 .feature-card {
   position: relative;
   overflow: hidden;
-  border-radius: 28px;
+  border-radius: 24px;
   background-color: #ffffff;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
 }
@@ -173,7 +173,12 @@
 
 .feature-card__circle-link:hover,
 .feature-card__circle-link:focus-visible {
-  background-color: #FE5B00;
+  background-color: #FF7C33;
+  transform: translateY(-2px);
+}
+.feature-card__circle-link:active,
+.feature-card__circle-link:focus-visible {
+  background-color: #FA4D0B;
   transform: translateY(-2px);
 }
 /* сам элемент */

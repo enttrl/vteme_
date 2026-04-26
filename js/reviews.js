@@ -52,12 +52,8 @@ document.addEventListener('DOMContentLoaded', async () => {
   function getReviewsPerPage() {
     const width = window.innerWidth;
 
-    if (width <= 767) {
-      return 1;
-    }
-
     if (width <= 1024) {
-      return 2;
+      return getFilteredReviews().length; // показываем все карточки в скролле
     }
 
     return 4;
@@ -118,6 +114,28 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   function renderPagination() {
     reviewsPagination.innerHTML = '';
+
+    if (window.innerWidth <= 1024) return;
+
+    const totalPages = getTotalPages();
+
+    if (totalPages <= 1) return;
+
+    for (let i = 0; i < totalPages; i += 1) {
+      const button = document.createElement('button');
+
+      button.className = `reviews__dot${i === currentPage ? ' reviews__dot--active' : ''}`;
+      button.type = 'button';
+      button.setAttribute('aria-label', `Перейти к странице ${i + 1}`);
+
+      button.addEventListener('click', () => {
+        currentPage = i;
+        renderReviews();
+        restartAutoSlide();
+      });
+
+      reviewsPagination.appendChild(button);
+    }
   }
 
   function getTotalPages() {

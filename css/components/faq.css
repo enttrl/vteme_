@@ -11,14 +11,14 @@
   margin: 0;
   font-family: "Onder", Arial, sans-serif;
   font-size: 32px;
-  line-height: 1.2;
+  line-height: 1.9;
   color: #000000;
 }
 
 .faq__subtitle {
   margin: 32px 0 0;
   font-family: "Inter", Arial, sans-serif;
-  font-size: 32px;
+  font-size: 24px;
   line-height: 1.2;
   color: #656565;
 }
@@ -135,38 +135,5 @@
   .faq__toggle {
     width: 56px;
     height: 56px;
-  }
-}
-
-@media (max-width: 767px) {
-  .faq__title {
-    font-size: 42px;
-  }
-
-  .faq__subtitle {
-    font-size: 20px;
-  }
-
-  .faq__question-wrap {
-    min-height: 88px;
-    align-items: flex-start;
-    padding: 20px 0;
-  }
-
-  .faq__question {
-    font-size: 22px;
-  }
-
-  .faq__answer p {
-    font-size: 18px;
-  }
-
-  .faq__toggle {
-    width: 48px;
-    height: 48px;
-  }
-
-  .faq__toggle span {
-    width: 20px;
   }
 }

@@ -77,7 +77,7 @@ body.scrolled .header {
   margin: 0;
   font-family: 'Onder';
   font-size: 36px;
-  line-height: 1.91;
+  line-height: 1.9;
   text-transform: uppercase;
   color: #000000;
 }
@@ -97,7 +97,7 @@ body.scrolled .header {
 }
 
 .trial-button {
-  width: 315px;
+  width: 358px;
   height: 58px;
   display: inline-flex;
   align-items: center;
@@ -106,7 +106,7 @@ body.scrolled .header {
 }
 
 .trial-button__text {
-  width: 257px;
+  width: 300px;
   height: 58px;
   display: inline-flex;
   align-items: center;
@@ -149,6 +149,12 @@ body.scrolled .header {
 .trial-button:focus-visible .trial-button__icon {
   background-color: #FE5B00;
 }
+.trial-button:active .trial-button__text,
+.trial-button:active .trial-button__icon,
+.trial-button:focus-visible .trial-button__text,
+.trial-button:focus-visible .trial-button__icon {
+  background-color: #E33F00;
+}
 
 .hero__stats {
   margin-top: 288px;
@@ -169,7 +175,7 @@ body.scrolled .header {
 .hero__stat-text {
   margin-top: 8px;
   font-family: "Inter", Arial, sans-serif;
-  font-size: 30px;
+  font-size: 24px;
   font-weight: 300;
   line-height: 1.1;
   color: #000000;

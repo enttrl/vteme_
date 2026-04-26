@@ -33,14 +33,14 @@
   margin: 0;
   font-family: "Onder", Arial, sans-serif;
   font-size: 32px;
-  line-height: 1.2;
+  line-height: 1.9;
   color: #000000;
 }
 
 .reviews__subtitle {
   margin: 24px 0 0;
   font-family: "Inter", Arial, sans-serif;
-  font-size: 32px;
+  font-size: 24px;
   font-weight: 300;
   line-height: 1.2;
   color: #2c2c2c;
@@ -218,30 +218,4 @@
 
 .reviews__dot:hover {
   transform: scale(1.1);
-}
-
-
-@media (max-width: 1280px) {
-  .reviews__list {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 767px) {
-  .reviews__title {
-    font-size: 48px;
-  }
-
-  .reviews__subtitle {
-    font-size: 20px;
-  }
-
-  .reviews__tabs {
-    flex-wrap: wrap;
-    border-radius: 24px;
-  }
-
-  .reviews__list {
-    grid-template-columns: 1fr;
-  }
 }
