@@ -129,7 +129,15 @@
       <div class="account-dashboard__grid">
         <article class="dashboard-card">
           <div class="dashboard-card__head">
-            <div class="dashboard-avatar"></div>
+            <div class="dashboard-avatar" id="avatarBlock">
+              <img id="avatarImage" src="" alt="">
+
+              <div class="dashboard-avatar__edit">
+                <span>+</span>
+              </div>
+
+              <input type="file" id="avatarInput" accept="image/*" hidden>
+            </div>
             <h3 class="dashboard-card__title" id="accountCardUserName">Пользователь</h3>
           </div>
 
@@ -149,7 +157,7 @@
           <h3 class="dashboard-card__title">Мой абонемент</h3>
 
           <div class="dashboard-card__bottom">
-            <p class="dashboard-card__value">Не куплен</p>
+            <p class="dashboard-card__value" id="accountMembershipValue">Не куплен</p>
 
             <div class="dashboard-card__icon">
               <img src="../assets/img/abonement.svg" alt="" />

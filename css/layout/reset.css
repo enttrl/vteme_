@@ -15,15 +15,10 @@ h1,
 h2,
 h3,
 h3 {
-  font-family: var(--font-family-accent);
+ 
   margin: 0;
 }
 
-p,
-a,
-li {
-  font-family: var(--font-family-base);
-}
 
 img {
   display: block;

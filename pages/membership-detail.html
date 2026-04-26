@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Абонемент — ВТЕМЕ</title>
+  <link rel="stylesheet" href="../style.css">
+  <script src="../js/auth.js" defer></script>
+  <link rel="stylesheet" href="../css/components/membership_purchase.css">
+  <script src="../js/burger-menu.js" defer></script>
+  <script src="../js/abonements-data.js"></script>
+  <script src="../js/membership-purchase.js" defer></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+  <header class="header">
+    <div class="header__inner">
+      <a class="header__logo-link" href="../index.html" aria-label="На главную"><img class="header__logo"
+          src="../assets/img/logo-vteme.svg" alt="ВТЕМЕ"></a>
+      <nav class="header__nav nav" aria-label="Основная навигация">
+        <ul class="nav__list">
+          <li class="nav__item"><a class="nav__link" href="about.html">О нас</a></li>
+          <li class="nav__item"><a class="nav__link" href="abonements.html">Абонементы</a></li>
+          <li class="nav__item"><a class="nav__link" href="schedule.html">Расписание</a></li>
+          <li class="nav__item"><a class="nav__link" href="services.html">Услуги</a></li>
+          <li class="nav__item"><a class="nav__link" href="trainer.html">Тренеры</a></li>
+          <li class="nav__item"><a class="nav__link" href="stock.html">Акции</a></li>
+        </ul>
+      </nav>
+      <a class="header__login login-button" href="account.html" aria-label="Перейти в личный кабинет"><span
+          class="login-button__text">Войти</span><span class="login-button__icon" aria-hidden="true"><img
+            class="login-button__img" src="../assets/img/arrow-up-right.svg" alt=""></span></a>
+      <button class="header__burger" id="openBurgerMenu" type="button" aria-label="Открыть меню" aria-expanded="false"
+        aria-controls="mobileMenu"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+
+  <main class="purchase-page" data-membership-detail-page>
+    <div class="purchase-container">
+      <h1 class="purchase-title">Абонемент <span data-detail-title>Абонемент</span></h1>
+      <p data-detail-subtitle hidden></p>
+      <span data-detail-date hidden></span>
+      <section class="membership-detail-layout" aria-label="Описание абонемента">
+        <div class="membership-detail-info">
+          <h2 class="membership-section-title">Описание клубной карты</h2>
+          <ul class="membership-detail-list" data-detail-description></ul>
+        </div>
+        <aside class="membership-detail-card" aria-label="Стоимость абонемента">
+          <h2 class="membership-detail-card__label">Стоимость</h2>
+          <div class="membership-detail-card__price" data-detail-price></div>
+          <p class="membership-detail-card__message">После оплаты, для завершения покупки необходимо прийти в
+            фитнес-центр «ВТЕМЕ» для получения клубной карты. Наш менеджер свяжется с Вами и назначит время.</p>
+          <a class="purchase-button-combo" href="membership-checkout.html" data-checkout-link>
+            <span class="purchase-button">Перейти к оплате</span>
+            <span class="purchase-button-combo__icon" aria-hidden="true"><img src="../assets/img/arrow-up-right.svg"
+                alt=""></span>
+          </a>
+        </aside>
+      </section>
+    </div>
+  </main>
+
+  <footer class="footer" id="footer">
+    <div class="footer__container">
+      <div class="footer__top">
+        <div class="footer__logo-block"><a href="../index.html" class="footer__logo" aria-label="ВТЕМЕ"><img
+              src="../assets/img/logo-vteme.svg" alt="ВТЕМЕ"></a></div>
+        <div class="footer__contacts">
+          <p class="footer__text">Есть вопросы или<br>предложения? Свяжитесь<br>с нами</p><a href="mailto:vteme@mail.ru"
+            class="footer__mail">vteme@mail.ru</a>
+          <p class="footer__caption">Позвоните нам</p><a href="tel:+79288220555" class="footer__phone">+7 (928)
+            822-05-55</a>
+        </div>
+        <div class="footer__address">
+          <p class="footer__address-text">КИСЛОВОДСК<br>Первомайский<br>проспект 27<br>+7 (928) 822-05-55</p>
+        </div>
+        <nav class="footer__nav" aria-label="Навигация по сайту"><a href="about.html" class="footer__nav-link">О
+            нас</a><a href="abonements.html" class="footer__nav-link">Абонементы</a><a href="schedule.html"
+            class="footer__nav-link">Расписание</a><a href="services.html" class="footer__nav-link">Услуги</a><a
+            href="trainer.html" class="footer__nav-link">Тренеры</a><a href="stock.html"
+            class="footer__nav-link">Акции</a></nav>
+      </div>
+      <div class="footer__bottom">
+        <p class="footer__bottom-text">© 2026</p><a href="#" class="footer__bottom-link">Политика обработки персональных
+          данных</a>
+        <p class="footer__bottom-text footer__bottom-text--right">Разработка сайта Анисимова М.А.</p>
+      </div>
+    </div>
+  </footer>
+  <script>window.addEventListener('scroll', () => document.body.classList.toggle('scrolled', window.scrollY > 10));</script>
+</body>
+
+</html>

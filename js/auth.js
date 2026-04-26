@@ -190,288 +190,302 @@ document.addEventListener('DOMContentLoaded', () => {
     showForm('login');
   };
 
-function clearAllErrors() {
-  document.querySelectorAll('.auth-form__error').forEach((el) => {
-    el.textContent = '';
-    el.classList.remove('auth-form__error--visible');
-  });
-
-  document.querySelectorAll('.auth-form__input').forEach((input) => {
-    input.classList.remove('auth-form__input--error');
-  });
-}
-
-function setFieldError(input, errorKey, message) {
-  if (input) {
-    input.classList.add('auth-form__input--error');
-  }
-
-  const errorEl = document.querySelector(`[data-error-for="${errorKey}"]`);
-  if (errorEl) {
-    errorEl.textContent = message;
-    errorEl.classList.add('auth-form__error--visible');
-  }
-}
-
-async function ensureUserProfile(user, fullName = '', phone = '') {
-  const { data: existingProfile, error: selectError } = await supabaseClient
-    .from('profiles')
-    .select('id')
-    .eq('id', user.id)
-    .maybeSingle();
-
-  if (selectError) return { error: selectError };
-  if (existingProfile) return { error: null };
-
-  const { error: insertError } = await supabaseClient
-    .from('profiles')
-    .insert({
-      id: user.id,
-      full_name: fullName,
-      phone: phone,
-      last_name: null,
-      birth_date: null,
-      gender: null
+  function clearAllErrors() {
+    document.querySelectorAll('.auth-form__error').forEach((el) => {
+      el.textContent = '';
+      el.classList.remove('auth-form__error--visible');
     });
 
-  return { error: insertError };
-}
-
-async function handleLoginButtonClick() {
-  const { data } = await supabaseClient.auth.getSession();
-
-  if (data.session) {
-    window.location.href = getAccountPath();
-    return;
+    document.querySelectorAll('.auth-form__input').forEach((input) => {
+      input.classList.remove('auth-form__input--error');
+    });
   }
 
-  openModal();
-  showForm('login');
-}
-
-document.addEventListener('click', (event) => {
-  const button = event.target.closest('[data-auth-open]');
-  if (!button) return;
-
-  event.preventDefault();
-  handleLoginButtonClick();
-});
-
-closeAuthModal?.addEventListener('click', closeModal);
-authModalOverlay?.addEventListener('click', closeModal);
-
-document.addEventListener('keydown', (event) => {
-  if (event.key === 'Escape') {
-    closeModal();
-  }
-});
-
-switchButtons.forEach((button) => {
-  button.addEventListener('click', () => {
-    const target = button.dataset.switchTab;
-
-    if (target === 'register') showForm('register');
-    if (target === 'login') showForm('login');
-  });
-});
-
-openRecoveryRequest?.addEventListener('click', () => {
-  showForm('recoveryRequest');
-});
-
-passwordToggleButtons.forEach((button) => {
-  button.addEventListener('click', () => {
-    const inputId = button.dataset.passwordToggle;
-    const input = document.getElementById(inputId);
-    const img = button.querySelector('img');
-
-    if (!input) return;
-
-    if (input.type === 'password') {
-      input.type = 'text';
-      img.src = 'assets/img/eye.svg'; // 👁 открытый глаз
-    } else {
-      input.type = 'password';
-      img.src = 'assets/img/eye-off.svg'; // 🙈 закрытый глаз
+  function setFieldError(input, errorKey, message) {
+    if (input) {
+      input.classList.add('auth-form__input--error');
     }
-  });
-});
 
-if (registerPhoneInput) {
-  registerPhoneInput.addEventListener('input', handlePhoneMask);
-  registerPhoneInput.addEventListener('focus', handlePhoneMask);
-  registerPhoneInput.addEventListener('blur', handlePhoneBlur);
-}
-
-function handlePhoneMask(e) {
-  let value = e.target.value.replace(/\D/g, '');
-
-  if (!value.startsWith('7')) {
-    value = '7' + value.replace(/^8/, '');
+    const errorEl = document.querySelector(`[data-error-for="${errorKey}"]`);
+    if (errorEl) {
+      errorEl.textContent = message;
+      errorEl.classList.add('auth-form__error--visible');
+    }
   }
 
-  value = value.substring(0, 11);
+  async function ensureUserProfile(user, fullName = '', phone = '') {
+    const { data: existingProfile, error: selectError } = await supabaseClient
+      .from('profiles')
+      .select('id')
+      .eq('id', user.id)
+      .maybeSingle();
 
-  let formatted = '+7';
-  if (value.length > 1) formatted += ' (' + value.substring(1, 4);
-  if (value.length >= 5) formatted += ') ' + value.substring(4, 7);
-  if (value.length >= 8) formatted += ' - ' + value.substring(7, 9);
-  if (value.length >= 10) formatted += ' - ' + value.substring(9, 11);
+    if (selectError) return { error: selectError };
+    if (existingProfile) return { error: null };
 
-  e.target.value = formatted;
-}
+    const { error: insertError } = await supabaseClient
+      .from('profiles')
+      .insert({
+        id: user.id,
+        full_name: fullName,
+        phone: phone,
+        last_name: null,
+        birth_date: null,
+        gender: null
+      });
 
-function handlePhoneBlur(e) {
-  if (e.target.value === '+7') {
-    e.target.value = '';
+    return { error: insertError };
   }
-}
 
-supabaseClient.auth.onAuthStateChange((event) => {
-  if (event === 'PASSWORD_RECOVERY') {
+  async function handleLoginButtonClick() {
+    const { data } = await supabaseClient.auth.getSession();
+
+    if (data.session) {
+      window.location.href = getAccountPath();
+      return;
+    }
+
     openModal();
-    showForm('recoveryUpdate');
+    showForm('login');
   }
-});
 
-registerForm?.addEventListener('submit', async (event) => {
-  event.preventDefault();
-  clearAllErrors();
+  document.addEventListener('click', (event) => {
+    const button = event.target.closest('[data-auth-open]');
+    if (!button) return;
 
-  const submitButton = registerForm.querySelector('.auth-form__submit');
-  submitButton.disabled = true;
-  submitButton.textContent = 'Регистрация...';
-
-  const fullName = registerForm.elements.name.value.trim();
-  const email = registerForm.elements.email.value.trim();
-  const phone = registerForm.elements.phone.value.trim();
-  const password = registerForm.elements.password.value;
-  const emailInput = registerForm.elements.email;
-  const passwordInput = registerForm.elements.password;
-
-  const { data, error } = await supabaseClient.auth.signUp({
-    email,
-    password
+    event.preventDefault();
+    handleLoginButtonClick();
   });
 
-  if (error) {
-    if (error.message.toLowerCase().includes('user already registered')) {
-      setFieldError(emailInput, 'register-email', 'Данная почта уже зарегистрирована');
-    } else {
-      setFieldError(passwordInput, 'register-password', error.message);
+  closeAuthModal?.addEventListener('click', closeModal);
+  authModalOverlay?.addEventListener('click', closeModal);
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+      closeModal();
+    }
+  });
+
+  switchButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+      const target = button.dataset.switchTab;
+
+      if (target === 'register') showForm('register');
+      if (target === 'login') showForm('login');
+    });
+  });
+
+  openRecoveryRequest?.addEventListener('click', () => {
+    showForm('recoveryRequest');
+  });
+
+  passwordToggleButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+      const inputId = button.dataset.passwordToggle;
+      const input = document.getElementById(inputId);
+      const img = button.querySelector('img');
+
+      if (!input) return;
+
+      if (input.type === 'password') {
+        input.type = 'text';
+        img.src = 'assets/img/eye.svg'; // 👁 открытый глаз
+      } else {
+        input.type = 'password';
+        img.src = 'assets/img/eye-off.svg'; // 🙈 закрытый глаз
+      }
+    });
+  });
+
+  if (registerPhoneInput) {
+    registerPhoneInput.addEventListener('input', handlePhoneMask);
+    registerPhoneInput.addEventListener('focus', handlePhoneMask);
+    registerPhoneInput.addEventListener('blur', handlePhoneBlur);
+  }
+
+  function handlePhoneMask(e) {
+    let value = e.target.value.replace(/\D/g, '');
+
+    if (!value.startsWith('7')) {
+      value = '7' + value.replace(/^8/, '');
     }
 
-    submitButton.disabled = false;
-    submitButton.textContent = 'Зарегистрироваться';
-    return;
+    value = value.substring(0, 11);
+
+    let formatted = '+7';
+    if (value.length > 1) formatted += ' (' + value.substring(1, 4);
+    if (value.length >= 5) formatted += ') ' + value.substring(4, 7);
+    if (value.length >= 8) formatted += ' - ' + value.substring(7, 9);
+    if (value.length >= 10) formatted += ' - ' + value.substring(9, 11);
+
+    e.target.value = formatted;
   }
 
-  if (!data.session || !data.user) {
-    showToast('После регистрации нет активной сессии. Проверь настройки Confirm Email.', true);
-    submitButton.disabled = false;
-    submitButton.textContent = 'Зарегистрироваться';
-    return;
+  function handlePhoneBlur(e) {
+    if (e.target.value === '+7') {
+      e.target.value = '';
+    }
   }
 
-  const { error: profileError } = await ensureUserProfile(data.user, fullName, phone);
-
-  if (profileError) {
-    showToast(profileError.message, true);
-    submitButton.disabled = false;
-    submitButton.textContent = 'Зарегистрироваться';
-    return;
-  }
-
-  registerForm.reset();
-  closeModal();
-  showToast('Регистрация успешна');
-  window.location.href = getAccountPath();
-});
-
-loginForm?.addEventListener('submit', async (event) => {
-  event.preventDefault();
-  clearAllErrors();
-
-  const submitButton = loginForm.querySelector('.auth-form__submit');
-  submitButton.disabled = true;
-  submitButton.textContent = 'Вход...';
-
-  const email = loginForm.elements.email.value.trim();
-  const password = loginForm.elements.password.value;
-  const passwordInput = loginForm.elements.password;
-
-  const { data, error } = await supabaseClient.auth.signInWithPassword({
-    email,
-    password
+  supabaseClient.auth.onAuthStateChange((event) => {
+    if (event === 'PASSWORD_RECOVERY') {
+      openModal();
+      showForm('recoveryUpdate');
+    }
   });
 
-  if (error) {
-    setFieldError(passwordInput, 'login-password', 'Неправильный email или пароль');
-    submitButton.disabled = false;
-    submitButton.textContent = 'Войти';
-    return;
-  }
+  registerForm?.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    clearAllErrors();
 
-  await ensureUserProfile(data.user);
-  loginForm.reset();
-  closeModal();
-  showToast('Вход выполнен');
-  window.location.href = getAccountPath();
-});
+    const submitButton = registerForm.querySelector('.auth-form__submit');
+    submitButton.disabled = true;
+    submitButton.textContent = 'Регистрация...';
 
-recoveryRequestForm?.addEventListener('submit', async (event) => {
-  event.preventDefault();
-  clearAllErrors();
+    const fullName = registerForm.elements.name.value.trim();
+    const email = registerForm.elements.email.value.trim();
+    const phone = registerForm.elements.phone.value.trim();
+    const password = registerForm.elements.password.value;
+    const emailInput = registerForm.elements.email;
+    const passwordInput = registerForm.elements.password;
 
-  const submitButton = recoveryRequestForm.querySelector('.auth-form__submit');
-  submitButton.disabled = true;
-  submitButton.textContent = 'Отправка...';
+    const { data, error } = await supabaseClient.auth.signUp({
+      email,
+      password
+    });
 
-  const email = recoveryRequestForm.elements.email.value.trim();
-  const emailInput = recoveryRequestForm.elements.email;
+    if (error) {
+      if (error.message.toLowerCase().includes('user already registered')) {
+        setFieldError(emailInput, 'register-email', 'Данная почта уже зарегистрирована');
+      } else {
+        setFieldError(passwordInput, 'register-password', error.message);
+      }
 
-  const { error } = await supabaseClient.auth.resetPasswordForEmail(email, {
-    redirectTo: `${window.location.origin}/index.html`
+      submitButton.disabled = false;
+      submitButton.textContent = 'Зарегистрироваться';
+      return;
+    }
+
+    if (!data.session || !data.user) {
+      showToast('После регистрации нет активной сессии. Проверь настройки Confirm Email.', true);
+      submitButton.disabled = false;
+      submitButton.textContent = 'Зарегистрироваться';
+      return;
+    }
+
+    const { error: profileError } = await ensureUserProfile(data.user, fullName, phone);
+
+    if (profileError) {
+      showToast(profileError.message, true);
+      submitButton.disabled = false;
+      submitButton.textContent = 'Зарегистрироваться';
+      return;
+    }
+
+    registerForm.reset();
+    closeModal();
+    showToast('Регистрация успешна');
+    const pendingMembershipUrl = localStorage.getItem('pendingMembershipUrl');
+
+    if (pendingMembershipUrl) {
+      localStorage.removeItem('pendingMembershipUrl');
+      window.location.href = pendingMembershipUrl;
+      return;
+    }
+    window.location.href = getAccountPath();
   });
 
-  if (error) {
-    setFieldError(emailInput, 'recovery-email', error.message);
+  loginForm?.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    clearAllErrors();
+
+    const submitButton = loginForm.querySelector('.auth-form__submit');
+    submitButton.disabled = true;
+    submitButton.textContent = 'Вход...';
+
+    const email = loginForm.elements.email.value.trim();
+    const password = loginForm.elements.password.value;
+    const passwordInput = loginForm.elements.password;
+
+    const { data, error } = await supabaseClient.auth.signInWithPassword({
+      email,
+      password
+    });
+
+    if (error) {
+      setFieldError(passwordInput, 'login-password', 'Неправильный email или пароль');
+      submitButton.disabled = false;
+      submitButton.textContent = 'Войти';
+      return;
+    }
+
+    await ensureUserProfile(data.user);
+    loginForm.reset();
+    closeModal();
+    showToast('Вход выполнен');
+    const pendingMembershipUrl = localStorage.getItem('pendingMembershipUrl');
+
+    if (pendingMembershipUrl) {
+      localStorage.removeItem('pendingMembershipUrl');
+      window.location.href = pendingMembershipUrl;
+      return;
+    }
+    window.location.href = getAccountPath();
+  });
+
+  recoveryRequestForm?.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    clearAllErrors();
+
+    const submitButton = recoveryRequestForm.querySelector('.auth-form__submit');
+    submitButton.disabled = true;
+    submitButton.textContent = 'Отправка...';
+
+    const email = recoveryRequestForm.elements.email.value.trim();
+    const emailInput = recoveryRequestForm.elements.email;
+
+    const { error } = await supabaseClient.auth.resetPasswordForEmail(email, {
+      redirectTo: `${window.location.origin}/index.html`
+    });
+
+    if (error) {
+      setFieldError(emailInput, 'recovery-email', error.message);
+      submitButton.disabled = false;
+      submitButton.textContent = 'Отправить письмо';
+      return;
+    }
+
+    showToast('Письмо для смены пароля отправлено');
+    recoveryRequestForm.reset();
     submitButton.disabled = false;
     submitButton.textContent = 'Отправить письмо';
-    return;
-  }
-
-  showToast('Письмо для смены пароля отправлено');
-  recoveryRequestForm.reset();
-  submitButton.disabled = false;
-  submitButton.textContent = 'Отправить письмо';
-});
-
-recoveryUpdateForm?.addEventListener('submit', async (event) => {
-  event.preventDefault();
-  clearAllErrors();
-
-  const submitButton = recoveryUpdateForm.querySelector('.auth-form__submit');
-  submitButton.disabled = true;
-  submitButton.textContent = 'Сохранение...';
-
-  const password = recoveryUpdateForm.elements.password.value;
-  const passwordInput = recoveryUpdateForm.elements.password;
-
-  const { error } = await supabaseClient.auth.updateUser({
-    password
   });
 
-  if (error) {
-    setFieldError(passwordInput, 'recovery-password', error.message);
-    submitButton.disabled = false;
-    submitButton.textContent = 'Сохранить пароль';
-    return;
-  }
+  recoveryUpdateForm?.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    clearAllErrors();
 
-  recoveryUpdateForm.reset();
-  closeModal();
-  showToast('Пароль успешно изменён');
-  window.location.href = getAccountPath();
-});
+    const submitButton = recoveryUpdateForm.querySelector('.auth-form__submit');
+    submitButton.disabled = true;
+    submitButton.textContent = 'Сохранение...';
+
+    const password = recoveryUpdateForm.elements.password.value;
+    const passwordInput = recoveryUpdateForm.elements.password;
+
+    const { error } = await supabaseClient.auth.updateUser({
+      password
+    });
+
+    if (error) {
+      setFieldError(passwordInput, 'recovery-password', error.message);
+      submitButton.disabled = false;
+      submitButton.textContent = 'Сохранить пароль';
+      return;
+    }
+
+    recoveryUpdateForm.reset();
+    closeModal();
+    showToast('Пароль успешно изменён');
+    window.location.href = getAccountPath();
+  });
 });

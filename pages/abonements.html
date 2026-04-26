@@ -419,6 +419,15 @@
     </footer>
 </body>
 <script>
+    const SUPABASE_URL = 'https://tphqdjeordubhobwoouo.supabase.co';
+    const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRwaHFkamVvcmR1YmhvYndvb3VvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY3NzI2OTcsImV4cCI6MjA5MjM0ODY5N30.yAGVQnL4g5Eqex0PEJm3fGtoqyYaf3eA070FaelF2Hw';
+
+    const supabaseClient = window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_ANON_KEY
+    );
+</script>
+<script>
     const tabs = document.querySelectorAll('.account-tab');
     const track = document.getElementById('membershipCards');
     const prevButton = document.querySelector('.cards-slider__arrow--prev');
@@ -426,7 +435,7 @@
 
     let currentCategory = 'month-1';
 
-    function createCard(card) {
+    function createCard(card, cardIndex, category) {
         const article = document.createElement('article');
         article.className = `membership-card${card.dark ? ' membership-card--dark' : ''}`;
 
@@ -451,8 +460,12 @@
           <p class="membership-card__date">${card.date}</p>
           <div class="membership-card__actions">
             <div class="membership-card__actions">
-            <a class="membership-card__button" href="${card.link || '#'}">
-                
+            <a 
+            class="membership-card__button" 
+            href="${card.link || `membership-detail.html?category=${encodeURIComponent(category)}&index=${cardIndex}`}"
+            data-buy-abonement
+            >
+                            
                 <span class="membership-card__button-text">
                 ${card.buttonText}
                 </span>
@@ -468,11 +481,36 @@
 
         return article;
     }
+    function showActiveMembershipOverlay() {
+        const oldOverlay = document.querySelector('.membership-warning-overlay');
+        if (oldOverlay) oldOverlay.remove();
 
+                document.body.insertAdjacentHTML('beforeend', `
+            <div class="membership-warning-overlay">
+            <div class="membership-warning">
+                <button class="membership-warning__close" type="button" aria-label="Закрыть">×</button>
+                <h2 class="membership-warning__title">Абонемент уже активен</h2>
+                <p class="membership-warning__text">
+                Извините, но у Вас уже есть активный абонемент.
+                Если у Вас возникли какие-то трудности, обратитесь к администратору в фитнес-центр.
+                </p>
+            </div>
+            </div>
+        `);
+
+        const overlay = document.querySelector('.membership-warning-overlay');
+        const closeBtn = overlay.querySelector('.membership-warning__close');
+
+        closeBtn.addEventListener('click', () => overlay.remove());
+
+        overlay.addEventListener('click', (event) => {
+            if (event.target === overlay) overlay.remove();
+        });
+    }
     function renderCards(category) {
         const cards = window.MEMBERSHIPS_DATA[category] || [];
         track.innerHTML = '';
-        cards.forEach((card) => track.appendChild(createCard(card)));
+        cards.forEach((card, cardIndex) => track.appendChild(createCard(card, cardIndex, category)));
         track.scrollTo({ left: 0, behavior: 'instant' });
         updateArrows();
     }
@@ -514,6 +552,52 @@
 
     track.addEventListener('scroll', updateArrows);
     window.addEventListener('resize', updateArrows);
+
+    track.addEventListener('scroll', updateArrows);
+    window.addEventListener('resize', updateArrows);
+
+    track.addEventListener('click', async (event) => {
+        const button = event.target.closest('[data-buy-abonement]');
+        if (!button) return;
+
+        const href = button.getAttribute('href');
+
+        if (href.startsWith('#')) {
+            return;
+        }
+
+        event.preventDefault();
+
+        const { data } = await supabaseClient.auth.getSession();
+
+        if (!data.session) {
+            localStorage.setItem('pendingMembershipUrl', href);
+            window.openAuthModalGlobal?.();
+            return;
+        }
+
+        const user = data.session.user;
+
+        const { data: activeMembership, error } = await supabaseClient
+            .from('membership_orders')
+            .select('id')
+            .eq('user_id', user.id)
+            .eq('status', 'Успешно')
+            .limit(1);
+
+        if (error) {
+            console.error(error);
+            alert('Не удалось проверить абонемент');
+            return;
+        }
+
+        if (activeMembership.length > 0) {
+            showActiveMembershipOverlay();
+            return;
+        }
+
+        window.location.href = href;
+    });
 
     renderCards(currentCategory);
 </script>

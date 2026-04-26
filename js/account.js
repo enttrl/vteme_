@@ -16,9 +16,11 @@ document.addEventListener('DOMContentLoaded', async () => {
     window.location.href = 'index.html';
     return;
   }
-
+  await initAvatar(supabaseClient, user);
+  initAvatarUpload(supabaseClient, user);
   await initAccountProfile(supabaseClient, user);
   await initSettingsForm(supabaseClient, user);
+  await initMembershipInfo(supabaseClient, user);
 
   initEditProfileButton();
   initLogout(supabaseClient);
@@ -35,6 +37,125 @@ function createSupabaseClient() {
       autoRefreshToken: true
     }
   });
+}
+function initAvatarUpload(supabaseClient, user) {
+  const avatarBlock = document.getElementById('avatarBlock');
+  const avatarInput = document.getElementById('avatarInput');
+  const avatarImage = document.getElementById('avatarImage');
+
+  if (!avatarBlock || !avatarInput) return;
+
+  // клик по аватару
+  avatarBlock.addEventListener('click', () => {
+    avatarInput.click();
+  });
+
+  // загрузка файла
+  avatarInput.addEventListener('change', async () => {
+    const file = avatarInput.files[0];
+    if (!file) return;
+
+    const filePath = `${user.id}/${Date.now()}_${file.name}`;
+
+    const { error: uploadError } = await supabaseClient.storage
+      .from('avatars')
+      .upload(filePath, file);
+
+    if (uploadError) {
+      console.error('Ошибка загрузки аватара:', uploadError);
+      alert(uploadError.message);
+      return;
+    }
+
+    const { data } = supabaseClient.storage
+      .from('avatars')
+      .getPublicUrl(filePath);
+
+    const avatarUrl = data.publicUrl;
+
+    // сохраняем в профиль
+    await supabaseClient
+      .from('profiles')
+      .update({ avatar_url: avatarUrl })
+      .eq('id', user.id);
+
+    avatarImage.src = avatarUrl;
+  });
+}
+async function initAvatar(supabaseClient, user) {
+  const avatarImage = document.getElementById('avatarImage');
+
+  const { data } = await supabaseClient
+    .from('profiles')
+    .select('avatar_url')
+    .eq('id', user.id)
+    .single();
+
+  if (data?.avatar_url) {
+    avatarImage.src = data.avatar_url;
+  } else {
+    avatarImage.src = '../assets/img/user-defolt.svg'; // дефолт
+  }
+}
+async function initMembershipInfo(supabaseClient, user) {
+  const membershipValueEl = document.getElementById('accountMembershipValue');
+  const paymentsTable = document.querySelector('.payments-table');
+
+  const { data, error } = await supabaseClient
+    .from('membership_orders')
+    .select('*')
+    .eq('user_id', user.id)
+    .order('created_at', { ascending: false });
+
+  if (error) {
+    console.error('Ошибка загрузки абонемента:', error);
+    return;
+  }
+
+  const orders = data || [];
+  const activeOrder = orders[0];
+
+  if (membershipValueEl) {
+    if (activeOrder) {
+      membershipValueEl.innerHTML = `
+        <span class="dashboard-card__membership-title">
+          ${escapeHtml(activeOrder.membership_title)} ${activeOrder.membership_duration || ''}
+        </span>
+        <span class="dashboard-card__membership-status">Активен</span>
+      `;
+    } else {
+      membershipValueEl.textContent = 'Не куплен';
+    }
+  }
+
+  if (paymentsTable) {
+    const head = `
+      <div class="payments-row payments-row--head">
+        <span>Дата</span>
+        <span>Название</span>
+        <span>Стоимость</span>
+        <span>Статус</span>
+      </div>
+    `;
+
+    const rows = orders.length
+      ? orders.map((order) => `
+          <div class="payments-row">
+            <span>${formatOrderDate(order.created_at)}</span>
+            <span>${escapeHtml(order.membership_title)}</span>
+            <span>${Number(order.membership_price).toLocaleString('ru-RU')} ₽</span>
+            <span>${escapeHtml(order.status)}</span>
+          </div>
+        `).join('')
+      : `<p class="account-muted">Оплат пока нет.</p>`;
+
+    paymentsTable.innerHTML = head + rows;
+  }
+}
+
+function formatOrderDate(value) {
+  const date = new Date(value);
+  return date.toLocaleDateString('ru-RU');
 }
 
 async function getAuthorizedUser(supabaseClient) {
@@ -331,30 +452,30 @@ async function initSchedule(supabaseClient, user) {
 `).join('');
   }
   trainingList.addEventListener('click', async (e) => {
-  const btn = e.target.closest('[data-booking-id]');
-  if (!btn) return;
+    const btn = e.target.closest('[data-booking-id]');
+    if (!btn) return;
 
-  const bookingId = btn.dataset.bookingId;
+    const bookingId = btn.dataset.bookingId;
 
-  const ok = confirm('Отменить запись на тренировку?');
-  if (!ok) return;
+    const ok = confirm('Отменить запись на тренировку?');
+    if (!ok) return;
 
-  const { error } = await supabaseClient
-    .from('class_bookings')
-    .delete()
-    .eq('id', bookingId);
+    const { error } = await supabaseClient
+      .from('class_bookings')
+      .delete()
+      .eq('id', bookingId);
 
-  if (error) {
-    console.error(error);
-    alert('Ошибка при отмене записи');
-    return;
-  }
+    if (error) {
+      console.error(error);
+      alert('Ошибка при отмене записи');
+      return;
+    }
 
-  alert('Запись отменена');
+    alert('Запись отменена');
 
-  await loadUserTrainings(); // обновляем данные
-  renderAll();
-});
+    await loadUserTrainings(); // обновляем данные
+    renderAll();
+  });
 }
 function formatTime(time) {
   return String(time || '').slice(0, 5);

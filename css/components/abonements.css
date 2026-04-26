@@ -285,6 +285,51 @@
 .membership--light:hover {
   transform: translateY(-4px);
 }
+.membership-warning-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.membership-warning {
+  position: relative;
+  width: min(100%, 560px);
+  padding: 40px;
+  border-radius: 28px;
+  background: #fff;
+  color: #111;
+}
+
+.membership-warning__close {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: 50%;
+  background: #111;
+  color: #fff;
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.membership-warning__title {
+  margin: 0 0 18px;
+  font-size: 28px;
+}
+
+.membership-warning__text {
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.35;
+}
 
 @media (max-width: 1680px) {
   .memberships__grid {

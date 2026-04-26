@@ -17,6 +17,7 @@ window.MEMBERSHIPS_DATA = {
       ]
     },
     {
+      id: 'day-1',
       title: 'Тариф<br><strong>«День»</strong>',
       price: '2800 руб.',
       date: 'Предложение действует до 25.02.2026г.',
@@ -34,6 +35,7 @@ window.MEMBERSHIPS_DATA = {
       ]
     },
     {
+      id: 'full-day-1',
       title: 'Тариф<br><strong>«Полный день»</strong>',
       price: '3250 руб.',
       date: 'Предложение действует до 25.02.2026г.',
@@ -50,6 +52,7 @@ window.MEMBERSHIPS_DATA = {
       ]
     },
     {
+      id: 'unlimited-1',
       title: 'Тариф<br><strong>«Безлимит»</strong>',
       price: '4050 руб.',
       date: 'Предложение действует до 25.02.2026г.',
@@ -67,6 +70,7 @@ window.MEMBERSHIPS_DATA = {
       ]
     },
     {
+      id: 'vip-1',
       title: 'Тариф<br><strong>«VIP»</strong>',
       price: '4500 руб.',
       date: 'Предложение действует до 25.02.2026г.',
@@ -84,6 +88,7 @@ window.MEMBERSHIPS_DATA = {
       ]
     },
     {
+      id: 'vipmaxi-1',
       title: 'Тариф<br><strong>«VIP MAXI»</strong>',
       price: '5450 руб.',
       date: 'Предложение действует до 25.02.2026г.',
@@ -103,6 +108,7 @@ window.MEMBERSHIPS_DATA = {
   ],
   'month-6': [
     {
+      id: 'day-6',
       title: 'Тариф<br><strong>«День»</strong>',
       price: '13500 руб.',
       date: 'Предложение действует до 25.02.2026г.',
@@ -116,6 +122,7 @@ window.MEMBERSHIPS_DATA = {
       ]
     },
     {
+      id: 'full-day-6',
       title: 'Тариф<br><strong>«Полный день»</strong>',
       price: '15300 руб.',
       date: 'Предложение действует до 25.02.2026г.',
@@ -129,6 +136,7 @@ window.MEMBERSHIPS_DATA = {
       ]
     },
     {
+      id: 'unlimited-6',
       title: 'Тариф<br><strong>«Безлимит»</strong>',
       price: '20550 руб.',
       date: 'Предложение действует до 25.02.2026г.',
@@ -142,6 +150,7 @@ window.MEMBERSHIPS_DATA = {
       ]
     },
     {
+      id: 'vip-6',
       title: 'Тариф<br><strong>«VIP»</strong>',
       price: '22000 руб.',
       date: 'Предложение действует до 25.02.2026г.',
@@ -155,6 +164,7 @@ window.MEMBERSHIPS_DATA = {
       ]
     },
     {
+      id: 'vipmaxi-6',
       title: 'Тариф<br><strong>«VIP MAXI»</strong>',
       price: '24999 руб.',
       date: 'Предложение действует до 25.02.2026г.',
@@ -170,6 +180,7 @@ window.MEMBERSHIPS_DATA = {
   ],
   'month-12': [
     {
+      id: 'day-12',
       title: 'Тариф<br><strong>«День»</strong>',
       price: '24500 руб.',
       date: 'Предложение действует до 25.02.2026г.',
@@ -182,6 +193,7 @@ window.MEMBERSHIPS_DATA = {
       ]
     },
     {
+      id: 'full-day-12',
       title: 'Тариф<br><strong>«Полный день»</strong>',
       price: '28250 руб.',
       date: 'Предложение действует до 25.02.2026г.',
@@ -194,6 +206,7 @@ window.MEMBERSHIPS_DATA = {
       ]
     },
     {
+      id: 'unlimited-12',
       title: 'Тариф<br><strong>«Безлимит»</strong>',
       price: '37000 руб.',
       date: 'Предложение действует до 25.02.2026г.',
@@ -206,6 +219,7 @@ window.MEMBERSHIPS_DATA = {
       ]
     },
     {
+      id: 'vip-12',
       title: 'Тариф<br><strong>«VIP»</strong>',
       price: '41250 руб.',
       date: 'Предложение действует до 25.02.2026г.',
@@ -218,6 +232,7 @@ window.MEMBERSHIPS_DATA = {
       ]
     },
     {
+      id: 'vipmaxi-12',
       title: 'Тариф<br><strong>«VIP MAXI»</strong>',
       price: '53000 руб.',
       date: 'Предложение действует до 25.02.2026г.',
@@ -232,6 +247,7 @@ window.MEMBERSHIPS_DATA = {
   ],
   'month-3': [
     {
+      id: 'day-3',
       title: 'Тариф<br><strong>«День»</strong>',
       price: '7200 руб.',
       date: 'Предложение действует до 25.02.2026г.',
@@ -247,6 +263,7 @@ window.MEMBERSHIPS_DATA = {
       ]
     },
     {
+      id: 'full-day-3',
       title: 'Тариф<br><strong>«Полный день»</strong>',
       price: '8500 руб.',
       date: 'Предложение действует до 25.02.2026г.',
@@ -262,6 +279,7 @@ window.MEMBERSHIPS_DATA = {
       ]
     },
     {
+      id: 'unlimited-3',
       title: 'Тариф<br><strong>«Безлимит»</strong>',
       price: '11000 руб.',
       date: 'Предложение действует до 25.02.2026г.',
@@ -277,6 +295,7 @@ window.MEMBERSHIPS_DATA = {
       ]
     },
     {
+      id: 'vip-3',
       title: 'Тариф<br><strong>«VIP»</strong>',
       price: '11800 руб.',
       date: 'Предложение действует до 25.02.2026г.',
@@ -292,6 +311,7 @@ window.MEMBERSHIPS_DATA = {
       ]
     },
     {
+      id: 'vipmaxi-3',
       title: 'Тариф<br><strong>«VIP MAXI»</strong>',
       price: '13500 руб.',
       date: 'Предложение действует до 25.02.2026г.',
