@@ -1175,6 +1175,9 @@ textarea {
     .section-title {
         font-size: 20px;
     }
+    .section-title-2 br {
+        display: inline;
+    }  
 
     .section-lead {
         font-size: 16px;
@@ -1280,4 +1283,5 @@ textarea {
     .contacts__info {
         padding: 0px;
     }
+
 }
