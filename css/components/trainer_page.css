@@ -63,7 +63,7 @@ body {
 
 .specialization-select {
   position: relative;
-  z-index: 5;
+  z-index: 1;
 }
 
 .specialization-select__button,
@@ -667,6 +667,7 @@ body {
   .trainers-filter__reset {
     min-height: 46px;
     font-size: 15px;
+    z-index: 0;
   }
 
   .trainers-grid {

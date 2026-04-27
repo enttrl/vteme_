@@ -573,10 +573,6 @@ button {
         min-height: 88px;
     }
 
-    .header__nav {
-        display: none;
-    }
-
     .memberships {
         padding-top: 64px;
     }

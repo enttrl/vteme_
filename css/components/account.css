@@ -470,7 +470,9 @@ body.scrolled .header {
   grid-template-columns: repeat(7, 1fr);
   align-items: center;
   gap: 0;
-  margin-bottom: 12px;
+  margin-bottom: 28px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #777777;
 }
 
 .schedule-day {
