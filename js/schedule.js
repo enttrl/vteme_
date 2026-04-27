@@ -23,6 +23,7 @@ function formatDateForDB(date) {
   return `${year}-${month}-${day}`;
 }
 
+
 function getMonday(date = new Date()) {
   const result = new Date(date);
   const day = result.getDay();
@@ -63,28 +64,120 @@ function isClassFull(classItem) {
 }
 
 function getUniqueOptions(key) {
-  return [...new Set(scheduleState.allClasses.map((item) => item[key]).filter(Boolean))].sort((a, b) => a.localeCompare(b, 'ru'));
+  return [...new Set(scheduleState.allClasses.map((item) => item[key]).filter(Boolean))]
+    .sort((a, b) => String(a).localeCompare(String(b), 'ru'));
 }
 
-function fillFilterSelects() {
+function escapeHTML(value) {
+  return String(value)
+    .replaceAll('&', '&amp;')
+    .replaceAll('<', '&lt;')
+    .replaceAll('>', '&gt;')
+    .replaceAll('"', '&quot;')
+    .replaceAll("'", '&#039;');
+}
+
+function formatFilterValue(value, key) {
+  const text = String(value).trim();
+  if (!text) return '';
+
+  if (key === 'type') {
+    return text.charAt(0).toUpperCase() + text.slice(1);
+  }
+
+  return text;
+}
+
+function getCheckedDropdownValues(dropdown) {
+  return [...dropdown.querySelectorAll('input[type="checkbox"]:checked')].map((input) => input.value);
+}
+
+function updateDropdownLabel(dropdown) {
+  const label = dropdown.querySelector('[data-dropdown-label]');
+  const key = dropdown.dataset.dropdownFilter;
+  const placeholder = dropdown.dataset.dropdownPlaceholder || 'Выберите';
+  const checkedValues = getCheckedDropdownValues(dropdown);
+
+  if (!label) return;
+
+  if (!checkedValues.length) {
+    label.textContent = placeholder;
+    dropdown.classList.remove('has-value');
+    return;
+  }
+
+  dropdown.classList.add('has-value');
+
+  if (checkedValues.length === 1) {
+    label.textContent = formatFilterValue(checkedValues[0], key);
+  } else {
+    label.textContent = `${placeholder}: ${checkedValues.length}`;
+  }
+}
+
+function closeDropdown(dropdown) {
+  dropdown.classList.remove('is-open');
+  dropdown.querySelector('.schedule-dropdown__button')?.setAttribute('aria-expanded', 'false');
+}
+
+function toggleDropdown(dropdown) {
+  const willOpen = !dropdown.classList.contains('is-open');
+
+  document.querySelectorAll('.schedule-dropdown.is-open').forEach((item) => {
+    if (item !== dropdown) closeDropdown(item);
+  });
+
+  dropdown.classList.toggle('is-open', willOpen);
+  dropdown.querySelector('.schedule-dropdown__button')?.setAttribute('aria-expanded', String(willOpen));
+}
+
+function fillCustomDropdowns() {
   if (!filtersForm) return;
 
-  ['type', 'goal', 'muscle_group', 'level', 'time_of_day'].forEach((key) => {
-    const select = filtersForm.elements[key];
-    if (!select) return;
+  document.querySelectorAll('[data-dropdown-filter]').forEach((dropdown) => {
+    const key = dropdown.dataset.dropdownFilter;
+    const menu = dropdown.querySelector('[data-dropdown-menu]');
 
-    const firstOption = select.options[0];
-    select.innerHTML = '';
-    select.append(firstOption);
+    if (!key || !menu) return;
+
+    menu.innerHTML = '';
 
     getUniqueOptions(key).forEach((value) => {
-      const option = document.createElement('option');
-      option.value = value;
-      option.textContent = value;
-      select.append(option);
+      const id = `filter-${key}-${String(value).replace(/[^a-zA-Zа-яА-Я0-9_-]/g, '-')}`;
+      const label = document.createElement('label');
+
+      label.className = 'schedule-dropdown__option';
+      label.setAttribute('for', id);
+      label.innerHTML = `
+        <input id="${escapeHTML(id)}" type="checkbox" name="${escapeHTML(key)}" value="${escapeHTML(value)}">
+        <span>${escapeHTML(formatFilterValue(value, key))}</span>
+      `;
+
+      menu.append(label);
     });
+
+    updateDropdownLabel(dropdown);
   });
 }
+
+document.addEventListener('click', (event) => {
+  const button = event.target.closest('.schedule-dropdown__button');
+  const dropdown = event.target.closest('.schedule-dropdown');
+
+  if (button && dropdown) {
+    toggleDropdown(dropdown);
+    return;
+  }
+
+  if (!dropdown) {
+    document.querySelectorAll('.schedule-dropdown.is-open').forEach(closeDropdown);
+  }
+});
+
+document.addEventListener('keydown', (event) => {
+  if (event.key !== 'Escape') return;
+  document.querySelectorAll('.schedule-dropdown.is-open').forEach(closeDropdown);
+});
 
 function renderDays() {
   const weekDates = getWeekDates();
@@ -106,14 +199,14 @@ function applyFilters() {
 
   scheduleState.filteredClasses = scheduleState.allClasses.filter((item) => {
     return ['type', 'goal', 'muscle_group', 'level', 'time_of_day'].every((key) => {
-      const value = formData.get(key);
-      return !value || item[key] === value;
+      const values = formData.getAll(key);
+      return !values.length || values.includes(item[key]);
     });
   });
 
   const dayClasses = getSelectedDayClasses();
   if (!dayClasses.some((item) => item.id === scheduleState.selectedClassId)) {
-    scheduleState.selectedClassId = dayClasses[0]?.id || null;
+    scheduleState.selectedClassId = null;
   }
 
   renderDays();
@@ -137,17 +230,26 @@ function renderList() {
 
   listEl.innerHTML = classes.map((item) => {
     const isActive = item.id === scheduleState.selectedClassId;
+    const alreadyBooked = scheduleState.userBookingIds.has(item.id);
+    const full = isClassFull(item);
+    const buttonText = alreadyBooked ? 'Вы записаны' : full ? 'Мест нет' : 'Записаться';
+    const disabled = alreadyBooked || full;
+
     return `
-      <button class="schedule-card${isActive ? ' is-active' : ''}" type="button" data-class-id="${item.id}">
+      <article class="schedule-card${isActive ? ' is-active' : ''}" tabindex="0" role="button" data-class-id="${item.id}">
         <span class="schedule-card__top">
           <strong class="schedule-card__title">${item.title}</strong>
-          <span class="schedule-card__places${isClassFull(item) ? ' is-full' : ''}">${getPlacesText(item)}</span>
+          <span class="schedule-card__places${full ? ' is-full' : ''}">${getPlacesText(item)}</span>
         </span>
         <span class="schedule-card__bottom">
           <span>${formatTime(item.start_time)}–${formatTime(item.end_time)}</span>
           <span>Тренер: ${item.trainer_name}</span>
         </span>
-      </button>
+        <span class="schedule-card__extra">
+          <span class="schedule-card__description">${item.description || 'Описание скоро появится.'}</span>
+          <button class="schedule-card__button" type="button" data-book-class="${item.id}" ${disabled ? 'disabled' : ''}>${buttonText}</button>
+        </span>
+      </article>
     `;
   }).join('');
 }
@@ -156,7 +258,7 @@ function renderDetail() {
   const item = scheduleState.filteredClasses.find((classItem) => classItem.id === scheduleState.selectedClassId);
 
   if (!item) {
-    detailEl.innerHTML = '<p class="schedule-detail__placeholder">Выберите тренировку слева, чтобы посмотреть описание.</p>';
+    detailEl.innerHTML = '';
     return;
   }
 
@@ -298,7 +400,7 @@ async function loadClasses() {
     return;
   }
 
-  fillFilterSelects();
+  fillCustomDropdowns();
 
   const selectedDayWithClasses = weekDates.find((date) => {
     const dbDate = formatDateForDB(date);
@@ -309,7 +411,7 @@ async function loadClasses() {
     scheduleState.selectedDate = formatDateForDB(selectedDayWithClasses);
   }
 
-  scheduleState.selectedClassId = getSelectedDayClasses()[0]?.id || null;
+  scheduleState.selectedClassId = null;
 
   renderDays();
   renderList();
@@ -323,9 +425,24 @@ filtersToggle?.addEventListener('click', () => {
   filtersToggleText.textContent = isHidden ? 'Скрыть фильтры' : 'Показать фильтры';
 });
 
-filtersForm?.addEventListener('change', applyFilters);
+filtersForm?.addEventListener('change', (event) => {
+  const dropdown = event.target.closest('.schedule-dropdown');
+
+  if (dropdown) {
+    updateDropdownLabel(dropdown);
+  }
+
+  applyFilters();
+});
 filtersForm?.addEventListener('reset', () => {
-  setTimeout(applyFilters, 0);
+  setTimeout(() => {
+    document.querySelectorAll('.schedule-dropdown').forEach((dropdown) => {
+      closeDropdown(dropdown);
+      updateDropdownLabel(dropdown);
+    });
+
+    applyFilters();
+  }, 0);
 });
 
 daysEl?.addEventListener('click', (event) => {
@@ -333,7 +450,7 @@ daysEl?.addEventListener('click', (event) => {
   if (!button) return;
 
   scheduleState.selectedDate = button.dataset.date;
-  scheduleState.selectedClassId = getSelectedDayClasses()[0]?.id || null;
+  scheduleState.selectedClassId = null;
 
   renderDays();
   renderList();
@@ -341,10 +458,31 @@ daysEl?.addEventListener('click', (event) => {
 });
 
 listEl?.addEventListener('click', (event) => {
+  const bookingButton = event.target.closest('[data-book-class]');
+  if (bookingButton) {
+    event.stopPropagation();
+    bookClass(Number(bookingButton.dataset.bookClass));
+    return;
+  }
+
   const button = event.target.closest('[data-class-id]');
   if (!button) return;
 
-  scheduleState.selectedClassId = Number(button.dataset.classId);
+  const classId = Number(button.dataset.classId);
+  scheduleState.selectedClassId = scheduleState.selectedClassId === classId ? null : classId;
+  renderList();
+  renderDetail();
+});
+
+listEl?.addEventListener('keydown', (event) => {
+  if (event.key !== 'Enter' && event.key !== ' ') return;
+
+  const card = event.target.closest('[data-class-id]');
+  if (!card) return;
+
+  event.preventDefault();
+  const classId = Number(card.dataset.classId);
+  scheduleState.selectedClassId = scheduleState.selectedClassId === classId ? null : classId;
   renderList();
   renderDetail();
 });

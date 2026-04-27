@@ -17,7 +17,9 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+    rel="stylesheet">
 </head>
 
 <body>
@@ -102,45 +104,50 @@
 
         <button class="schedule__filter-toggle" type="button" data-filters-toggle aria-expanded="true">
           <span data-filters-toggle-text>Скрыть фильтры</span>
-          <img src="../assets/img/chevron-right.svg" alt="" aria-hidden="true">
+          <span class="schedule-dropdown__arrow"></span>
         </button>
 
         <form class="schedule-filters" data-filters-form>
           <div class="schedule-filters__grid">
-            <label class="schedule-filter">
-              <span class="visually-hidden">Тип тренировки</span>
-              <select class="schedule-filter__control" name="type">
-                <option value="">Тип тренировки</option>
-              </select>
-            </label>
+            <div class="schedule-filter schedule-dropdown" data-dropdown-filter="type" data-dropdown-placeholder="Тип тренировки">
+              <button class="schedule-dropdown__button" type="button" aria-expanded="false">
+                <span data-dropdown-label data-placeholder="Тип тренировки">Тип тренировки</span>
+                <span class="schedule-dropdown__arrow"></span>
+              </button>
+              <div class="schedule-dropdown__menu" data-dropdown-menu></div>
+            </div>
 
-            <label class="schedule-filter">
-              <span class="visually-hidden">Что я хочу</span>
-              <select class="schedule-filter__control" name="goal">
-                <option value="">Что я хочу</option>
-              </select>
-            </label>
+            <div class="schedule-filter schedule-dropdown" data-dropdown-filter="goal" data-dropdown-placeholder="Что я хочу">
+              <button class="schedule-dropdown__button" type="button" aria-expanded="false">
+                <span data-dropdown-label data-placeholder="Что я хочу">Что я хочу</span>
+                <span class="schedule-dropdown__arrow"></span>
+              </button>
+              <div class="schedule-dropdown__menu" data-dropdown-menu></div>
+            </div>
 
-            <label class="schedule-filter">
-              <span class="visually-hidden">Какие группы мышц</span>
-              <select class="schedule-filter__control" name="muscle_group">
-                <option value="">Какие группы мышц</option>
-              </select>
-            </label>
+            <div class="schedule-filter schedule-dropdown" data-dropdown-filter="muscle_group" data-dropdown-placeholder="Какие группы мышц">
+              <button class="schedule-dropdown__button" type="button" aria-expanded="false">
+                <span data-dropdown-label data-placeholder="Какие группы мышц">Какие группы мышц</span>
+                <span class="schedule-dropdown__arrow"></span>
+              </button>
+              <div class="schedule-dropdown__menu" data-dropdown-menu></div>
+            </div>
 
-            <label class="schedule-filter">
-              <span class="visually-hidden">Уровень нагрузки</span>
-              <select class="schedule-filter__control" name="level">
-                <option value="">Уровень нагрузки</option>
-              </select>
-            </label>
+            <div class="schedule-filter schedule-dropdown" data-dropdown-filter="level" data-dropdown-placeholder="Уровень нагрузки">
+              <button class="schedule-dropdown__button" type="button" aria-expanded="false">
+                <span data-dropdown-label data-placeholder="Уровень нагрузки">Уровень нагрузки</span>
+                <span class="schedule-dropdown__arrow"></span>
+              </button>
+              <div class="schedule-dropdown__menu" data-dropdown-menu></div>
+            </div>
 
-            <label class="schedule-filter">
-              <span class="visually-hidden">Время дня</span>
-              <select class="schedule-filter__control" name="time_of_day">
-                <option value="">Время дня</option>
-              </select>
-            </label>
+            <div class="schedule-filter schedule-dropdown" data-dropdown-filter="time_of_day" data-dropdown-placeholder="Время дня">
+              <button class="schedule-dropdown__button" type="button" aria-expanded="false">
+                <span data-dropdown-label data-placeholder="Время дня">Время дня</span>
+                <span class="schedule-dropdown__arrow"></span>
+              </button>
+              <div class="schedule-dropdown__menu" data-dropdown-menu></div>
+            </div>
 
             <button class="schedule-filters__reset" type="reset">Сбросить фильтры</button>
           </div>
@@ -151,9 +158,7 @@
         <div class="schedule__content">
           <div class="schedule-list" data-class-list aria-live="polite"></div>
 
-          <aside class="schedule-detail" data-class-detail aria-live="polite">
-            <p class="schedule-detail__placeholder">Выберите тренировку слева, чтобы посмотреть описание.</p>
-          </aside>
+          <aside class="schedule-detail" data-class-detail aria-live="polite"></aside>
         </div>
       </div>
     </section>
@@ -163,7 +168,8 @@
     <div class="footer__container">
       <div class="footer__top">
         <div class="footer__logo-block">
-          <a href="index.html" class="footer__logo" aria-label="ВТЕМЕ"><img src="../assets/img/logo-vteme.svg" alt="ВТЕМЕ"></a>
+          <a href="index.html" class="footer__logo" aria-label="ВТЕМЕ"><img src="../assets/img/logo-vteme.svg"
+              alt="ВТЕМЕ"></a>
         </div>
         <div class="footer__contacts">
           <p class="footer__text">Есть вопросы или<br>предложения? Свяжитесь<br>с нами</p>

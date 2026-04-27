@@ -1315,8 +1315,7 @@ video {
   .features__inner,
   .memberships__inner,
   .feedback__inner,
-  .reviews__content,
-  .footer__container {
+  .reviews__content {
     width: calc(100% - 32px);
     /* 16px + 16px */
     margin-left: auto;

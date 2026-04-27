@@ -56,7 +56,7 @@ button {
 
 .memberships__title {
     margin: 0;
-    font-size: 48px;
+    font-size: 36px;
     line-height: 1.9;
     text-transform: uppercase;
     font-weight: 900;
@@ -64,8 +64,8 @@ button {
 
 .memberships__lead {
     margin: 48px 0 80px;
-    font-size: 30px;
-    line-height: 1.15;
+    font-size: 24px;
+    line-height: 1.2;
     font-weight: 400;
 }
 
@@ -501,8 +501,8 @@ button {
 .trial-form__checkbox-input:checked+.trial-form__checkbox-box::after {
     content: "";
     position: absolute;
-    left: 10px;
-    top: 5px;
+    left: 12px;
+    top: 6px;
     width: 6px;
     height: 12px;
     border-right: 2px solid #ffffff;
@@ -550,9 +550,11 @@ button {
     .membership-card__price-row {
         padding-top: 32px;
     }
+
     .membership-card__date {
         font-size: 16px;
     }
+
     .cards-slider__arrow span {
         font-size: 72px;
     }
@@ -569,10 +571,6 @@ button {
 
     .site-header {
         min-height: 88px;
-    }
-
-    .header__logo {
-        width: 190px;
     }
 
     .header__nav {
@@ -625,6 +623,38 @@ button {
         font-size: 30px;
     }
 
+    .trial-form {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .trial-form__row {
+        display: contents;
+        /* чтобы поля и кнопка стали "на одном уровне" */
+    }
+
+    .field:nth-child(1) {
+        order: 1;
+        /* Имя */
+    }
+
+    .field:nth-child(2) {
+        margin-top: 16px;
+        order: 2;
+        /* Телефон */
+    }
+
+    .trial-form__consent {
+        order: 3;
+        margin-bottom: 24px;
+        /* Согласие */
+    }
+
+    .trial-form__submit {
+        order: 4;
+        /* Кнопка */
+    }
+
     .trial-form__row {
         grid-template-columns: 1fr;
     }
@@ -636,9 +666,11 @@ button {
     .trial-form {
         margin-top: 48px;
     }
+
     .cards-slider__arrow {
         width: 70px;
     }
+
     .cards-slider__arrow--prev {
         left: calc(50% - 480px - 20px);
     }
@@ -718,6 +750,7 @@ button {
         font-size: 16px;
         padding: 10px 14px;
     }
+
     .cta__title {
         font-size: 34px;
         line-height: 1.08;
@@ -761,16 +794,8 @@ button {
         min-height: 76px;
     }
 
-    .header__logo {
-        width: 148px;
-    }
 
-    .header__login {
-        min-width: 88px;
-        height: 36px;
-        padding-inline: 18px;
-        font-size: 14px;
-    }
+
 
     .header__arrow {
         width: 36px;
@@ -817,7 +842,7 @@ button {
     }
 
     .memberships__lead {
-        font-size: 18px;
+        font-size: 16px;
         line-height: 1.2;
         margin-bottom: 48px;
     }
@@ -869,6 +894,22 @@ button {
     .cta__title {
         font-size: 24px;
     }
+
+    .form-card__title {
+        font-size: 20px;
+    }
+
+    .field__label {
+        font-size: 16px;
+    }
+
+    .field__control {
+        font-size: 16px;
+    }
+
+    .trial-form__submit {
+        font-size: 16px;
+    }
 }
 
 @media (max-width: 320px) {
@@ -878,6 +919,7 @@ button {
         padding-inline: 7%;
         scroll-padding-inline: 1%;
     }
+
     .membership-card__list li {
         font-size: 14px;
     }

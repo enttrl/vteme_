@@ -451,16 +451,58 @@
       );
 
       console.log('SUCCESS!', response.status, response.text);
-      alert('Заявка успешно отправлена!');
+
+      showToast();
+
       form.reset();
     } catch (error) {
       console.error('FAILED...', error);
-      alert('Не удалось отправить заявку. Попробуйте ещё раз.');
+
+      showToast('Не удалось отправить заявку. Попробуйте ещё раз.');
     } finally {
       submitButton.disabled = false;
       submitButton.textContent = originalText;
     }
   });
+
+  function showToast(message = "Заявка отправлена!") {
+    const toast = document.createElement('div');
+
+    toast.textContent = message;
+
+    Object.assign(toast.style, {
+      position: 'fixed',
+      right: '24px',
+      bottom: '24px',
+      background: '#0fa044',
+      color: '#fff',
+      padding: '14px 18px',
+      borderRadius: '12px',
+      fontSize: '14px',
+      fontFamily: 'Inter, sans-serif',
+      boxShadow: '0 8px 20px rgba(0,0,0,0.15)',
+      zIndex: '9999',
+      opacity: '0',
+      transform: 'translateY(20px)',
+      transition: 'all 0.3s ease'
+    });
+
+    document.body.appendChild(toast);
+
+    requestAnimationFrame(() => {
+      toast.style.opacity = '1';
+      toast.style.transform = 'translateY(0)';
+    });
+
+    setTimeout(() => {
+      toast.style.opacity = '0';
+      toast.style.transform = 'translateY(20px)';
+
+      setTimeout(() => {
+        toast.remove();
+      }, 300);
+    }, 2000);
+  }
 </script>
 <script>
   ymaps.ready(init);

@@ -5,8 +5,8 @@
     --text: #141414;
     --muted: #000000;
     --line: #dddddd;
-    --accent: #f58220;
-    --accent-dark: #dd6d10;
+    --accent: #FF7C33;
+    --accent-dark: #FA4D0B;
     --radius-xl: 24px;
     --radius-lg: 24px;
     --radius-md: 24px;
@@ -119,6 +119,10 @@ textarea {
 }
 
 .button--primary:hover,
+.button--primary:focus-visible {
+    background: var(--accent-dark);
+}
+.button--primary:active,
 .button--primary:focus-visible {
     background: var(--accent-dark);
 }
@@ -1129,8 +1133,8 @@ textarea {
     }
 
     .form-card {
-        padding: 24px 20px;
-        border-radius: 20px;
+        padding: 24px 24px;
+        border-radius: 24px;
     }
 
     .form-card__title {
@@ -1277,11 +1281,32 @@ textarea {
     }
 
     .cta__title {
-        font-size: 28px;
+        font-size: 24px;
     }
 
     .contacts__info {
         padding: 0px;
+    }
+
+}
+
+@media (max-width: 375px) {
+    .hero__quote-text {
+        font-size: 16px;
+    }
+    .hero__quote, .hero__media {
+        height: auto;
+    }
+    .cta__title {
+        font-size: 20px;
+    }
+    .cta__arrow-circle {
+        width: 28px;
+        height: 28px;
+    }
+    .cta__arrow-circle img {
+         width: 14px;
+        height: 14px;
     }
 
 }
