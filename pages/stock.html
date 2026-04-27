@@ -97,7 +97,7 @@
         <section class="stock" aria-labelledby="stock-title">
             <div class="stock__container">
                 <h1 class="stock__title" id="stock-title">Специальные предложения</h1>
-                <p class="stock__lead">Выгодные условия для новых и постоянных клиентов фитнес-центра.</p>
+                <p class="stock__lead">Выгодные условия для новых и&nbsp;постоянных клиентов фитнес-центра.</p>
 
                 <div class="stock-slider" aria-label="Список акций">
                     <button class="stock-slider__arrow stock-slider__arrow--prev" type="button" data-stock-prev>
@@ -128,8 +128,9 @@
                             <div class="stock-card__content stock-card__content--light">
                                 <h2 class="stock-card__title">«Приведи друга»</h2>
                                 <div class="stock-card__bottom">
-                                    <p class="stock-card__text">Тренируйтесь вместе и получайте бонус — 7 дополнительных
-                                        дней к абонементу.</p>
+                                    <p class="stock-card__text">Тренируйтесь вместе и&nbsp;получайте бонус — 7
+                                        дополнительных
+                                        дней к&nbsp;абонементу.</p>
                                     <a class="stock-button stock-button--light" href="#">
                                         <span>Узнать подробнее</span>
                                         <span class="stock-button__icon" aria-hidden="true"><img
@@ -178,10 +179,11 @@
                     </button>
                 </div>
 
-                <p class="stock__note">Акции <span>не суммируются</span> между собой и с другими специальными
-                    предложениями фитнес-центра. Сроки действия акций ограничены и могут быть изменены без
-                    предварительного уведомления. Подробную информацию об условиях участия вы можете получить у
-                    администратора клуба или по <a href="tel:+79288220555">телефону</a></p>
+                <p class="stock__note">Акции <span>не&nbsp;суммируются</span> между собой и&nbsp;с&nbsp;другими
+                    специальными предложениями <nobr>фитнес-центра</nobr>. Сроки действия акций ограничены и&nbsp;могут
+                    быть изменены без предварительного уведомления. Подробную информацию об&nbsp;условиях участия
+                    вы&nbsp;можете получить у&nbsp;администратора клуба или по&nbsp;<a
+                        href="tel:+79288220555">телефону</a></p>
             </div>
         </section>
         <section class="feedback" id="contact">
@@ -369,6 +371,8 @@
             e.preventDefault();
 
             const btn = form.querySelector('.feedback-form__submit');
+            const originalText = btn.textContent;
+
             btn.disabled = true;
             btn.textContent = 'Отправка...';
 
@@ -385,17 +389,56 @@
                     data
                 );
 
-                alert('Спасибо! Мы скоро с вами свяжемся');
+                showToast();
                 form.reset();
 
             } catch (error) {
                 console.error('EmailJS error:', error);
-                alert('Ошибка отправки');
+                showToast('Ошибка отправки');
             } finally {
                 btn.disabled = false;
-                btn.textContent = 'Перезвоните мне';
+                btn.textContent = originalText;
             }
         });
+
+        function showToast(message = 'Заявка отправлена!') {
+            const toast = document.createElement('div');
+
+            toast.textContent = message;
+
+            Object.assign(toast.style, {
+                position: 'fixed',
+                right: '24px',
+                bottom: '24px',
+                background: '#0fa044',
+                color: '#fff',
+                padding: '14px 18px',
+                borderRadius: '12px',
+                fontSize: '14px',
+                fontFamily: 'Inter, sans-serif',
+                boxShadow: '0 8px 20px rgba(0,0,0,0.15)',
+                zIndex: '9999',
+                opacity: '0',
+                transform: 'translateY(20px)',
+                transition: 'all 0.3s ease'
+            });
+
+            document.body.appendChild(toast);
+
+            requestAnimationFrame(() => {
+                toast.style.opacity = '1';
+                toast.style.transform = 'translateY(0)';
+            });
+
+            setTimeout(() => {
+                toast.style.opacity = '0';
+                toast.style.transform = 'translateY(20px)';
+
+                setTimeout(() => {
+                    toast.remove();
+                }, 300);
+            }, 2000);
+        }
     });
 </script>
 

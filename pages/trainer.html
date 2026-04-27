@@ -97,8 +97,8 @@
         <section class="trainers" aria-labelledby="trainers-title">
             <div class="trainers__container">
                 <h1 class="trainers__title" id="trainers-title">Тренеры</h1>
-                <p class="trainers__lead">Познакомьтесь с тренерами, которые помогут раскрыть потенциал, поддержат
-                    мотивацию и сделают тренировки эффективными.</p>
+                <p class="trainers__lead">Познакомьтесь с&nbsp;тренерами, которые помогут раскрыть потенциал, поддержат
+                    мотивацию и&nbsp;сделают тренировки эффективными.</p>
 
                 <form class="trainers-filter" id="trainersFilter" aria-label="Фильтр тренеров">
                     <div class="specialization-select" data-select>
@@ -114,7 +114,9 @@
                         <span class="visually-hidden">Поиск по фамилии или имени</span>
                         <input class="trainers-search__input" id="trainerSearch" type="search"
                             placeholder="Поиск по фамилии, имени" autocomplete="off">
-                        <span class="trainers-search__icon" aria-hidden="true"></span>
+                        <span class="trainers-search__icon" aria-hidden="true">
+                            <img src="../assets/img/search.svg" alt="">
+                        </span>
                     </label>
 
                     <button class="trainers-filter__reset" id="resetFilters" type="reset">Сбросить фильтры</button>
@@ -229,34 +231,80 @@
     });
 </script>
 <script>
-    const form = document.getElementById('trial-form');
-    const submitBtn = form.querySelector('.trial-form__submit');
+  emailjs.init({
+    publicKey: '4EOkO_p3ey7Am8t1d',
+  });
 
-    form.addEventListener('submit', async function (e) {
-        e.preventDefault();
+  const form = document.getElementById('trial-form');
+  const submitButton = form.querySelector('.trial-form__submit');
 
-        const originalText = submitBtn.textContent;
-        submitBtn.disabled = true;
-        submitBtn.textContent = 'Отправка...';
+  form.addEventListener('submit', async function (event) {
+    event.preventDefault();
 
-        try {
-            await emailjs.sendForm(
-                'service_15j1wj6',
-                'template_d2j8srf',
-                form
-            );
+    const originalText = submitButton.textContent;
+    submitButton.disabled = true;
+    submitButton.textContent = 'Отправка...';
 
-            alert('Спасибо! Мы скоро с вами свяжемся');
-            form.reset();
+    try {
+      const response = await emailjs.sendForm(
+        'service_15j1wj6',
+        'template_d2j8srf',
+        form
+      );
 
-        } catch (error) {
-            console.error(error);
-            alert('Ошибка отправки. Попробуйте позже');
-        } finally {
-            submitBtn.disabled = false;
-            submitBtn.textContent = originalText;
-        }
+      console.log('SUCCESS!', response.status, response.text);
+
+      showToast();
+
+      form.reset();
+    } catch (error) {
+      console.error('FAILED...', error);
+
+      showToast('Не удалось отправить заявку. Попробуйте ещё раз.');
+    } finally {
+      submitButton.disabled = false;
+      submitButton.textContent = originalText;
+    }
+  });
+
+  function showToast(message = "Заявка отправлена!") {
+    const toast = document.createElement('div');
+
+    toast.textContent = message;
+
+    Object.assign(toast.style, {
+      position: 'fixed',
+      right: '24px',
+      bottom: '24px',
+      background: '#0fa044',
+      color: '#fff',
+      padding: '14px 18px',
+      borderRadius: '12px',
+      fontSize: '14px',
+      fontFamily: 'Inter, sans-serif',
+      boxShadow: '0 8px 20px rgba(0,0,0,0.15)',
+      zIndex: '9999',
+      opacity: '0',
+      transform: 'translateY(20px)',
+      transition: 'all 0.3s ease'
     });
+
+    document.body.appendChild(toast);
+
+    requestAnimationFrame(() => {
+      toast.style.opacity = '1';
+      toast.style.transform = 'translateY(0)';
+    });
+
+    setTimeout(() => {
+      toast.style.opacity = '0';
+      toast.style.transform = 'translateY(20px)';
+
+      setTimeout(() => {
+        toast.remove();
+      }, 300);
+    }, 2000);
+  }
 </script>
 
 </html>

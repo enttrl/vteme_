@@ -254,6 +254,11 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!button) return;
 
     event.preventDefault();
+
+    if (window.location.pathname.includes('schedule.html')) {
+      localStorage.setItem('redirectAfterLogin', window.location.href);
+    }
+
     handleLoginButtonClick();
   });
 
@@ -430,7 +435,17 @@ document.addEventListener('DOMContentLoaded', () => {
       window.location.href = pendingMembershipUrl;
       return;
     }
-    window.location.href = getAccountPath();
+    const redirectUrl = localStorage.getItem('redirectAfterLogin');
+
+    if (
+      redirectUrl &&
+      window.location.pathname.includes('schedule.html')
+    ) {
+      localStorage.removeItem('redirectAfterLogin');
+      window.location.href = redirectUrl;
+    } else {
+      window.location.href = getAccountPath();
+    }
   });
 
   recoveryRequestForm?.addEventListener('submit', async (event) => {
