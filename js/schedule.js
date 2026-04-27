@@ -16,6 +16,45 @@ const filtersToggleText = document.querySelector('[data-filters-toggle-text]');
 
 const WEEK_DAYS = ['ВС', 'ПН', 'ВТ', 'СР', 'ЧТ', 'ПТ', 'СБ'];
 
+function showToast(message = 'Готово') {
+  const toast = document.createElement('div');
+
+  toast.textContent = message;
+
+  Object.assign(toast.style, {
+    position: 'fixed',
+    right: '24px',
+    bottom: '24px',
+    background: '#0fa044',
+    color: '#fff',
+    padding: '14px 18px',
+    borderRadius: '12px',
+    fontSize: '14px',
+    fontFamily: 'Inter, sans-serif',
+    boxShadow: '0 8px 20px rgba(0,0,0,0.15)',
+    zIndex: '9999',
+    opacity: '0',
+    transform: 'translateY(20px)',
+    transition: 'all 0.3s ease'
+  });
+
+  document.body.appendChild(toast);
+
+  requestAnimationFrame(() => {
+    toast.style.opacity = '1';
+    toast.style.transform = 'translateY(0)';
+  });
+
+  setTimeout(() => {
+    toast.style.opacity = '0';
+    toast.style.transform = 'translateY(20px)';
+
+    setTimeout(() => {
+      toast.remove();
+    }, 300);
+  }, 2000);
+}
+
 function formatDateForDB(date) {
   const year = date.getFullYear();
   const month = String(date.getMonth() + 1).padStart(2, '0');
@@ -318,6 +357,66 @@ async function loadBookingCounts(classIds) {
     scheduleState.bookingCounts.set(item.class_id, (scheduleState.bookingCounts.get(item.class_id) || 0) + 1);
   });
 }
+function addMonths(date, months) {
+  const result = new Date(date);
+  result.setMonth(result.getMonth() + months);
+  return result;
+}
+
+function getMembershipMonths(duration) {
+  const match = String(duration || '').match(/\d+/);
+  return match ? Number(match[0]) : 0;
+}
+
+async function hasActiveMembership(userId) {
+  const { data, error } = await supabaseClient
+    .from('membership_orders')
+    .select('created_at, membership_duration, status')
+    .eq('user_id', userId)
+    .eq('status', 'Успешно')
+    .order('created_at', { ascending: false });
+
+  if (error) {
+    console.error('Ошибка проверки абонемента:', error);
+    return false;
+  }
+
+  const now = new Date();
+
+  return (data || []).some((order) => {
+    const months = getMembershipMonths(order.membership_duration);
+    if (!months) return false;
+
+    const startDate = new Date(order.created_at);
+    const endDate = addMonths(startDate, months);
+
+    return endDate >= now;
+  });
+}
+
+function showNoMembershipModal() {
+  const oldModal = document.querySelector('.schedule-membership-modal');
+  if (oldModal) oldModal.remove();
+
+  const modal = document.createElement('div');
+  modal.className = 'schedule-membership-modal';
+  modal.innerHTML = `
+    <div class="schedule-membership-modal__overlay"></div>
+    <div class="schedule-membership-modal__content">
+      <button class="schedule-membership-modal__close" type="button">×</button>
+      <p>
+        Извините, запись на&nbsp;групповые тренировки возможна только при наличии активного абонемента,
+        вы&nbsp;можете купить или продлить абонемент на&nbsp;нашей странице
+        <a href="abonements.html">с&nbsp;абонементами</a>.
+      </p>
+    </div>
+  `;
+
+  document.body.append(modal);
+
+  modal.querySelector('.schedule-membership-modal__close').addEventListener('click', () => modal.remove());
+  modal.querySelector('.schedule-membership-modal__overlay').addEventListener('click', () => modal.remove());
+}
 
 async function bookClass(classId) {
   const { data: { user } } = await supabaseClient.auth.getUser();
@@ -328,7 +427,14 @@ async function bookClass(classId) {
     } else {
       alert('Войдите в аккаунт, чтобы записаться на тренировку');
     }
+    return;
+  }
 
+  // ✅ ПРОВЕРКА АБОНЕМЕНТА
+  const hasMembership = await hasActiveMembership(user.id);
+
+  if (!hasMembership) {
+    showNoMembershipModal();
     return;
   }
 
@@ -356,7 +462,7 @@ async function bookClass(classId) {
 
   scheduleState.userBookingIds.add(classId);
   scheduleState.bookingCounts.set(classId, getClassBookedCount(classId) + 1);
-  alert('Вы записаны на занятие');
+  showToast('Вы записаны на занятие');
   renderList();
   renderDetail();
 }

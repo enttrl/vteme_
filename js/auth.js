@@ -90,45 +90,45 @@ document.addEventListener('DOMContentLoaded', () => {
           </button>
         </form>
         <form class="auth-form" id="recoveryRequestForm">
-  <h2 class="auth-form__title">Восстановить пароль</h2>
+          <h2 class="auth-form__title">Восстановить пароль</h2>
 
-  <label class="auth-form__group">
-    <span class="auth-form__label">Email</span>
-    <input class="auth-form__input" type="email" name="email" placeholder="example@mail.ru" required>
-    <span class="auth-form__error" data-error-for="recovery-email"></span>
-  </label>
+          <label class="auth-form__group">
+            <span class="auth-form__label">Email</span>
+            <input class="auth-form__input" type="email" name="email" placeholder="example@mail.ru" required>
+            <span class="auth-form__error" data-error-for="recovery-email"></span>
+          </label>
 
-  <p class="auth-form__hint">
-    Мы отправим письмо со ссылкой для смены пароля
-  </p>
+          <p class="auth-form__hint">
+            Мы отправим письмо со ссылкой для смены пароля
+          </p>
 
-  <button class="auth-form__submit" type="submit">Отправить письмо</button>
+          <button class="auth-form__submit" type="submit">Отправить письмо</button>
 
-  <button class="auth-form__switch" type="button" data-switch-tab="login">
-    Назад ко входу
-  </button>
-</form>
+          <button class="auth-form__switch" type="button" data-switch-tab="login">
+            Назад ко входу
+          </button>
+        </form>
 
-<form class="auth-form" id="recoveryUpdateForm">
-  <h2 class="auth-form__title">Восстановить пароль</h2>
+        <form class="auth-form" id="recoveryUpdateForm">
+          <h2 class="auth-form__title">Восстановить пароль</h2>
 
-  <label class="auth-form__group">
-    <span class="auth-form__label">Новый пароль</span>
+          <label class="auth-form__group">
+            <span class="auth-form__label">Новый пароль</span>
 
-    <span class="auth-form__input-wrap">
-      <input class="auth-form__input" type="password" name="password" id="recoveryPasswordInput"
-        placeholder="******" required minlength="6">
+            <span class="auth-form__input-wrap">
+              <input class="auth-form__input" type="password" name="password" id="recoveryPasswordInput"
+                placeholder="******" required minlength="6">
 
-      <button class="auth-form__password-toggle" type="button" data-password-toggle="recoveryPasswordInput">
-        <img src="${assetsPath}/eye-off.svg" alt="">
-      </button>
-    </span>
+              <button class="auth-form__password-toggle" type="button" data-password-toggle="recoveryPasswordInput">
+                <img src="${assetsPath}/eye-off.svg" alt="">
+              </button>
+            </span>
 
-    <span class="auth-form__error" data-error-for="recovery-password"></span>
-  </label>
+            <span class="auth-form__error" data-error-for="recovery-password"></span>
+          </label>
 
-  <button class="auth-form__submit" type="submit">Сохранить пароль</button>
-</form>
+          <button class="auth-form__submit" type="submit">Сохранить пароль</button>
+        </form>
       </div>
     </div>
   `);

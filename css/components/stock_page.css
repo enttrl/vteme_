@@ -219,7 +219,7 @@ body {
 }
 
 .stock-button--light .stock-button__icon img {
-  filter: invert(1);
+  filter: invert(1) !important;
 }
 .stock-button .stock-button__icon img {
   filter: invert(0);

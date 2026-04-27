@@ -106,7 +106,7 @@ body {
 
 .schedule__title {
   margin: 0 0 80px;
-  font-family:'Onder';
+  font-family: 'Onder';
   font-size: 36px;
   line-height: 1.9;
   text-transform: uppercase;
@@ -376,6 +376,49 @@ body {
   border: 0;
 }
 
+.schedule-membership-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.schedule-membership-modal__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+}
+
+.schedule-membership-modal__content {
+  position: relative;
+  max-width: 480px;
+  width: calc(100% - 32px);
+  padding: 32px;
+  border-radius: 24px;
+  background: #fff;
+  font-size: 18px;
+  line-height: 1.4;
+  z-index: 1;
+}
+
+.schedule-membership-modal__content a {
+  color: inherit;
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+.schedule-membership-modal__close {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  border: 0;
+  background: transparent;
+  font-size: 28px;
+  cursor: pointer;
+}
+
 @media (max-width: 1440px) {
   :root {
     --schedule-container: 1280px;
@@ -390,6 +433,7 @@ body {
   :root {
     --schedule-container: 960px;
   }
+
   .schedule__title {
     font-size: 32px;
   }
@@ -554,6 +598,7 @@ body {
 }
 
 @media (max-width: 480px) {
+
   .schedule-card__description,
   .schedule-card__button {
     font-size: 16px;

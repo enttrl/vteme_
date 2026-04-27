@@ -27,6 +27,78 @@ document.addEventListener('DOMContentLoaded', async () => {
   await initSchedule(supabaseClient, user);
   initFormMasks();
 });
+function showConfirmModal(message) {
+  return new Promise((resolve) => {
+    const modal = document.createElement('div');
+    modal.className = 'confirm-modal';
+
+    modal.innerHTML = `
+      <div class="confirm-modal__overlay"></div>
+      <div class="confirm-modal__content">
+        <p class="confirm-modal__text">${message}</p>
+        <div class="confirm-modal__actions">
+          <button class="confirm-modal__btn confirm-modal__btn--confirm">Да</button>
+          <button class="confirm-modal__btn confirm-modal__btn--cancel">Назад</button>
+        </div>
+      </div>
+    `;
+
+    document.body.appendChild(modal);
+
+    const close = () => modal.remove();
+
+    modal.querySelector('.confirm-modal__btn--confirm').onclick = () => {
+      resolve(true);
+      close();
+    };
+
+    modal.querySelector('.confirm-modal__btn--cancel').onclick = () => {
+      resolve(false);
+      close();
+    };
+
+    modal.querySelector('.confirm-modal__overlay').onclick = () => {
+      resolve(false);
+      close();
+    };
+  });
+}
+
+function showToast(message, isError = false) {
+  const toast = document.createElement('div');
+
+  toast.textContent = message;
+
+  Object.assign(toast.style, {
+    position: 'fixed',
+    right: '24px',
+    bottom: '24px',
+    background: isError ? '#dc2626' : '#22c55e',
+    color: '#fff',
+    padding: '14px 18px',
+    borderRadius: '12px',
+    fontSize: '14px',
+    fontFamily: 'Inter, sans-serif',
+    boxShadow: '0 8px 20px rgba(0,0,0,0.15)',
+    zIndex: '9999',
+    opacity: '0',
+    transform: 'translateY(20px)',
+    transition: 'all 0.3s ease'
+  });
+
+  document.body.appendChild(toast);
+
+  requestAnimationFrame(() => {
+    toast.style.opacity = '1';
+    toast.style.transform = 'translateY(0)';
+  });
+
+  setTimeout(() => {
+    toast.style.opacity = '0';
+    toast.style.transform = 'translateY(20px)';
+    setTimeout(() => toast.remove(), 300);
+  }, 2200);
+}
 
 function createSupabaseClient() {
   if (!window.supabase) return null;
@@ -457,7 +529,8 @@ async function initSchedule(supabaseClient, user) {
 
     const bookingId = btn.dataset.bookingId;
 
-    const ok = confirm('Отменить запись на тренировку?');
+    // ❌ было confirm
+    const ok = await showConfirmModal('Отменить запись на тренировку?');
     if (!ok) return;
 
     const { error } = await supabaseClient
@@ -467,13 +540,14 @@ async function initSchedule(supabaseClient, user) {
 
     if (error) {
       console.error(error);
-      alert('Ошибка при отмене записи');
+      showToast('Ошибка при отмене записи', 'error');
       return;
     }
 
-    alert('Запись отменена');
+    // ❌ было alert
+    showToast('Запись отменена');
 
-    await loadUserTrainings(); // обновляем данные
+    await loadUserTrainings();
     renderAll();
   });
 }

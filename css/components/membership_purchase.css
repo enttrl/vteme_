@@ -16,7 +16,7 @@ body {
 
 .purchase-page {
   padding: 80px 0 160px;
-  min-height: calc(100vh - 80px);
+  min-height: auto;
 }
 
 .purchase-container {
@@ -275,7 +275,6 @@ body {
 
 .success-card {
   max-width: 980px;
-  min-height: 420px;
   margin: 0 auto;
   padding: 72px;
   border-radius: 28px;
@@ -379,8 +378,14 @@ body {
   .purchase-notice { border-radius: 24px; }
 }
 @media (max-width: 480px) {
+  .checkout-consent {
+    font-size: 16px;
+  }
+  .success-card__title {
+    font-size: 16px;
+  }
   .purchase-container { width: min(100% - 32px, var(--purchase-container)); }
-  .purchase-title { font-size: 34px; }
+  .purchase-title { font-size: 16px; }
   .membership-section-title,
   .membership-detail-card__label,
   .checkout-form__title { font-size: 24px; }
