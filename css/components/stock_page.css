@@ -183,8 +183,9 @@ body {
   text-decoration: none;
   font-size: 22px;
   line-height: 1;
-  font-weight: 700;
+  font-weight: 600;
 }
+
 
 .stock-button span:first-child {
   height: 100%;
@@ -196,6 +197,45 @@ body {
   border-radius: 999px;
   background: var(--button-bg);
   white-space: nowrap;
+}
+
+.stock-button span:first-child,
+.stock-button__icon {
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.stock-button:hover span:first-child,
+.stock-button:hover .stock-button__icon {
+  background-color: #FF7C33;
+}
+
+.stock-button:active span:first-child,
+.stock-button:active .stock-button__icon {
+  background-color: #FA4D0B;
+}
+
+.stock-button--light:hover {
+  --button-color: #fff;
+  --button-bg: #FF7C33;
+  /* или нужный тебе цвет */
+}
+
+.stock-button--light:active {
+  --button-color: #fff;
+  --button-bg: #FA4D0B;
+}
+
+.stock-button--light .stock-button__icon img {
+  filter: invert(1);
+  /* становится белой */
+}
+
+.stock-button--light:hover .stock-button__icon img {
+  filter: invert(0);
+  /* становится белой */
 }
 
 .stock-button__icon {
@@ -210,7 +250,6 @@ body {
 .stock-button__icon img {
   width: 20px;
   height: 20px;
-  filter: invert(1);
 }
 
 .stock-button--light {
@@ -218,12 +257,6 @@ body {
   --button-color: #000;
 }
 
-.stock-button--light .stock-button__icon img {
-  filter: invert(1) !important;
-}
-.stock-button .stock-button__icon img {
-  filter: invert(0);
-}
 .stock__note {
   max-width: 100%;
   margin: 32px 0px 0;
@@ -274,7 +307,12 @@ body {
     font-size: 18px;
     margin-inline: 36px;
   }
+
+  .stock-card__decor {
+    max-width: 300px;
+  }
 }
+
 
 @media (max-width: 1024px) {
   :root {
@@ -288,7 +326,11 @@ body {
   }
 
   .stock__title {
-    font-size: clamp(52px, 8vw, 64px);
+    font-size: 36px;
+  }
+
+  .stock-card__decor {
+    max-width: 280px;
   }
 
   .stock__lead {
@@ -305,7 +347,7 @@ body {
   }
 
   .stock-slider__track {
-     grid-auto-columns: 46%;
+    grid-auto-columns: 46%;
   }
 
   .stock-card__title {
@@ -338,7 +380,12 @@ body {
   }
 
   .stock__title {
-    font-size: clamp(44px, 10vw, 64px);
+    font-size: 32px;
+  }
+
+  .stock-card__bg-card {
+    top: -120px;
+    left: 70px;
   }
 
   .stock__lead {
@@ -379,7 +426,11 @@ body {
     margin: 28px 0 34px;
     font-size: 16px;
   }
-  
+
+  .stock-card__bg-card {
+    top: 0px;
+    left: 0px;
+  }
 
   .stock-slider__track {
     display: grid;
@@ -434,5 +485,10 @@ body {
 
   .stock__note {
     font-size: 16px;
+  }
+}
+@media (max-width: 320px) { 
+  .stock__title {
+    font-size: 14px;
   }
 }

@@ -132,7 +132,7 @@
                 <div class="cta__form-wrap">
                     <div class="form-card">
                         <h3 class="form-card__title">
-                            Закажите обратный звонок, чтобы связаться с тренером
+                            Закажите обратный звонок, чтобы связаться с&nbsp;тренером
                         </h3>
 
                         <form class="trial-form" action="#" method="post" id="trial-form">
@@ -231,80 +231,128 @@
     });
 </script>
 <script>
-  emailjs.init({
-    publicKey: '4EOkO_p3ey7Am8t1d',
-  });
+    emailjs.init({
+        publicKey: '4EOkO_p3ey7Am8t1d',
+    });
 
-  const form = document.getElementById('trial-form');
-  const submitButton = form.querySelector('.trial-form__submit');
+    const form = document.getElementById('trial-form');
+    const submitButton = form.querySelector('.trial-form__submit');
 
-  form.addEventListener('submit', async function (event) {
-    event.preventDefault();
+    const phoneInput = form.querySelector('input[name="phone"]');
 
-    const originalText = submitButton.textContent;
-    submitButton.disabled = true;
-    submitButton.textContent = 'Отправка...';
+    phoneInput.addEventListener('focus', () => {
+        if (!phoneInput.value) {
+            phoneInput.value = '+7';
+        }
+    });
 
-    try {
-      const response = await emailjs.sendForm(
-        'service_15j1wj6',
-        'template_d2j8srf',
-        form
-      );
+    phoneInput.addEventListener('input', handlePhoneMask);
 
-      console.log('SUCCESS!', response.status, response.text);
+    phoneInput.addEventListener('keydown', (e) => {
+        if (phoneInput.value === '+7' && e.key === 'Backspace') {
+            e.preventDefault();
+        }
+    });
 
-      showToast();
+    function handlePhoneMask(e) {
+        let value = e.target.value.replace(/\D/g, '');
 
-      form.reset();
-    } catch (error) {
-      console.error('FAILED...', error);
+        if (!value.startsWith('7')) {
+            value = '7' + value.replace(/^8/, '');
+        }
 
-      showToast('Не удалось отправить заявку. Попробуйте ещё раз.');
-    } finally {
-      submitButton.disabled = false;
-      submitButton.textContent = originalText;
+        value = value.substring(0, 11);
+
+        let formatted = '+7';
+
+        if (value.length > 1) {
+            formatted += ' (' + value.substring(1, 4);
+        }
+        if (value.length >= 5) {
+            formatted += ') ' + value.substring(4, 7);
+        }
+        if (value.length >= 8) {
+            formatted += ' - ' + value.substring(7, 9);
+        }
+        if (value.length >= 10) {
+            formatted += ' - ' + value.substring(9, 11);
+        }
+
+        e.target.value = formatted;
     }
-  });
-
-  function showToast(message = "Заявка отправлена!") {
-    const toast = document.createElement('div');
-
-    toast.textContent = message;
-
-    Object.assign(toast.style, {
-      position: 'fixed',
-      right: '24px',
-      bottom: '24px',
-      background: '#0fa044',
-      color: '#fff',
-      padding: '14px 18px',
-      borderRadius: '12px',
-      fontSize: '14px',
-      fontFamily: 'Inter, sans-serif',
-      boxShadow: '0 8px 20px rgba(0,0,0,0.15)',
-      zIndex: '9999',
-      opacity: '0',
-      transform: 'translateY(20px)',
-      transition: 'all 0.3s ease'
+    phoneInput.addEventListener('blur', () => {
+        if (phoneInput.value === '+7') {
+            phoneInput.value = '';
+        }
     });
 
-    document.body.appendChild(toast);
+    form.addEventListener('submit', async function (event) {
+        event.preventDefault();
 
-    requestAnimationFrame(() => {
-      toast.style.opacity = '1';
-      toast.style.transform = 'translateY(0)';
+        const originalText = submitButton.textContent;
+        submitButton.disabled = true;
+        submitButton.textContent = 'Отправка...';
+
+        try {
+            const response = await emailjs.sendForm(
+                'service_15j1wj6',
+                'template_d2j8srf',
+                form
+            );
+
+            console.log('SUCCESS!', response.status, response.text);
+
+            showToast();
+
+            form.reset();
+        } catch (error) {
+            console.error('FAILED...', error);
+
+            showToast('Не удалось отправить заявку. Попробуйте ещё раз.');
+        } finally {
+            submitButton.disabled = false;
+            submitButton.textContent = originalText;
+        }
     });
 
-    setTimeout(() => {
-      toast.style.opacity = '0';
-      toast.style.transform = 'translateY(20px)';
+    function showToast(message = "Заявка отправлена!") {
+        const toast = document.createElement('div');
 
-      setTimeout(() => {
-        toast.remove();
-      }, 300);
-    }, 2000);
-  }
+        toast.textContent = message;
+
+        Object.assign(toast.style, {
+            position: 'fixed',
+            right: '24px',
+            bottom: '24px',
+            background: '#0fa044',
+            color: '#fff',
+            padding: '14px 18px',
+            borderRadius: '12px',
+            fontSize: '14px',
+            fontFamily: 'Inter, sans-serif',
+            boxShadow: '0 8px 20px rgba(0,0,0,0.15)',
+            zIndex: '9999',
+            opacity: '0',
+            transform: 'translateY(20px)',
+            transition: 'all 0.3s ease'
+        });
+
+        document.body.appendChild(toast);
+
+        requestAnimationFrame(() => {
+            toast.style.opacity = '1';
+            toast.style.transform = 'translateY(0)';
+        });
+
+        setTimeout(() => {
+            toast.style.opacity = '0';
+            toast.style.transform = 'translateY(20px)';
+
+            setTimeout(() => {
+                toast.remove();
+            }, 300);
+        }, 2000);
+    }
 </script>
 
 </html>

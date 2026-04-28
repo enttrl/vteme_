@@ -288,9 +288,13 @@ function renderTrainer(trainer) {
   renderList(specsEl, trainer.wideSpecializations || [trainer.specialization]);
   renderList(achievementsEl, trainer.achievements || []);
 
-  signupButton.href = `#signup?trainer=${encodeURIComponent(trainer.name)}`;
+  signupButton.href = '#trial';
+
+  signupButton.addEventListener('click', () => {
+    sessionStorage.setItem('trainerName', trainer.name);
+  });
   page.hidden = false;
-  
+
 }
 
 async function loadTrainer() {

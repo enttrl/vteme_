@@ -1592,6 +1592,40 @@ video {
     padding-bottom: 0px;
   }
 }
+@media (max-width: 375px) {
+  .hero__title {
+    font-size: 14px;
+  }
+  .hero__stats {
+    gap: 32px;
+  }
+}
+@media (max-width: 320px) {
+  .hero__title {
+    font-size: 12px;
+  }
+  .hero__stats {
+    gap: 16px;
+  }
+  .trial-button {
+    width: 280px;
+  }
+  .memberships__title {
+    font-size: 14px;
+  }
+  .features__title {
+    font-size: 14px;
+  }
+  .team__title {
+    font-size: 12px;
+  }
+  .feedback__title {
+    font-size: 24px;
+  }
+  .reviews__title {
+    font-size: 14px;
+  }
+}
 
 @media (max-width: 1024px) {
 
@@ -1618,3 +1652,4 @@ video {
     display: none;
   }
 }
+

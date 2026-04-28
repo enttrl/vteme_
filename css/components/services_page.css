@@ -3,14 +3,14 @@
     --services-text: #0a0a0a;
     --services-card-dark: #111;
     --services-card-light: #fff;
-    --services-accent: #ff7431;
+    --services-accent: #FF7C33;
     --services-radius: 20px;
     --services-gap: 16px;
     --services-container: 1600px;
-    --service-button-height: 48px;
-    --service-button-icon-size: 48px;
-    --service-button-font-size: 18px;
-    --service-button-font-weight: 700;
+    --service-button-height: 58px;
+    --service-button-icon-size: 58px;
+    --service-button-font-size: 24px;
+    --service-button-font-weight: 600;
     --service-button-padding: 0 32px;
     --extra-card-height: 440px;
 }
@@ -97,7 +97,7 @@ body {
 .main-service-card__title {
     margin: 0;
     font-size: 36px;
-    line-height: 1.05;
+    line-height: 1.2;
     font-weight: 500
 }
 
@@ -110,7 +110,7 @@ body {
     color: #1F1F1F;
     max-width: 100%;
     margin: 0;
-    font-size: 24px;
+    font-size: 20px;
     line-height: 1.2
 }
 
@@ -118,7 +118,7 @@ body {
     color: #D0D0D0;
     max-width: 100%;
     margin: 0;
-    font-size: 24px;
+    font-size: 20px;
     line-height: 1.2
 }
 
@@ -185,17 +185,33 @@ body {
 
 .service-button:hover .service-button__text,
 .service-button:hover .service-button__icon {
-    background: #ff5a14;
+    transition:
+        background-color 0.25s ease,
+        color 0.25s ease,
+        transform 0.25s ease;
+    background: #FF7C33;
     color: #fff
+}
+
+.main-service-card--light .service-button:hover .service-button__text,
+.main-service-card--light .service-button:hover .service-button__icon {
+    transition:
+        background-color 0.25s ease,
+        color 0.25s ease,
+        transform 0.25s ease;
+    background: #FA4D0B;
+    color: #fff
+}
+
+.service-button:active .service-button__text,
+.service-button:active .service-button__icon,
+.main-service-card--light .service-button:active .service-button__text,
+.main-service-card--light .service-button:active .service-button__icon {
+    background: #E33F00;
 }
 
 .service-button:hover .service-button__icon img {
     filter: brightness(0) invert(1)
-}
-
-.service-button:active .service-button__text,
-.service-button:active .service-button__icon {
-    transform: scale(.98)
 }
 
 .services-section--extra {
@@ -432,6 +448,34 @@ body {
     font-weight: 600;
 }
 
+.trial-form__submit {
+    cursor: pointer;
+}
+
+.trial-form__submit:disabled {
+    cursor: not-allowed;
+
+}
+
+.trial-form__submit:hover {
+    transition:
+        background-color 0.25s ease,
+        color 0.25s ease,
+        transform 0.25s ease;
+    background: #E33F00;
+}
+
+.trial-form__submit:active {
+    background: #E33F00;
+}
+
+.trial-form__submit:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
 /* .trial-form__checkbox {
     width: 24px;
     height: 24px;
@@ -522,8 +566,19 @@ body {
     }
 
     .main-service-card {
-        padding: 24px;
+        padding: 16px;
         min-height: 520px
+    }
+
+    .service-button__text,
+    .service-button__icon {
+        min-height: 48px;
+        width: 100%;
+    }
+
+    .service-button__icon {
+        height: 48px;
+        width: 48px;
     }
 
     .extra-service-card__toggle {
@@ -532,6 +587,11 @@ body {
 
     .extra-service-card.is-active .extra-service-card__toggle {
         grid-template-columns: minmax(190px, 1fr) minmax(220px, .9fr)
+    }
+
+    .extra-service-card__arrow {
+        right: 16px;
+        bottom: 16px;
     }
 
     .cta__title {
@@ -616,7 +676,11 @@ body {
     }
 
     .services-title {
-        font-size: clamp(44px, 10vw, 64px)
+        font-size: 32px
+    }
+
+    .services-subtitle {
+        font-size: 24px;
     }
 
     .services-lead {
@@ -646,6 +710,11 @@ body {
     .extra-services[data-active="2"] {
         grid-template-columns: 1fr
     }
+
+    .form-card {
+        padding: 24px 24px;
+        border-radius: 24px;
+    }
 }
 
 @media (max-width:480px) {
@@ -672,6 +741,14 @@ body {
     .extra-service-card.active,
     .extra-service-card.is-active {
         max-height: 560px;
+    }
+
+    .extra-service-card__title {
+        font-size: 20px;
+    }
+
+    .extra-service-card__price {
+        font-size: 20px;
     }
 
     .extra-service-card__toggle {
@@ -743,6 +820,7 @@ body {
         width: 44px;
         height: 44px
     }
+
     .form-card__title {
         font-size: 20px;
         line-height: 1.1;
@@ -756,13 +834,28 @@ body {
         height: 58px;
         font-size: 16px;
     }
+
     .trial-form__consent-text {
         font-size: 14px;
     }
+
     .trial-form__submit {
         font-size: 16px;
     }
+
     .trial-form {
         margin-top: 40px;
+    }
+}
+@media (max-width:375px) {
+    .services-subtitle {
+        font-size: 13px;
+        line-height: 1.9;
+    }
+}
+@media (max-width:320px) {
+    .services-subtitle {
+        font-size: 11px;
+        line-height: 1.9;
     }
 }

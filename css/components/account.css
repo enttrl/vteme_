@@ -7,7 +7,7 @@
   --color-black: #111111;
   --color-text: #000000;
   --color-muted: #7a7a7a;
-  --color-accent: #ff6a00;
+  --color-accent: #FF7C33;
   --color-border: #d9d9d9;
 
   --radius-xl: 28px;
@@ -15,7 +15,7 @@
   --radius-md: 16px;
   --radius-sm: 12px;
 
-  --button-height: 56px;
+  --button-height: 48px;
   --button-padding-x: 28px;
   --button-font-size: 20px;
   --button-font-weight: 600;
@@ -92,18 +92,40 @@ body.scrolled .header {
   padding-inline: var(--button-padding-x);
   border: none;
   border-radius: 999px;
-  font-size: var(--button-font-size);
-  font-weight: var(--button-font-weight);
+  font-size: 16px;
+  font-weight: 600;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   white-space: nowrap;
   transition: 0.2s ease;
+  background: #000;
+  color: #fff;
+}
+
+.ui-button-logout:hover {
+  background: #FA4D0B;
+  color: var(--color-white);
+}
+
+.ui-button-logout:active {
+  background: #E33F00;
+  color: var(--color-white);
 }
 
 .ui-button--accent {
+  background: #FF7C33;
+  color: var(--color-white);
+}
+
+.ui-button--accent:hover {
   background: #FA4D0B;
+  color: var(--color-white);
+}
+
+.ui-button--accent:active {
+  background: #E33F00;
   color: var(--color-white);
 }
 
@@ -123,7 +145,7 @@ body.scrolled .header {
 }
 
 .account-tab {
-  min-height: 56px;
+  min-height: 58px;
   border: none;
   border-radius: 999px;
   background: transparent;
@@ -357,6 +379,8 @@ body.scrolled .header {
   padding: 0;
   background: transparent;
   border: none;
+
+  transition: all 0.3s ease;
 }
 
 .account-action__label {
@@ -368,8 +392,8 @@ body.scrolled .header {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-size: var(--button-font-size);
-  font-weight: var(--button-font-weight);
+  font-size: 20px;
+  font-weight: 500;
 }
 
 .account-action__icon {
@@ -383,6 +407,37 @@ body.scrolled .header {
   justify-content: center;
   font-size: 18px;
   flex-shrink: 0;
+}
+
+.account-action {
+  display: inline-flex;
+  align-items: center;
+  padding: 0;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.account-action__label,
+.account-action__icon {
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease,
+    opacity 0.3s ease,
+    transform 0.3s ease;
+}
+
+/* hover */
+.account-action:hover .account-action__label,
+.account-action:hover .account-action__icon {
+  background-color: #FF7C33;
+  color: #fff;
+}
+
+/* active */
+.account-action:active .account-action__label,
+.account-action:active .account-action__icon {
+  background-color: #FA4D0B;
 }
 
 .account-section__head {
@@ -765,7 +820,7 @@ body.scrolled .header {
 }
 
 .account-muted {
-  font-size: 24px;
+  font-size: 20px;
   line-height: 1.2;
   color: #6f6f6f;
   margin: 0;
@@ -874,8 +929,15 @@ body.scrolled .header {
 
 .confirm-modal__actions {
   display: flex;
-  flex-direction: row;
   gap: 10px;
+}
+
+.confirm-modal__btn--confirm {
+  flex: 2;
+}
+
+.confirm-modal__btn--cancel {
+  flex: 1;
 }
 
 .confirm-modal__btn {
@@ -887,24 +949,40 @@ body.scrolled .header {
 }
 
 .confirm-modal__btn--confirm {
-  width: 100%;
-  /* "Да" на всю ширину */
   background: #e1251b;
   color: #fff;
   padding: 12px;
 }
 
 .confirm-modal__btn--cancel {
-  width: fit-content;
-  /* кнопка по содержимому */
-  align-self: center;
+
   /* по центру */
   background: #e5e5e5;
-  padding: 10px 16px;
+
 }
+
+
 
 .confirm-modal__btn--confirm {
   background: #d82013;
+  color: #fff;
+}
+
+.confirm-modal__btn--confirm:hover {
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease,
+    transform 0.25s ease;
+  background: #b11207;
+  color: #fff;
+}
+
+.confirm-modal__btn--confirm:active {
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease,
+    transform 0.25s ease;
+  background: #d6170a;
   color: #fff;
 }
 
@@ -912,10 +990,31 @@ body.scrolled .header {
   background: #eee;
 }
 
+.confirm-modal__btn--cancel:hover {
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease,
+    transform 0.25s ease;
+  background: #dbdbdb;
+}
+
 @media (min-width: 1440px) and (max-width: 1536px) {
   :root {
     --container-width: 1280px;
     --container-padding: 0px;
+  }
+
+  .service-card h3 {
+    font-weight: 600;
+    font-size: 24px;
+  }
+
+  .dashboard-card__membership-title {
+    padding-top: 16px;
+  }
+
+  .schedule-day__pill {
+    font-size: 20px;
   }
 }
 
@@ -971,6 +1070,10 @@ body.scrolled .header {
     grid-template-columns: 1fr;
     gap: 32px;
   }
+
+  .schedule-day__pill {
+    font-size: 20px;
+  }
 }
 
 @media (max-width: 768px) {
@@ -1009,9 +1112,16 @@ body.scrolled .header {
     grid-template-columns: repeat(3, 1fr);
   }
 
-  .services-grid,
   .settings-grid {
     grid-template-columns: 1fr;
+  }
+
+  .services-grid {
+    grid-template-columns: 523px;
+  }
+
+  .service-card h3 {
+    font-size: 24px;
   }
 
   .field--full {
@@ -1050,7 +1160,7 @@ body.scrolled .header {
     white-space: nowrap;
     min-height: 40px;
     padding: 0 16px;
-    font-size: 16px;
+    font-size: 20px;
   }
 
   .gender-group {
@@ -1176,6 +1286,14 @@ body.scrolled .header {
     --button-height: 48px;
     --button-padding-x: 18px;
     --button-font-size: 15px;
+  }
+
+  .account-action__label {
+    font-size: 16px;
+  }
+
+  .services-grid {
+    grid-template-columns: 1fr;
   }
 
   .account-page {

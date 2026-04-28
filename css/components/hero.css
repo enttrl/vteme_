@@ -14,7 +14,7 @@
 }
 @media (max-width: 1920px) {
   .hero-section__decor {
-    top: -80px;
+    top: 0px;
     right: clamp(40px, -10vw, -60px);
     width: clamp(500px, 62vw, 900px);
   }
@@ -23,7 +23,7 @@
 /* гантели */
 .hero-section__image {
   position: absolute;
-  right: 300px;
+  right: 200px;
   top: -90px;
   width: clamp(650px, 70vw, 1150px);
   z-index: 2;
@@ -32,7 +32,7 @@
 }
 @media (max-width: 1920px) {
   .hero-section__image {
-     right: -30px;
+     right: -80px;
      top: -70px;
      width: clamp(700px, 70vw, 1100px);
   }

@@ -530,7 +530,7 @@ async function initSchedule(supabaseClient, user) {
     const bookingId = btn.dataset.bookingId;
 
     // ❌ было confirm
-    const ok = await showConfirmModal('Отменить запись на тренировку?');
+    const ok = await showConfirmModal('Отменить запись на&nbsp;тренировку?');
     if (!ok) return;
 
     const { error } = await supabaseClient
@@ -768,10 +768,10 @@ async function saveSettingsForm(supabaseClient, userId) {
       cardNameEl.textContent = firstName;
     }
 
-    alert('Данные успешно сохранены');
+    showToast('Данные успешно сохранены!');
   } catch (error) {
     console.error('Ошибка saveSettingsForm:', error);
-    alert('Произошла ошибка при сохранении');
+    showToast('Произошла ошибка при сохранении', 'error');
   }
 }
 

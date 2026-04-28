@@ -184,6 +184,20 @@ body {
   background: transparent;
 }
 
+.trainers-search:hover {
+  transition:
+    border 0.25s ease,
+    color 0.25s ease;
+
+  border: 1px solid #FF7C33;
+
+}
+
+.trainers-search:focus-within {
+  border: 1px solid #FA4D0B;
+
+}
+
 .trainers-search__input {
   width: 100%;
   border: 0;
@@ -217,8 +231,15 @@ body {
 }
 
 .trainers-filter__reset:hover {
-  background: #ff6720;
-  transform: translateY(-1px);
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease,
+    transform 0.25s ease;
+  background: #FA4D0B;
+}
+
+.trainers-filter__reset:active {
+  background: #E33F00;
 }
 
 .trainers-grid {
@@ -261,7 +282,19 @@ body {
 }
 
 .trainer-card__link:hover {
-  transform: scale(1.06);
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease,
+    transform 0.25s ease;
+  background: #FF7C33;
+}
+
+.trainer-card__link:active {
+  background: #FA4D0B;
+}
+
+.trainer-card__link:hover img {
+  filter: invert(0);
 }
 
 .trainer-card__link img {
@@ -416,6 +449,34 @@ body {
   font-weight: 600;
 }
 
+.trial-form__submit {
+  cursor: pointer;
+}
+
+.trial-form__submit:disabled {
+  cursor: not-allowed;
+
+}
+
+.trial-form__submit:hover {
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease,
+    transform 0.25s ease;
+  background: #E33F00;
+}
+
+.trial-form__submit:active {
+  background: #E33F00;
+}
+
+.trial-form__submit:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
 .trial-form__consent {
   margin-top: 32px;
   display: inline-flex;
@@ -470,7 +531,7 @@ body {
   }
 
   .trainers__title {
-    font-size: 48pt;
+    font-size: 36px;
   }
 
   .trainers__lead {
@@ -609,7 +670,7 @@ body {
   }
 
   .trainers__title {
-    font-size: clamp(44px, 10vw, 64px);
+    font-size: 32px;
   }
 
   .trainers__lead {
@@ -644,6 +705,17 @@ body {
 
   .trainer-card__role {
     font-size: 16px;
+  }
+
+  .form-card {
+    padding: 24px 24px;
+    border-radius: 24px;
+  }
+  .form-card__title {
+    font-size: 26px;
+  }
+    .field__control {
+    font-size: 20px;
   }
 }
 

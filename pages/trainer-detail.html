@@ -120,7 +120,7 @@
                         </dl>
 
                         <div class="trainer-hero__action">
-                            <a class="trainer-detail-button" href="#signup" data-trainer-signup>Записаться на
+                            <a class="trainer-detail-button" href="#trial" data-trainer-signup>Записаться на
                                 тренировку</a>
                             <span class="trainer-detail-button__icon" aria-hidden="true">
                                 <img src="../assets/img/arrow-up-right.svg" alt="">
@@ -154,7 +154,7 @@
                 <div class="cta__form-wrap">
                     <div class="form-card">
                         <h3 class="form-card__title">
-                            Закажите обратный звонок, чтобы связаться с тренером
+                            Закажите обратный звонок, чтобы связаться с&nbsp;тренером
                         </h3>
 
                         <form class="trial-form" action="#" method="post" id="trial-form">
@@ -255,6 +255,43 @@
         const form = document.getElementById('trial-form');
         const submitBtn = form.querySelector('.trial-form__submit');
         const formNameInput = form.querySelector('input[name="form_name"]');
+        const phoneInput = form.querySelector('input[name="phone"]');
+
+        function showToast(message = 'Заявка отправлена!', type = 'success') {
+            const toast = document.createElement('div');
+
+            toast.textContent = message;
+
+            Object.assign(toast.style, {
+                position: 'fixed',
+                right: '24px',
+                bottom: '24px',
+                background: type === 'error' ? '#e53935' : '#0fa044',
+                color: '#fff',
+                padding: '14px 18px',
+                borderRadius: '12px',
+                fontSize: '14px',
+                fontFamily: 'Inter, sans-serif',
+                boxShadow: '0 8px 20px rgba(0,0,0,0.15)',
+                zIndex: '9999',
+                opacity: '0',
+                transform: 'translateY(20px)',
+                transition: 'all 0.3s ease'
+            });
+
+            document.body.appendChild(toast);
+
+            requestAnimationFrame(() => {
+                toast.style.opacity = '1';
+                toast.style.transform = 'translateY(0)';
+            });
+
+            setTimeout(() => {
+                toast.style.opacity = '0';
+                toast.style.transform = 'translateY(20px)';
+                setTimeout(() => toast.remove(), 300);
+            }, 2000);
+        }
 
         function updateTrainerFormName() {
             const trainerName = document.querySelector('[data-trainer-name]')?.textContent.trim();
@@ -265,6 +302,33 @@
             }
 
             return false;
+        }
+
+        function handlePhoneMask(e) {
+            let value = e.target.value.replace(/\D/g, '');
+
+            if (!value.startsWith('7')) {
+                value = '7' + value.replace(/^8/, '');
+            }
+
+            value = value.substring(0, 11);
+
+            let formatted = '+7';
+
+            if (value.length > 1) {
+                formatted += ' (' + value.substring(1, 4);
+            }
+            if (value.length >= 5) {
+                formatted += ') ' + value.substring(4, 7);
+            }
+            if (value.length >= 8) {
+                formatted += ' - ' + value.substring(7, 9);
+            }
+            if (value.length >= 10) {
+                formatted += ' - ' + value.substring(9, 11);
+            }
+
+            e.target.value = formatted;
         }
 
         updateTrainerFormName();
@@ -280,6 +344,28 @@
                 childList: true,
                 characterData: true,
                 subtree: true
+            });
+        }
+
+        if (phoneInput) {
+            phoneInput.addEventListener('focus', () => {
+                if (!phoneInput.value) {
+                    phoneInput.value = '+7';
+                }
+            });
+
+            phoneInput.addEventListener('input', handlePhoneMask);
+
+            phoneInput.addEventListener('keydown', (e) => {
+                if (phoneInput.value === '+7' && e.key === 'Backspace') {
+                    e.preventDefault();
+                }
+            });
+
+            phoneInput.addEventListener('blur', () => {
+                if (phoneInput.value === '+7') {
+                    phoneInput.value = '';
+                }
             });
         }
 
@@ -299,14 +385,14 @@
                     form
                 );
 
-                alert('Спасибо! Мы скоро с вами свяжемся');
+                showToast('Спасибо! Мы скоро с вами свяжемся');
                 form.reset();
 
                 updateTrainerFormName();
 
             } catch (error) {
                 console.error(error);
-                alert('Ошибка отправки. Попробуйте позже');
+                showToast('Ошибка отправки. Попробуйте позже', 'error');
             } finally {
                 submitBtn.disabled = false;
                 submitBtn.textContent = originalText;

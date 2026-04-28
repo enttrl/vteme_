@@ -486,25 +486,32 @@
         if (oldOverlay) oldOverlay.remove();
 
         document.body.insertAdjacentHTML('beforeend', `
-            <div class="membership-warning-overlay">
+        <div class="membership-warning-overlay">
             <div class="membership-warning">
-                <button class="membership-warning__close" type="button" aria-label="Закрыть">×</button>
+            <div class="membership-warning__header">
                 <h2 class="membership-warning__title">Абонемент уже активен</h2>
-                <p class="membership-warning__text">
-                Извините, но у Вас уже есть активный абонемент.
-                Если у Вас возникли какие-то трудности, обратитесь к администратору в фитнес-центр.
-                </p>
+                <button class="membership-warning__close" type="button" aria-label="Закрыть"></button>
             </div>
+
+            <p class="membership-warning__text">
+                Извините, но&nbsp;у&nbsp;Вас уже есть активный абонемент.
+                Если у Вас возникли какие-то трудности, обратитесь к&nbsp;администратору в&nbsp;фитнес-центр.
+            </p>
             </div>
+        </div>
         `);
 
         const overlay = document.querySelector('.membership-warning-overlay');
-        const closeBtn = overlay.querySelector('.membership-warning__close');
+        const closeBtn = document.querySelector('.membership-warning__close');
 
-        closeBtn.addEventListener('click', () => overlay.remove());
+        closeBtn.addEventListener('click', () => {
+            overlay.remove();
+        });
 
         overlay.addEventListener('click', (event) => {
-            if (event.target === overlay) overlay.remove();
+            if (event.target === overlay) {
+                overlay.remove();
+            }
         });
     }
     function renderCards(category) {
@@ -618,6 +625,54 @@
 
     const form = document.getElementById('trial-form');
     const submitButton = form.querySelector('.trial-form__submit');
+
+    const phoneInput = form.querySelector('input[name="phone"]');
+
+    phoneInput.addEventListener('focus', () => {
+        if (!phoneInput.value) {
+            phoneInput.value = '+7';
+        }
+    });
+
+    phoneInput.addEventListener('input', handlePhoneMask);
+
+    phoneInput.addEventListener('keydown', (e) => {
+        if (phoneInput.value === '+7' && e.key === 'Backspace') {
+            e.preventDefault();
+        }
+    });
+
+    function handlePhoneMask(e) {
+        let value = e.target.value.replace(/\D/g, '');
+
+        if (!value.startsWith('7')) {
+            value = '7' + value.replace(/^8/, '');
+        }
+
+        value = value.substring(0, 11);
+
+        let formatted = '+7';
+
+        if (value.length > 1) {
+            formatted += ' (' + value.substring(1, 4);
+        }
+        if (value.length >= 5) {
+            formatted += ') ' + value.substring(4, 7);
+        }
+        if (value.length >= 8) {
+            formatted += ' - ' + value.substring(7, 9);
+        }
+        if (value.length >= 10) {
+            formatted += ' - ' + value.substring(9, 11);
+        }
+
+        e.target.value = formatted;
+    }
+    phoneInput.addEventListener('blur', () => {
+        if (phoneInput.value === '+7') {
+            phoneInput.value = '';
+        }
+    });
 
     form.addEventListener('submit', async function (event) {
         event.preventDefault();

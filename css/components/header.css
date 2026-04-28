@@ -6,6 +6,7 @@
   pointer-events: none;
   user-select: none;
 }
+
 @media (max-width: 1920px) {
   .hero-section__decor {
     right: clamp(-90px, -10vw, -60px);
@@ -60,6 +61,7 @@
   padding: 0;
   list-style: none;
 }
+
 .nav__item {
   line-height: 1;
 }
@@ -143,8 +145,10 @@
 }
 
 .login-button:hover .login-button__img {
-  filter: brightness(0) invert(1); /* делает белой */
+  filter: brightness(0) invert(1);
+  /* делает белой */
 }
+
 .header__burger {
   display: none;
   width: 52px;
@@ -178,7 +182,7 @@
   pointer-events: none;
   transition: opacity 0.25s ease, visibility 0.25s ease;
   border-bottom: 3px solid #ffffff;
-  
+
 }
 
 .mobile-menu.is-open {
@@ -193,7 +197,7 @@
   padding: 24px 24px 20px;
   display: flex;
   flex-direction: column;
-  
+
 }
 
 .mobile-menu__top {
@@ -328,23 +332,53 @@ body.menu-open {
   .header__burger {
     display: inline-flex;
   }
+
   .login-button__text {
-  width: 360px;
-  height: 48px;
-  font-size: 20px;
-}
-.login-button__icon {
-  width: 48px;
-  height: 48px;
-}
-.mobile-menu__inner {
-  padding: 16px 16px 16px
-}
-.mobile-menu__login {
-  width: 100%;
-}
-.mobile-menu__contact {
-  font-size: 20px;
-}
+    width: 360px;
+    height: 48px;
+    font-size: 20px;
+  }
+
+  .login-button__icon {
+    width: 48px;
+    height: 48px;
+  }
+
+  .mobile-menu__inner {
+    padding: 24px 24px 24px
+  }
+
+  .mobile-menu__login {
+    width: 100%;
+  }
+
+  .mobile-menu__contact {
+    font-size: 20px;
+  }
 }
 
+@media (max-width: 480px) {
+  .mobile-menu__inner {
+    padding: 16px 16px 16px
+  }
+}
+
+@media (max-width: 375px) {
+  .login-button__text {
+    width: 100%;
+    max-width: 280px;
+    height: 48px;
+    font-size: 20px;
+
+  }
+}
+
+@media (max-width: 320px) {
+  .login-button__text {
+    width: 100%;
+    max-width: 240px;
+    height: 48px;
+    font-size: 20px;
+
+  }
+}

@@ -1,16 +1,17 @@
 :root {
   --admin-container: 1600px;
-  --admin-orange: #ff6f2c;
+  --admin-orange: #FF7C33;
   --admin-black: #111111;
   --admin-bg: #f1f1f1;
   --admin-border: #dcdcdc;
-  --admin-radius: 22px;
+  --admin-radius: 24px;
 }
 
 body {
   background: var(--admin-bg);
   font-family: 'Inter';
 }
+
 .not-found-page {
   min-height: 100vh;
   display: flex;
@@ -45,6 +46,7 @@ body {
   color: #fff;
   text-decoration: none;
 }
+
 .admin-schedule-page {
   min-height: 100vh;
 }
@@ -68,23 +70,23 @@ body {
   font-size: 18px;
   font-weight: 600;
   color: var(--admin-orange);
+  text-transform: uppercase;
 }
 
 .admin-schedule__title {
   margin: 0 0 24px;
-  font-family: var(--accent-font, inherit);
-  font-size: clamp(48px, 5vw, 96px);
-  line-height: 0.9;
-  font-weight: 900;
-  letter-spacing: -0.04em;
+  font-family: 'Onder';
+  font-size: clamp(16px, 2vw, 36px);
+  line-height: 1.9;
+
   text-transform: uppercase;
 }
 
 .admin-schedule__lead {
   max-width: 740px;
   margin: 0;
-  font-size: 22px;
-  line-height: 1.35;
+  font-size: 24px;
+  line-height: 1.2;
 }
 
 .admin-schedule__link,
@@ -99,8 +101,8 @@ body {
   border-radius: 999px;
   background: var(--admin-orange);
   color: #fff;
-  font-size: 18px;
-  font-weight: 700;
+  font-size: 20px;
+  font-weight: 600;
   text-decoration: none;
   cursor: pointer;
   transition: transform 0.2s ease, opacity 0.2s ease;
@@ -109,7 +111,12 @@ body {
 .admin-schedule__link:hover,
 .admin-lock__button:hover,
 .admin-form__submit:hover {
-  transform: translateY(-2px);
+  background-color: #FA4D0B;
+  color: #fff;
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease,
+    transform 0.25s ease;
 }
 
 .admin-schedule__link:disabled,
@@ -129,13 +136,13 @@ body {
 
 .admin-lock__title {
   margin: 0 0 16px;
-  font-size: 32px;
+  font-size: 24px;
 }
 
 .admin-lock__text {
   margin: 0 0 28px;
-  font-size: 18px;
-  line-height: 1.45;
+  font-size: 16px;
+  line-height: 1.2;
 }
 
 .admin-schedule__content {
@@ -170,18 +177,20 @@ body {
 .admin-form__title,
 .admin-list__title {
   margin: 0;
-  font-size: 30px;
-  line-height: 1.1;
+  font-size: 24px;
+  line-height: 1.2;
 }
 
 .admin-form__reset,
 .admin-list__clear {
+  width: 100px;
   border: 0;
   border-bottom: 1px solid currentColor;
   background: transparent;
   padding: 0;
   color: var(--admin-black);
   font: inherit;
+  font-size: 20px;
   cursor: pointer;
 }
 
@@ -215,6 +224,7 @@ body {
   background: #f7f7f7;
   color: var(--admin-black);
   font: inherit;
+  font-size: 20px;
   outline: none;
 }
 
@@ -312,19 +322,20 @@ body {
   background: var(--admin-black);
   color: #fff;
   font: inherit;
+  font-size: 20px;
   font-weight: 700;
   cursor: pointer;
 }
 
 .admin-class-card__button--delete {
-  background: #f1d6cc;
-  color: #9b2d13;
+  background: #E33F00;
+  color: #ffffff;
 }
 
 .admin-list__empty {
   margin: 0;
   padding: 24px;
-  border-radius: 18px;
+  border-radius: 24px;
   background: #f7f7f7;
   font-size: 18px;
 }

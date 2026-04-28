@@ -455,6 +455,34 @@ button {
     font-weight: 600;
 }
 
+.trial-form__submit {
+    cursor: pointer;
+}
+
+.trial-form__submit:disabled {
+    cursor: not-allowed;
+
+}
+
+.trial-form__submit:hover {
+    transition:
+        background-color 0.25s ease,
+        color 0.25s ease,
+        transform 0.25s ease;
+    background: #E33F00;
+}
+
+.trial-form__submit:active {
+    background: #E33F00;
+}
+
+.trial-form__submit:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
 /* .trial-form__checkbox {
     width: 24px;
     height: 24px;
@@ -527,10 +555,6 @@ button {
 
     .cards-slider__arrow--next {
         left: calc(50% + 640px);
-    }
-
-    .header__nav ul {
-        gap: 32px;
     }
 
     .membership-card {
@@ -769,6 +793,7 @@ button {
     .field__control {
         height: 46px;
         padding: 0 18px;
+        font-size: 20px;
     }
 
     .trial-form__checkbox {
@@ -778,6 +803,9 @@ button {
 
     .trial-form__consent span {
         font-size: 14px;
+    }
+    .memberships__title {
+        font-size: 32px;
     }
 }
 
@@ -917,6 +945,9 @@ button {
     }
 
     .membership-card__list li {
+        font-size: 14px;
+    }
+    .memberships__title {
         font-size: 14px;
     }
 }
