@@ -30,9 +30,11 @@
 
 <body>
   <header class="header">
-    <div class="header__inner">
-      <a class="header__logo-link" href="../index.html" aria-label="На главную"><img class="header__logo"
-          src="../assets/img/logo-vteme.svg" alt="ВТЕМЕ"></a>
+    <div class="header__inner account-shell">
+      <a class="header__logo-link" href="../index.html" aria-label="На главную">
+        <img class="header__logo" src="../assets/img/logo-vteme.svg" alt="ВТЕМЕ">
+      </a>
+
       <nav class="header__nav nav" aria-label="Основная навигация">
         <ul class="nav__list">
           <li class="nav__item"><a class="nav__link" href="about.html">О нас</a></li>
@@ -43,13 +45,63 @@
           <li class="nav__item"><a class="nav__link" href="stock.html">Акции</a></li>
         </ul>
       </nav>
-      <a class="header__login login-button" href="account.html" aria-label="Перейти в личный кабинет"><span
-          class="login-button__text">Войти</span><span class="login-button__icon" aria-hidden="true"><img
-            class="login-button__img" src="../assets/img/arrow-up-right.svg" alt=""></span></a>
+
+      <button class="header__login login-button" type="button" data-auth-open>
+        <span class="login-button__text">Войти</span>
+        <span class="login-button__icon" aria-hidden="true">
+          <img class="login-button__img" src="../assets/img/arrow-up-right.svg" alt="">
+        </span>
+      </button>
+
       <button class="header__burger" id="openBurgerMenu" type="button" aria-label="Открыть меню" aria-expanded="false"
-        aria-controls="mobileMenu"><span></span><span></span><span></span></button>
+        aria-controls="mobileMenu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
     </div>
   </header>
+
+  <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <div class="mobile-menu__inner">
+      <div class="mobile-menu__top">
+        <a class="mobile-menu__logo-link" href="../index.html" aria-label="На главную">
+          <img class="mobile-menu__logo" src="../assets/img/logo-vteme.svg" alt="ВТЕМЕ">
+        </a>
+
+        <button class="mobile-menu__close" id="closeBurgerMenu" type="button" aria-label="Закрыть меню">
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+
+      <nav class="mobile-menu__nav" aria-label="Мобильная навигация">
+        <a class="mobile-menu__link" href="about.html">О нас</a>
+        <a class="mobile-menu__link" href="abonements.html">Абонементы</a>
+        <a class="mobile-menu__link" href="schedule.html">Расписание</a>
+        <a class="mobile-menu__link" href="services.html">Услуги</a>
+        <a class="mobile-menu__link" href="trainer.html">Тренеры</a>
+        <a class="mobile-menu__link" href="stock.html">Акции</a>
+      </nav>
+
+      <button class="mobile-menu__login login-button" type="button" data-auth-open>
+        <span class="login-button__text">Личный кабинет</span>
+        <span class="login-button__icon" aria-hidden="true">
+          <img class="login-button__img" src="../assets/img/arrow-up-right.svg" alt="">
+        </span>
+      </button>
+
+      <div class="mobile-menu__contacts">
+        <a class="mobile-menu__contact" href="tel:+79288220555">+7 (928) 822-05-55</a>
+        <a class="mobile-menu__contact" href="mailto:vteme@mail.ru">vteme@mail.ru</a>
+      </div>
+
+      <div class="mobile-menu__bottom">
+        <p class="mobile-menu__copyright">© 2026</p>
+        <a class="mobile-menu__policy" href="privacy_policy.html">Политика обработки персональных данных</a>
+      </div>
+    </div>
+  </div>
 
   <main class="purchase-page" data-membership-detail-page>
     <div class="purchase-container">
