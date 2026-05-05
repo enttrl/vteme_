@@ -4,7 +4,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>О нас — ВТЕМЕ</title>
+  <title>О нас</title>
+
+  <link rel="icon" type="image/png" href="../favicon/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="../favicon/favicon.svg" />
+  <link rel="shortcut icon" href="../favicon/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="../favicon/apple-touch-icon.png" />
+  <meta name="apple-mobile-web-app-title" content="MyWebSite" />
+  <link rel="manifest" href="../favicon/site.webmanifest" />
+
   <link rel="stylesheet" href="../style.css">
   <script src="../js/burger-menu.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,6 +25,7 @@
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="../js/auth.js" defer></script>
   <script src="https://api-maps.yandex.ru/2.1/?apikey=0e4bfc59-00eb-43a3-b1ef-e607240854cf&lang=ru_RU"></script>
+  <script src="../js/scroll-top.js"></script>
 
 </head>
 
@@ -293,7 +302,7 @@
               <label class="trial-form__consent">
                 <input class="trial-form__checkbox-input" type="checkbox" name="consent" required>
                 <span class="trial-form__checkbox-box"></span>
-                <span class="trial-form__consent-text">Согласие на обработку персональных данных</span>
+                <span class="trial-form__consent-text">Согласие на обработку <a href="privacy_policy.html" class="feedback-form__link"> персональных данных</a></span>
               </label>
               <input type="hidden" name="form_name" value="Пробное занятие — О нас">
             </form>
@@ -486,7 +495,7 @@
       phoneInput.value = '';
     }
   });
-  
+
   form.addEventListener('submit', async function (event) {
     event.preventDefault();
 

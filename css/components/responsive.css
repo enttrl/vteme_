@@ -59,10 +59,6 @@ video {
     padding-top: 80px;
   }
 
-  .hero__stats {
-    margin-top: 224px;
-  }
-
   .hero__title {
     font-size: 32px;
   }
@@ -354,11 +350,6 @@ video {
 
   .hero__description {
     max-width: 700px;
-  }
-
-  .hero__stats {
-    margin-top: 180px;
-    gap: 24px;
   }
 
   .hero__stat-number {
@@ -776,12 +767,6 @@ video {
     max-width: 500px;
     font-size: 20px;
     line-height: 1.2;
-  }
-
-  .hero__stats {
-    margin-top: 400px;
-    flex-wrap: wrap;
-    gap: 80px;
   }
 
   .hero__stat-value {
@@ -1371,9 +1356,29 @@ video {
     font-size: 20px;
   }
 
+  .hero {
+    min-height: 100svh;
+    padding-top: 40px;
+  }
+
+  .hero__inner {
+    min-height: calc(100svh - 40px);
+    padding-bottom: 72px;
+    /* место снизу для цифр */
+  }
+
+  .hero__content {
+    min-height: calc(100svh - 40px);
+    display: flex;
+    flex-direction: column;
+  }
+
   .hero__stats {
-    margin-top: 220px;
+    margin-top: auto;
+    padding-top: 24px;
+    padding-bottom: 104px;
     gap: 48px;
+    flex-wrap: wrap;
   }
 
   .hero__stat-value {
@@ -1592,36 +1597,46 @@ video {
     padding-bottom: 0px;
   }
 }
+
 @media (max-width: 375px) {
   .hero__title {
     font-size: 14px;
   }
+
   .hero__stats {
     gap: 32px;
   }
 }
+
 @media (max-width: 320px) {
   .hero__title {
     font-size: 12px;
   }
+
   .hero__stats {
     gap: 16px;
   }
+
   .trial-button {
     width: 280px;
   }
+
   .memberships__title {
     font-size: 14px;
   }
+
   .features__title {
     font-size: 14px;
   }
+
   .team__title {
     font-size: 12px;
   }
+
   .feedback__title {
     font-size: 24px;
   }
+
   .reviews__title {
     font-size: 14px;
   }
@@ -1652,4 +1667,3 @@ video {
     display: none;
   }
 }
-

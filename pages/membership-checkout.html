@@ -4,7 +4,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Оформление заказа — ВТЕМЕ</title>
+  <title>Оформление заказа</title>
+
+  <link rel="icon" type="image/png" href="../favicon/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="../favicon/favicon.svg" />
+  <link rel="shortcut icon" href="../favicon/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="../favicon/apple-touch-icon.png" />
+  <meta name="apple-mobile-web-app-title" content="MyWebSite" />
+  <link rel="manifest" href="../favicon/site.webmanifest" />
+
   <link rel="stylesheet" href="../style.css">
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="../js/auth.js" defer></script>
@@ -19,6 +27,8 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
     rel="stylesheet">
+
+  <script src="../js/scroll-top.js"></script>
 </head>
 
 <body>
@@ -52,10 +62,14 @@
           <h2 class="checkout-form__title">Детали оплаты</h2>
           <label class="checkout-field"><span>Имя <em>*</em></span>
             <input class="checkout-input" type="text" name="firstName" placeholder="Ваше имя" required></label>
-          <label class="checkout-field"><span>Фамилия <em>*</em></span><input class="checkout-input" type="text" name="lastName" placeholder="Фамилия" required></label>
-          <label class="checkout-field"><span>Отчество</span><input class="checkout-input" type="text" name="patronymic" placeholder="Отчество"></label>
-          <label class="checkout-field"><span>Телефон <em>*</em></span><input class="checkout-input" type="tel" name="phone" required placeholder="+7 (999) 999 - 99 - 99"></label>
-          <label class="checkout-field"><span>Email <em>*</em></span><input class="checkout-input" type="email" name="email" required placeholder="example@mail.ru"></label>
+          <label class="checkout-field"><span>Фамилия <em>*</em></span><input class="checkout-input" type="text"
+              name="lastName" placeholder="Фамилия" required></label>
+          <label class="checkout-field"><span>Отчество</span><input class="checkout-input" type="text" name="patronymic"
+              placeholder="Отчество"></label>
+          <label class="checkout-field"><span>Телефон <em>*</em></span><input class="checkout-input" type="tel"
+              name="phone" required placeholder="+7 (999) 999 - 99 - 99"></label>
+          <label class="checkout-field"><span>Email <em>*</em></span><input class="checkout-input" type="email"
+              name="email" required placeholder="example@mail.ru"></label>
           <div class="membership-certificate">
             <p class="membership-certificate__text">
               Есть сертификат?

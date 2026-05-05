@@ -4,7 +4,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Фитнес-центр "В ТЕМЕ"</title>
+  <title>Фитнес-центр «В ТЕМЕ»</title>
+
+  <link rel="icon" type="image/png" href="favicon/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="favicon/favicon.svg" />
+  <link rel="shortcut icon" href="favicon/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png" />
+  <meta name="apple-mobile-web-app-title" content="MyWebSite" />
+  <link rel="manifest" href="favicon/site.webmanifest" />
+
+
   <link rel="stylesheet" href="style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,6 +27,7 @@
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="js/auth.js"></script>
   <script src="js/burger-menu.js"></script>
+  <script src="../js/scroll-top.js"></script>
 </head>
 
 <body>
@@ -191,7 +201,8 @@
           </article>
 
           <article class="feature-card feature-card--wide">
-            <a href="pages/account.html" class="feature-card__circle-link" aria-label="Перейти в личный кабинет" type="button" data-auth-open>
+            <a href="pages/account.html" class="feature-card__circle-link" aria-label="Перейти в личный кабинет"
+              type="button" data-auth-open>
               <img src="assets/img/arrow-up-right.svg" alt="">
             </a>
 
@@ -544,7 +555,10 @@
               <input class="feedback-form__checkbox-input" type="checkbox" name="agreement" required>
               <span class="feedback-form__checkbox-box"></span>
               <span class="feedback-form__checkbox-text">
-                Согласие на обработку персональных данных
+                Согласие на обработку 
+                <a href="pages/privacy_policy.html" class="feedback-form__link">
+                  персональных данных
+                </a>
               </span>
             </label>
 
@@ -571,7 +585,8 @@
             </div>
             <div class="contact-card__body">
               <h3 class="contact-card__title">Телефон</h3>
-              <p class="contact-card__text">Вы&nbsp;можете связаться с&nbsp;нами <br> по&nbsp;телефону +7 (928) 822-05-55</p>
+              <p class="contact-card__text">Вы&nbsp;можете связаться с&nbsp;нами <br> по&nbsp;телефону +7 (928)
+                822-05-55</p>
             </div>
           </article>
 
@@ -581,7 +596,8 @@
             </div>
             <div class="contact-card__body">
               <h3 class="contact-card__title">Email</h3>
-              <p class="contact-card__text">В&nbsp;течение рабочего времени Вы&nbsp;можете <br> писать нам на&nbsp;почту vteme@mail.ru
+              <p class="contact-card__text">В&nbsp;течение рабочего времени Вы&nbsp;можете <br> писать нам на&nbsp;почту
+                vteme@mail.ru
               </p>
             </div>
           </article>
@@ -593,7 +609,7 @@
             <div class="contact-card__body">
               <h3 class="contact-card__title">Рабочие часы</h3>
               <p class="contact-card__text">Пн — Пт: 08:00-22:00<br>Сб — Вс: 09:00-21:00</p>
-              
+
             </div>
           </article>
         </div>
@@ -652,7 +668,8 @@
           </div>
           <div class="faq__answer">
             <p>
-              Это не&nbsp;обязательно. Вы&nbsp;можете прийти на&nbsp;разовое занятие, однако для регулярных тренировок выгоднее оформить абонемент.
+              Это не&nbsp;обязательно. Вы&nbsp;можете прийти на&nbsp;разовое занятие, однако для регулярных тренировок
+              выгоднее оформить абонемент.
             </p>
           </div>
         </article>
@@ -666,7 +683,8 @@
           </div>
           <div class="faq__answer">
             <p>
-              В&nbsp;клубе доступны дневные, безлимитные, VIP и&nbsp;расширенные форматы абонементов. Вы&nbsp;можете выбрать вариант по&nbsp;времени посещения и&nbsp;набору услуг.
+              В&nbsp;клубе доступны дневные, безлимитные, VIP и&nbsp;расширенные форматы абонементов. Вы&nbsp;можете
+              выбрать вариант по&nbsp;времени посещения и&nbsp;набору услуг.
             </p>
           </div>
         </article>
@@ -680,7 +698,8 @@
           </div>
           <div class="faq__answer">
             <p>
-              В&nbsp;зависимости от&nbsp;тарифа в&nbsp;стоимость могут входить посещение тренажерного зала, групповые занятия, консультации тренера и&nbsp;дополнительные опции клуба.
+              В&nbsp;зависимости от&nbsp;тарифа в&nbsp;стоимость могут входить посещение тренажерного зала, групповые
+              занятия, консультации тренера и&nbsp;дополнительные опции клуба.
             </p>
           </div>
         </article>
@@ -694,7 +713,8 @@
           </div>
           <div class="faq__answer">
             <p>
-              Если у&nbsp;вас есть ограничения по&nbsp;здоровью, лучше заранее проконсультироваться с&nbsp;врачом. Для обычных тренировок специальная справка не&nbsp;требуется.
+              Если у&nbsp;вас есть ограничения по&nbsp;здоровью, лучше заранее проконсультироваться с&nbsp;врачом. Для
+              обычных тренировок специальная справка не&nbsp;требуется.
             </p>
           </div>
         </article>
@@ -708,7 +728,8 @@
           </div>
           <div class="faq__answer">
             <p>
-              Да, персональные тренировки доступны. Их&nbsp;можно оформить через администратора клуба или при личном посещении.
+              Да, персональные тренировки доступны. Их&nbsp;можно оформить через администратора клуба или при личном
+              посещении.
             </p>
           </div>
         </article>
@@ -722,7 +743,8 @@
           </div>
           <div class="faq__answer">
             <p>
-              Да, для некоторых тарифов предусмотрена заморозка абонемента. Условия зависят от&nbsp;выбранного формата и&nbsp;срока действия.
+              Да, для некоторых тарифов предусмотрена заморозка абонемента. Условия зависят от&nbsp;выбранного формата
+              и&nbsp;срока действия.
             </p>
           </div>
         </article>
@@ -736,7 +758,8 @@
           </div>
           <div class="faq__answer">
             <p>
-              Возьмите удобную спортивную форму, сменную обувь, полотенце и&nbsp;бутылку воды. Остальные детали можно уточнить у&nbsp;администратора.
+              Возьмите удобную спортивную форму, сменную обувь, полотенце и&nbsp;бутылку воды. Остальные детали можно
+              уточнить у&nbsp;администратора.
             </p>
           </div>
         </article>
@@ -750,7 +773,8 @@
           </div>
           <div class="faq__answer">
             <p>
-              Это зависит от&nbsp;возраста ребенка и&nbsp;правил клуба. Лучше уточнить этот момент заранее, чтобы администратор подсказал доступные варианты.
+              Это зависит от&nbsp;возраста ребенка и&nbsp;правил клуба. Лучше уточнить этот момент заранее, чтобы
+              администратор подсказал доступные варианты.
             </p>
           </div>
         </article>

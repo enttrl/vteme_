@@ -263,3 +263,13 @@
   color: #ffffff;
 }
 
+.feedback-form__link {
+  text-decoration: underline;
+  color: #FA4D0B; /* под твой стиль */
+  transition: opacity 0.2s;
+}
+
+.feedback-form__link:hover {
+  opacity: 0.7;
+}
+

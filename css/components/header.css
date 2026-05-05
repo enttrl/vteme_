@@ -259,12 +259,14 @@
 }
 
 .mobile-menu__login {
-  margin-top: 64px;
+  margin-top: auto;
+  padding-top: 16px;
   width: fit-content;
 }
 
 .mobile-menu__contacts {
   margin-top: auto;
+  padding-top: 16px;
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -360,6 +362,10 @@ body.menu-open {
 @media (max-width: 480px) {
   .mobile-menu__inner {
     padding: 16px 16px 16px
+  }
+
+  .mobile-menu__nav {
+    margin-top: 80px;
   }
 }
 

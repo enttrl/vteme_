@@ -1,5 +1,4 @@
 
-// Впиши сюда email администратора из Supabase Auth.
 const ADMIN_EMAILS = [
   'mari.anisimova.05@inbox.ru'
 ];
