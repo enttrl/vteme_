@@ -81,6 +81,9 @@
 .nav__link:focus-visible {
   color: #f58220;
 }
+.nav__link:active {
+  color: #FA4D0B;
+}
 
 .header__login {
   flex-shrink: 0;
@@ -258,6 +261,9 @@
   text-decoration: none;
 }
 
+.mobile-menu__link:active {
+  color: #FA4D0B;
+}
 .mobile-menu__login {
   margin-top: auto;
   padding-top: 16px;

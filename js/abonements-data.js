@@ -3,7 +3,7 @@ window.MEMBERSHIPS_DATA = {
     {
       title: 'Пробный день<br><strong>«Тест-драйв»</strong>',
       price: 'Бесплатно',
-      date: 'Предложение действует до 25.02.2026г.',
+      date: 'Предложение действует до&nbsp;25.02.2026г.',
       buttonText: 'Записаться',
       dark: true,
       link: '#trial',
@@ -20,7 +20,7 @@ window.MEMBERSHIPS_DATA = {
       id: 'day-1',
       title: 'Тариф<br><strong>«День»</strong>',
       price: '2800 руб.',
-      date: 'Предложение действует до 25.02.2026г.',
+      date: 'Предложение действует до&nbsp;25.02.2026г.',
       buttonText: 'Купить',
       benefits: [
         { text: '1 месяц занятий в тренажерном зале' },
@@ -38,7 +38,7 @@ window.MEMBERSHIPS_DATA = {
       id: 'full-day-1',
       title: 'Тариф<br><strong>«Полный день»</strong>',
       price: '3250 руб.',
-      date: 'Предложение действует до 25.02.2026г.',
+      date: 'Предложение действует до&nbsp;25.02.2026г.',
       buttonText: 'Купить',
       benefits: [
         { text: '1 месяц занятий в&nbsp;тренажерном зале' },
@@ -55,7 +55,7 @@ window.MEMBERSHIPS_DATA = {
       id: 'unlimited-1',
       title: 'Тариф<br><strong>«Безлимит»</strong>',
       price: '4050 руб.',
-      date: 'Предложение действует до 25.02.2026г.',
+      date: 'Предложение действует до&nbsp;25.02.2026г.',
       buttonText: 'Купить',
       benefits: [
         { text: '1 месяц занятий в&nbsp;тренажерном зале' },
@@ -73,7 +73,7 @@ window.MEMBERSHIPS_DATA = {
       id: 'vip-1',
       title: 'Тариф<br><strong>«VIP»</strong>',
       price: '4500 руб.',
-      date: 'Предложение действует до 25.02.2026г.',
+      date: 'Предложение действует до&nbsp;25.02.2026г.',
       buttonText: 'Купить',
       benefits: [
         { text: '1 месяц занятий в&nbsp;тренажерном зале' },
@@ -91,7 +91,7 @@ window.MEMBERSHIPS_DATA = {
       id: 'vipmaxi-1',
       title: 'Тариф<br><strong>«VIP MAXI»</strong>',
       price: '5450 руб.',
-      date: 'Предложение действует до 25.02.2026г.',
+      date: 'Предложение действует до&nbsp;25.02.2026г.',
       buttonText: 'Купить',
       benefits: [
         { text: '1 месяц занятий в&nbsp;тренажерном зале' },
@@ -111,7 +111,7 @@ window.MEMBERSHIPS_DATA = {
       id: 'day-6',
       title: 'Тариф<br><strong>«День»</strong>',
       price: '13500 руб.',
-      date: 'Предложение действует до 25.02.2026г.',
+      date: 'Предложение действует до&nbsp;25.02.2026г.',
       buttonText: 'Купить',
       benefits: [
         { text: '6 месяцев занятий в&nbsp;тренажерном зале' },
@@ -125,7 +125,7 @@ window.MEMBERSHIPS_DATA = {
       id: 'full-day-6',
       title: 'Тариф<br><strong>«Полный день»</strong>',
       price: '15300 руб.',
-      date: 'Предложение действует до 25.02.2026г.',
+      date: 'Предложение действует до&nbsp;25.02.2026г.',
       buttonText: 'Купить',
       benefits: [
         { text: '6 месяцев занятий в&nbsp;тренажерном зале' },
@@ -139,7 +139,7 @@ window.MEMBERSHIPS_DATA = {
       id: 'unlimited-6',
       title: 'Тариф<br><strong>«Безлимит»</strong>',
       price: '20550 руб.',
-      date: 'Предложение действует до 25.02.2026г.',
+      date: 'Предложение действует до&nbsp;25.02.2026г.',
       buttonText: 'Купить',
       benefits: [
         { text: '6 месяцев занятий в&nbsp;тренажерном зале' },
@@ -153,7 +153,7 @@ window.MEMBERSHIPS_DATA = {
       id: 'vip-6',
       title: 'Тариф<br><strong>«VIP»</strong>',
       price: '22000 руб.',
-      date: 'Предложение действует до 25.02.2026г.',
+      date: 'Предложение действует до&nbsp;25.02.2026г.',
       buttonText: 'Купить',
       benefits: [
         { text: '6 месяцев занятий в&nbsp;тренажерном зале' },
@@ -167,7 +167,7 @@ window.MEMBERSHIPS_DATA = {
       id: 'vipmaxi-6',
       title: 'Тариф<br><strong>«VIP MAXI»</strong>',
       price: '24999 руб.',
-      date: 'Предложение действует до 25.02.2026г.',
+      date: 'Предложение действует до&nbsp;25.02.2026г.',
       buttonText: 'Купить',
       benefits: [
         { text: '6 месяцев занятий в&nbsp;тренажерном зале' },
@@ -183,7 +183,7 @@ window.MEMBERSHIPS_DATA = {
       id: 'day-12',
       title: 'Тариф<br><strong>«День»</strong>',
       price: '24500 руб.',
-      date: 'Предложение действует до 25.02.2026г.',
+      date: 'Предложение действует до&nbsp;25.02.2026г.',
       buttonText: 'Купить',
       benefits: [
         { text: '12 месяцев занятий в&nbsp;тренажерном зале' },
@@ -196,7 +196,7 @@ window.MEMBERSHIPS_DATA = {
       id: 'full-day-12',
       title: 'Тариф<br><strong>«Полный день»</strong>',
       price: '28250 руб.',
-      date: 'Предложение действует до 25.02.2026г.',
+      date: 'Предложение действует до&nbsp;25.02.2026г.',
       buttonText: 'Купить',
       benefits: [
         { text: '12 месяцев занятий в&nbsp;тренажерном зале' },
@@ -209,7 +209,7 @@ window.MEMBERSHIPS_DATA = {
       id: 'unlimited-12',
       title: 'Тариф<br><strong>«Безлимит»</strong>',
       price: '37000 руб.',
-      date: 'Предложение действует до 25.02.2026г.',
+      date: 'Предложение действует до&nbsp;25.02.2026г.',
       buttonText: 'Купить',
       benefits: [
         { text: '12 месяцев занятий в&nbsp;тренажерном зале' },
@@ -222,7 +222,7 @@ window.MEMBERSHIPS_DATA = {
       id: 'vip-12',
       title: 'Тариф<br><strong>«VIP»</strong>',
       price: '41250 руб.',
-      date: 'Предложение действует до 25.02.2026г.',
+      date: 'Предложение действует до&nbsp;25.02.2026г.',
       buttonText: 'Купить',
       benefits: [
         { text: '12 месяцев занятий в&nbsp;тренажерном зале' },
@@ -235,7 +235,7 @@ window.MEMBERSHIPS_DATA = {
       id: 'vipmaxi-12',
       title: 'Тариф<br><strong>«VIP MAXI»</strong>',
       price: '53000 руб.',
-      date: 'Предложение действует до 25.02.2026г.',
+      date: 'Предложение действует до&nbsp;25.02.2026г.',
       buttonText: 'Купить',
       benefits: [
         { text: '12 месяцев занятий в&nbsp;тренажерном зале' },
@@ -250,7 +250,7 @@ window.MEMBERSHIPS_DATA = {
       id: 'day-3',
       title: 'Тариф<br><strong>«День»</strong>',
       price: '7200 руб.',
-      date: 'Предложение действует до 25.02.2026г.',
+      date: 'Предложение действует до&nbsp;25.02.2026г.',
       buttonText: 'Купить',
       benefits: [
         { text: '3 месяца занятий в&nbsp;тренажерном зале' },
@@ -266,7 +266,7 @@ window.MEMBERSHIPS_DATA = {
       id: 'full-day-3',
       title: 'Тариф<br><strong>«Полный день»</strong>',
       price: '8500 руб.',
-      date: 'Предложение действует до 25.02.2026г.',
+      date: 'Предложение действует до&nbsp;25.02.2026г.',
       buttonText: 'Купить',
       benefits: [
         { text: '3 месяца занятий в&nbsp;тренажерном зале' },
@@ -282,7 +282,7 @@ window.MEMBERSHIPS_DATA = {
       id: 'unlimited-3',
       title: 'Тариф<br><strong>«Безлимит»</strong>',
       price: '11000 руб.',
-      date: 'Предложение действует до 25.02.2026г.',
+      date: 'Предложение действует до&nbsp;25.02.2026г.',
       buttonText: 'Купить',
       benefits: [
         { text: '3 месяца занятий в&nbsp;тренажерном зале' },
@@ -298,7 +298,7 @@ window.MEMBERSHIPS_DATA = {
       id: 'vip-3',
       title: 'Тариф<br><strong>«VIP»</strong>',
       price: '11800 руб.',
-      date: 'Предложение действует до 25.02.2026г.',
+      date: 'Предложение действует до&nbsp;25.02.2026г.',
       buttonText: 'Купить',
       benefits: [
         { text: '3 месяца занятий в&nbsp;тренажерном зале' },
@@ -314,7 +314,7 @@ window.MEMBERSHIPS_DATA = {
       id: 'vipmaxi-3',
       title: 'Тариф<br><strong>«VIP MAXI»</strong>',
       price: '13500 руб.',
-      date: 'Предложение действует до 25.02.2026г.',
+      date: 'Предложение действует до&nbsp;25.02.2026г.',
       buttonText: 'Купить',
       benefits: [
         { text: '3 месяца занятий в&nbsp;тренажерном зале' },
@@ -332,6 +332,7 @@ window.MEMBERSHIPS_DATA = {
       price: 'от 3000 руб.',
       date: 'Сертификат действует 3 месяца с даты покупки.',
       buttonText: 'Купить',
+      link: '#trial',
       benefits: [
         { text: 'Можно подарить близкому человеку' },
         { text: 'Подходит для абонемента или пробного занятия' },
@@ -344,6 +345,7 @@ window.MEMBERSHIPS_DATA = {
       date: 'Сертификат действует 30 дней.',
       buttonText: 'Записаться',
       dark: true,
+      link: '#trial',
       benefits: [
         { text: 'Знакомство с&nbsp;клубом' },
         { text: 'Тренажерный зал' },
@@ -355,6 +357,7 @@ window.MEMBERSHIPS_DATA = {
       price: '5000 руб.',
       date: 'Сертификат действует 3 месяца с даты покупки.',
       buttonText: 'Купить',
+      link: '#trial',
       benefits: [
         { text: 'Персональная тренировка' },
         { text: 'Анализ состава тела' },

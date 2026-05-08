@@ -732,7 +732,7 @@ button {
     }
 
     .cards-slider__track {
-        grid-auto-columns: 84%;
+        grid-auto-columns: 70%;
         gap: 12px;
         padding-inline: 8%;
         scroll-padding-inline: 8%;
@@ -895,7 +895,7 @@ button {
     }
 
     .membership-card {
-        min-height: 540px;
+        min-height: 720px;
     }
 
     .membership-card__price-row {

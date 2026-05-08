@@ -87,12 +87,12 @@ body.scrolled .header {
 }
 
 .ui-button-logout {
-  width: 220px;
+  width: 240px;
   min-height: var(--button-height);
   padding-inline: var(--button-padding-x);
   border: none;
   border-radius: 999px;
-  font-size: 16px;
+  font-size: 20px;
   font-weight: 600;
   cursor: pointer;
   display: inline-flex;
@@ -868,7 +868,7 @@ body.scrolled .header {
   align-items: center;
   justify-content: center;
 
-  min-height: 44px;
+  min-height: 48px;
   padding: 0 18px;
 
   border-radius: 999px;
@@ -877,7 +877,7 @@ body.scrolled .header {
   background: transparent;
   color: #111;
 
-  font-size: 14px;
+  font-size: 20px;
   font-weight: 500;
   font-family: inherit;
 
@@ -945,7 +945,7 @@ body.scrolled .header {
   border-radius: 99px;
   border: none;
   cursor: pointer;
-  font-size: 14px;
+  font-size: 16px;
 }
 
 .confirm-modal__btn--confirm {
@@ -1276,6 +1276,9 @@ body.scrolled .header {
     align-items: flex-start;
     gap: 16px;
   }
+  .dashboard-card__membership-title {
+    padding-top: 16px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -1288,6 +1291,9 @@ body.scrolled .header {
     --button-font-size: 15px;
   }
 
+  .training-card__cancel {
+    font-size: 16px;
+  }
   .account-action__label {
     font-size: 16px;
   }
