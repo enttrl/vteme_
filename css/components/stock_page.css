@@ -4,7 +4,7 @@
   --stock-card-height: 690px;
   --stock-button-height: 58px;
   --stock-radius: 24px;
-  --page-bg: #f3f3f3;
+  --page-bg: #F3F3F3;
   --accent: #ff7332;
 }
 
@@ -456,16 +456,16 @@ body {
   }
 
   .stock-card__title {
-    font-size: 25px;
+    font-size: 24px;
   }
 
   .stock-card__text,
   .stock-card__date {
-    font-size: 15px;
+    font-size: 16px;
   }
 
   .stock-button {
-    font-size: 14px;
+    font-size: 16px;
   }
 
   .stock-button span:first-child {
